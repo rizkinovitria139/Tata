@@ -13,15 +13,15 @@
                         <div class="col-lg">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Login Page</h1>
+                                    <h1 class="h4 text-gray-900 mb-4">Login Page - Siswa</h1>
                                 </div>
 
                                 <?= $this->session->flashdata('message'); ?>
 
-                                <form class="user" method="post" action="<?= base_url('auth'); ?>">
+                                <form class="user" method="post" action="<?= base_url('auth/loginsiswa'); ?>">
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" id="nip" name="nip" placeholder="Masukkan NIP anda..." value="<?= set_value('nip'); ?>">
-                                        <?= form_error('nip', '<small class="text-danger pl-3">', '</small>'); ?>
+                                        <input type="text" class="form-control form-control-user" id="nis" name="nis" placeholder="Masukkan NIS anda..." value="<?= set_value('nis'); ?>">
+                                        <?= form_error('nis', '<small class="text-danger pl-3">', '</small>'); ?>
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password">
@@ -37,14 +37,10 @@
                                     <button type="submit" class="btn btn-success btn-user btn-block">
                                         Login
                                     </button>
-                                    <button type="submit" class="btn btn-primary btn-user btn-block">
-                                        Login Sebagai Siswa
-                                    </button>
-
                                 </form>
                                 <hr>
                                 <div class="text-center">
-                                    <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                    <a class="small" href="<?= base_url('auth'); ?>">Login sebagai Guru</a>
                                 </div>
                                 <!-- <div class="text-center">
                                     <a class="small" href="register.html">Create an Account!</a>
