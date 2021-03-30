@@ -34,7 +34,11 @@ class Auth extends CI_Controller
         //jika gurunya ada
         if ($guru) {
             if ($guru['is_active'] == 1) {
-                echo "selamat datang";
+                if ($guru['role_id'] == 1) {
+                    redirect('guru');
+                } else {
+                    echo "Selamat datang wali kelas";
+                }
             }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Nip tidak terdaftar!</div>');
@@ -58,7 +62,7 @@ class Auth extends CI_Controller
                 echo "Selamat datang ";
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Nip tidak terdaftar!</div>');
-                redirect('auth');
+                redirect('auth/login');
             }
         }
 
