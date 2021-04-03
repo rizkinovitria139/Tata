@@ -35,7 +35,7 @@ class Auth extends CI_Controller
         if ($guru) {
             if ($guru['is_active'] == 1) {
                 if ($guru['role_id'] == 1) {
-                    redirect('guru');
+                    redirect('guru/index');
                 } else {
                     echo "Selamat datang wali kelas";
                 }
