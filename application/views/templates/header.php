@@ -40,10 +40,10 @@
     <div class="header_section">
         <div class="container">
             <div class="row">
-                <div class="col-sm-2">
-                    <div class="logo"><a href="#"><img src="assets/images/logo.png"></a></div>
+                <div class="col-sm-3">
+                    <div class="logo"><a href="#"><img src="assets/images/twh.png" style="max-width: 50%;"></a></div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-5">
                     <div class="menu-area">
                         <nav class="navbar navbar-expand-lg ">
                             <!-- <a class="navbar-brand" href="#">Menu</a> -->
@@ -53,7 +53,7 @@
                                 <i class="fa fa-bars"></i>
                             </button>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul class="navbar-nav mr-auto">
+                                <ul class="navbar-nav ml-auto">
                                     <li class="nav-item active">
                                         <!-- iki digawe link menu ke halaman lain -->
                                         <a class="nav-link" href="<?= site_url('admin/dashboard/izin') ?>">Home</a>
@@ -104,9 +104,9 @@
                                                     <div class="contact_bt"><a href="#">Contact Us</a></div> -->
                                                 <!-- </div> -->
                                             </div>
-                                            <div class="col-md-7 mx-auto">
+                                            <div class="col-md-7 mr-auto">
                                                 <div class="panel-body">
-                                                    <figure><img src="assets/images/awal.png" style="max-width: 90%;" />
+                                                    <figure><img src="assets/images/wel.png" style="max-width: 100%;" />
                                                     </figure>
                                                 </div>
                                             </div>
@@ -152,7 +152,7 @@
                                             </div>
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                                 <div class="img-box">
-                                                    <figure><img src="assets/images/banner-img1.png"
+                                                    <figure><img src="assets/images/slid.png"
                                                             style="max-width: 100%;" /></figure>
                                                 </div>
                                             </div>
