@@ -16,9 +16,7 @@
     <link href="<?= base_url("assets/css/nucleo-icons.css") ?>" rel="stylesheet" />
     <!-- CSS Files -->
     <link href="<?= base_url("assets/css/blk-design-system.css?v=1.0.0") ?>" rel="stylesheet" />
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="<?= base_url("assets/demo/demo.css") ?>" rel="stylesheet" />
-</head>
+
 
 <body class="register-page">
     <!-- Navbar -->
@@ -29,9 +27,7 @@
                     title="Designed and Coded by Creative Tim" data-placement="bottom" target="_blank">
                     <span>BLK•</span> Design System
                 </a> -->
-                <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navigation" aria-controls="navigation-index" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-bar bar1"></span>
                     <span class="navbar-toggler-bar bar2"></span>
                     <span class="navbar-toggler-bar bar3"></span>
@@ -46,9 +42,7 @@
                             </a> -->
                         </div>
                         <div class="col-6 collapse-close text-right">
-                            <button type="button" class="navbar-toggler" data-toggle="collapse"
-                                data-target="#navigation" aria-controls="navigation-index" aria-expanded="false"
-                                aria-label="Toggle navigation">
+                            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                                 <i class="tim-icons icon-simple-remove"></i>
                             </button>
                         </div>
@@ -70,25 +64,22 @@
                             <div id="square8" class="square square-8"></div>
                             <div class="card card-register">
                                 <div class="card-header">
-                                    <img class="card-img" src="<?= base_url("assets/img/square1.png") ?>"
-                                        alt="Card image">
-                                    <h3 class="card-title">Siswa</h3>
+                                    <img class="card-img" src="<?= base_url("assets/img/square1.png") ?>" alt="Card image">
+                                    <h3 class="card-title">Guru</h3>
                                 </div>
                                 <div class="card-body">
 
                                     <?= $this->session->flashdata('message'); ?>
 
-                                    <form class="user" method="post" action="<?= base_url('auth/loginsiswa'); ?>">
+                                    <form class="user" method="post" action="<?= base_url('auth'); ?>">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
                                                     <i class="tim-icons icon-single-02"></i>
                                                 </div>
                                             </div>
-                                            <input type="text" class="form-control form-control-user" id="nis"
-                                                name="nis" placeholder="Masukkan NIS Anda"
-                                                value="<?= set_value('nis'); ?>">
-                                            <?= form_error('nis', '<small class="text-danger pl-3">', '</small>'); ?>
+                                            <input type="text" class="form-control form-control-user" id="username" name="username" placeholder="Masukkan username Anda" value="<?= set_value('username'); ?>">
+                                            <?= form_error('username', '<small class="text-danger pl-3">', '</small>'); ?>
                                         </div>
 
                                         <div class="input-group">
@@ -97,21 +88,18 @@
                                                     <i class="tim-icons icon-lock-circle"></i>
                                                 </div>
                                             </div>
-                                            <input type="password" class="form-control form-control-user" id="password"
-                                                name="password" placeholder="Password">
+                                            <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password">
                                             <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                                         </div>
-                                    </form>
+
                                 </div>
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-info btn-block btn-lg">Login</button>
+                                    </form>
                                     <div class="text-center">
                                         <a href="<?= site_url('/'); ?>" class="btn btn-primary btn-block">Beranda</a>
                                     </div>
                                     <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="<?= base_url('auth'); ?>">Login sebagai Guru</a>
-                                    </div>
                                     <hr>
                                 </div>
                             </div>
