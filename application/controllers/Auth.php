@@ -10,7 +10,7 @@ class Auth extends CI_Controller
     }
     public function index()
     {
-        $this->form_validation->set_rules('nip', 'NIP', 'trim|required');
+        $this->form_validation->set_rules('username', 'username', 'trim|required');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
         if ($this->form_validation->run() == false) {
@@ -26,22 +26,22 @@ class Auth extends CI_Controller
 
     private function loginguru()
     {
-        $nip = $this->input->post('nip');
+        $username = $this->input->post('username');
         $password = $this->input->post('password');
 
-        $guru = $this->db->get_where('guru', ['nip' => $nip])->row_array();
+        $guru = $this->db->get_where('guru', ['username' => $username])->row_array();
 
         //jika gurunya ada
         if ($guru) {
             if ($guru['is_active'] == 1) {
                 if ($guru['role_id'] == 1) {
-                    redirect('guru/index');
+                    redirect('guru');
                 } else {
                     echo "Selamat datang wali kelas";
                 }
             }
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Nip tidak terdaftar!</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">username tidak terdaftar!</div>');
             redirect('auth');
         }
     }
@@ -61,7 +61,7 @@ class Auth extends CI_Controller
             if ($siswa['is_active'] == 1) {
                 echo "Selamat datang ";
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Nip tidak terdaftar!</div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">username tidak terdaftar!</div>');
                 redirect('auth/login');
             }
         }

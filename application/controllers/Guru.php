@@ -18,11 +18,11 @@ class Guru extends CI_Controller
         $data['title'] = 'Dashboard - Guru';
 
         $this->session->set_userdata($data);
-        $this->load->view('templates/auth_header', $data);
+        $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
         $this->load->view('templates/topbar');
         $this->load->view('guru/index');
-        $this->load->view('templates/auth_footer');
+        $this->load->view('templates/footer');
     }
 }
     
