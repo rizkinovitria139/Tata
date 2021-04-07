@@ -33,6 +33,13 @@ class Auth extends CI_Controller
 
         //jika usernya ada
         if ($user) {
+            $data = [
+                'id_user' => $user['id_user'],
+                'username' => $user['username'],
+                'password' => $user['password']
+            ];
+            // menyimpan data ke session
+            $this->session->set_userdata($data);
             if ($user['is_active'] == 1) {
                 if ($user['id_role'] == 1) {
                     redirect('guru');
