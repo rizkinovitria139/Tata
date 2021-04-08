@@ -65,13 +65,17 @@
                             <div class="card card-register">
                                 <div class="card-header">
                                     <img class="card-img" src="<?= base_url("assets/img/square1.png") ?>" alt="Card image">
-                                    <h3 class="card-title">Guru</h3>
+                                    <h3 class="card-title ml-2">Login</h3>
                                 </div>
                                 <div class="card-body">
 
                                     <?= $this->session->flashdata('message'); ?>
 
+
                                     <form class="user" method="post" action="<?= base_url('auth'); ?>">
+                                        <!-- <input id="btn_guru" class="btn btn-success" type="button" onclick="changeLogin('guru')" value="Guru">
+                                        <input id="btn_siswa" class="btn btn-warning" type="button" onclick="changeLogin('siswa')" value="Siswa"> -->
+                                        <!-- <input id="btn_bk" class="btn btn-info" type="button" onclick="changeLogin('guru_bk')" value="Guru BK"> -->
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
@@ -132,6 +136,25 @@
         <script src="<?= base_url("assets/js/plugins/bootstrap-datetimepicker.js") ?>" type="text/javascript"></script>
         <!-- Control Center for Black UI Kit: parallax effects, scripts for the example pages etc -->
         <script src="<?= base_url("assets/js/blk-design-system.min.js?v=1.0.0") ?>" type="text/javascript"></script>
+
+        <!-- <script>
+            $(document).ready(function() {
+
+            });
+
+
+            function changeLogin(btn) {
+                if (btn == 'siswa') {
+                    $('#btn_siswa').attr('class', 'btn btn-warning');
+                    $('#btn_guru').attr('class', 'btn btn-info');
+                    $('#form').attr('action', "<?= base_url('siswa') ?>");
+                } else if (btn == 'guru') {
+                    $('#btn_siswa').attr('class', 'btn btn-info');
+                    $('#btn_guru').attr('class', 'btn btn-warning');
+                    $('#form').attr('action', "<?= base_url('guru') ?>");
+                }
+            }
+        </script> -->
 </body>
 
 </html>

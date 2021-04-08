@@ -20,37 +20,69 @@ class Auth extends CI_Controller
             $this->load->view('templates/auth_footer');
         } else {
             //jika validasi berhasil
-            $this->loginuser();
+            $this->login_guru();
         }
     }
 
-    private function loginuser()
+    private function login_guru()
     {
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
+        $username = $this->input->post('username', true);
+        $password = $this->input->post('password', true);
 
-        $user = $this->db->get_where('user', ['username' => $username])->row_array();
+        $guru = $this->db->get_where('guru', ['username' => $username])->row_array();
+        $siswa = $this->db->get_where('siswa', ['username' => $username])->row_array();
 
         //jika usernya ada
-        if ($user) {
-            $data = [
-                'id_user' => $user['id_user'],
-                'username' => $user['username'],
-                'password' => $user['password']
-            ];
-            // menyimpan data ke session
-            $this->session->set_userdata($data);
-            if ($user['is_active'] == 1) {
-                if ($user['id_role'] == 1) {
-                    redirect('guru');
+        if ($guru) {
+
+            if ($guru['is_active'] == 1) {
+                // cek password
+                if ($password == $guru['password']) {
+
+                    if ($guru['role_id'] == 1) {
+                        redirect('guru');
+                    }
+                    if ($guru['role_id'] == 3) {
+                        redirect('guru/wali_kelas');
+                    } else {
+                        echo 'Selamat datang wali kelas';
+                    }
                 } else {
-                    echo "Selamat datang wali kelas";
+                    $this->session->set_flashdata('message', '<div class="alert 
+                    alert-danger" role="alert">Wrong password!</div>');
+                    redirect('auth');
                 }
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert 
+				alert-danger" role="alert">User belum diaktivasi!</div>');
+                redirect('auth');
+            }
+        } elseif ($siswa) {
+            if ($siswa['is_active'] == 1) {
+                // cek password
+                if ($password == $siswa['password']) {
+
+                    if ($siswa['role_id'] == 2) {
+                        redirect('siswa');
+                    }
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert 
+                    alert-danger" role="alert">Wrong password!</div>');
+                    redirect('auth');
+                }
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert 
+				alert-danger" role="alert">User belum diaktivasi!</div>');
+                redirect('auth');
             }
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">username tidak terdaftar!</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username tidak terdaftar!</div>');
             redirect('auth');
         }
+    }
+
+    public function login_siswa()
+    {
     }
 
     public function logout()
