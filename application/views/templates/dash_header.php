@@ -29,7 +29,10 @@
     <!-- owl stylesheets -->
     <link rel="stylesheet" href="<?= base_url('assets/css/owl.carousel.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/owl.theme.default.min.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css') ?>" media="screen">
+    <link rel="stylesheet"
+        href="<?= base_url('https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css') ?>"
+        media="screen">
+    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -38,30 +41,32 @@
     <div class="header_section">
         <div class="container">
             <div class="row">
-                <div class="col-sm-3">
-                    <div class="logo"><a href="#"><img src="assets/images/twh.png" style="max-width: 50%;"></a></div>
+                <div class="col-sm-2">
+                    <div class="logo"><a href="#"><img src="assets/images/twh.png" style="max-width: 35%;"></a></div>
                 </div>
                 <div class="col-sm-5">
                     <div class="menu-area">
                         <nav class="navbar navbar-expand-lg ">
                             <!-- <a class="navbar-brand" href="#">Menu</a> -->
-                            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
                                 <i class="fa fa-bars"></i>
                             </button>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item active">
                                         <!-- iki digawe link menu ke halaman lain -->
-                                        <a class="nav-link" href="<?= site_url('admin/dashboard/izin') ?>">Home</a>
+                                        <a class="nav-link" href="<?= site_url('/') ?>">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="about.html">Sejarah</a>
+                                        <a class="nav-link" href="<?= base_url("sejarah") ?>">Profil</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="client.html">Galeri</a>
+                                        <a class="nav-link" href="<?= base_url('galeri') ?>">Galeri</a>
                                     </li>
                                     <li class="#" href="#">
-                                        <a class="nav-link" href="blog.html">Visi Misi</a>
+                                        <a class="nav-link" href="visi_misi">Visi Misi</a>
                                     </li>
                                     <!-- <li class="nav-item" href="#">
                                         <a class="nav-link" href="contact.html">Contact Us</a>
@@ -125,7 +130,8 @@
                                             </div>
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                                 <div class="img-box">
-                                                    <figure><img src="assets/images/banner-img1.png" style="max-width: 100%;" /></figure>
+                                                    <figure><img src="assets/images/banner-img1.png"
+                                                            style="max-width: 100%;" /></figure>
                                                 </div>
                                             </div>
                                         </div>
@@ -147,7 +153,8 @@
                                             </div>
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                                 <div class="img-box">
-                                                    <figure><img src="assets/images/slid.png" style="max-width: 100%;" /></figure>
+                                                    <figure><img src="assets/images/slid.png"
+                                                            style="max-width: 100%;" /></figure>
                                                 </div>
                                             </div>
                                         </div>
