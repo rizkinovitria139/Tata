@@ -20,11 +20,11 @@ class Auth extends CI_Controller
             $this->load->view('templates/auth_footer');
         } else {
             //jika validasi berhasil
-            $this->login_guru();
+            $this->loginuser();
         }
     }
 
-    private function login_guru()
+    private function loginuser()
     {
         $username = $this->input->post('username', true);
         $password = $this->input->post('password', true);
@@ -79,10 +79,6 @@ class Auth extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username tidak terdaftar!</div>');
             redirect('auth');
         }
-    }
-
-    public function login_siswa()
-    {
     }
 
     public function logout()
