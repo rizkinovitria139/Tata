@@ -4,6 +4,10 @@
         <div class="copyright text-center my-auto">
             <span>Copyright &copy; SMP Negeri 2 Mojo - <?= date('Y'); ?> </span>
         </div>
+        <div class="container" style="text-align:center;">
+            <hr />
+            <span>UPTD SMP NEGERI 2 MOJO @<?php echo date('Y'); ?></span>
+        </div>
     </div>
 </footer>
 <!-- End of Footer -->
