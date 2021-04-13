@@ -35,6 +35,7 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?= base_url('guru/get_siswa'); ?>">Daftar Siswa</a>
                         <a class="collapse-item" href="buttons.html">Presensi</a>
                         <a class="collapse-item" href="cards.html">Nilai</a>
                     </div>

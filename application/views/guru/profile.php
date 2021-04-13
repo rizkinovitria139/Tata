@@ -12,8 +12,8 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <!-- <h5 class="card-title"><?= $user['username']; ?></h5>
-                                <p class="card-text"><?= $user['password']; ?></p> -->
+                    <!-- <h5 class="card-title"><?= $guru['username']; ?></h5>
+                    <p class="card-text"><?= $guru['password']; ?></p> -->
                     <!-- <p class="card-text"><small class="text-muted">Member since <?= date('d F Y', strtotime($user['date_created'])); ?></small></p> -->
                 </div>
             </div>

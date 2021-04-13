@@ -4,6 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Kelas_model extends CI_Model
 {
+    private $_table = 'kelas';
 
     public function __construct()
     {
@@ -21,15 +22,10 @@ class Kelas_model extends CI_Model
         return $this->db->query($query)->result_array();
     }
 
-    public function tambah_kelas()
+    public function tambah_kelas($data)
     {
 
-        $data = array(
-            'id_kelas' => $this->input->post['id_kelas'],
-            'nama_kelas' => $this->input->post['nama_kelas'],
-            'nip_wali_kelas' => $this->input->post['nip_wali_kelas']
-        );
-        return $this->db->insert('kelas', $data);
+        return $this->db->insert($this->_table, $data);
     }
 }
     

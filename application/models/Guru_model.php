@@ -5,15 +5,23 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Guru_model extends CI_Model
 {
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    private $table = "guru";
 
-    public function get_guru()
+    public function getAll()
     {
-        $query = "SELECT `guru`.* FROM `guru`";
-        return $this->db->query($query)->result_array();
+        return $this->db->get($this->table)->result();
+    }
+    public function save($data)
+    {
+        return $this->db->insert($this->table, $data);
+    }
+    public function update($data)
+    {
+        return $this->db->update($this->table, $data);
+    }
+    public function getById($id)
+    {
+        return $this->db->get_where($this->table, ["username" => $id])->row();
     }
 }
 
