@@ -13,9 +13,11 @@ class Lapor extends CI_Controller
 	 
 	public function index()
 	{
+		$data['title'] = 'Halaman Siswa';
 			$data['lapor'] = $this->lapor_model->getAll();
 			$this->load->view('templates/header');
 			$this->load->view('templates/siswa_sidebar');
+			$this->load->view('templates/siswa_topbar');
 			$this->load->view('templates/lapor',$data);
 			$this->load->view('templates/footer');
 	}
@@ -28,21 +30,21 @@ class Lapor extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 	public function save()
-	{
-		$this->form_validation->set_rules('nama','Nama','required');
-		$this->form_validation->set_rules('jenis_kelamin','Jenis Kelamin','required');
-		$this->form_validation->set_rules('tempat_lahir','Tempat Lahir','required');
-		$this->form_validation->set_rules('tanggal_lahir','Tanggal Lahir','required');
-		$this->form_validation->set_rules('no_telp','Nomor Telepon','required');
-		$this->form_validation->set_rules('alamat','Alamat','required');
+	{ 
+		$this->load->view('templates/header');
+		$this->load->view('templates/siswa_sidebar');
+	 $this->load->view('templates/siswa_topbar');
+			
+		$this->form_validation->set_rules('isi','Isi','required');
+		$this->form_validation->set_rules('tanggal','Tanggal','required');
+		$this->form_validation->set_rules('file','File','required');
+		
 		if ($this->form_validation->run()==true)
         {
-			$data['nama'] = $this->input->post('nama');
-			$data['jenis_kelamin'] = $this->input->post('jenis_kelamin');
-			$data['tempat_lahir'] = $this->input->post('tempat_lahir');
-			$data['tanggal_lahir'] = $this->input->post('tanggal_lahir');
-			$data['no_telp'] = $this->input->post('no_telp');
-			$data['alamat'] = $this->input->post('alamat');
+			$data['isi'] = $this->input->post('isi');
+			$data['tanggal'] = $this->input->post('tanggal');
+			$data['file'] = $this->input->post('file');
+		
 			$this->lapor_model->save($data);
 			redirect('lapor');
 		}
@@ -53,37 +55,31 @@ class Lapor extends CI_Controller
 			$this->load->view('templates/footer');
 		}
 	}
-	function edit($nis)
+	function edit($id_pelapor)
 	{
-		$data['siswa'] = $this->lapor_model->getById($nis);
+		$data['siswa'] = $this->lapor_model->getById($id_pelapor);
 		$this->load->view('templates/header');
 		$this->load->view('siswa/edit',$data);
 		$this->load->view('templates/footer');
 	}
 	public function update()
 	{
-		$this->form_validation->set_rules('nama','Nama','required');
-		$this->form_validation->set_rules('jenis_kelamin','Jenis Kelamin','required');
-		$this->form_validation->set_rules('tempat_lahir','Tempat Lahir','required');
-		$this->form_validation->set_rules('tanggal_lahir','Tanggal Lahir','required');
-		$this->form_validation->set_rules('no_telp','Nomor Telepon','required');
-		$this->form_validation->set_rules('alamat','Alamat','required');
+		$this->form_validation->set_rules('isi','Isi','required');
+		//$this->form_validation->set_rules('tanggal','Tanggal','required');
+		$this->form_validation->set_rules('file','File','required');
 		if ($this->form_validation->run()==true)
         {
-		 	$nis = $this->input->post('nis');
-			$data['nama'] = $this->input->post('nama');
-			$data['jenis_kelamin'] = $this->input->post('jenis_kelamin');
-			$data['tempat_lahir'] = $this->input->post('tempat_lahir');
-			$data['tanggal_lahir'] = $this->input->post('tanggal_lahir');
-			$data['no_telp'] = $this->input->post('no_telp');
-			$data['alamat'] = $this->input->post('alamat');
-			$this->lapor_model->update($data,$nis);
+		 	$id_pelapor = $this->input->post('d_pelapor');
+			$data['isi'] = $this->input->post('isi');
+			$data['tanggal'] = $this->input->post('tanggal');
+			$data['file'] = $this->input->post('file');
+			$this->lapor_model->update($data,$id_pelapor);
 			redirect('lapor');
 		}
 		else
 		{
-			$nis = $this->input->post('nis');
-			$data['lapor_bk'] = $this->lapor_model->getById($nis);
+			$id_pelapor = $this->input->post('id_pelapor');
+			$data['lapor_bk'] = $this->lapor_model->getById($id_pelapor);
 			$this->load->view('templates/header');
 			$this->load->view('siswa/edit',$data);
 			$this->load->view('templates/footer');

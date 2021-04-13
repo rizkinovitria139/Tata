@@ -8,12 +8,9 @@
             <table class="table table-bordered">
                 <tr>
                     <th width="5%">No</th>
-                    <th>Nama</th>
-                    <th>Jenis Kelamin</th>
-                    <th>Tanggal Lahir</th>
-                    <th>Tempat Lahir</th>
-                    <th>Telp</th>
-                    <th>Alamat</th>
+                    <th>Isi</th>
+                    <th>Tanggal</th>
+                    <th>File</th>
                     <th>Action</th>
                 </tr>
                 <?php 
@@ -23,16 +20,12 @@
 						?>
                 <tr>
                     <td widtd="5%"><?php echo $no++; ?></td>
-                    <td><?php echo $row->nama; ?></td>
-                    <td><?php echo $row->jenis_kelamin; ?></td>
-                    <td><?php echo $row->tanggal_lahir; ?></td>
-                    <td><?php echo $row->tempat_lahir; ?></td>
-                    <td><?php echo $row->no_telp; ?></td>
-                    <td><?php echo $row->alamat; ?></td>
+                    <td><?php echo $row->isi; ?></td>
+                    <td><?php echo $row->tanggal; ?></td>
                     <td>
-                        <a href="<?php echo base_url(); ?>lapor/edit/<?php echo $row->kd_siswa; ?>"
+                        <a href="<?php echo base_url(); ?>lapor/edit/<?php echo $row->nis; ?>"
                             class="btn btn-warning">Edit</a>
-                        <a href="<?php echo base_url(); ?>lapor/delete/<?php echo $row->kd_siswa; ?>"
+                        <a href="<?php echo base_url(); ?>lapor/delete/<?php echo $row->nis; ?>"
                             class="btn btn-danger">Hapus</a>
                     </td>
                 </tr>
