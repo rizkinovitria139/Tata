@@ -23,6 +23,7 @@
                     <th>Nilai Tugas</th>
                     <th>Nilai UTS</th>
                     <th>Nilai UAS</th>
+                    <th>Nama Mapel</th>
                     <!-- <th>Action</th> -->
                 </tr>
             </thead>
@@ -37,6 +38,7 @@
                     <td><?= $u['nilai_tugas'] ?></td>
                     <td><?= $u['nilai_uts'] ?></td>
                     <td><?= $u['nilai_uas'] ?></td>
+                    <td><?= $u['nama_mapel'] ?></td>
 
                     <!-- <td><a href="" class="btn btn-danger">Hapus</a>
                         <a href="" class="btn btn-warning">Detail</a>
