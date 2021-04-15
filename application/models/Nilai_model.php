@@ -18,4 +18,4 @@ class Nilai_model extends CI_Model
         return $this->db->query($query)->result_array();
          //return $this->db->get('nilai_siswa')->result_array();
     }
-}
+} 

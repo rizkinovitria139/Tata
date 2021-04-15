@@ -1,11 +1,32 @@
 <?php
-
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Jadwal extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('Jadwal_model');
+    }
+
     public function index()
     {
-        echo 'HALAMAN JADWAL';
+        $data['title'] = 'Halaman Jadwal Mata Pelajaran';
+       
+        $this->session->set_userdata($data);
+
+        $this->db->select('a.hari, a.waktu, a.jam_ke, b.kelas,b.nama_mapel');
+        $this->db->from('jadwal AS a');
+        $this->db->join('mata_pelajaran AS b', 'a.id_mapel = b.id_mapel');
+        $this->db->get();
+        $this->load->model('Jadwal_model', 'jadwal');
+        $data['jadwal'] = $this->jadwal->getAll();
+
+
+        $this->load->view('templates/header');
+	    $this->load->view('templates/siswa_sidebar');
+		$this->load->view('templates/siswa_topbar');
+        $this->load->view('siswa/jadwal', $data);
+		$this->load->view('templates/footer');
     }
 }
