@@ -63,7 +63,13 @@ class Auth extends CI_Controller
                 if ($password == $siswa['password']) {
 
                     if ($siswa['role_id'] == 2) {
+                        $data = [
+                            'username' => $siswa['username'],
+                            'role_id' => $siswa['role_id']
+                        ];
+                        $this->session->set_userdata($data);
                         redirect('siswa');
+                        
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert 

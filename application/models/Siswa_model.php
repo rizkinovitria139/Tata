@@ -12,6 +12,10 @@ class Siswa_model extends CI_Model
     {
         return $this->db->get($this->table)->result();
     }
+    public function getById($id)
+    {
+        return $this->db->get_where($this->table, ["username" => $id])->row();
+    }
 }
 
 /* End of file Siswa_model.php */
