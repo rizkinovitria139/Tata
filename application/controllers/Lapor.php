@@ -14,10 +14,12 @@ class Lapor extends CI_Controller
 	public function index()
 	{
 		$data['title'] = 'Halaman Siswa';
+		$data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')]) ->row_array();
+		
 			$data['lapor'] = $this->lapor_model->getAll();
 			$this->load->view('templates/header');
-			$this->load->view('templates/siswa_sidebar');
-			$this->load->view('templates/siswa_topbar');
+			$this->load->view('templates/siswa_sidebar', $data);
+			$this->load->view('templates/siswa_topbar', $data);
 			$this->load->view('templates/lapor',$data);
 			$this->load->view('templates/footer');
 	}
