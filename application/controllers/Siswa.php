@@ -20,8 +20,8 @@ class Siswa extends CI_Controller
 
         $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')]) ->row_array();
 
-        $this->load->view('templates/header');
-        $this->load->view('templates/siswa_sidebar');
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/siswa_sidebar', $data);
         $this->load->view('templates/siswa_topbar', $data);
         $this->load->view('siswa/index', $data);
         $this->load->view('templates/footer');

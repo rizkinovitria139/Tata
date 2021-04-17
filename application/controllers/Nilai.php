@@ -7,6 +7,7 @@ class Nilai extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Nilai_model');
+        $this->load->library('form_validation');
     }
 
     public function index()
@@ -17,6 +18,7 @@ class Nilai extends CI_Controller
     //   $data = [
     //     'nis' => $this->Nilai_model->getAll()($this->session->userdata('user_logged')->id),
     // ];
+    $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')]) ->row_array();
        
         $this->session->set_userdata($data);
 
@@ -29,7 +31,7 @@ class Nilai extends CI_Controller
 
 
         $this->load->view('templates/header');
-	    $this->load->view('templates/siswa_sidebar');
+	    $this->load->view('templates/siswa_sidebar', $data);
 		$this->load->view('templates/siswa_topbar');
         $this->load->view('siswa/nilai', $data);
 		$this->load->view('templates/footer');
