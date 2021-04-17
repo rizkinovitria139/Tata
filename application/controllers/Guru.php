@@ -9,7 +9,7 @@ class Guru extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('siswa_model', 'siswa');
+        $this->load->model('Siswa_model', 'siswa');
         $this->load->model('kelas_model', 'kelas');
         $this->load->model('Guru_model', 'guru');
         $this->load->library('form_validation');
@@ -50,11 +50,13 @@ class Guru extends CI_Controller
 
         $data['title'] = 'Daftar Siswa';
 
-        $this->db->select('*');
-        $this->db->from('siswa');
-        $this->db->get();
-        $this->load->model('siswa_model', 'siswa');
-        $this->siswa->getAll();
+        // $recordSiswa = $this->Siswa_model->getAll();
+        $this->load->model('Siswa_model', 'siswa');
+        $data['siswa'] = $this->siswa->getAll();
+
+        // echo "<pre>";
+        // print_r($recordSiswa);
+        // echo "</pre>";
 
         $this->session->set_userdata($data);
         $this->load->view('templates/header', $data);

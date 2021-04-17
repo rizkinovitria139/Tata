@@ -7,10 +7,13 @@ class Siswa_model extends CI_Model
 
     private $table = 'siswa';
 
-   
+
     public function getAll()
     {
-        return $this->db->get($this->table)->result();
+        $this->db->select('*');
+        $this->db->from('siswa');
+        $query = $this->db->get();
+        return $query->result_array();
     }
     public function getById($id)
     {
