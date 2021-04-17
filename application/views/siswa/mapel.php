@@ -13,31 +13,27 @@
 
 <body>
     <div class="container">
-        <h2>Data Nilai</h2>
+        <h2>Mata Pelajaran</h2>
         <table class="table table-grey">
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>NIS</th>
-                    <th>Nilai Tugas</th>
-                    <th>Nilai UTS</th>
-                    <th>Nilai UAS</th>
-                    <th>Nama Mapel</th>
+                    <th>Kelas</th>
+                    <th>Mata Pelajaran</th>
+                    <th>Nama Pengajar</th>
                     <!-- <th>Action</th> -->
                 </tr>
             </thead>
             <tbody>
                 <?php
                 $no = 1;
-                foreach ($nilai_siswa as $u) :
+                foreach ($mata_pelajaran as $u) :
                     ?>
                 <tr>
                     <td><?= $no++; ?></td>
-                    <td><?= $u['nis'] ?></td>
-                    <td><?= $u['nilai_tugas'] ?></td>
-                    <td><?= $u['nilai_uts'] ?></td>
-                    <td><?= $u['nilai_uas'] ?></td>
+                    <td><?= $u['kelas'] ?></td>
                     <td><?= $u['nama_mapel'] ?></td>
+                    <td><?= $u['nama'] ?></td>
 
                     <!-- <td><a href="" class="btn btn-danger">Hapus</a>
                         <a href="" class="btn btn-warning">Detail</a>
