@@ -9,7 +9,7 @@ class Guru_model extends CI_Model
 
     public function getAll()
     {
-        return $this->db->get($this->table)->result();
+        return $this->db->get($this->table)->result_array();
     }
     public function save($data)
     {

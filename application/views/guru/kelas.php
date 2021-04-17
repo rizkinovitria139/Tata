@@ -8,7 +8,14 @@
 			<div class="col-lg">
 				<?= form_error('kelas', '<div class="alert alert-danger" kelas="alert">', '</div>'); ?>
 
-				<!-- <?= $this->session->flashdata('message'); ?> -->
+				<?php if ($this->session->flashdata('status')) : ?>
+					<div class="alert alert-primary" role="alert">
+						<?= $this->session->flashdata('status') ?>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				<?php endif; ?>
 
 				<div class="row">
 
@@ -80,9 +87,16 @@
 								<input type="text" class="form-control" id="nama_kelas" name="nama_kelas" placeholder="Masukkan Nama Kelas">
 							</div>
 							<span>Wali Kelas</span>
+							<?foreach ($kelas as $k ) : ?>
+
 							<div class="form-group">
-								<input type="text" class="form-control" id="nip_wali_kelas" name="nip_wali_kelas" placeholder="Masukkan NIP Wali Kelas">
+								<select class="form-control" id="status" name="nip_wali_kelas" id="nip_wali_kelas">
+									<option selected>Pilih Wali Kelas </option>
+									<option value="<?= $k['nip']; ?>"><?php echo $k['nip']; ?></option>
+								</select>
 							</div>
+							<?php; ?>
+
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -117,13 +131,12 @@
 								</div>
 
 								<div class="form-group">
-									<select class="form-control" id="status" name="guru">
+									<select class="form-control" id="status" name="nip_wali_kelas" id="nip_wali_kelas">
 										<option selected>Pilih Wali Kelas </option>
-										<?php foreach ($gurus as $guru) { ?>
-											<option value="<?= $guru['nip']; ?>"><?php echo $guru['nip']; ?></option>
-										<?php  } ?>
+										<option value="<?= $k['nip']; ?>"><?php echo $k['nip']; ?></option>
 									</select>
 								</div>
+								<?php; ?>
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>

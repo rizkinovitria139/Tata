@@ -41,8 +41,24 @@ class Guru extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function getGuru()
+    public function get_guru()
     {
+        $data['title'] = 'Daftar Guru';
+
+        // $recordSiswa = $this->Siswa_model->getAll();
+        $this->load->model('Guru_model', 'guru');
+        $data['guru'] = $this->guru->getAll();
+
+        // echo "<pre>";
+        // print_r($recordSiswa);
+        // echo "</pre>";
+
+        $this->session->set_userdata($data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar');
+        $this->load->view('guru/guru', $data);
+        $this->load->view('templates/footer');
     }
 
     public function get_siswa()
@@ -84,17 +100,9 @@ class Guru extends CI_Controller
 
         $this->session->set_userdata($data);
 
-        $this->db->select('a.id_kelas, a.nama_kelas, b.nama');
-        $this->db->from('kelas AS a');
-        $this->db->join('guru AS b', 'a.nip_wali_kelas = b.nip');
-        $this->db->get();
+
         $this->load->model('kelas_model', 'kelas');
         $data['kelas'] = $this->kelas->get_kelas();
-
-        // $this->db->select('guru.nip');
-        // $this->db->from('guru');
-        // $this->db->get();
-        // $data['guru'] = $this->guru->get_guru();
 
         $this->session->set_userdata($data);
         $this->load->view('templates/header', $data);
@@ -106,6 +114,8 @@ class Guru extends CI_Controller
 
     public function tambah_kelas()
     {
+        // $this->load->model('Guru_model');
+        // $data['kelas'] = $this->guru_model->getAll();
         $this->form_validation->set_rules('id_kelas', 'ID Kelas', 'required');
         $this->form_validation->set_rules('nama_kelas', 'Nama Kelas', 'required');
         $this->form_validation->set_rules('nip_wali_kelas', 'NIP Wali Kelas', 'required');
@@ -117,6 +127,7 @@ class Guru extends CI_Controller
 
             $this->load->model('kelas_model', 'kelas');
             $this->kelas->tambah_kelas($data);
+            $this->session->set_flashdata('status', 'Kelas berhasil ditambahkan');
             redirect('guru/tambah_kelas');
         } else {
             redirect('guru/get_kelas');
