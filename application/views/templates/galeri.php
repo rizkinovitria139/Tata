@@ -11,6 +11,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
     <title>SMP NEGERI 2 MOJO</title>
+    <link rel="shortcut icon" href="<?= base_url('assets/images/LOGO SMP.png') ?>" type="image/x-icon">
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -21,7 +22,7 @@
     <!-- Responsive-->
     <link rel="stylesheet" href="<?= base_url('assets/css/responsive.css') ?>">
     <!-- fevicon -->
-    <link rel="icon" href="<?= base_url('assets/cssimages/fevicon.png') ?>" type="image/gif" />
+    <link rel="icon" href="<?= base_url('assets/css/images/LOGO SMP.png') ?>" type="image/gif" />
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/css/jquery.mCustomScrollbar.min.css') ?>">
     <!-- Tweaks for older IEs-->
@@ -42,7 +43,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
-                <div class="logo"><a href="#"><img src="assets/images/twh.png" style="max-width: 35%;"></a></div>
+                <div class="logo"><a href="#"><img src="assets/images/LOGO SMP.png" style="max-width: 50%;"></a></div>
             </div>
             <div class="col-sm-5">
                 <div class="menu-area">
@@ -60,7 +61,7 @@
                                     <a class="nav-link" href="<?= site_url('/') ?>">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?= base_url("sejarah") ?>">Sejarah</a>
+                                    <a class="nav-link" href="<?= base_url("sejarah") ?>">Profil</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?= base_url('galeri') ?>">Galeri</a>
@@ -83,13 +84,13 @@
         <section class="page-section portfolio" id="portfolio">
             <div class="container">
                 <!-- Portfolio Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Galeri</h2>
+                <!-- <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Galeri</h2> -->
                 <!-- Icon Divider-->
-                <div class="divider-custom">
+                <!-- <div class="divider-custom">
                     <div class="divider-custom-line"></div>
                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                     <div class="divider-custom-line"></div>
-                </div>
+                </div> -->
                 <!-- Portfolio Grid Items-->
                 <div class="row justify-content-center">
                     <!-- Portfolio Item 1-->
@@ -97,10 +98,11 @@
                         <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
                             <div
                                 class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i
-                                        class="fas fa-plus fa-3x"></i></div>
+                                <div class="portfolio-item-caption-content text-center text-white">
+                                    <i class="fas fa-plus fa-3x"></i>
+                                </div>
                             </div>
-                            <img class="img-fluid" src="<?= base_url("assets/img/portfolio/cabin.png") ?>" alt="" />
+                            <img class="img-fluid" src="<?= base_url("assets/img/portfolio/A.jpg") ?>" alt="" />
                         </div>
                     </div>
                     <!-- Portfolio Item 2-->
@@ -111,7 +113,7 @@
                                 <div class="portfolio-item-caption-content text-center text-white"><i
                                         class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="assets/img/portfolio/cake.png" alt="" />
+                            <img class="img-fluid" src="assets/img/portfolio/I.jpg" alt="" />
                         </div>
                     </div>
                     <!-- Portfolio Item 3-->
@@ -122,7 +124,7 @@
                                 <div class="portfolio-item-caption-content text-center text-white"><i
                                         class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="assets/img/portfolio/circus.png" alt="" />
+                            <img class="img-fluid" src="assets/img/portfolio/C.jpg" alt="" />
                         </div>
                     </div>
                     <!-- Portfolio Item 4-->
@@ -133,7 +135,7 @@
                                 <div class="portfolio-item-caption-content text-center text-white"><i
                                         class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="assets/img/portfolio/game.png" alt="" />
+                            <img class="img-fluid" src="assets/img/portfolio/D.jpg" alt="" />
                         </div>
                     </div>
                     <!-- Portfolio Item 5-->
@@ -144,7 +146,7 @@
                                 <div class="portfolio-item-caption-content text-center text-white"><i
                                         class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="assets/img/portfolio/safe.png" alt="" />
+                            <img class="img-fluid" src="assets/img/portfolio/D.jpg" alt="" />
                         </div>
                     </div>
                     <!-- Portfolio Item 6-->
@@ -155,7 +157,7 @@
                                 <div class="portfolio-item-caption-content text-center text-white"><i
                                         class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="assets/img/portfolio/submarine.png" alt="" />
+                            <img class="img-fluid" src="assets/img/portfolio/E.jpg" alt="" />
                         </div>
                     </div>
                 </div>
@@ -174,7 +176,7 @@
                                 <div class="col-lg-8">
                                     <!-- Portfolio Modal - Title-->
                                     <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0"
-                                        id="portfolioModal1Label">Log Cabin</h2>
+                                        id="portfolioModal1Label">Gambar A</h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
@@ -182,7 +184,7 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/cabin.png" alt="" />
+                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/A.jpg" alt="" />
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia
                                         neque
@@ -214,7 +216,7 @@
                                 <div class="col-lg-8">
                                     <!-- Portfolio Modal - Title-->
                                     <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0"
-                                        id="portfolioModal2Label">Tasty Cake</h2>
+                                        id="portfolioModal2Label">Gambar B</h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
@@ -222,7 +224,7 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/cake.png" alt="" />
+                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/I.jpg" alt="" />
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia
                                         neque
@@ -254,7 +256,7 @@
                                 <div class="col-lg-8">
                                     <!-- Portfolio Modal - Title-->
                                     <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0"
-                                        id="portfolioModal3Label">Circus Tent</h2>
+                                        id="portfolioModal3Label">Gambar C</h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
@@ -262,7 +264,7 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/circus.png" alt="" />
+                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/C.jpg" alt="" />
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia
                                         neque
@@ -294,7 +296,7 @@
                                 <div class="col-lg-8">
                                     <!-- Portfolio Modal - Title-->
                                     <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0"
-                                        id="portfolioModal4Label">Controller</h2>
+                                        id="portfolioModal4Label">Gambar D</h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
@@ -302,7 +304,7 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/game.png" alt="" />
+                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/D.jpg" alt="" />
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia
                                         neque
@@ -334,7 +336,7 @@
                                 <div class="col-lg-8">
                                     <!-- Portfolio Modal - Title-->
                                     <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0"
-                                        id="portfolioModal5Label">Locked Safe</h2>
+                                        id="portfolioModal5Label">Gambar E</h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
@@ -342,7 +344,7 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/safe.png" alt="" />
+                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/E.jpg" alt="" />
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia
                                         neque
@@ -374,7 +376,7 @@
                                 <div class="col-lg-8">
                                     <!-- Portfolio Modal - Title-->
                                     <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0"
-                                        id="portfolioModal6Label">Submarine</h2>
+                                        id="portfolioModal6Label">Gambar F</h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
@@ -382,8 +384,7 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/submarine.png"
-                                        alt="" />
+                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/F.jpg" alt="" />
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia
                                         neque

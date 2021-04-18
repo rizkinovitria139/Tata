@@ -11,6 +11,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
     <title>SMP NEGERI 2 MOJO</title>
+    <link rel="shortcut icon" href="<?= base_url('assets/images/LOGO SMP.png') ?>" type="image/x-icon">
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -21,7 +22,7 @@
     <!-- Responsive-->
     <link rel="stylesheet" href="<?= base_url('assets/css/responsive.css') ?>">
     <!-- fevicon -->
-    <link rel="icon" href="<?= base_url('assets/cssimages/fevicon.png') ?>" type="image/gif" />
+    <link rel="icon" href="<?= base_url('assets/css/images/LOGO SMP.png') ?>" type="image/gif" />
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/css/jquery.mCustomScrollbar.min.css') ?>">
     <!-- Tweaks for older IEs-->
@@ -41,8 +42,9 @@
     <div class="header_section">
         <div class="container">
             <div class="row">
-                <div class="col-sm-2">
-                    <div class="logo"><a href="#"><img src="assets/images/twh.png" style="max-width: 35%;"></a></div>
+                <div class="col-sm-3">
+                    <div class="logo"><a href="#"><img src="assets/images/LOGO SMP.png" style="max-width: 50%;"></a>
+                    </div>
                 </div>
                 <div class="col-sm-5">
                     <div class="menu-area">
@@ -65,9 +67,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="<?= base_url('galeri') ?>">Galeri</a>
                                     </li>
-                                    <li class="#" href="#">
-                                        <a class="nav-link" href="visi_misi">Visi Misi</a>
-                                    </li>
+
                                     <!-- <li class="nav-item" href="#">
                                         <a class="nav-link" href="contact.html">Contact Us</a>
                                     </li> -->

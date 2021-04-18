@@ -11,6 +11,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
     <title>SMP NEGERI 2 MOJO</title>
+    <link rel="shortcut icon" href="<?= base_url('assets/images/LOGO SMP.png') ?>" type="image/x-icon">
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -38,8 +39,8 @@
 <div class="header_section">
     <div class="container">
         <div class="row">
-            <div class="col-sm-2">
-                <div class="logo"><a href="/"><img src="assets/images/twh.png" style="max-width: 35%;"></a></div>
+            <div class="col-sm-3">
+                <div class="logo"><a href="/"><img src="assets/images/LOGO SMP.png" style="max-width: 50%;"></a></div>
             </div>
             <div class="col-sm-5">
                 <div class="menu-area">
@@ -62,9 +63,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?= base_url('galeri') ?>">Galeri</a>
                                 </li>
-                                <li class="#" href="#">
-                                    <a class="nav-link" href="<?= base_url("visi_misi") ?>">Visi Misi</a>
-                                </li>
+
                                 <!-- <li class="nav-item" href="#">
                                         <a class="nav-link" href="contact.html">Contact Us</a>
                                     </li> -->
@@ -83,39 +82,40 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="banner_section layout_padding">
-                <div class="col-md-5 mx-auto">
+        <!-- <div class="row">
+            <div class="banner_section layout_padding"> -->
+        <!-- <div class="col-md-5 mx-auto">
                     <div class="panel-body">
                         <figure><img src="assets/images/awal.png" style="max-width: 100%;" />
                         </figure>
                     </div>
-                </div>
-                <!-- <div id="main_slider" class="section carousel slide banner-main" data-ride="carousel"> -->
-                <section class="section pt-5">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-8 mx-auto">
-                                <div class="text-center">
-                                    <h2>PROFIL SEKOLAH</h2>
-                                    <h2>UPTD SMP NEGERI 2 MOJO</h2>
-                                    <p class="justify">UPTD SMP NEGERI 2 MOJO yang diresmikan tanggal 30 Juli 1996
-                                        Siswa yang bersekolah di UPTD SMP NEGERI 2 MOJO dari awal diresmikan sampai
-                                        sekarang terus mengalami peningkatan yang signifikan. Dari situ, bisa kita
-                                        simpulkan bahwa UPTD SMP NEGERI 2 MOJO terus melakukan perbaikan untuk memenuhi
-                                        Standar Pelayanan Minimal (SPM) sehingga anak didiknya bisa belajar dengan
-                                        tenang dan nyaman.
-                                        Di bawah ini profil lengkap UPTD SMP NEGERI 2 MOJO.
+                </div> -->
+        <!-- <div id="main_slider" class="section carousel slide banner-main" data-ride="carousel"> -->
+        <section class="section pt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 mx-auto">
+                        <div class="text-center">
+                            <h2>VISI MISI</h2>
+                            <h2>UPTD SMP NEGERI 2 MOJO</h2>
+                            <p class="justify">UPTD SMP NEGERI 2 MOJO yang diresmikan tanggal 30 Juli 1996
+                                Siswa yang bersekolah di
+                                UPTD SMP NEGERI 2 MOJO dari awal diresmikan sampai
+                                sekarang terus mengalami peningkatan yang signifikan. Dari situ, bisa kita
+                                simpulkan bahwa UPTD SMP NEGERI 2 MOJO terus melakukan perbaikan untuk memenuhi
+                                Standar Pelayanan Minimal (SPM) sehingga anak didiknya bisa belajar dengan
+                                tenang dan nyaman.
+                                Di bawah ini profil lengkap UPTD SMP NEGERI 2 MOJO.
 
 
-                                    </p>
-                                </div>
-                            </div>
+                            </p>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <!-- /about -->
-                    <!-- <div class="carousel-inner">
+            <!-- /about -->
+            <!-- <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="container">
                                 <div class="row marginii">
@@ -128,10 +128,10 @@
                                                 has a more-or-less normal distribution of letters,</p>
                                             <div class="ads_bt"><a href="#">Ads Now</a></div>
                                             <div class="contact_bt"><a href="#">Contact Us</a></div> -->
-            </div>
-        </div>
-
     </div>
+</div>
+
+</div>
 </div>
 </div>
 

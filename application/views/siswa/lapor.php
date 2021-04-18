@@ -1,6 +1,6 @@
 <main role="main" class="container">
     <div class="card">
-        <div class="card-header">Data Lapor BK</div>
+        <div class="card-header"><?= $title; ?></div>
         <div class="card-body">
             <a href="<?php echo base_url(); ?>lapor/create" class="btn btn-success">Create</a>
             <br />
