@@ -52,7 +52,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="<?= base_url('admin/get_kelas'); ?>">Kelas</a>
                         <a class="collapse-item" href="<?= base_url('admin/get_mapel'); ?>">Mata Pelajaran</a>
-                        <a class="collapse-item" href="utilities-animation.html">Jadwal</a>
+                        <a class="collapse-item" href="<?= base_url('admin/get_jadwal') ?>">Jadwal</a>
                     </div>
                 </div>
             </li>

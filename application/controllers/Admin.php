@@ -129,6 +129,24 @@ class Admin extends CI_Controller
         $this->load->view('admin/mapel', $data);
         $this->load->view('templates/footer');
     }
+
+    public function get_jadwal()
+    {
+        $data['title'] = 'Daftar Jadwal';
+
+        $this->session->set_userdata($data);
+
+
+        $this->load->model('jadwal_model', 'jadwal');
+        $data['jadwal'] = $this->jadwal->get_jadwal();
+
+        $this->session->set_userdata($data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar');
+        $this->load->view('admin/jadwal', $data);
+        $this->load->view('templates/footer');
+    }
 }
     
     /* End of file Guru.php */
