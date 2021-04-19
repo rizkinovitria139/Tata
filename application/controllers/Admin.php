@@ -12,6 +12,7 @@ class Admin extends CI_Controller
         $this->load->model('Siswa_model', 'siswa');
         $this->load->model('kelas_model', 'kelas');
         $this->load->model('Admin_model', 'guru');
+        $this->load->model('Mapel_model', 'mapel');
         $this->load->library('form_validation');
     }
 
@@ -45,13 +46,8 @@ class Admin extends CI_Controller
     {
         $data['title'] = 'Daftar Guru';
 
-        // $recordSiswa = $this->Siswa_model->getAll();
         $this->load->model('Admin_model', 'admin');
         $data['guru'] = $this->admin->getAll();
-
-        // echo "<pre>";
-        // print_r($recordSiswa);
-        // echo "</pre>";
 
         $this->session->set_userdata($data);
         $this->load->view('templates/header', $data);
@@ -66,13 +62,8 @@ class Admin extends CI_Controller
 
         $data['title'] = 'Daftar Siswa';
 
-        // $recordSiswa = $this->Siswa_model->getAll();
         $this->load->model('Siswa_model', 'siswa');
         $data['siswa'] = $this->siswa->getAll();
-
-        // echo "<pre>";
-        // print_r($recordSiswa);
-        // echo "</pre>";
 
         $this->session->set_userdata($data);
         $this->load->view('templates/header', $data);
@@ -82,17 +73,6 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    // public function kelas()
-    // {
-    //     $data['title'] = 'Kelas';
-
-    //     $this->session->set_userdata($data);
-    //     $this->load->view('templates/header', $data);
-    //     $this->load->view('templates/sidebar');
-    //     $this->load->view('templates/topbar');
-    //     $this->load->view('guru/kelas');
-    //     $this->load->view('templates/footer');
-    // }
 
     public function get_kelas()
     {
@@ -114,8 +94,6 @@ class Admin extends CI_Controller
 
     public function tambah_kelas()
     {
-        // $this->load->model('Guru_model');
-        // $data['kelas'] = $this->guru_model->getAll();
         $this->form_validation->set_rules('id_kelas', 'ID Kelas', 'required');
         $this->form_validation->set_rules('nama_kelas', 'Nama Kelas', 'required');
         $this->form_validation->set_rules('nip_wali_kelas', 'NIP Wali Kelas', 'required');
@@ -132,13 +110,24 @@ class Admin extends CI_Controller
         } else {
             redirect('admin/get_kelas');
         }
+    }
 
-        // $this->session->set_userdata($data);
-        // $this->load->view('templates/header', $data);
-        // $this->load->view('templates/sidebar');
-        // $this->load->view('templates/topbar');
-        // $this->load->view('guru/kelas', $data);
-        // $this->load->view('templates/footer');
+    public function get_mapel()
+    {
+        $data['title'] = 'Daftar Mata Pelajaran';
+
+        $this->session->set_userdata($data);
+
+
+        $this->load->model('mapel_model', 'mapel');
+        $data['mapel'] = $this->mapel->get_mapel();
+
+        $this->session->set_userdata($data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar');
+        $this->load->view('admin/mapel', $data);
+        $this->load->view('templates/footer');
     }
 }
     
