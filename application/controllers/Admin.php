@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Guru extends CI_Controller
+class Admin extends CI_Controller
 {
 
 
@@ -11,33 +11,33 @@ class Guru extends CI_Controller
         parent::__construct();
         $this->load->model('Siswa_model', 'siswa');
         $this->load->model('kelas_model', 'kelas');
-        $this->load->model('Guru_model', 'guru');
+        $this->load->model('Admin_model', 'guru');
         $this->load->library('form_validation');
     }
 
 
     public function index()
     {
-        $data['title'] = 'Dashboard - Guru';
+        $data['title'] = 'Dashboard - Admin';
 
         $this->session->set_userdata($data);
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
         $this->load->view('templates/topbar');
-        $this->load->view('guru/index');
+        $this->load->view('admin/index');
         $this->load->view('templates/footer');
     }
 
     public function profile()
     {
-        $data['title'] = 'Profile Guru';
+        $data['title'] = 'Profile Admin';
 
 
         $this->session->set_userdata($data);
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
         $this->load->view('templates/topbar');
-        $this->load->view('guru/profile');
+        $this->load->view('admin/profile');
         $this->load->view('templates/footer');
     }
 
@@ -46,8 +46,8 @@ class Guru extends CI_Controller
         $data['title'] = 'Daftar Guru';
 
         // $recordSiswa = $this->Siswa_model->getAll();
-        $this->load->model('Guru_model', 'guru');
-        $data['guru'] = $this->guru->getAll();
+        $this->load->model('Admin_model', 'admin');
+        $data['guru'] = $this->admin->getAll();
 
         // echo "<pre>";
         // print_r($recordSiswa);
@@ -57,7 +57,7 @@ class Guru extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
         $this->load->view('templates/topbar');
-        $this->load->view('guru/guru', $data);
+        $this->load->view('admin/guru', $data);
         $this->load->view('templates/footer');
     }
 
@@ -78,7 +78,7 @@ class Guru extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
         $this->load->view('templates/topbar');
-        $this->load->view('guru/siswa', $data);
+        $this->load->view('admin/siswa', $data);
         $this->load->view('templates/footer');
     }
 
@@ -108,7 +108,7 @@ class Guru extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
         $this->load->view('templates/topbar');
-        $this->load->view('guru/kelas', $data);
+        $this->load->view('admin/kelas', $data);
         $this->load->view('templates/footer');
     }
 
@@ -128,9 +128,9 @@ class Guru extends CI_Controller
             $this->load->model('kelas_model', 'kelas');
             $this->kelas->tambah_kelas($data);
             $this->session->set_flashdata('status', 'Kelas berhasil ditambahkan');
-            redirect('guru/tambah_kelas');
+            redirect('admin/tambah_kelas');
         } else {
-            redirect('guru/get_kelas');
+            redirect('admin/get_kelas');
         }
 
         // $this->session->set_userdata($data);

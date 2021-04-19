@@ -35,7 +35,7 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?= base_url('guru/get_siswa'); ?>">Daftar Siswa</a>
+                        <a class="collapse-item" href="<?= base_url('admin/get_siswa'); ?>">Daftar Siswa</a>
                         <a class="collapse-item" href="buttons.html">Presensi</a>
                         <a class="collapse-item" href="cards.html">Nilai</a>
                     </div>
@@ -50,7 +50,7 @@
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?= base_url('guru/get_kelas'); ?>">Kelas</a>
+                        <a class="collapse-item" href="<?= base_url('admin/get_kelas'); ?>">Kelas</a>
                         <a class="collapse-item" href="utilities-border.html">Mata Pelajaran</a>
                         <a class="collapse-item" href="utilities-animation.html">Jadwal</a>
                     </div>
@@ -75,7 +75,7 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?= base_url('guru/get_guru'); ?>">Daftar Guru</a>
+                        <a class="collapse-item" href="<?= base_url('admin/get_guru'); ?>">Daftar Guru</a>
                         <a class="collapse-item" href="register.html">Register</a>
                         <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                         <div class="collapse-divider"></div>

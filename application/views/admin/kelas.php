@@ -76,7 +76,7 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<form action="<?php echo base_url(); ?>guru/tambah_kelas" method="post">
+					<form action="<?php echo base_url(); ?>admin/tambah_kelas" method="post">
 						<div class="modal-body">
 							<span>ID Kelas</span>
 							<div class="form-group">

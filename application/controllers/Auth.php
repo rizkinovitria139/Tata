@@ -39,13 +39,13 @@ class Auth extends CI_Controller
                 // cek password
                 if ($password == $guru['password']) {
 
-                    if ($guru['role_id'] == 1) {
-                        redirect('guru');
+                    if ($guru['role_id'] == 4) {
+                        redirect('admin');
                     }
-                    if ($guru['role_id'] == 3) {
-                        redirect('guru/wali_kelas');
+                    if ($guru['role_id'] == 5) {
+                        redirect('admin/wali_kelas');
                     } else {
-                        echo 'Selamat datang wali kelas';
+                        echo 'Selamat datang Guru';
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert 
@@ -69,7 +69,6 @@ class Auth extends CI_Controller
                         ];
                         $this->session->set_userdata($data);
                         redirect('siswa');
-                        
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert 
