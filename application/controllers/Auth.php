@@ -62,7 +62,7 @@ class Auth extends CI_Controller
                 // cek password
                 if ($password == $siswa['password']) {
 
-                    if ($siswa['role_id'] == 2) {
+                    if ($siswa['role_id'] == 6) {
                         $data = [
                             'username' => $siswa['username'],
                             'role_id' => $siswa['role_id']
