@@ -13,7 +13,7 @@ class Nilai_model extends CI_Model
 
          $query = "SELECT `nilai_siswa`.*, `mata_pelajaran`.*
          FROM `nilai_siswa` JOIN `mata_pelajaran`
-         ON `nilai_siswa`.`id_mapel` = `mata_pelajaran`.`id_mapel` ";
+         ON `nilai_siswa`.`id_mapel` = `mata_pelajaran`.`id_mapel`";
 
         return $this->db->query($query)->result_array();
          //return $this->db->get('nilai_siswa')->result_array();

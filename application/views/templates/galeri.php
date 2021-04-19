@@ -66,9 +66,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?= base_url('galeri') ?>">Galeri</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?= base_url("visi_misi") ?>">Visi Misi</a>
-                                </li>
+
                             </ul>
                         </div>
                     </nav>

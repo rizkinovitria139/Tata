@@ -20,7 +20,7 @@ class Jadwal extends CI_Controller
         $this->db->join('mata_pelajaran AS b', 'a.id_mapel = b.id_mapel');
         $this->db->get();
         $this->load->model('Jadwal_model', 'jadwal');
-        $data['jadwal'] = $this->jadwal->getAll();
+        $data['jadwal'] = $this->jadwal->get_jadwal();
 
 
         $this->load->view('templates/header');

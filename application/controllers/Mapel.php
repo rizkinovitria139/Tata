@@ -27,10 +27,10 @@ class Mapel extends CI_Controller
         $this->db->join('guru AS b', 'a.nip_pengajar = b.nip');
         $this->db->get();
         $this->load->model('Mapel_model', 'mapel');
-        $data['mata_pelajaran'] = $this->mapel->getAll();
+        $data['mata_pelajaran'] = $this->mapel->get_mapel();
 
 
-        $this->load->view('templates/header');
+        $this->load->view('templates/header', $data);
 	    $this->load->view('templates/siswa_sidebar', $data);
 		$this->load->view('templates/siswa_topbar', $data);
         $this->load->view('siswa/mapel', $data);
