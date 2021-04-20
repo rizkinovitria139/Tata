@@ -76,7 +76,7 @@
                 <!-- Nav Item - User Information -->
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-white-600 large"><?= $guru['nama']; ?></span>
+                        <span class="mr-2 d-none d-lg-inline text-white-600 large"><?= $admin['nama']; ?></span>
                         <img class="img-profile rounded-circle" src="<?= base_url('assets/img/admin.png') ?>">
                     </a>
                     <!-- Dropdown - User Information -->

@@ -48,7 +48,7 @@ class Admin extends CI_Controller
     public function get_guru()
     {
         $data['title'] = 'Daftar Guru';
-        $data['guru'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
 
 
         $this->load->model('Admin_model', 'admin');
@@ -66,7 +66,7 @@ class Admin extends CI_Controller
     {
 
         $data['title'] = 'Daftar Siswa';
-        $data['guru'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
 
 
         $this->load->model('Siswa_model', 'siswa');
@@ -85,7 +85,7 @@ class Admin extends CI_Controller
     public function get_kelas()
     {
         $data['title'] = 'Daftar Kelas';
-        $data['guru'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
 
 
         $this->session->set_userdata($data);
@@ -133,7 +133,7 @@ class Admin extends CI_Controller
     public function get_mapel()
     {
         $data['title'] = 'Daftar Mata Pelajaran';
-        $data['guru'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
 
 
         $this->session->set_userdata($data);
@@ -154,7 +154,7 @@ class Admin extends CI_Controller
     public function get_jadwal()
     {
         $data['title'] = 'Daftar Jadwal';
-        $data['guru'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
 
 
         $this->session->set_userdata($data);
