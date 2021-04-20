@@ -13,13 +13,13 @@ class Mapel extends CI_Controller
     public function index()
     {
         $data['title'] = 'Mata Pelajaran';
-      //  $data['nilai_siswa'] = $this->Nilai_model->getById();
+        //  $data['nilai_siswa'] = $this->Nilai_model->getById();
 
-    //   $data = [
-    //     'nis' => $this->Nilai_model->getAll()($this->session->userdata('user_logged')->id),
-    // ];
-    $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')]) ->row_array();
-       
+        //   $data = [
+        //     'nis' => $this->Nilai_model->getAll()($this->session->userdata('user_logged')->id),
+        // ];
+        $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')])->row_array();
+
         $this->session->set_userdata($data);
 
         $this->db->select('a.kelas, a.nama_mapel, b.nama');
@@ -31,9 +31,9 @@ class Mapel extends CI_Controller
 
 
         $this->load->view('templates/header', $data);
-	    $this->load->view('templates/siswa_sidebar', $data);
-		$this->load->view('templates/siswa_topbar', $data);
+        $this->load->view('templates/siswa_sidebar', $data);
+        $this->load->view('templates/siswa_topbar', $data);
         $this->load->view('siswa/mapel', $data);
-		$this->load->view('templates/footer');
+        $this->load->view('templates/footer');
     }
 }

@@ -13,13 +13,13 @@ class Nilai extends CI_Controller
     public function index()
     {
         $data['title'] = 'Halaman Nilai Siswa';
-      //  $data['nilai_siswa'] = $this->Nilai_model->getById();
+        //  $data['nilai_siswa'] = $this->Nilai_model->getById();
 
-    //   $data = [
-    //     'nis' => $this->Nilai_model->getAll()($this->session->userdata('user_logged')->id),
-    // ];
-    $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')]) ->row_array();
-       
+        //   $data = [
+        //     'nis' => $this->Nilai_model->getAll()($this->session->userdata('user_logged')->id),
+        // ];
+        $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')])->row_array();
+
         $this->session->set_userdata($data);
 
         $this->db->select('a.nis, a.nilai_tugas, a.nilai_uts,a.nilai_uas, b.nama_mapel');
@@ -30,10 +30,10 @@ class Nilai extends CI_Controller
         $data['nilai_siswa'] = $this->nilai->getAll();
 
 
-        $this->load->view('templates/header');
-	    $this->load->view('templates/siswa_sidebar', $data);
-		$this->load->view('templates/siswa_topbar');
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/siswa_sidebar', $data);
+        $this->load->view('templates/siswa_topbar');
         $this->load->view('siswa/nilai', $data);
-		$this->load->view('templates/footer');
+        $this->load->view('templates/footer');
     }
 }

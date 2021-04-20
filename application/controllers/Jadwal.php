@@ -12,7 +12,7 @@ class Jadwal extends CI_Controller
     public function index()
     {
         $data['title'] = 'Halaman Jadwal Mata Pelajaran';
-        $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')]) ->row_array();
+        $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')])->row_array();
         $this->session->set_userdata($data);
 
         $this->db->select('a.hari, a.waktu, a.jam_ke, b.kelas,b.nama_mapel');
@@ -23,10 +23,10 @@ class Jadwal extends CI_Controller
         $data['jadwal'] = $this->jadwal->get_jadwal();
 
 
-        $this->load->view('templates/header');
-	    $this->load->view('templates/siswa_sidebar', $data);
-		$this->load->view('templates/siswa_topbar', $data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/siswa_sidebar', $data);
+        $this->load->view('templates/siswa_topbar', $data);
         $this->load->view('siswa/jadwal', $data);
-		$this->load->view('templates/footer');
+        $this->load->view('templates/footer');
     }
 }

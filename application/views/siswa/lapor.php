@@ -13,25 +13,24 @@
                     <th>File</th>
                     <th>Action</th>
                 </tr>
-                <?php 
-					$no = 1;
-					foreach($lapor as $row)
-					{
-						?>
-                <tr>
-                    <td widtd="5%"><?php echo $no++; ?></td>
-                    <td><?php echo $row->isi; ?></td>
-                    <td><?php echo $row->tanggal; ?></td>
-                    <!-- <td>
+                <?php
+                $no = 1;
+                foreach ($lapor as $row) {
+                ?>
+                    <tr>
+                        <td widtd="5%"><?php echo $no++; ?></td>
+                        <td><?php echo $row->isi; ?></td>
+                        <td><?php echo $row->tanggal; ?></td>
+                        <!-- <td>
                         <a href="<?php echo base_url(); ?>lapor/edit/<?php echo $row->nis; ?>"
                             class="btn btn-warning">Edit</a>
                         <a href="<?php echo base_url(); ?>lapor/delete/<?php echo $row->nis; ?>"
                             class="btn btn-danger">Hapus</a>
                     </td> -->
-                </tr>
+                    </tr>
                 <?php
-					}
-					?>
+                }
+                ?>
             </table>
         </div>
     </div>
