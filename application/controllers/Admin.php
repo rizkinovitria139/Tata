@@ -20,11 +20,12 @@ class Admin extends CI_Controller
     public function index()
     {
         $data['title'] = 'Dashboard - Admin';
+        $data['guru'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
 
-        $this->session->set_userdata($data);
+        // $this->session->set_userdata($data);
         $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar');
-        $this->load->view('templates/topbar');
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
         $this->load->view('admin/index');
         $this->load->view('templates/footer');
     }
@@ -33,11 +34,13 @@ class Admin extends CI_Controller
     {
         $data['title'] = 'Profile Admin';
 
+        $data['guru'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
 
         $this->session->set_userdata($data);
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
-        $this->load->view('templates/topbar');
+        $this->load->view('templates/topbar', $data);
         $this->load->view('admin/profile');
         $this->load->view('templates/footer');
     }
@@ -45,6 +48,8 @@ class Admin extends CI_Controller
     public function get_guru()
     {
         $data['title'] = 'Daftar Guru';
+        $data['guru'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
 
         $this->load->model('Admin_model', 'admin');
         $data['guru'] = $this->admin->getAll();
@@ -52,7 +57,7 @@ class Admin extends CI_Controller
         $this->session->set_userdata($data);
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
-        $this->load->view('templates/topbar');
+        $this->load->view('templates/topbar', $data);
         $this->load->view('admin/guru', $data);
         $this->load->view('templates/footer');
     }
@@ -61,6 +66,8 @@ class Admin extends CI_Controller
     {
 
         $data['title'] = 'Daftar Siswa';
+        $data['guru'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
 
         $this->load->model('Siswa_model', 'siswa');
         $data['siswa'] = $this->siswa->getAll();
@@ -68,7 +75,7 @@ class Admin extends CI_Controller
         $this->session->set_userdata($data);
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
-        $this->load->view('templates/topbar');
+        $this->load->view('templates/topbar', $data);
         $this->load->view('admin/siswa', $data);
         $this->load->view('templates/footer');
     }
@@ -77,6 +84,8 @@ class Admin extends CI_Controller
     public function get_kelas()
     {
         $data['title'] = 'Daftar Kelas';
+        $data['guru'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
 
         $this->session->set_userdata($data);
 
@@ -87,7 +96,7 @@ class Admin extends CI_Controller
         $this->session->set_userdata($data);
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
-        $this->load->view('templates/topbar');
+        $this->load->view('templates/topbar', $data);
         $this->load->view('admin/kelas', $data);
         $this->load->view('templates/footer');
     }
@@ -115,6 +124,8 @@ class Admin extends CI_Controller
     public function get_mapel()
     {
         $data['title'] = 'Daftar Mata Pelajaran';
+        $data['guru'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
 
         $this->session->set_userdata($data);
 
@@ -125,7 +136,7 @@ class Admin extends CI_Controller
         $this->session->set_userdata($data);
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
-        $this->load->view('templates/topbar');
+        $this->load->view('templates/topbar', $data);
         $this->load->view('admin/mapel', $data);
         $this->load->view('templates/footer');
     }
@@ -133,6 +144,8 @@ class Admin extends CI_Controller
     public function get_jadwal()
     {
         $data['title'] = 'Daftar Jadwal';
+        $data['guru'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
 
         $this->session->set_userdata($data);
 
@@ -143,7 +156,7 @@ class Admin extends CI_Controller
         $this->session->set_userdata($data);
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
-        $this->load->view('templates/topbar');
+        $this->load->view('templates/topbar', $data);
         $this->load->view('admin/jadwal', $data);
         $this->load->view('templates/footer');
     }

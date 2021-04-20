@@ -40,9 +40,19 @@ class Auth extends CI_Controller
                 if ($password == $guru['password']) {
 
                     if ($guru['role_id'] == 4) {
+                        $data = [
+                            'username' => $guru['username'],
+                            'role_id' => $guru['role_id']
+                        ];
+                        $this->session->set_userdata($data);
                         redirect('admin');
                     }
                     if ($guru['role_id'] == 5) {
+                        $data = [
+                            'username' => $guru['username'],
+                            'role_id' => $guru['role_id']
+                        ];
+                        $this->session->set_userdata($data);
                         redirect('admin/wali_kelas');
                     } else {
                         echo 'Selamat datang Guru';
