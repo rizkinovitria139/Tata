@@ -20,7 +20,7 @@ class Admin extends CI_Controller
     public function index()
     {
         $data['title'] = 'Dashboard - Admin';
-        $data['guru'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
 
         // $this->session->set_userdata($data);
         $this->load->view('templates/header', $data);

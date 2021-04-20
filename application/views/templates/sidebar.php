@@ -36,10 +36,37 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="<?= base_url('admin/get_siswa'); ?>">Daftar Siswa</a>
-                        <a class="collapse-item" href="buttons.html">Presensi</a>
-                        <a class="collapse-item" href="cards.html">Nilai</a>
+
                     </div>
                 </div>
+            </li>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('admin/get_presensi'); ?>">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Presensi</span></a>
+            </li>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('admin/get_nilai'); ?>">
+                    <i class="fas fa-star-half-alt"></i>
+                    <span>Nilai</span></a>
+            </li>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('admin/get_mapel'); ?>">
+                    <i class="fas fa-flask"></i>
+                    <span>Mata Pelajaran</span></a>
+            </li>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('admin/get_jadwal'); ?>">
+                    <i class="fas fa-th-list"></i>
+                    <span>Jadwal</span></a>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
@@ -50,9 +77,7 @@
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?= base_url('admin/get_kelas'); ?>">Kelas</a>
-                        <a class="collapse-item" href="<?= base_url('admin/get_mapel'); ?>">Mata Pelajaran</a>
-                        <a class="collapse-item" href="<?= base_url('admin/get_jadwal') ?>">Jadwal</a>
+                        <a class="collapse-item" href="<?= base_url('admin/get_kelas'); ?>">Daftar Kelas</a>
                     </div>
                 </div>
             </li>
@@ -76,28 +101,9 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="<?= base_url('admin/get_guru'); ?>">Daftar Guru</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
+
                     </div>
                 </div>
-            </li>
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li>
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
             </li>
 
             <!-- Divider -->

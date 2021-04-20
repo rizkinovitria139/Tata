@@ -15,6 +15,7 @@
 					<table class="table table-hover">
 						<thead>
 							<tr>
+								<th scope="col">NIS</th>
 								<th scope="col">Nama</th>
 								<th scope="col">Alamat</th>
 								<th scope="col">No Telepon</th>
@@ -22,14 +23,17 @@
 							</tr>
 						</thead>
 						<tbody>
-							<?php $i = 1; ?>
 							<?php foreach ($siswa as $s) : ?>
 								<tr>
+									<td><?= $s['nis']; ?></td>
 									<td><?= $s['nama']; ?></td>
 									<td><?= $s['alamat_siswa']; ?></td>
 									<td><?= $s['no_telp_rumah']; ?></td>
 									<td>
 										<button type="button" class="btn btn-primary btn-icon" href="" data-toggle="modal" data-target="#editkelasModal<?= $s['nis']; ?>">
+											<i class="fas fa-info"></i>
+										</button>
+										<button type="button" class="btn btn-success btn-icon" href="" data-toggle="modal" data-target="#editkelasModal<?= $s['nis']; ?>">
 											<i class="far fa-edit"></i>
 										</button>
 										<button type="button" class="btn btn-danger" href="<?= base_url('admin/deletekelas/') . $s['nis']; ?>" onclick="return confirm('Are you sure to delete this data ?');">
@@ -37,7 +41,6 @@
 										</button>
 									</td>
 								</tr>
-								<?php $i++; ?>
 							<?php endforeach; ?>
 						</tbody>
 					</table>
