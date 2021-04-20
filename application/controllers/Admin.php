@@ -80,6 +80,7 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    // start bagian kelas
 
     public function get_kelas()
     {
@@ -103,12 +104,12 @@ class Admin extends CI_Controller
 
     public function tambah_kelas()
     {
-        $this->form_validation->set_rules('id_kelas', 'ID Kelas', 'required');
+        // $this->form_validation->set_rules('id_kelas', 'ID Kelas', 'required');
         $this->form_validation->set_rules('nama_kelas', 'Nama Kelas', 'required');
         $this->form_validation->set_rules('nip_wali_kelas', 'NIP Wali Kelas', 'required');
 
         if ($this->form_validation->run() == true) {
-            $data['id_kelas'] = $this->input->post('id_kelas');
+            // $data['id_kelas'] = $this->input->post('id_kelas');
             $data['nama_kelas'] = $this->input->post('nama_kelas');
             $data['nip_wali_kelas'] = $this->input->post('nip_wali_kelas');
 
@@ -121,6 +122,14 @@ class Admin extends CI_Controller
         }
     }
 
+    public function edit_kelas()
+    {
+    }
+
+    // end bagian kelas
+
+
+    // start bagian mapel
     public function get_mapel()
     {
         $data['title'] = 'Daftar Mata Pelajaran';
@@ -140,6 +149,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/mapel', $data);
         $this->load->view('templates/footer');
     }
+    // end bagian mapel
 
     public function get_jadwal()
     {

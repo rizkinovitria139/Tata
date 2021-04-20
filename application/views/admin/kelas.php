@@ -78,10 +78,10 @@
 					</div>
 					<form action="<?php echo base_url(); ?>admin/tambah_kelas" method="post">
 						<div class="modal-body">
-							<span>ID Kelas</span>
+							<!-- <span>ID Kelas</span>
 							<div class="form-group">
 								<input type="text" class="form-control" id="id_kelas" name="id_kelas" placeholder="Masukkan ID Kelas">
-							</div>
+							</div> -->
 							<span>Nama Kelas</span>
 							<div class="form-group">
 								<input type="text" class="form-control" id="nama_kelas" name="nama_kelas" placeholder="Masukkan Nama Kelas">
@@ -92,7 +92,7 @@
 							<div class="form-group">
 								<select class="form-control" id="status" name="nip_wali_kelas" id="nip_wali_kelas">
 									<option selected>Pilih Wali Kelas </option>
-									<option value="<?= $k['nip']; ?>"><?php echo $k['nip']; ?></option>
+									<option value="<?= $k['nip']; ?>"><?php echo $k['nip'] . ' - ' . $k['nama']; ?></option>
 								</select>
 							</div>
 							<?php; ?>
@@ -133,7 +133,7 @@
 								<div class="form-group">
 									<select class="form-control" id="status" name="nip_wali_kelas" id="nip_wali_kelas">
 										<option selected>Pilih Wali Kelas </option>
-										<option value="<?= $k['nip']; ?>"><?php echo $k['nip']; ?></option>
+										<option value="<?= $k['nip']; ?>"><?php echo $k['nip'] . ' - ' . $k['nama']; ?></option>
 									</select>
 								</div>
 								<?php; ?>
