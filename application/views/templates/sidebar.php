@@ -4,9 +4,9 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon">
-                    <i class="fas fa-users"></i>
+                    <img class="img-profile" height="50" width="50" src="<?= base_url('assets/img/admin2.png') ?>">
                 </div>
-                <div class="sidebar-brand-text mx-3">SI SMP 2 MOJO</div>
+                <div class="sidebar-brand-text mx-3">Admin</div>
             </a>
 
             <!-- Divider -->

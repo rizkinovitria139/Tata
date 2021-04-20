@@ -1,5 +1,6 @@
 .bg-admin {
-	background-color: #386a7a;
+	background: rgb(54, 65, 80);
+	background: linear-gradient(88deg, rgba(54, 65, 80, 1) 0%, rgba(43, 54, 67, 1) 96%);
 }
 
 .bg-guru {
