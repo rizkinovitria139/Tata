@@ -25,6 +25,7 @@
 								<th scope="col">#</th>
 								<th scope="col">Kelas </th>
 								<th scope="col">Wali Kelas</th>
+								<th scope="col">Tahun Akademik</th>
 								<th scope="col">Action</th>
 							</tr>
 						</thead>
@@ -32,9 +33,10 @@
 							<?php $i = 1; ?>
 							<?php foreach ($kelas as $k) : ?>
 								<tr>
-									<td><?= $k['id_kelas']; ?></td>
+									<td><?= $i; ?></td>
 									<td><?= $k['nama_kelas']; ?></td>
 									<td><?= $k['nama']; ?></td>
+									<td><?= $k['tahun']; ?></td>
 									<td>
 										<button type="button" class="btn btn-primary btn-icon" href="" data-toggle="modal" data-target="#editkelasModal<?= $k['id_kelas']; ?>">
 											<i class="far fa-edit"></i>
@@ -95,7 +97,18 @@
 									<option value="<?= $k['nip']; ?>"><?php echo $k['nip'] . ' - ' . $k['nama']; ?></option>
 								</select>
 							</div>
-							<?php; ?>
+							<? endforeach; ?>
+
+							<span>Tahun Akademik</span>
+							<?foreach ($kelas as $k ) : ?>
+
+							<div class="form-group">
+								<select class="form-control" id="status" name="id_tahun_akademik" id="id_tahun_akademik">
+									<option selected>Pilih Tahun Akademik </option>
+									<option value="<?= $k['id_tahun_akademik']; ?>"><?php echo $k['id_tahun_akademik'] . ' - ' . $k['tahun']; ?></option>
+								</select>
+							</div>
+							<? endforeach; ?>
 
 						</div>
 						<div class="modal-footer">
@@ -134,6 +147,15 @@
 									<select class="form-control" id="status" name="nip_wali_kelas" id="nip_wali_kelas">
 										<option selected>Pilih Wali Kelas </option>
 										<option value="<?= $k['nip']; ?>"><?php echo $k['nip'] . ' - ' . $k['nama']; ?></option>
+									</select>
+								</div>
+								<?php; ?>
+
+								<div class="form-group">
+									<span>Tahun Akademik</span>
+									<select class="form-control" id="status" name="id_tahun_akademik" id="id_tahun_akademik">
+										<option selected><?= $k['id_tahun_akademik']; ?></option>
+										<option value="<?= $k['id_tahun_akademik']; ?>"><?php echo $k['id_tahun_akademik'] . ' - ' . $k['tahun']; ?></option>
 									</select>
 								</div>
 								<?php; ?>
