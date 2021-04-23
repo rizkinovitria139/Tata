@@ -29,7 +29,8 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-users"></i>
                     <span>Siswa</span>
                 </a>
@@ -64,6 +65,11 @@
                 <a class="nav-link" href="<?= base_url('jadwal'); ?>">
                     <i class="fas fa-th-list"></i>
                     <span>Jadwal</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('auth/logout'); ?>">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span></a>
             </li>
 
             <!-- Divider -->

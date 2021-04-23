@@ -75,7 +75,10 @@ class Auth extends CI_Controller
                     if ($siswa['role_id'] == 6) {
                         $data = [
                             'username' => $siswa['username'],
-                            'role_id' => $siswa['role_id']
+                            'role_id' => $siswa['role_id'],
+                            'nis' => $siswa['nis'],
+                            'nama' => $siswa['nama']
+                            //$items = (string)$var;
                         ];
                         $this->session->set_userdata($data);
                         redirect('siswa');
