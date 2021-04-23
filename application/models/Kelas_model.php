@@ -14,9 +14,11 @@ class Kelas_model extends CI_Model
 
     public function get_kelas()
     {
-        $query = "SELECT `kelas`.*, `guru`.*
+        $query = "SELECT `kelas`.*, `guru`.*, `tahun_akademik`.*
         FROM `kelas` JOIN `guru`
         ON `kelas`.`nip_wali_kelas` = `guru`.`nip`
+        JOIN `tahun_akademik`
+        ON `tahun_akademik`.id_tahun_akademik = `kelas`.`id_tahun_akademik`
         ";
 
         return $this->db->query($query)->result_array();

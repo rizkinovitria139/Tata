@@ -107,17 +107,20 @@ class Admin extends CI_Controller
         // $this->form_validation->set_rules('id_kelas', 'ID Kelas', 'required');
         $this->form_validation->set_rules('nama_kelas', 'Nama Kelas', 'required');
         $this->form_validation->set_rules('nip_wali_kelas', 'NIP Wali Kelas', 'required');
+        $this->form_validation->set_rules('id_tahun_akademik', 'Id Tahun Akademik', 'required');
 
         if ($this->form_validation->run() == true) {
             // $data['id_kelas'] = $this->input->post('id_kelas');
             $data['nama_kelas'] = $this->input->post('nama_kelas');
             $data['nip_wali_kelas'] = $this->input->post('nip_wali_kelas');
+            $data['id_tahun_akademik'] = $this->input->post('id_tahun_akademik');
 
             $this->load->model('kelas_model', 'kelas');
             $this->kelas->tambah_kelas($data);
             $this->session->set_flashdata('status', 'Kelas berhasil ditambahkan');
             redirect('admin/tambah_kelas');
         } else {
+            $this->session->set_flashdata('gagal', 'Kelas gagal ditambahkan!');
             redirect('admin/get_kelas');
         }
     }
