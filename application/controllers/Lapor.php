@@ -53,31 +53,31 @@ class Lapor extends CI_Controller
 			$this->load->view('templates/lapor');
 		}
 	}
-	function edit($id_pelapor)
-	{
-		$data['siswa'] = $this->lapor_model->getById($id_pelapor);
-		$this->load->view('templates/header');
-		$this->load->view('siswa/edit', $data);
-		$this->load->view('templates/footer');
-	}
-	public function update()
-	{
-		$this->form_validation->set_rules('isi', 'Isi', 'required');
-		//$this->form_validation->set_rules('tanggal','Tanggal','required');
-		$this->form_validation->set_rules('file', 'File', 'required');
-		if ($this->form_validation->run() == true) {
-			$id_pelapor = $this->input->post('d_pelapor');
-			$data['isi'] = $this->input->post('isi');
-			$data['tanggal'] = $this->input->post('tanggal');
-			$data['file'] = $this->input->post('file');
-			$this->lapor_model->update($data, $id_pelapor);
-			redirect('lapor');
-		} else {
-			$id_pelapor = $this->input->post('id_pelapor');
-			$data['lapor_bk'] = $this->lapor_model->getById($id_pelapor);
-			$this->load->view('templates/header');
-			$this->load->view('siswa/edit', $data);
-			$this->load->view('templates/footer');
-		}
-	}
+	// function edit($id_pelapor)
+	// {
+	// 	$data['siswa'] = $this->lapor_model->getById($id_pelapor);
+	// 	$this->load->view('templates/header');
+	// 	$this->load->view('siswa/edit', $data);
+	// 	$this->load->view('templates/footer');
+	// }
+	// public function update()
+	// {
+	// 	$this->form_validation->set_rules('isi', 'Isi', 'required');
+	// 	//$this->form_validation->set_rules('tanggal','Tanggal','required');
+	// 	$this->form_validation->set_rules('file', 'File', 'required');
+	// 	if ($this->form_validation->run() == true) {
+	// 		$id_pelapor = $this->input->post('d_pelapor');
+	// 		$data['isi'] = $this->input->post('isi');
+	// 		$data['tanggal'] = $this->input->post('tanggal');
+	// 		$data['file'] = $this->input->post('file');
+	// 		$this->lapor_model->update($data, $id_pelapor);
+	// 		redirect('lapor');
+	// 	} else {
+	// 		$id_pelapor = $this->input->post('id_pelapor');
+	// 		$data['lapor_bk'] = $this->lapor_model->getById($id_pelapor);
+	// 		$this->load->view('templates/header');
+	// 		$this->load->view('siswa/edit', $data);
+	// 		$this->load->view('templates/footer');
+	// 	}
+	// }
 }

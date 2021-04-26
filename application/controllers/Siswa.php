@@ -33,6 +33,8 @@ class Siswa extends CI_Controller
 
         $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')]) ->row_array();
 
+        $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required|trim');
+
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/siswa_sidebar', $data);
@@ -40,6 +42,16 @@ class Siswa extends CI_Controller
             $this->load->view('siswa/edit', $data);
             $this->load->view('templates/footer');
     
+        } else{
+            $nama= $this->input->post('nama');
+            $nis = $this->input->post('nis');
+
+            $this->db->set('nama', $nama);
+            $this->db->where('nis', $nis);
+            $this->db->update('siswa');
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil disimpan</div>');
+            redirect('siswa/');
         }
     }
 }

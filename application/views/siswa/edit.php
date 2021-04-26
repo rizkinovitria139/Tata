@@ -12,10 +12,18 @@
                     <?= form_open_multipart('siswa/edit'); ?>
 
                     <div class="form-group row">
-                        <label for="name" class="col-sm-4 col-form-label">Nama Lengkap</label>
+                        <label for="nama" class="col-sm-4 col-form-label">Nama Lengkap</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="name" name="name"
+                            <input type="text" class="form-control" id="nama" name="nama"
                                 value="<?= $siswa['nama']; ?>">
+                            <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="nis" class="col-sm-4 col-form-label">NIS</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="nis" name="nis" value="<?= $siswa['nis']; ?>"
+                                readonly>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -23,13 +31,6 @@
                         <div class="col-sm-8">
                             <input type="text" class="form-control" id="email" name="email"
                                 value="<?= $siswa['email_siswa']; ?>">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="number" class="col-sm-4 col-form-label">Nomor Telepon</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="number" name="number"
-                                value="<?= $siswa['no_telp_siswa']; ?>">
                         </div>
                     </div>
                     <div class="form-group row">
