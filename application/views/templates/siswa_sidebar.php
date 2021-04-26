@@ -4,7 +4,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon">
-                    <img class="img-profile" height="50" width="50" src="<?= base_url('assets/img/siswa.png') ?>">
+                    <img class="img-profile" height="50" width="50" src="<?= base_url('assets/images/LOGO SMP.png') ?>">
                 </div>
                 <div class="sidebar-brand-text mx-3">SISWA</div>
             </a>
@@ -24,7 +24,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                MENU
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -36,13 +36,19 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href=" <?= base_url("profile") ?>">Profile</a>
-                        <a class="collapse-item" href=" <?= base_url("change_password") ?>">Rubah Password</a>
-                        <a class="collapse-item" href=" <?= base_url("lapor") ?>">Lapor BK</a>
+                        <a class="collapse-item" href=" <?= base_url('siswa/edit') ?>">Edit Profile</a>
+                        <a class="collapse-item" href=" <?= base_url("change_password") ?>">Change Password</a>
+                        <!-- <a class="collapse-item" href=" <?= base_url("lapor") ?>">Lapor BK</a> -->
                     </div>
                 </div>
             </li>
 
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('lapor'); ?>">
+                    <i class="fas fa-clinic-medical"></i>
+                    <span>Lapor BK</span></a>
+            </li>
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('nilai'); ?>">

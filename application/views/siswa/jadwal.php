@@ -31,16 +31,17 @@
             <tbody>
                 <?php
                 $no = 1;
-                foreach ($jadwal as $u) :
+                foreach ($data_jadwal as $u) :
                     ?>
                 <tr>
                     <td><?= $no++; ?></td>
-                    <td><?= $u['kelas'] ?></td>
-                    <td><?= $u['hari'] ?></td>
-                    <td><?= $u['nama_mapel'] ?></td>
-                    <td><?= $u['jam_ke'] ?></td>
-                    <td><?= $u['waktu'] ?></td>
-                    <td><?= $u['nip_pengajar'] ?></td>
+                    <td><?= $u->id_kelas ?></td>
+                    <td><?= $u->hari ?></td>
+                    <td><?= $u->nama_mapel ?></td>
+                    <td><?= $u->jam_ke ?></td>
+                    <td><?= $u->waktu ?></td>
+                    <td><?= $u->nama_mapel ?></td>
+
                 </tr>
                 <?php
                 endforeach;

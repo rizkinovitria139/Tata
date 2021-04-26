@@ -7,20 +7,28 @@ class Jadwal extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Jadwal_model');
+        $this->load->library('form_validation');
     }
 
     public function index()
     {
         $data['title'] = 'Halaman Jadwal Mata Pelajaran';
-        $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')])->row_array();
-        $this->session->set_userdata($data);
+        // $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')])->row_array();
+        // $this->session->set_userdata($data);
 
-        $this->db->select('a.hari, a.waktu, a.jam_ke, b.kelas,b.nama_mapel');
-        $this->db->from('jadwal AS a');
-        $this->db->join('mata_pelajaran AS b', 'a.id_mapel = b.id_mapel');
-        $this->db->get();
-        $this->load->model('Jadwal_model', 'jadwal');
-        $data['jadwal'] = $this->jadwal->get_jadwal();
+        //$jadwal_id  =   $this->session->userdata('id_mapel');
+        // print_r($user_id);
+         $data['data_jadwal'] = $this->Jadwal_model->tampilJadwal();
+         print_r($data['data_jadwal']);
+           die();
+         $data['username']  =   $this->session->userdata('nama');
+ 
+        // $this->db->select('a.hari, a.waktu, a.jam_ke, b.kelas,b.nama_mapel');
+        // $this->db->from('jadwal AS a');
+        // $this->db->join('mata_pelajaran AS b', 'a.id_mapel = b.id_mapel');
+        // $this->db->get();
+        // $this->load->model('Jadwal_model', 'jadwal');
+        // $data['jadwal'] = $this->jadwal->get_jadwal();
 
 
         $this->load->view('templates/header', $data);

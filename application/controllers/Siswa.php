@@ -26,6 +26,22 @@ class Siswa extends CI_Controller
         $this->load->view('siswa/index', $data);
         $this->load->view('templates/footer');
     }
+
+    public function edit()
+    {
+        $data['title'] = 'Edit Profil Siswa';
+
+        $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')]) ->row_array();
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/siswa_sidebar', $data);
+            $this->load->view('templates/siswa_topbar', $data);
+            $this->load->view('siswa/edit', $data);
+            $this->load->view('templates/footer');
+    
+        }
+    }
 }
 
 /* End of file Siswa.php */

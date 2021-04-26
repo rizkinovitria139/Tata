@@ -51,7 +51,6 @@ class Lapor extends CI_Controller
 		} else {
 			$this->load->view('templates/header');
 			$this->load->view('templates/lapor');
-			$this->load->view('templates/footer');
 		}
 	}
 	function edit($id_pelapor)
