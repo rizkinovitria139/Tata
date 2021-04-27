@@ -54,6 +54,21 @@ class Siswa extends CI_Controller
             redirect('siswa/');
         }
     }
+    public function editData()
+    {
+  
+        $nis = $this->input->post('nis');
+        $data = array(
+          'nama' => $this->input->post('nama',true),
+          'email_siswa' => $this->input->post('email',true),
+          'alamat_siswa' => $this->input->post('address',true),  
+        );
+        $this->db->where('nis', $nis);
+        $this->db->update('siswa', $data);    
+        
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil disimpan</div>');
+            redirect('siswa/');
+      }
 }
 
 /* End of file Siswa.php */

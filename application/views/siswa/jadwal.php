@@ -19,8 +19,8 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Kelas</th>
                     <th>Hari</th>
+                    <th>Kelas</th>
                     <th>Mata Pelajaran</th>
                     <th>Jam ke</th>
                     <th>Waktu</th>
@@ -31,16 +31,17 @@
             <tbody>
                 <?php
                 $no = 1;
-                foreach ($data_jadwal as $u) :
+                foreach ($data_jadwal as $j) :
                     ?>
                 <tr>
                     <td><?= $no++; ?></td>
-                    <td><?= $u->id_kelas ?></td>
-                    <td><?= $u->hari ?></td>
-                    <td><?= $u->nama_mapel ?></td>
-                    <td><?= $u->jam_ke ?></td>
-                    <td><?= $u->waktu ?></td>
-                    <td><?= $u->nama_mapel ?></td>
+                    <!-- <td><?= $u->hari ?></td> -->
+                    <td><?= $j['hari']; ?></td>
+                    <td><?= $j['nama_kelas']; ?></td>
+                    <td><?= $j['nama_mapel']; ?></td>
+                    <td><?= $j['hari']; ?></td>
+                    <td><?= $j['waktu']; ?></td>
+                    <td><?= $j['nip_pengajar']; ?></td>
 
                 </tr>
                 <?php

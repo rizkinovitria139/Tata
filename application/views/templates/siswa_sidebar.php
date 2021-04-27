@@ -2,7 +2,7 @@
         <ul class="navbar-nav bg-siswa sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                 <div class="sidebar-brand-icon">
                     <img class="img-profile" height="50" width="50" src="<?= base_url('assets/images/LOGO SMP.png') ?>">
                 </div>
@@ -14,7 +14,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<?= base_url('siswa')?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -38,7 +38,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href=" <?= base_url('siswa/edit') ?>">Edit Profile</a>
                         <a class="collapse-item" href=" <?= base_url("change_password") ?>">Change Password</a>
-                        <!-- <a class="collapse-item" href=" <?= base_url("lapor") ?>">Lapor BK</a> -->
+
                     </div>
                 </div>
             </li>
@@ -72,6 +72,9 @@
                     <i class="fas fa-th-list"></i>
                     <span>Jadwal</span></a>
             </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('auth/logout'); ?>">
                     <i class="fas fa-sign-out-alt"></i>

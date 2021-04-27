@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-lg-8">
 
-                    <?= form_open_multipart('siswa/edit'); ?>
+                    <?= form_open_multipart('siswa/editData'); ?>
 
                     <div class="form-group row">
                         <label for="nama" class="col-sm-4 col-form-label">Nama Lengkap</label>

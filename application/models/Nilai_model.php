@@ -11,7 +11,7 @@ class Nilai_model extends CI_Model
     }
     public function getNilai($id)
     {
-        $this->db->select('siswa.nama, nilai_siswa.nilai_tugas, nilai_siswa.nilai_uts, nilai_siswa.nilai_uas, mata_pelajaran.nama_mapel');
+            $this->db->select('siswa.nama, nilai_siswa.nilai_tugas, nilai_siswa.nilai_uts, nilai_siswa.nilai_uas, mata_pelajaran.nama_mapel');
             $this->db->from('siswa');
             $this->db->join('nilai_siswa',  'siswa.nis = nilai_siswa.nis');
             $this->db->join('mata_pelajaran', 'nilai_siswa.id_mapel = mata_pelajaran.id_mapel');

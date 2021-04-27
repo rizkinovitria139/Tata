@@ -18,16 +18,24 @@ class Mapel extends CI_Controller
         //   $data = [
         //     'nis' => $this->Nilai_model->getAll()($this->session->userdata('user_logged')->id),
         // ];
-        $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')])->row_array();
+        // $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')])->row_array();
 
-        $this->session->set_userdata($data);
+        // $this->session->set_userdata($data);
 
-        $this->db->select('a.kelas, a.nama_mapel, b.nama');
-        $this->db->from('mata_pelajaran AS a');
-        $this->db->join('guru AS b', 'a.nip_pengajar = b.nip');
-        $this->db->get();
-        $this->load->model('Mapel_model', 'mapel');
-        $data['mata_pelajaran'] = $this->mapel->get_mapel();
+        // $this->db->select('a.kelas, a.nama_mapel, b.nama');
+        // $this->db->from('mata_pelajaran AS a');
+        // $this->db->join('guru AS b', 'a.nip_pengajar = b.nip');
+        // $this->db->get();
+        // $this->load->model('Mapel_model', 'mapel');
+        // $data['mata_pelajaran'] = $this->mapel->get_mapel();
+
+         $mapel_id  =   $this->session->userdata('nis');
+        // print_r($mapel_id);
+         $data['data_mapel'] = $this->Mapel_model->getMapel($mapel_id);
+         print_r($data['data_mapel']);
+         die();
+         
+         $data['username']  =   $this->session->userdata('nama');
 
 
         $this->load->view('templates/header', $data);
