@@ -8,12 +8,13 @@
     <div class="card mb-3" style="max-width: 540px;">
         <div class="row no-gutters">
             <div class="col-md-4">
-                <img src="https://image.flaticon.com/icons/png/512/104/104784.png" class="card-img" alt="...">
+                <img src="<?= base_url('assets/img/admin.png'); ?>" class="card-img" alt="...">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <!-- <h5 class="card-title"><?= $guru['username']; ?></h5>
-                    <p class="card-text"><?= $guru['password']; ?></p> -->
+                    <h5 class="card-title"><?= $admin['nama']; ?></h5>
+                    <h5 class="card-title"><?= $admin['username']; ?></h5>
+                    <p class="card-text"><?= $admin['password']; ?></p>
                     <!-- <p class="card-text"><small class="text-muted">Member since <?= date('d F Y', strtotime($user['date_created'])); ?></small></p> -->
                 </div>
             </div>
