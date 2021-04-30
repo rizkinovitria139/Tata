@@ -41,7 +41,7 @@
 										<button type="button" class="btn btn-primary btn-icon" href="" data-toggle="modal" data-target="#editkelasModal<?= $k['id_kelas']; ?>">
 											<i class="far fa-edit"></i>
 										</button>
-										<button type="button" class="btn btn-danger" href="<?= base_url('admin/deletekelas/') . $k['id_kelas']; ?>" onclick="return confirm('Are you sure to delete this data ?');">
+										<button type="button" class="btn btn-danger" href="<?= base_url('admin/delete_kelas/') . $k['id_kelas']; ?>" onclick="return confirm('Are you sure to delete this data ?');">
 											<i class="far fa-trash-alt"></i>
 										</button>
 									</td>
@@ -89,25 +89,25 @@
 								<input type="text" class="form-control" id="nama_kelas" name="nama_kelas" placeholder="Masukkan Nama Kelas">
 							</div>
 							<span>Wali Kelas</span>
-							<?foreach ($kelas as $k ) : ?>
+							<? foreach ($kelas as $k) : ?>
 
-							<div class="form-group">
-								<select class="form-control" id="status" name="nip_wali_kelas" id="nip_wali_kelas">
-									<option selected>Pilih Wali Kelas </option>
-									<option value="<?= $k['nip']; ?>"><?php echo $k['nip'] . ' - ' . $k['nama']; ?></option>
-								</select>
-							</div>
+								<div class="form-group">
+									<select class="form-control" id="status" name="nip_wali_kelas" id="nip_wali_kelas">
+										<option selected>Pilih Wali Kelas </option>
+										<option value="<?= $k['nip']; ?>"><?php echo $k['nip'] . ' - ' . $k['nama']; ?></option>
+									</select>
+								</div>
 							<? endforeach; ?>
 
 							<span>Tahun Akademik</span>
-							<?foreach ($kelas as $k ) : ?>
+							<? foreach ($kelas as $k) : ?>
 
-							<div class="form-group">
-								<select class="form-control" id="status" name="id_tahun_akademik" id="id_tahun_akademik">
-									<option selected>Pilih Tahun Akademik </option>
-									<option value="<?= $k['id_tahun_akademik']; ?>"><?php echo $k['id_tahun_akademik'] . ' - ' . $k['tahun']; ?></option>
-								</select>
-							</div>
+								<div class="form-group">
+									<select class="form-control" id="status" name="id_tahun_akademik" id="id_tahun_akademik">
+										<option selected>Pilih Tahun Akademik </option>
+										<option value="<?= $k['id_tahun_akademik']; ?>"><?php echo $k['id_tahun_akademik'] . ' - ' . $k['tahun']; ?></option>
+									</select>
+								</div>
 							<? endforeach; ?>
 
 						</div>
@@ -132,7 +132,7 @@
 								<span aria-hidden="true">&times;</span>
 							</buttond>
 						</div>
-						<form action="<?= base_url('admin/editkelas/' . $k['id_kelas']); ?>" method="post">
+						<form action="<?= base_url('admin/edit_kelas/' . $k['id_kelas']); ?>" method="post">
 							<div class="modal-body">
 								<div class="form-group">
 									<span>Id Kelas</span>
@@ -149,7 +149,7 @@
 										<option value="<?= $k['nip']; ?>"><?php echo $k['nip'] . ' - ' . $k['nama']; ?></option>
 									</select>
 								</div>
-								<?php; ?>
+
 
 								<div class="form-group">
 									<span>Tahun Akademik</span>
@@ -158,7 +158,7 @@
 										<option value="<?= $k['id_tahun_akademik']; ?>"><?php echo $k['id_tahun_akademik'] . ' - ' . $k['tahun']; ?></option>
 									</select>
 								</div>
-								<?php; ?>
+
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>

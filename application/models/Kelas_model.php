@@ -29,6 +29,13 @@ class Kelas_model extends CI_Model
 
         return $this->db->insert($this->_table, $data);
     }
+
+    public function delete_kelas($id)
+    {
+        $this->db->where('id_kelas', $id);
+        $this->db->delete('kelas');
+    }
 }
+
     
     /* End of file Kelas_model.php */
