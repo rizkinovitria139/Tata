@@ -80,6 +80,19 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function siswa_tambah()
+    {
+        $data['title'] = 'Tambah Siswa';
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+        $this->session->set_userdata($data);
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/siswa_tambah', $data);
+        $this->load->view('templates/footer');
+    }
+
     // start bagian kelas
 
     public function get_kelas()

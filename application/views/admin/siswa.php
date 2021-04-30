@@ -4,7 +4,7 @@
 			<!-- Page Heading -->
 			<h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
-			<a class="btn btn-warning mb-3" data-toggle="modal" data-target="#tambahkelasModal">Tambah Siswa</a>
+			<!-- <a class="btn btn-warning mb-3" href="<?= base_url('admin/siswa_tambah'); ?>">Tambah Siswa</a> -->
 			<div class="col-lg">
 				<?= form_error('kelas', '<div class="alert alert-danger" kelas="alert">', '</div>'); ?>
 
