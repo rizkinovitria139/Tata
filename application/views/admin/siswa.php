@@ -6,7 +6,7 @@
 
 			<!-- <a class="btn btn-warning mb-3" href="<?= base_url('admin/siswa_tambah'); ?>">Tambah Siswa</a> -->
 			<div class="col-lg">
-				<?= form_error('kelas', '<div class="alert alert-danger" kelas="alert">', '</div>'); ?>
+				<?= form_error('siswa', '<div class="alert alert-danger" kelas="alert">', '</div>'); ?>
 
 				<!-- <?= $this->session->flashdata('message'); ?> -->
 

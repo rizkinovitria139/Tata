@@ -84,6 +84,11 @@ class Admin extends CI_Controller
     {
         $data['title'] = 'Tambah Siswa';
         $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+        $this->load->model('Siswa_model', 'siswa');
+        $data['siswa'] = $this->siswa->getAll();
+
+
         $this->session->set_userdata($data);
 
         $this->load->view('templates/header', $data);
