@@ -79,7 +79,7 @@ class Auth extends CI_Controller
                             'nis' => $siswa['nis'],
                             'nama' => $siswa['nama'],
                             'email' => $siswa['email_siswa'],
-                            'password' => $siswa['password'],
+                            'password' => password_hash($this->input->post['password'], PASSWORD_DEFAULT),
                             'alamat' => $siswa['alamat_siswa']
                             //$items = (string)$var;
                         ];

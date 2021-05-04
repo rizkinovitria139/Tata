@@ -37,7 +37,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href=" <?= base_url('siswa/edit') ?>">Edit Profile</a>
-                        <a class="collapse-item" href=" <?= base_url("change_password") ?>">Change Password</a>
+                        <a class="collapse-item" href=" <?= base_url("siswa/changepassword") ?>">Change Password</a>
 
                     </div>
                 </div>
