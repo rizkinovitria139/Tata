@@ -1,6 +1,5 @@
 <?php
 
-
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Siswa extends CI_Controller
@@ -68,7 +67,41 @@ class Siswa extends CI_Controller
         
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil disimpan</div>');
             redirect('siswa/');
-      }
+    }
+
+    public function changePassword()
+    {
+        $data['title'] = 'Change Password';
+
+        $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')]) ->row_array();
+
+        $this->form_validation->set_rules('current_password', 'Current Password', 'required|trim');
+        $this->form_validation->set_rules('new_password1', 'New Password', 'required|trim|min_length[6]|matches[new_password2]');
+        $this->form_validation->set_rules('new_password2', 'Confirm New Password', 'required|trim|min_length[6]|matches[new_password1]');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/siswa_sidebar', $data);
+            $this->load->view('templates/siswa_topbar', $data);
+            $this->load->view('siswa/changepassword', $data);
+            $this->load->view('templates/footer');
+        } else{
+            $cek_old = $this->Siswa_model->cek_old();
+            if ($cek_old == false) {
+                $this->session->set_flashdata('error', 'Old password not match!');
+
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/siswa_sidebar', $data);
+                $this->load->view('templates/siswa_topbar', $data);
+                $this->load->view('siswa/changepassword', $data);
+                $this->load->view('templates/footer');
+            } else {
+                $this->Siswa_model->save();
+                $this->session->sess_destroy();
+                $this->session->set_flashdata('error', 'Your password success to change, please relogin !');
+            }
+        }
+    }
 }
 
 /* End of file Siswa.php */

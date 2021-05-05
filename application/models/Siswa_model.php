@@ -35,6 +35,24 @@ class Siswa_model extends CI_Model
         $this->db->where('nis', $id);
         $this->db->delete('siswa');
     }
+
+    public function save()
+    {
+        $pass = md5($this->input->post('new'));
+        $data = array (
+        'new_password1' => $pass
+        );
+        $this->db->where('nis', $this->session->userdata('nis'));
+        $this->db->update('siswa', $data);
+    }
+// fungsi untuk mengecek password lama :
+    public function cek_old()
+    {
+        $old = md5($this->input->post('current_password'));
+        $this->db->where('password', $old);
+        $query = $this->db->get('siswa');
+        return $query->result();
+    }
 }
 
 /* End of file Siswa_model.php */
