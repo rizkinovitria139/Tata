@@ -39,12 +39,6 @@
 							</div>
 
 							<div class="form-group">
-								<span>Alamat</span>
-								<input type="text" class="form-control" id="" name="">
-								<?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
-							</div>
-
-							<div class="form-group">
 								<span>Jenis Kelamin </span>
 								<select name="jenis_kelamin" id="jenis_kelamin">
 									<option value="" selected> </option>
@@ -148,7 +142,7 @@
 
 
 							<div class="form-group">
-								<span>Alamat Orang Wali</span>
+								<span>Alamat Wali</span>
 								<input type="text" class="form-control" id="alamat_wali" name="alamat_wali">
 								<?= form_error('alamat_wali', '<small class="text-danger pl-3">', '</small>'); ?>
 							</div>

@@ -105,6 +105,67 @@ class Admin extends CI_Controller
         $data['title'] = 'Daftar Kelas';
         $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
 
+        $this->form_validation->set_rules('nis', 'NIS', 'required');
+        $this->form_validation->set_rules('nisn', 'NISN', 'required');
+        $this->form_validation->set_rules('nama', 'Nama', 'required');
+        $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required');
+        $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
+        $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
+        $this->form_validation->set_rules('agama', 'Agama', 'required');
+        $this->form_validation->set_rules('status_dalam_keluarga', 'Status Dalam Keluarga', 'required');
+        $this->form_validation->set_rules('anak_ke', 'Anak Ke', 'required');
+        $this->form_validation->set_rules('alamat_siswa', 'Alamat Siswa', 'required');
+        $this->form_validation->set_rules('no_telp_rumah', 'Nomor Telepon Rumah', 'required');
+        $this->form_validation->set_rules('sekolah_asal', 'Sekolah Asal', 'required');
+        $this->form_validation->set_rules('diterima_di_kelas', 'Diterima di Kelas', 'required');
+        $this->form_validation->set_rules('tanggal_diterima', 'Tanggal Diterima', 'required');
+        $this->form_validation->set_rules('nama_ayah', 'Nama Ayah', 'required');
+        $this->form_validation->set_rules('nama_ibu', 'Nama Ibu', 'required');
+        $this->form_validation->set_rules('alamat_orangtua', 'Alamat Orang Tua', 'required');
+        $this->form_validation->set_rules('pekerjaan_ayah', 'Pekerjaan Ayah', 'required');
+        $this->form_validation->set_rules('nama_wali', 'Nama Wali', 'required');
+        $this->form_validation->set_rules('alamat_wali', 'Alamat Wali', 'required');
+        $this->form_validation->set_rules('pekerjaan_wali', 'Pekerjaan Wali', 'required');
+        $this->form_validation->set_rules('no_telp_wali', 'Nomor Telepon Wali', 'required');
+        $this->form_validation->set_rules('email_siswa', 'Email Siswa', 'required');
+        $this->form_validation->set_rules('no_telp_siswa', 'Nomor Telepom Siswa', 'required');
+        $this->form_validation->set_rules('username', 'Username', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+
+
+        if ($this->form_validation->run() == true) {
+            $data['nis'] = $this->input->post('nis');
+            $data['nisn'] = $this->input->post('nisn');
+            $data['nama'] = $this->input->post('nama');
+            $data['tempat_lahir'] = $this->input->post('tempat_lahir');
+            $data['tanggal_lahir'] = $this->input->post('tanggal_lahir');
+            $data['jenis_kelamin'] = $this->input->post('jenis_kelamin');
+            $data['agama'] = $this->input->post('agama');
+            $data['status_dalam_keluarga'] = $this->input->post('status_dalam_keluarga');
+            $data['anak_ke'] = $this->input->post('anak_ke');
+            $data['alamat_siswa'] = $this->input->post('alamat_siswa');
+            $data['no_telp_rumah'] = $this->input->post('no_telp_rumah');
+            $data['sekolah_asal'] = $this->input->post('sekolah_asal');
+            $data['diterima_di_kelas'] = $this->input->post('diterima_di_kelas');
+            $data['tanggal_diterima'] = $this->input->post('tanggal_diterima');
+            $data['nama_ayah'] = $this->input->post('nama_ayah');
+            $data['nama_ibu'] = $this->input->post('nama_ibu');
+            $data['alamat_orangtua'] = $this->input->post('alamat_orangtua');
+            $data['pekerjaan ayah'] = $this->input->post('pekerjaan_ayah');
+            $data['nama_wali'] = $this->input->post('nama_wali');
+            $data['alamat_wali'] = $this->input->post('alamat_wali');
+            $data['pekerjaan_wali'] = $this->input->post('pekerjaan_wali');
+            $data['no_telp_wali'] = $this->input->post('no_telp_wali');
+            $data['email_siswa'] = $this->input->post('email_siswa');
+            $data['no_telp_siswa'] = $this->input->post('no_telp_siswa');
+            $data['username'] = $this->input->post('username');
+            $data['password'] = $this->input->post('');
+
+            $this->load->model('siswa_model', 'siswa');
+            $this->siswa->siswa_tambah($data);
+            $this->session->set_flashdata('status', 'Siswa berhasil ditambahkan');
+            redirect('admin/siswa_tambah');
+        }
 
         $this->session->set_userdata($data);
 
@@ -138,8 +199,8 @@ class Admin extends CI_Controller
             $this->session->set_flashdata('status', 'Kelas berhasil ditambahkan');
             redirect('admin/tambah_kelas');
         } else {
-            $this->session->set_flashdata('gagal', 'Kelas gagal ditambahkan!');
-            redirect('admin/get_kelas');
+            $this->session->set_flashdata('gagal', 'Siswa gagal ditambahkan!');
+            redirect('admin/get_siswa');
         }
     }
 
