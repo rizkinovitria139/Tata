@@ -10,10 +10,11 @@ class Siswa_model extends CI_Model
 
     public function getAll()
     {
-        $query = "SELECT `siswa`.*, `kelas`.*, `tahun_akademik`.*
+        $query = "SELECT `siswa`.*, `kelas`.*, `tahun_akademik`.*, `user_role`.*
         FROM `siswa`
         JOIN `kelas` ON `siswa`.`id_kelas` = `kelas`.`id_kelas`
         JOIN `tahun_akademik` ON `kelas`.`id_tahun_akademik` = `tahun_akademik`.`id_tahun_akademik`
+        JOIN `user_role` ON `user_role`.`id_role` = `siswa`.`role_id`
         ";
         return $this->db->query($query)->result_array();
     }
@@ -39,13 +40,13 @@ class Siswa_model extends CI_Model
     public function save()
     {
         $pass = md5($this->input->post('new'));
-        $data = array (
-        'new_password1' => $pass
+        $data = array(
+            'new_password1' => $pass
         );
         $this->db->where('nis', $this->session->userdata('nis'));
         $this->db->update('siswa', $data);
     }
-// fungsi untuk mengecek password lama :
+    // fungsi untuk mengecek password lama :
     public function cek_old()
     {
         $old = md5($this->input->post('current_password'));

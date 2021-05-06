@@ -85,25 +85,12 @@ class Admin extends CI_Controller
         $data['title'] = 'Tambah Siswa';
         $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
 
+        $this->load->model('Kelas_model', 'kelas');
+        $data['kelas'] = $this->kelas->get_kelas();
+        $this->load->model('Role_model', 'role');
+        $data['role'] = $this->role->getRole();
         $this->load->model('Siswa_model', 'siswa');
         $data['siswa'] = $this->siswa->getAll();
-
-
-        $this->session->set_userdata($data);
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar');
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/siswa_tambah', $data);
-        $this->load->view('templates/footer');
-    }
-
-    // start bagian kelas
-
-    public function get_kelas()
-    {
-        $data['title'] = 'Daftar Kelas';
-        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
 
         $this->form_validation->set_rules('nis', 'NIS', 'required');
         $this->form_validation->set_rules('nisn', 'NISN', 'required');
@@ -128,12 +115,20 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('pekerjaan_wali', 'Pekerjaan Wali', 'required');
         $this->form_validation->set_rules('no_telp_wali', 'Nomor Telepon Wali', 'required');
         $this->form_validation->set_rules('email_siswa', 'Email Siswa', 'required');
-        $this->form_validation->set_rules('no_telp_siswa', 'Nomor Telepom Siswa', 'required');
+        $this->form_validation->set_rules('role_id', 'Role Id', 'required');
+        $this->form_validation->set_rules('is_active', 'Is Active', 'required');
         $this->form_validation->set_rules('username', 'Username', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
 
+        $this->session->set_userdata($data);
 
-        if ($this->form_validation->run() == true) {
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar');
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/siswa_tambah', $data);
+            $this->load->view('templates/footer');
+        } else {
             $data['nis'] = $this->input->post('nis');
             $data['nisn'] = $this->input->post('nisn');
             $data['nama'] = $this->input->post('nama');
@@ -158,14 +153,23 @@ class Admin extends CI_Controller
             $data['no_telp_wali'] = $this->input->post('no_telp_wali');
             $data['email_siswa'] = $this->input->post('email_siswa');
             $data['no_telp_siswa'] = $this->input->post('no_telp_siswa');
+            $data['role_id'] = $this->input->post('role_id');
+            $data['is_active'] = $this->input->post('is_active');
             $data['username'] = $this->input->post('username');
             $data['password'] = $this->input->post('');
 
-            $this->load->model('siswa_model', 'siswa');
-            $this->siswa->siswa_tambah($data);
-            $this->session->set_flashdata('status', 'Siswa berhasil ditambahkan');
-            redirect('admin/siswa_tambah');
+            $this->db->insert('siswa', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Siswa Telah Ditambahkan!</div>');
+            redirect('admin/siswa');
         }
+    }
+
+    // start bagian kelas
+
+    public function get_kelas()
+    {
+        $data['title'] = 'Daftar Kelas';
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
 
         $this->session->set_userdata($data);
 
@@ -199,8 +203,8 @@ class Admin extends CI_Controller
             $this->session->set_flashdata('status', 'Kelas berhasil ditambahkan');
             redirect('admin/tambah_kelas');
         } else {
-            $this->session->set_flashdata('gagal', 'Siswa gagal ditambahkan!');
-            redirect('admin/get_siswa');
+            $this->session->set_flashdata('status', 'Kelas gagal ditambahkan!');
+            redirect('admin/get_kelas');
         }
     }
 
@@ -209,7 +213,7 @@ class Admin extends CI_Controller
         $this->db->update('kelas', ['nama_kelas' => $this->input->post('nama_kelas')], ['id_kelas' => $id]);
         $this->db->update('kelas', ['nip_wali_kelas' => $this->input->post('nip_wali_kelas')], ['id_kelas' => $id]);
         $this->db->update('kelas', ['id_tahun_akademik' => $this->input->post('id_tahun_akademik')], ['id_kelas' => $id]);
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">kelas has ben edited!</div>');
+        $this->session->set_flashdata('status', '<div class="alert alert-success" role="alert">kelas has ben edited!</div>');
         redirect('admin/get_kelas', 'refresh');
     }
 
@@ -217,7 +221,7 @@ class Admin extends CI_Controller
     {
         $this->kelas_model->delete_kelas($id);
         // untuk flashdata mempunyai 2 parameter (nama flashdata/alias, isi dari flashdatanya)
-        $this->session->set_flashdata('flash-data', 'Kelas was deleted!');
+        $this->session->set_flashdata('status', 'Kelas was deleted!');
         redirect('admin/get_kelas', 'refresh');
     }
 
