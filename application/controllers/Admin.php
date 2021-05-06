@@ -245,7 +245,7 @@ class Admin extends CI_Controller
         $this->db->update('kelas', ['nama_kelas' => $this->input->post('nama_kelas')], ['id_kelas' => $id]);
         $this->db->update('kelas', ['nip_wali_kelas' => $this->input->post('nip_wali_kelas')], ['id_kelas' => $id]);
         $this->db->update('kelas', ['id_tahun_akademik' => $this->input->post('id_tahun_akademik')], ['id_kelas' => $id]);
-        $this->session->set_flashdata('status', '<div class="alert alert-success" role="alert">kelas has ben edited!</div>');
+        $this->session->set_flashdata('kelas_message', '<div class="alert alert-success" role="alert">Kelas berhasil diubah!</div>');
         redirect('admin/get_kelas', 'refresh');
     }
 
@@ -254,7 +254,7 @@ class Admin extends CI_Controller
         $this->load->model('Kelas_model', 'kelas');
         $this->kelas->delete_kelas($id);
         // untuk flashdata mempunyai 2 parameter (nama flashdata/alias, isi dari flashdatanya)
-        $this->session->set_flashdata('status', 'Kelas was deleted!');
+        $this->session->set_flashdata('kelas_message', '<div class="alert alert-success" role="alert">Kelas berhasil dihapus!</div>');
         redirect('admin/get_kelas', 'refresh');
     }
 

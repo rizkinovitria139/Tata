@@ -6,7 +6,7 @@
 
 			<a class="btn btn-warning mb-3" data-toggle="modal" data-target="#tambahkelasModal">Tambah Kelas</a>
 			<div class="col-lg">
-				<?= form_error('kelas', '<div class="alert alert-danger" kelas="alert">', '</div>'); ?>
+				<?= form_error('kelas_message'); ?>
 
 				<?php if ($this->session->flashdata('status')) : ?>
 					<div class="alert alert-primary" role="alert">
