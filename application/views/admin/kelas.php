@@ -8,14 +8,7 @@
 			<div class="col-lg">
 				<?= form_error('kelas_message'); ?>
 
-				<?php if ($this->session->flashdata('status')) : ?>
-					<div class="alert alert-primary" role="alert">
-						<?= $this->session->flashdata('status') ?>
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-				<?php endif; ?>
+				<?= $this->session->flashdata('kelas_message') ?>
 
 				<div class="row">
 

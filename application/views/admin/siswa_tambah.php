@@ -7,7 +7,7 @@
 			<div class="row">
 				<div class="col-lg-8">
 					<?php echo form_open_multipart('admin/tambah_siswa') ?>
-					<?= $this->session->flashdata('siswa_tambah'); ?>
+					<?= $this->session->flashdata('siswa_message'); ?>
 					<form action="" method="POST" enctype="multipart/form-data">
 						<div class="form-group">
 							<span>NIS</span>

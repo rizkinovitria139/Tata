@@ -172,10 +172,10 @@ class Admin extends CI_Controller
                 );
 
                 $this->siswa->siswa_tambah($dataSiswa);
-                $this->session->set_flashdata('siswa_tambah', '<div class="alert alert-success" role="alert">Data Siswa Telah Ditambahkan!</div>');
+                $this->session->set_flashdata('siswa_message', '<div class="alert alert-success" role="alert">Data Siswa Telah Ditambahkan!</div>');
                 redirect('admin/get_siswa');
             } else {
-                $this->session->set_flashdata('siswa_tambah', '<div class="alert alert-danger" role="alert">NIS telah terdaftar, gunakan NIS lain!</div>');
+                $this->session->set_flashdata('siswa_message', '<div class="alert alert-danger" role="alert">NIS telah terdaftar, gunakan NIS lain!</div>');
 
                 $this->session->set_userdata($data);
                 $this->load->view('templates/header', $data);
@@ -192,7 +192,7 @@ class Admin extends CI_Controller
         $this->load->model('Siswa_model', 'siswa');
         $this->siswa->delete_user($id);
         // untuk flashdata mempunyai 2 parameter (nama flashdata/alias, isi dari flashdatanya)
-        $this->session->set_flashdata('siswa_message', 'Siswa was deleted!');
+        $this->session->set_flashdata('siswa_message', '<div class="alert alert-success" role="alert">Data Siswa berhasil dihapus!</div>');
         redirect('admin/get_siswa');
     }
 
@@ -232,10 +232,10 @@ class Admin extends CI_Controller
 
             $this->load->model('kelas_model', 'kelas');
             $this->kelas->tambah_kelas($data);
-            $this->session->set_flashdata('status', 'Kelas berhasil ditambahkan');
+            $this->session->set_flashdata('kelas_message', 'Kelas berhasil ditambahkan');
             redirect('admin/tambah_kelas');
         } else {
-            $this->session->set_flashdata('status', 'Kelas gagal ditambahkan!');
+            $this->session->set_flashdata('kelas_message', 'Kelas gagal ditambahkan!');
             redirect('admin/get_kelas');
         }
     }
