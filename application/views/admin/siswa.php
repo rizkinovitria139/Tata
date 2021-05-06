@@ -8,7 +8,7 @@
 			<div class="col-lg">
 				<?= form_error('siswa', '<div class="alert alert-danger" kelas="alert">', '</div>'); ?>
 
-				<!-- <?= $this->session->flashdata('message'); ?> -->
+				<?= $this->session->flashdata('siswa_message'); ?>
 
 				<div class="row">
 
@@ -36,9 +36,9 @@
 										<button type="button" class="btn btn-success btn-icon" href="" data-toggle="modal" data-target="#editkelasModal<?= $s['nis']; ?>">
 											<i class="far fa-edit"></i>
 										</button>
-										<button type="button" class="btn btn-danger" href="<?= base_url('admin/deletekelas/') . $s['nis']; ?>" onclick="return confirm('Are you sure to delete this data ?');">
+										<a class="btn btn-danger" href="<?= base_url(); ?>admin/delete_siswa/<?= $s['nis']; ?>" onclick="return confirm('Are you sure to delete this data ?');">
 											<i class="far fa-trash-alt"></i>
-										</button>
+										</a>
 									</td>
 								</tr>
 							<?php endforeach; ?>

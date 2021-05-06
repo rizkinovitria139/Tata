@@ -41,9 +41,9 @@
 										<button type="button" class="btn btn-primary btn-icon" href="" data-toggle="modal" data-target="#editkelasModal<?= $k['id_kelas']; ?>">
 											<i class="far fa-edit"></i>
 										</button>
-										<button type="button" class="btn btn-danger" href="<?= base_url('admin/delete_kelas/') . $k['id_kelas']; ?>" onclick="return confirm('Are you sure to delete this data ?');">
+										<a class="btn btn-danger" href="<?= base_url('admin/delete_kelas/') . $k['id_kelas']; ?>" onclick="return confirm('Are you sure to delete this data ?');">
 											<i class="far fa-trash-alt"></i>
-										</button>
+										</a>
 									</td>
 								</tr>
 								<?php $i++; ?>

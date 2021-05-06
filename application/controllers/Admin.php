@@ -172,10 +172,10 @@ class Admin extends CI_Controller
                 );
 
                 $this->siswa->siswa_tambah($dataSiswa);
-                $this->session->set_flashdata('siswa', '<div class="alert alert-success" role="alert">Data Siswa Telah Ditambahkan!</div>');
+                $this->session->set_flashdata('siswa_tambah', '<div class="alert alert-success" role="alert">Data Siswa Telah Ditambahkan!</div>');
                 redirect('admin/get_siswa');
             } else {
-                $this->session->set_flashdata('siswa', '<div class="alert alert-danger" role="alert">NIS telah terdaftar, gunakan NIS lain!</div>');
+                $this->session->set_flashdata('siswa_tambah', '<div class="alert alert-danger" role="alert">NIS telah terdaftar, gunakan NIS lain!</div>');
 
                 $this->session->set_userdata($data);
                 $this->load->view('templates/header', $data);
@@ -185,6 +185,15 @@ class Admin extends CI_Controller
                 $this->load->view('templates/footer');
             }
         }
+    }
+
+    public function delete_siswa($id)
+    {
+        $this->load->model('Siswa_model', 'siswa');
+        $this->siswa->delete_user($id);
+        // untuk flashdata mempunyai 2 parameter (nama flashdata/alias, isi dari flashdatanya)
+        $this->session->set_flashdata('siswa_message', 'Siswa was deleted!');
+        redirect('admin/get_siswa');
     }
 
     // start bagian kelas
@@ -242,7 +251,8 @@ class Admin extends CI_Controller
 
     public function delete_kelas($id)
     {
-        $this->kelas_model->delete_kelas($id);
+        $this->load->model('Kelas_model', 'kelas');
+        $this->kelas->delete_kelas($id);
         // untuk flashdata mempunyai 2 parameter (nama flashdata/alias, isi dari flashdatanya)
         $this->session->set_flashdata('status', 'Kelas was deleted!');
         redirect('admin/get_kelas', 'refresh');

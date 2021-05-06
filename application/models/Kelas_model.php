@@ -32,8 +32,7 @@ class Kelas_model extends CI_Model
 
     public function delete_kelas($id)
     {
-        $this->db->where('id_kelas', $id);
-        $this->db->delete('kelas');
+        return $this->db->delete('kelas', array('id_kelas' => $id));
     }
 }
 

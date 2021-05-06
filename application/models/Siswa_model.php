@@ -29,10 +29,9 @@ class Siswa_model extends CI_Model
         $this->db->insert('siswa', $data);
     }
 
-    public function delete_siswa($id)
+    public function delete_user($id)
     {
-        $this->db->where('nis', $id);
-        $this->db->delete('siswa');
+        return $this->db->delete('siswa', array('nis' => $id));
     }
 
     public function save()
