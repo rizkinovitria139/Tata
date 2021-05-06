@@ -6,8 +6,9 @@
 
 			<div class="row">
 				<div class="col-lg-8">
-					<?= $this->session->flashdata('status'); ?>
-					<form action="<?= base_url('admin/siswa_tambah') ?>" method="POST">
+					<?php echo form_open_multipart('admin/tambah_siswa') ?>
+					<?= $this->session->flashdata('siswa'); ?>
+					<form action="" method="POST" enctype="multipart/form-data">
 						<div class="form-group">
 							<span>NIS</span>
 							<input type="text" class="form-control" id="nis" name="nis">
@@ -156,8 +157,8 @@
 
 						<div class="form-group">
 							<span>Nomor Telepon Wali</span>
-							<input type="text" class="form-control" id="no_telp_wali" name="no_telp_wali">
-							<?= form_error('no_telp_wali', '<small class="text-danger pl-3">', '</small>'); ?>
+							<input type="text" class="form-control" id="nomor_telp_wali" name="nomor_telp_wali">
+							<?= form_error('nomor_telp_wali', '<small class="text-danger pl-3">', '</small>'); ?>
 						</div>
 
 						<div class="form-group">
@@ -175,8 +176,8 @@
 						<div class="form-group">
 							<span>Role</span>
 							<select name="role_id" id="role_id">
+								<option value="" selected></option>
 								<?php foreach ($role as $r) { ?>
-									<option value="" selected></option>
 									<option value="<?= $r['id_role'] ?>"><?php echo $r['id_role'] . ' - ' . $r['nama']; ?></option>
 								<?php }; ?>
 							</select>
@@ -197,15 +198,15 @@
 
 						<div class="form-group">
 							<span>Password</span>
-							<input type="text" class="form-control" id="no_telp_siswa" name="no_telp_siswa">
-							<?= form_error('no_telp_siswa', '<small class="text-danger pl-3">', '</small>'); ?>
+							<input type="text" class="form-control" id="password" name="password">
+							<?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
 						</div>
 
 						<div class="form-group">
 							<span>Kelas</span>
 							<select name="id_kelas" id="id_kelas">
+								<option value="" selected></option>
 								<?php foreach ($kelas as $k) { ?>
-									<option value="" selected></option>
 									<option value="<?= $k['id_kelas'] ?>"><?php echo $k['nama_kelas'] . ' - ' . $k['tahun']; ?></option>
 								<?php }; ?>
 							</select>
@@ -216,6 +217,7 @@
 							<button type="submit" class="btn btn-primary">Simpan</button>
 						</div>
 					</form>
+					<?php echo form_close(); ?>
 				</div>
 			</div>
 		</div>

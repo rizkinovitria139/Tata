@@ -10,11 +10,8 @@ class Siswa_model extends CI_Model
 
     public function getAll()
     {
-        $query = "SELECT `siswa`.*, `kelas`.*, `tahun_akademik`.*, `user_role`.*
+        $query = "SELECT `siswa`.*
         FROM `siswa`
-        JOIN `kelas` ON `siswa`.`id_kelas` = `kelas`.`id_kelas`
-        JOIN `tahun_akademik` ON `kelas`.`id_tahun_akademik` = `tahun_akademik`.`id_tahun_akademik`
-        JOIN `user_role` ON `user_role`.`id_role` = `siswa`.`role_id`
         ";
         return $this->db->query($query)->result_array();
     }
@@ -28,7 +25,8 @@ class Siswa_model extends CI_Model
     public function siswa_tambah($data)
     {
 
-        return $this->db->insert($this->_table, $data);
+
+        $this->db->insert('siswa', $data);
     }
 
     public function delete_siswa($id)

@@ -80,7 +80,7 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function siswa_tambah()
+    public function tambah_siswa()
     {
         $data['title'] = 'Tambah Siswa';
         $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
@@ -89,8 +89,6 @@ class Admin extends CI_Controller
         $data['kelas'] = $this->kelas->get_kelas();
         $this->load->model('Role_model', 'role');
         $data['role'] = $this->role->getRole();
-        $this->load->model('Siswa_model', 'siswa');
-        $data['siswa'] = $this->siswa->getAll();
 
         $this->form_validation->set_rules('nis', 'NIS', 'required');
         $this->form_validation->set_rules('nisn', 'NISN', 'required');
@@ -113,54 +111,79 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('nama_wali', 'Nama Wali', 'required');
         $this->form_validation->set_rules('alamat_wali', 'Alamat Wali', 'required');
         $this->form_validation->set_rules('pekerjaan_wali', 'Pekerjaan Wali', 'required');
-        $this->form_validation->set_rules('no_telp_wali', 'Nomor Telepon Wali', 'required');
+        $this->form_validation->set_rules('nomor_telp_wali', 'Nomor Telepon Wali', 'required');
         $this->form_validation->set_rules('email_siswa', 'Email Siswa', 'required');
         $this->form_validation->set_rules('role_id', 'Role Id', 'required');
         $this->form_validation->set_rules('is_active', 'Is Active', 'required');
         $this->form_validation->set_rules('username', 'Username', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
 
-        $this->session->set_userdata($data);
-
-        if ($this->form_validation->run() == false) {
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_userdata($data);
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar');
             $this->load->view('templates/topbar', $data);
             $this->load->view('admin/siswa_tambah', $data);
             $this->load->view('templates/footer');
         } else {
-            $data['nis'] = $this->input->post('nis');
-            $data['nisn'] = $this->input->post('nisn');
-            $data['nama'] = $this->input->post('nama');
-            $data['tempat_lahir'] = $this->input->post('tempat_lahir');
-            $data['tanggal_lahir'] = $this->input->post('tanggal_lahir');
-            $data['jenis_kelamin'] = $this->input->post('jenis_kelamin');
-            $data['agama'] = $this->input->post('agama');
-            $data['status_dalam_keluarga'] = $this->input->post('status_dalam_keluarga');
-            $data['anak_ke'] = $this->input->post('anak_ke');
-            $data['alamat_siswa'] = $this->input->post('alamat_siswa');
-            $data['no_telp_rumah'] = $this->input->post('no_telp_rumah');
-            $data['sekolah_asal'] = $this->input->post('sekolah_asal');
-            $data['diterima_di_kelas'] = $this->input->post('diterima_di_kelas');
-            $data['tanggal_diterima'] = $this->input->post('tanggal_diterima');
-            $data['nama_ayah'] = $this->input->post('nama_ayah');
-            $data['nama_ibu'] = $this->input->post('nama_ibu');
-            $data['alamat_orangtua'] = $this->input->post('alamat_orangtua');
-            $data['pekerjaan ayah'] = $this->input->post('pekerjaan_ayah');
-            $data['nama_wali'] = $this->input->post('nama_wali');
-            $data['alamat_wali'] = $this->input->post('alamat_wali');
-            $data['pekerjaan_wali'] = $this->input->post('pekerjaan_wali');
-            $data['no_telp_wali'] = $this->input->post('no_telp_wali');
-            $data['email_siswa'] = $this->input->post('email_siswa');
-            $data['no_telp_siswa'] = $this->input->post('no_telp_siswa');
-            $data['role_id'] = $this->input->post('role_id');
-            $data['is_active'] = $this->input->post('is_active');
-            $data['username'] = $this->input->post('username');
-            $data['password'] = $this->input->post('');
+            $query = "SELECT `siswa`.*
+            FROM `siswa`
+            ";
 
-            $this->db->insert('siswa', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Siswa Telah Ditambahkan!</div>');
-            redirect('admin/siswa');
+            $counter = 0;
+            $nis = $this->input->post('nis', true);
+            $siswa = $this->db->query($query)->result_array();
+            foreach ($siswa as $s) {  //cek user lama nis
+                if ($s['nis'] == $nis) { //cek nis input sama or tidak dengan user lama
+                    $counter++;
+                }
+            }
+            if ($counter == 0) { //nisnya tidak ada yang sama
+                $dataSiswa = array(
+                    'nis' => $nis,
+                    'nama' => $this->input->post('nama', true),
+                    'tempat_lahir' => $this->input->post('tempat_lahir', true),
+                    'tanggal_lahir' => $this->input->post('tanggal_lahir', true),
+                    'jenis_kelamin' => $this->input->post('jenis_kelamin', true),
+                    'agama' => $this->input->post('agama', true),
+                    'status_dalam_keluarga' => $this->input->post('status_dalam_keluarga', true),
+                    'anak_ke' => $this->input->post('anak_ke', true),
+                    'alamat_siswa' => $this->input->post('alamat_siswa', true),
+                    'no_telp_rumah' => $this->input->post('no_telp_rumah', true),
+                    'sekolah_asal' => $this->input->post('sekolah_asal', true),
+                    'diterima_di_kelas' => $this->input->post('diterima_di_kelas', true),
+                    'tanggal_diterima' => $this->input->post('tanggal_diterima', true),
+                    'nama_ayah' => $this->input->post('nama_ayah', true),
+                    'nama_ibu' => $this->input->post('nama_ibu', true),
+                    'alamat_orangtua' => $this->input->post('alamat_orangtua', true),
+                    'pekerjaan_ayah' => $this->input->post('pekerjaan_ayah', true),
+                    'nama_wali' => $this->input->post('nama_wali', true),
+                    'alamat_wali' => $this->input->post('alamat_wali', true),
+                    'pekerjaan_wali' => $this->input->post('pekerjaan_wali', true),
+                    'nomor_telp_wali' => $this->input->post('nomor_telp_wali', true),
+                    'email_siswa' => $this->input->post('email_siswa', true),
+                    'no_telp_siswa' => $this->input->post('no_telp_siswa', true),
+                    'role_id' => $this->input->post('role_id', true),
+                    'is_active' => $this->input->post('is_active', true),
+                    'username' => $this->input->post('username', true),
+                    'password' => $this->input->post('password', true),
+                    'id_kelas' => $this->input->post('id_kelas', true)
+
+                );
+
+                $this->siswa->siswa_tambah($dataSiswa);
+                $this->session->set_flashdata('siswa', '<div class="alert alert-success" role="alert">Data Siswa Telah Ditambahkan!</div>');
+                redirect('admin/get_siswa');
+            } else {
+                $this->session->set_flashdata('siswa', '<div class="alert alert-danger" role="alert">NIS telah terdaftar, gunakan NIS lain!</div>');
+
+                $this->session->set_userdata($data);
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/sidebar');
+                $this->load->view('templates/topbar', $data);
+                $this->load->view('admin/siswa_tambah', $data);
+                $this->load->view('templates/footer');
+            }
         }
     }
 
