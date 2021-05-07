@@ -68,6 +68,10 @@ class Admin extends CI_Controller
         $data['title'] = 'Daftar Siswa';
         $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
 
+        $this->load->model('Kelas_model', 'kelas');
+        $data['kelas'] = $this->kelas->get_kelas();
+        $this->load->model('Role_model', 'role');
+        $data['role'] = $this->role->getRole();
 
         $this->load->model('Siswa_model', 'siswa');
         $data['siswa'] = $this->siswa->getAll();
@@ -187,6 +191,43 @@ class Admin extends CI_Controller
         }
     }
 
+    public function update_siswa($id)
+    {
+
+        $this->db->update('siswa', ['nis'                   => $this->input->post('nis')], ['nis' => $id]);
+        $this->db->update('siswa', ['nisn'                  => $this->input->post('nisn')], ['nis' => $id]);
+        $this->db->update('siswa', ['nama'                  => $this->input->post('nama')], ['nis' => $id]);
+        $this->db->update('siswa', ['tempat_lahir'          => $this->input->post('tempat_lahir')], ['nis' => $id]);
+        $this->db->update('siswa', ['tanggal_lahir'         => $this->input->post('tanggal-lahir')], ['nis' => $id]);
+        $this->db->update('siswa', ['jenis_kelamin'         => $this->input->post('jenis_kelamin')], ['nis' => $id]);
+        $this->db->update('siswa', ['agama'                 => $this->input->post('agama')], ['nis' => $id]);
+        $this->db->update('siswa', ['status_dalam_keluarga' => $this->input->post('status_dalam_keluarga')], ['nis' => $id]);
+        $this->db->update('siswa', ['anak_ke'               => $this->input->post('anak_ke')], ['nis' => $id]);
+        $this->db->update('siswa', ['alamat_siswa'          => $this->input->post('alamat_siswa')], ['nis' => $id]);
+        $this->db->update('siswa', ['no_telp_rumah'         => $this->input->post('no_telp_rumah')], ['nis' => $id]);
+        $this->db->update('siswa', ['sekolah_asal'          => $this->input->post('sekolah_asal')], ['nis' => $id]);
+        $this->db->update('siswa', ['diterima_di_kelas'     => $this->input->post('diterima_di_kela')], ['nis' => $id]);
+        $this->db->update('siswa', ['tanggal_diterima'      => $this->input->post('tanggal_diterima')], ['nis' => $id]);
+        $this->db->update('siswa', ['nama_ayah'             => $this->input->post('nama_ayah')], ['nis' => $id]);
+        $this->db->update('siswa', ['nama_ibu'              => $this->input->post('nama_ibu')], ['nis' => $id]);
+        $this->db->update('siswa', ['alamat_orangtua'       => $this->input->post('alamat_orangtua')], ['nis' => $id]);
+        $this->db->update('siswa', ['pekerjaan_ayah'        => $this->input->post('pekerjaan_ayah')], ['nis' => $id]);
+        $this->db->update('siswa', ['nama_wali'             => $this->input->post('nama_wali')], ['nis' => $id]);
+        $this->db->update('siswa', ['alamat_wali'           => $this->input->post('alamat_wali')], ['nis' => $id]);
+        $this->db->update('siswa', ['pekerjaan_wali'        => $this->input->post('pekerjaan_wali')], ['nis' => $id]);
+        $this->db->update('siswa', ['nomor_telp_wali'       => $this->input->post('nomor_telp_wali')], ['nis' => $id]);
+        $this->db->update('siswa', ['email_siswa'           => $this->input->post('email_siswa')], ['nis' => $id]);
+        $this->db->update('siswa', ['no_telp_siswa'         => $this->input->post('no_telp_siswa')], ['nis' => $id]);
+        $this->db->update('siswa', ['role_id'               => $this->input->post('role_id')], ['nis' => $id]);
+        $this->db->update('siswa', ['is_active'             => $this->input->post('is_active')], ['nis' => $id]);
+        $this->db->update('siswa', ['username'              => $this->input->post('username')], ['nis' => $id]);
+        $this->db->update('siswa', ['password'              => $this->input->post('password')], ['nis' => $id]);
+        $this->db->update('siswa', ['id_kelas'              => $this->input->post('id_kelas')], ['nis' => $id]);
+
+        $this->session->set_flashdata('siswa_message', '<div class="alert alert-success" role="alert">Siswa berhasil diubah!</div>');
+        redirect('admin/get_siswa', 'refresh');
+    }
+
     public function delete_siswa($id)
     {
         $this->load->model('Siswa_model', 'siswa');
@@ -280,6 +321,10 @@ class Admin extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('admin/mapel', $data);
         $this->load->view('templates/footer');
+    }
+
+    public function tambah_mapel()
+    {
     }
     // end bagian mapel
 

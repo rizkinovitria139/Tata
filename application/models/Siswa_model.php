@@ -10,8 +10,10 @@ class Siswa_model extends CI_Model
 
     public function getAll()
     {
-        $query = "SELECT `siswa`.*
+        $query = "SELECT `siswa`.*, `kelas`.*, `user_role`.*
         FROM `siswa`
+        JOIN `kelas` ON `kelas`.`id_kelas` = `siswa`.`id_kelas`
+        JOIN `user_role` ON `user_role`.`id_role` = `siswa`.`role_id`
         ";
         return $this->db->query($query)->result_array();
     }
@@ -19,6 +21,11 @@ class Siswa_model extends CI_Model
     public function getById($id)
     {
         return $this->db->get_where($this->table, ["username" => $id])->row();
+    }
+
+    public function getSiswaDetails($id)
+    {
+        $id = $_GET['nis'];
     }
 
 
