@@ -9,6 +9,7 @@ class Siswa extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('Siswa_model');
         $this->load->library('form_validation');
     }
 
@@ -88,7 +89,7 @@ class Siswa extends CI_Controller
         } else{
             $cek_old = $this->Siswa_model->cek_old();
             if ($cek_old == false) {
-                $this->session->set_flashdata('error', 'Old password not match!');
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Wrong current password!</div>');
 
                 $this->load->view('templates/header', $data);
                 $this->load->view('templates/siswa_sidebar', $data);
@@ -97,8 +98,9 @@ class Siswa extends CI_Controller
                 $this->load->view('templates/footer');
             } else {
                 $this->Siswa_model->save();
-                $this->session->sess_destroy();
-                $this->session->set_flashdata('error', 'Your password success to change, please relogin !');
+                // $this->session->sess_destroy();
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password has been changed</div>');
+                redirect('siswa/');
             }
         }
     }

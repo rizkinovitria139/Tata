@@ -43,9 +43,9 @@ class Siswa_model extends CI_Model
 
     public function save()
     {
-        $pass = md5($this->input->post('new'));
+        $pass = $this->input->post('new_password1');
         $data = array(
-            'new_password1' => $pass
+            'password' => $pass
         );
         $this->db->where('nis', $this->session->userdata('nis'));
         $this->db->update('siswa', $data);
@@ -53,7 +53,7 @@ class Siswa_model extends CI_Model
     // fungsi untuk mengecek password lama :
     public function cek_old()
     {
-        $old = md5($this->input->post('current_password'));
+        $old = $this->input->post('current_password');
         $this->db->where('password', $old);
         $query = $this->db->get('siswa');
         return $query->result();
