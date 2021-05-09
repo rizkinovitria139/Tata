@@ -42,7 +42,8 @@ class Auth extends CI_Controller
                     if ($guru['role_id'] == 4) {
                         $data = [
                             'username' => $guru['username'],
-                            'role_id' => $guru['role_id']
+                            'role_id' => $guru['role_id'],
+                            'nip' => $guru['nip']
                         ];
                         $this->session->set_userdata($data);
                         redirect('admin');
@@ -79,7 +80,6 @@ class Auth extends CI_Controller
                             'nis' => $siswa['nis'],
                             'nama' => $siswa['nama'],
                             'email' => $siswa['email_siswa'],
-                            'password' => password_hash($this->input->post['password'], PASSWORD_DEFAULT),
                             'alamat' => $siswa['alamat_siswa']
                             //$items = (string)$var;
                         ];

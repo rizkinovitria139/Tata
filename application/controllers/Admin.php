@@ -13,6 +13,7 @@ class Admin extends CI_Controller
         $this->load->model('kelas_model', 'kelas');
         $this->load->model('Admin_model', 'guru');
         $this->load->model('Mapel_model', 'mapel');
+        $this->load->model('Admin_model');
         $this->load->library('form_validation');
     }
 
@@ -346,6 +347,43 @@ class Admin extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('admin/jadwal', $data);
         $this->load->view('templates/footer');
+    }
+
+    public function changePassword()
+    {
+        $data['title'] = 'Change Password';
+
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')]) ->row_array();
+
+        $this->form_validation->set_rules('current_password', 'Current Password', 'required|trim');
+        $this->form_validation->set_rules('new_password1', 'New Password', 'required|trim|min_length[6]|matches[new_password2]');
+        $this->form_validation->set_rules('new_password2', 'Confirm New Password', 'required|trim|min_length[6]|matches[new_password1]');
+
+        if ($this->form_validation->run() == false) {
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar');
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/changepassword', $data);
+            $this->load->view('templates/footer');
+
+        } else {
+            $cek_old = $this->Admin_model->cek_old();
+            if ($cek_old == false) {
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Wrong current password!</div>');
+
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/sidebar');
+                $this->load->view('templates/topbar', $data);
+                $this->load->view('admin/changepassword', $data);
+                $this->load->view('templates/footer');
+            } else {
+                $this->Admin_model->savepass();
+                // $this->session->sess_destroy();
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password has been changed</div>');
+                redirect('admin/changepassword');
+            }
+        }
     }
 }
     

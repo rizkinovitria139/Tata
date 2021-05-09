@@ -23,6 +23,23 @@ class Admin_model extends CI_Model
     {
         return $this->db->get_where($this->table, ["username" => $id])->row();
     }
+    public function savepass()
+    {
+        $pass = $this->input->post('new_password1');
+        $data = array(
+            'password' => $pass
+        );
+        $this->db->where('nip', $this->session->userdata('nip'));
+        $this->db->update('guru', $data);
+    }
+    // fungsi untuk mengecek password lama :
+    public function cek_old()
+    {
+        $old = $this->input->post('current_password');
+        $this->db->where('password', $old);
+        $query = $this->db->get('guru');
+        return $query->result();
+    }
 }
 
 /* End of file Guru_model.php */
