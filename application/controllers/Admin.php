@@ -46,6 +46,8 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    // start guru
+
     public function get_guru()
     {
         $data['title'] = 'Daftar Guru';
@@ -54,6 +56,8 @@ class Admin extends CI_Controller
 
         $this->load->model('Admin_model', 'admin');
         $data['guru'] = $this->admin->getAll();
+        $this->load->model('Role_model', 'role');
+        $data['role'] = $this->role->getRole();
 
         $this->session->set_userdata($data);
         $this->load->view('templates/header', $data);
@@ -62,6 +66,59 @@ class Admin extends CI_Controller
         $this->load->view('admin/guru', $data);
         $this->load->view('templates/footer');
     }
+
+    public function tambah_guru()
+    {
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+        $this->form_validation->set_rules('nip', 'NIP', 'required');
+        $this->form_validation->set_rules('nama', 'Nama', 'required');
+        $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required');
+        $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
+        $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
+        $this->form_validation->set_rules('agama', 'Agama', 'required');
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+        $this->form_validation->set_rules('no_telp', 'Nomor Telepon', 'required');
+        $this->form_validation->set_rules('tanggal_masuk', 'Tanggal Masuk', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->form_validation->set_rules('role_id', 'Role', 'required');
+        $this->form_validation->set_rules('is_active', 'Is Active', 'required');
+        $this->form_validation->set_rules('status', 'Status', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('username', 'Username', 'required');
+
+
+        if ($this->form_validation->run() == TRUE) {
+            $dataArray = array(
+                'nip'           => $this->input->post('nip', true),
+                'nama'          => $this->input->post('nama', true),
+                'tempat_lahir'  => $this->input->post('tempat_lahir', true),
+                'tanggal_lahir' => $this->input->post('tanggal_lahir', true),
+                'jenis_kelamin' => $this->input->post('jenis_kelamin', true),
+                'agama'         => $this->input->post('agama', true),
+                'alamat'        => $this->input->post('alamat', true),
+                'no_telp'       => $this->input->post('no_telp', true),
+                'tanggal_masuk' => $this->input->post('tanggal_masuk', true),
+                'email'         => $this->input->post('email', true),
+                'role_id'       => $this->input->post('role_id', true),
+                'is_active'     => $this->input->post('is_active', true),
+                'status'        => $this->input->post('status', true),
+                'password'      => $this->input->post('password', true),
+                'username'      => $this->input->post('username', true)
+            );
+
+            $this->load->model('Admin_model', 'admin');
+            $this->admin->tambah_guru($dataArray);
+            $this->session->set_flashdata('guru_message', '<div class="alert alert-success" role="alert">Data Guru Telah Ditambahkan!</div>');
+            redirect('admin/tambah_guru');
+        } else {
+            $this->session->set_flashdata('guru_message', '<div class="alert alert-danger" role="alert">Data Guru gagal ditambahkan!</div>');
+            redirect('admin/get_guru');
+        }
+    }
+    // end guru
+
+    // start siswa
 
     public function get_siswa()
     {
@@ -353,7 +410,7 @@ class Admin extends CI_Controller
     {
         $data['title'] = 'Change Password';
 
-        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')]) ->row_array();
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
 
         $this->form_validation->set_rules('current_password', 'Current Password', 'required|trim');
         $this->form_validation->set_rules('new_password1', 'New Password', 'required|trim|min_length[6]|matches[new_password2]');
@@ -366,7 +423,6 @@ class Admin extends CI_Controller
             $this->load->view('templates/topbar', $data);
             $this->load->view('admin/changepassword', $data);
             $this->load->view('templates/footer');
-
         } else {
             $cek_old = $this->Admin_model->cek_old();
             if ($cek_old == false) {
