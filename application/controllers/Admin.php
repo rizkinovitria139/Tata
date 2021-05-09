@@ -370,8 +370,12 @@ class Admin extends CI_Controller
         $this->session->set_userdata($data);
 
 
-        $this->load->model('mapel_model', 'mapel');
+        $this->load->model('Mapel_model', 'mapel');
         $data['mapel'] = $this->mapel->get_mapel();
+        $this->load->model('Kelas_model', 'kelas');
+        $data['kelas'] = $this->kelas->get_kelas();
+        $this->load->model('Admin_model', 'guru');
+        $data['guru'] = $this->guru->getAll();
 
         $this->session->set_userdata($data);
         $this->load->view('templates/header', $data);
