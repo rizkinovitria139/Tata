@@ -46,6 +46,8 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    // start guru
+
     public function get_guru()
     {
         $data['title'] = 'Daftar Guru';
@@ -54,6 +56,8 @@ class Admin extends CI_Controller
 
         $this->load->model('Admin_model', 'admin');
         $data['guru'] = $this->admin->getAll();
+        $this->load->model('Role_model', 'role');
+        $data['role'] = $this->role->getRole();
 
         $this->session->set_userdata($data);
         $this->load->view('templates/header', $data);
@@ -62,6 +66,92 @@ class Admin extends CI_Controller
         $this->load->view('admin/guru', $data);
         $this->load->view('templates/footer');
     }
+
+    public function tambah_guru()
+    {
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+        $this->form_validation->set_rules('nip', 'NIP', 'required');
+        $this->form_validation->set_rules('nama', 'Nama', 'required');
+        $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required');
+        $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
+        $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
+        $this->form_validation->set_rules('agama', 'Agama', 'required');
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+        $this->form_validation->set_rules('no_telp', 'Nomor Telepon', 'required');
+        $this->form_validation->set_rules('tanggal_masuk', 'Tanggal Masuk', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->form_validation->set_rules('role_id', 'Role', 'required');
+        $this->form_validation->set_rules('is_active', 'Is Active', 'required');
+        $this->form_validation->set_rules('status', 'Status', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('username', 'Username', 'required');
+
+
+        if ($this->form_validation->run() == TRUE) {
+            $dataArray = array(
+                'nip'           => $this->input->post('nip', true),
+                'nama'          => $this->input->post('nama', true),
+                'tempat_lahir'  => $this->input->post('tempat_lahir', true),
+                'tanggal_lahir' => $this->input->post('tanggal_lahir', true),
+                'jenis_kelamin' => $this->input->post('jenis_kelamin', true),
+                'agama'         => $this->input->post('agama', true),
+                'alamat'        => $this->input->post('alamat', true),
+                'no_telp'       => $this->input->post('no_telp', true),
+                'tanggal_masuk' => $this->input->post('tanggal_masuk', true),
+                'email'         => $this->input->post('email', true),
+                'role_id'       => $this->input->post('role_id', true),
+                'is_active'     => $this->input->post('is_active', true),
+                'status'        => $this->input->post('status', true),
+                'password'      => $this->input->post('password', true),
+                'username'      => $this->input->post('username', true)
+            );
+
+            $this->load->model('Admin_model', 'admin');
+            $this->admin->tambah_guru($dataArray);
+            $this->session->set_flashdata('guru_message', '<div class="alert alert-success" role="alert">Data Guru Telah Ditambahkan!</div>');
+            redirect('admin/tambah_guru');
+        } else {
+            $this->session->set_flashdata('guru_message', '<div class="alert alert-danger" role="alert">Data Guru gagal ditambahkan!</div>');
+            redirect('admin/get_guru');
+        }
+    }
+
+    public function update_guru($id)
+    {
+        $this->db->update('guru', ['nip'           => $this->input->post('nip')], ['nip', $id]);
+        $this->db->update('guru', ['nama'          => $this->input->post('nama')], ['nip', $id]);
+        $this->db->update('guru', ['tempat_lahir'  => $this->input->post('tempat_lahir')], ['nip', $id]);
+        $this->db->update('guru', ['tanggal_lahir' => $this->input->post('tanggal_lahir')], ['nip', $id]);
+        $this->db->update('guru', ['jenis_kelamin' => $this->input->post('jenis_kelamin')], ['nip', $id]);
+        $this->db->update('guru', ['agama'         => $this->input->post('agama')], ['nip', $id]);
+        $this->db->update('guru', ['alamat'        => $this->input->post('alamat')], ['nip', $id]);
+        $this->db->update('guru', ['no_telp'       => $this->input->post('no_telp')], ['nip', $id]);
+        $this->db->update('guru', ['tanggal_masuk' => $this->input->post('tanggal_masuk')], ['nip', $id]);
+        $this->db->update('guru', ['email'         => $this->input->post('email')], ['nip', $id]);
+        $this->db->update('guru', ['role_id'       => $this->input->post('role_id')], ['nip', $id]);
+        $this->db->update('guru', ['is_active'     => $this->input->post('is_active')], ['nip', $id]);
+        $this->db->update('guru', ['status'        => $this->input->post('status')], ['nip', $id]);
+        $this->db->update('guru', ['password'      => $this->input->post('password')], ['nip', $id]);
+        $this->db->update('guru', ['username'      => $this->input->post('username')], ['nip', $id]);
+        // $this->load->model('Admin_model', 'admin');
+        // $this->admin->update($dataArray);
+        $this->session->set_flashdata('guru_message', '<div class="alert alert-success" role="alert">Data Guru berhasil diubah!</div>');
+
+        redirect('admin/get_guru');
+    }
+
+    public function delete_guru($id)
+    {
+        $this->load->model('Admin_model', 'guru');
+        $this->guru->delete_guru($id);
+        // untuk flashdata mempunyai 2 parameter (nama flashdata/alias, isi dari flashdatanya)
+        $this->session->set_flashdata('guru_message', '<div class="alert alert-success" role="alert">Data Guru berhasil dihapus!</div>');
+        redirect('admin/get_guru');
+    }
+    // end guru
+
+    // start siswa
 
     public function get_siswa()
     {
@@ -313,8 +403,12 @@ class Admin extends CI_Controller
         $this->session->set_userdata($data);
 
 
-        $this->load->model('mapel_model', 'mapel');
+        $this->load->model('Mapel_model', 'mapel');
         $data['mapel'] = $this->mapel->get_mapel();
+        $this->load->model('Kelas_model', 'kelas');
+        $data['kelas'] = $this->kelas->get_kelas();
+        $this->load->model('Admin_model', 'guru');
+        $data['guru'] = $this->guru->getAll();
 
         $this->session->set_userdata($data);
         $this->load->view('templates/header', $data);
@@ -353,7 +447,7 @@ class Admin extends CI_Controller
     {
         $data['title'] = 'Change Password';
 
-        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')]) ->row_array();
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
 
         $this->form_validation->set_rules('current_password', 'Current Password', 'required|trim');
         $this->form_validation->set_rules('new_password1', 'New Password', 'required|trim|min_length[6]|matches[new_password2]');
@@ -366,7 +460,6 @@ class Admin extends CI_Controller
             $this->load->view('templates/topbar', $data);
             $this->load->view('admin/changepassword', $data);
             $this->load->view('templates/footer');
-
         } else {
             $cek_old = $this->Admin_model->cek_old();
             if ($cek_old == false) {

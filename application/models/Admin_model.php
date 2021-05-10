@@ -5,24 +5,37 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Admin_model extends CI_Model
 {
 
-    private $table = "guru";
+    private $table = 'guru';
 
     public function getAll()
     {
-        return $this->db->get($this->table)->result_array();
+        $query = "SELECT `guru`.*, `user_role`.*
+        FROM `guru`
+        JOIN `user_role` ON `user_role`.`id_role` = `guru`.`role_id`
+        ";
+        return $this->db->query($query)->result_array();
     }
-    public function save($data)
+
+    public function tambah_guru($data)
     {
         return $this->db->insert($this->table, $data);
     }
+
     public function update($data)
     {
         return $this->db->update($this->table, $data);
     }
+
+    public function delete_guru($id)
+    {
+        return $this->db->delete('guru', array('nip' => $id));
+    }
+
     public function getById($id)
     {
         return $this->db->get_where($this->table, ["username" => $id])->row();
     }
+
     public function savepass()
     {
         $pass = $this->input->post('new_password1');
