@@ -30,7 +30,7 @@
 									<td><?= $g['alamat']; ?></td>
 									<td><?= $g['no_telp']; ?></td>
 									<td>
-										<button type="button" class="btn btn-primary btn-icon" href="" data-toggle="modal" data-target="#editkelasModal<?= $g['nip']; ?>">
+										<button type="button" class="btn btn-primary btn-icon" href="" data-toggle="modal" data-target="#detailsGuruModal<?= $g['nip']; ?>">
 											<i class="fas fa-info"></i>
 										</button>
 										<button type="button" class="btn btn-success btn-icon" href="" data-toggle="modal" data-target="#editkelasModal<?= $g['nip']; ?>">
@@ -49,11 +49,10 @@
 
 			</div>
 			<!-- /.container-fluid -->
-
 		</div>
 		<!-- End of Main Content -->
 
-		<!-- Tambah Kelas Modal -->
+		<!-- Tambah Guru Modal -->
 		<div class="modal fade" id="tambahGuruModal" tabindex="-1" aria-labelledby="tambahGuruModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -183,4 +182,89 @@
 				</div>
 			</div>
 		</div>
-		<!-- End Tambah Kelas Modal -->
+		</div>
+		</div>
+		</div>
+		<!-- End Tambah Guru Modal -->
+
+		<!-- Modal Details guru -->
+		<?php foreach ($guru as $g) : ?>
+			<div class="modal fade" id="detailsGuruModal<?= $g['nip'] ?>" tabindex="-1" kelas="dialog" aria-labelledby="detailsGuruModal<?= $g['nip']; ?>Label" aria-hidden="true">
+				<div class="modal-dialog" kelas="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="detailsMenuModal<?= $g['nip'] ?>">Details Guru</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div class="form-group">
+								<span>NIP</span>
+								<input type="text" class="form-control" readonly value="<?= $g['nip']; ?>" id="nip" name="nip">
+							</div>
+
+							<div class="form-group">
+								<span>Nama</span>
+								<input type="text" class="form-control" readonly value="<?= $g['nama']; ?>" id="nama" name="nama">
+							</div>
+
+							<div class="form-group">
+								<span>Tempat, Tanggal Lahir</span>
+								<input type="text" class="form-control" readonly value="<?= $g['tempat_lahir'] . ', ' . $g['tanggal_lahir'] ?>" id="tempat_lahir" name="tempat_lahir">
+							</div>
+
+							<div class="form-group">
+								<span>Jenis Kelamin</span>
+								<input type="text" class="form-control" readonly value="<?= $g['jenis_kelamin']; ?>">
+							</div>
+
+							<div class="form-group">
+								<span>Agama</span>
+								<input type="text" class="form-control" readonly value="<?= $g['agama']; ?>">
+							</div>
+
+							<div class="form-group">
+								<span>Alamat</span>
+								<input type="text" class="form-control" readonly value="<?= $g['alamat']; ?>">
+							</div>
+
+							<div class="form-group">
+								<span>Nomor Telepon</span>
+								<input type="text" class="form-control" readonly value="<?= $g['no_telp']; ?>">
+							</div>
+
+							<div class="form-group">
+								<span>Tanggal Masuk</span>
+								<input type="text" class="form-control" readonly value="<?= $g['tanggal_masuk']; ?>">
+							</div>
+
+							<div class="form-group">
+								<span>Role</span>
+								<!-- <input type="text" class="form-control" readonly value="<?= $g['nama_role']; ?>"> -->
+							</div>
+
+							<div class="form-group">
+								<span>Is Active</span>
+								<input type="text" class="form-control" readonly value="<?= $g['is_active']; ?>">
+							</div>
+
+							<div class="form-group">
+								<span>Username</span>
+								<input type="text" class="form-control" readonly value="<?= $g['username']; ?>">
+							</div>
+
+							<div class="form-group">
+								<span>Password</span>
+								<input type="text" class="form-control" readonly value="<?= $g['password']; ?>">
+							</div>
+
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		<?php endforeach; ?>
+		<!-- End Modal Details Guru -->

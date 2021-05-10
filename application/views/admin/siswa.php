@@ -60,9 +60,9 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<h5 class="modal-title" id="detailsMenuModal<?= $s['nis'] ?>">Details Siswa</h5>
-							<buttond type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
-							</buttond>
+							</button>
 						</div>
 						<div class="modal-body">
 							<div class="form-group">
