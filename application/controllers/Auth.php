@@ -56,7 +56,13 @@ class Auth extends CI_Controller
                         $this->session->set_userdata($data);
                         redirect('wali_kelas');
                     } else {
-                        echo 'Selamat datang Guru';
+                        $data = [
+                            'username' => $guru['username'],
+                            'role_id' => $guru['role_id']
+                        ];
+                        $this->session->set_userdata($data);
+                        redirect('Bk');
+                        // echo 'Selamat datang Guru';
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert 

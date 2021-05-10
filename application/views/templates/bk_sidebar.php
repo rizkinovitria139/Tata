@@ -6,7 +6,7 @@
                 <div class="sidebar-brand-icon">
                     <img class="img-profile" height="50" width="50" src="<?= base_url('assets/img/siswa.png') ?>">
                 </div>
-                <div class="sidebar-brand-text mx-3">Wali Kelas</div>
+                <div class="sidebar-brand-text mx-3">Bimbingan Konseling</div>
             </a>
 
             <!-- Divider -->
@@ -26,44 +26,18 @@
             <div class="sidebar-heading">
                 Interface
             </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-users"></i>
-                    <span>Siswa</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href=" <?= base_url("profile") ?>">Profile</a>
-                        <a class="collapse-item" href=" <?= base_url("change_password") ?>">Rubah Password</a>
-                        <a class="collapse-item" href=" <?= base_url("lapor") ?>">Lapor BK</a>
-                    </div>
-                </div>
-            </li>
-
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('nilai'); ?>">
+                <a class="nav-link" href="<?= base_url('pelanggaran'); ?>">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Nilai</span></a>
+                    <span>Data Pelanggaran</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('presensi'); ?>">
+                <a class="nav-link" href="<?= base_url('bk_nilai'); ?>">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Presensi</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('mapel'); ?>">
-                    <i class="fas fa-flask"></i>
-                    <span>Mata Pelajaran</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('jadwal'); ?>">
-                    <i class="fas fa-th-list"></i>
-                    <span>Jadwal</span></a>
+                    <span>Penilaian</span></a>
             </li>
 
             <!-- Divider -->
