@@ -33,7 +33,7 @@
 										<button type="button" class="btn btn-primary btn-icon" href="" data-toggle="modal" data-target="#detailsGuruModal<?= $g['nip']; ?>">
 											<i class="fas fa-info"></i>
 										</button>
-										<button type="button" class="btn btn-success btn-icon" href="" data-toggle="modal" data-target="#editkelasModal<?= $g['nip']; ?>">
+										<button type="button" class="btn btn-success btn-icon" href="" data-toggle="modal" data-target="#editGuruModal<?= $g['nip']; ?>">
 											<i class="far fa-edit"></i>
 										</button>
 										<button type="button" class="btn btn-danger" href="<?= base_url('admin/deleteguru/') . $g['nip']; ?>" onclick="return confirm('Are you sure to delete this data ?');">
@@ -268,3 +268,113 @@
 			</div>
 		<?php endforeach; ?>
 		<!-- End Modal Details Guru -->
+
+		<!-- Modal Edit Guru -->
+		<?php foreach ($guru as $g) : ?>
+			<div class="modal fade" id="editGuruModal<?= $g['nip'] ?>" tabindex="-1" kelas="dialog" aria-labelledby="editGuruModal<?= $g['nip']; ?>Label" aria-hidden="true">
+				<div class="modal-dialog" kelas="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="editMenuModal<?= $g['nip'] ?>">Edit Guru</h5>
+							<buttond type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</buttond>
+						</div>
+						<form action="<?= base_url('admin/update_guru/' . $g['nip']); ?>" method="post">
+							<div class="modal-body">
+								<div class="form-group">
+									<span>NIP</span>
+									<input type="text" class="form-control" value="<?= $g['nip']; ?>" id="nip" name="nip">
+								</div>
+
+								<div class="form-group">
+									<span>Nama</span>
+									<input type="text" class="form-control" value="<?= $g['nama']; ?>" id="nama" name="nama">
+								</div>
+
+								<div class="form-group">
+									<span>Tempat Lahir</span>
+									<input type="text" class="form-control" value="<?= $g['tempat_lahir'] ?>" id="tempat_lahir" name="tempat_lahir">
+								</div>
+
+								<div class="form-group">
+									<span>Tanggal Lahir</span>
+									<input type="date" class="form-control" value="<?= $g['tanggal_lahir'] ?>" id="tanggal_lahir" name="tanggal_lahir">
+								</div>
+
+								<div class="form-group">
+									<span>Jenis Kelamin </span>
+									<select name="jenis_kelamin" id="jenis_kelamin">
+										<option value="<?= $g['jenis_kelamin'] ?>" selected> <?= $g['jenis_kelamin'] ?> </option>
+										<option value="perempuan">Perempuan</option>
+										<option value="lakilaki">Laki-laki</option>
+										<?= form_error('jenis_kelamin', '<small class="text-danger pl-3">', '</small>'); ?>
+									</select>
+								</div>
+
+								<div class="form-group">
+									<span>Agama </span>
+									<select name="agama" id="agama">
+										<option value="<?= $g['agama'] ?>" selected> <?= $g['agama'] ?> </option>
+										<option value="islam">Islam</option>
+										<option value="kristen">Kristen</option>
+										<option value="katolik">Katolik</option>
+										<option value="hindu">Hindu</option>
+										<option value="budha">Budha</option>
+										<option value="konghucu">Konghucu</option>
+									</select>
+									<?= form_error('agama', '<small class="text-danger pl-3">', '</small>'); ?>
+								</div>
+
+								<div class="form-group">
+									<span>Alamat</span>
+									<input type="text" class="form-control" value="<?= $g['alamat']; ?>" id="alamat" name="alamat">
+								</div>
+
+								<div class="form-group">
+									<span>Nomor Telepon</span>
+									<input type="text" class="form-control" value="<?= $g['no_telp']; ?>" id="no_telp" name="no_telp">
+								</div>
+
+								<div class="form-group">
+									<span>Tanggal Masuk</span>
+									<input type="date" class="form-control" value="<?= $g['tanggal_masuk']; ?>" id="tanggal_masuk" name="tanggal_masuk">
+								</div>
+
+								<div class="form-group">
+									<span>Role</span>
+									<select name="role_id" id="role_id">
+										<option value="<?= $g['role_id'] ?>" selected><?= $g['role_id'] . ' - ' . $g['nama_role'] ?></option>
+										<?php foreach ($role as $r) { ?>
+											<option value="<?= $r['id_role'] ?>"><?php echo $r['id_role'] . ' - ' . $r['nama_role']; ?></option>
+										<?php }; ?>
+									</select>
+
+								</div>
+
+								<div class="form-group">
+									<span>Is Active</span>
+									<input type="text" class="form-control" value="<?= $g['is_active']; ?>" id="is_active" name="is_active">
+								</div>
+
+								<div class="form-group">
+									<span>Username</span>
+									<input type="text" class="form-control" value="<?= $g['username']; ?>" id="username" name="username">
+								</div>
+
+								<div class="form-group">
+									<span>Password</span>
+									<input type="text" class="form-control" value="<?= $g['password']; ?>" id="password" name="password">
+								</div>
+
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								<button type="submit" class="btn btn-primary">Simpan</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		<?php endforeach; ?>
+		<!-- End Mdal Edit Guru -->

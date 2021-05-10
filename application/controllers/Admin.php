@@ -116,6 +116,30 @@ class Admin extends CI_Controller
             redirect('admin/get_guru');
         }
     }
+
+    public function update_guru($id)
+    {
+        $this->db->update('guru', ['nip'           => $this->input->post('nip')], ['nip', $id]);
+        $this->db->update('guru', ['nama'          => $this->input->post('nama')], ['nip', $id]);
+        $this->db->update('guru', ['tempat_lahir'  => $this->input->post('tempat_lahir')], ['nip', $id]);
+        $this->db->update('guru', ['tanggal_lahir' => $this->input->post('tanggal_lahir')], ['nip', $id]);
+        $this->db->update('guru', ['jenis_kelamin' => $this->input->post('jenis_kelamin')], ['nip', $id]);
+        $this->db->update('guru', ['agama'         => $this->input->post('agama')], ['nip', $id]);
+        $this->db->update('guru', ['alamat'        => $this->input->post('alamat')], ['nip', $id]);
+        $this->db->update('guru', ['no_telp'       => $this->input->post('no_telp')], ['nip', $id]);
+        $this->db->update('guru', ['tanggal_masuk' => $this->input->post('tanggal_masuk')], ['nip', $id]);
+        $this->db->update('guru', ['email'         => $this->input->post('email')], ['nip', $id]);
+        $this->db->update('guru', ['role_id'       => $this->input->post('role_id')], ['nip', $id]);
+        $this->db->update('guru', ['is_active'     => $this->input->post('is_active')], ['nip', $id]);
+        $this->db->update('guru', ['status'        => $this->input->post('status')], ['nip', $id]);
+        $this->db->update('guru', ['password'      => $this->input->post('password')], ['nip', $id]);
+        $this->db->update('guru', ['username'      => $this->input->post('username')], ['nip', $id]);
+        // $this->load->model('Admin_model', 'admin');
+        // $this->admin->update($dataArray);
+        $this->session->set_flashdata('guru_message', '<div class="alert alert-success" role="alert">Data Guru berhasil diubah!</div>');
+
+        redirect('admin/get_guru');
+    }
     // end guru
 
     // start siswa
