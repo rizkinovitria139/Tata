@@ -241,7 +241,7 @@
 
 							<div class="form-group">
 								<span>Role</span>
-								<!-- <input type="text" class="form-control" readonly value="<?= $g['nama_role']; ?>"> -->
+								<input type="text" class="form-control" readonly value="<?= $g['nama_role']; ?>">
 							</div>
 
 							<div class="form-group">

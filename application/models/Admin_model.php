@@ -9,7 +9,11 @@ class Admin_model extends CI_Model
 
     public function getAll()
     {
-        return $this->db->get($this->table)->result_array();
+        $query = "SELECT `guru`.*, `user_role`.*
+        FROM `guru`
+        JOIN `user_role` ON `user_role`.`id_role` = `guru`.`role_id`
+        ";
+        return $this->db->query($query)->result_array();
     }
 
     public function tambah_guru($data)
