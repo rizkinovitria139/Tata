@@ -26,6 +26,11 @@ class Admin_model extends CI_Model
         return $this->db->update($this->table, $data);
     }
 
+    public function delete_guru($id)
+    {
+        return $this->db->delete('guru', array('nip' => $id));
+    }
+
     public function getById($id)
     {
         return $this->db->get_where($this->table, ["username" => $id])->row();

@@ -36,9 +36,9 @@
 										<button type="button" class="btn btn-success btn-icon" href="" data-toggle="modal" data-target="#editGuruModal<?= $g['nip']; ?>">
 											<i class="far fa-edit"></i>
 										</button>
-										<button type="button" class="btn btn-danger" href="<?= base_url('admin/deleteguru/') . $g['nip']; ?>" onclick="return confirm('Are you sure to delete this data ?');">
+										<a class="btn btn-danger" href="<?= base_url('admin/delete_guru/') . $g['nip']; ?>" onclick="return confirm('Are you sure to delete this data ?');">
 											<i class="far fa-trash-alt"></i>
-										</button>
+										</a>
 									</td>
 								</tr>
 							<?php endforeach; ?>

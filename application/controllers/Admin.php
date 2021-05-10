@@ -140,6 +140,15 @@ class Admin extends CI_Controller
 
         redirect('admin/get_guru');
     }
+
+    public function delete_guru($id)
+    {
+        $this->load->model('Admin_model', 'guru');
+        $this->guru->delete_guru($id);
+        // untuk flashdata mempunyai 2 parameter (nama flashdata/alias, isi dari flashdatanya)
+        $this->session->set_flashdata('guru_message', '<div class="alert alert-success" role="alert">Data Guru berhasil dihapus!</div>');
+        redirect('admin/get_guru');
+    }
     // end guru
 
     // start siswa
