@@ -47,8 +47,6 @@
 
                 <button type="submit" class="btn btn-outline-info mb-2 ml-auto"><i class="fas fa-eye"></i>Tampilkan
                     Data</button>
-                <a href="" class="btn btn-outline-success mb-2 ml-2"><i class="fas fa-plus"></i> Tambah Presensi
-                </a>
             </form>
         </div>
 
@@ -83,7 +81,7 @@ if ((isset($_GET['bulan']) && $_GET['bulan'] !='') && (isset($_GET['tahun']) && 
             <td class="text-center">Hadir</td>
             <td class="text-center">Sakit</td>
             <td class="text-center">Alpha</td>
-            <td class="text-center">NIP Pengajar</td>
+
         </tr>
 
         <?php $no=1; foreach($datapresensi as $dp) : ?>
@@ -95,7 +93,7 @@ if ((isset($_GET['bulan']) && $_GET['bulan'] !='') && (isset($_GET['tahun']) && 
             <td><?php echo $dp ->hadir ?></td>
             <td><?php echo $dp ->sakit ?></td>
             <td><?php echo $dp ->alpha ?></td>
-            <td><?php echo $dp ->nip ?></td>
+
         </tr>
         <?php endforeach; ?>
 

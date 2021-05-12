@@ -19,11 +19,9 @@ class DataPresensi extends CI_Controller
                 $bulantahun = $bulan.$tahun;
             }
     
-            $data['datapresensi'] = $this->db->query("SELECT `siswa`.*, `presensi`.*, `guru`.*, `kelas`.*
+            $data['datapresensi'] = $this->db->query("SELECT `siswa`.*, `presensi`.*, `kelas`.*
             FROM `siswa` JOIN `presensi`
              ON `siswa`.`nis` = `presensi`.`nis` 
-             JOIN `guru`
-             ON `presensi`.`nip` = `guru`.`nip`
              JOIN `kelas`
              ON `presensi`.`id_kelas` = `kelas`.`id_kelas`
              WHERE `presensi`.`bulan` = $bulantahun
