@@ -51,10 +51,11 @@ class Auth extends CI_Controller
                     if ($guru['role_id'] == 8) {
                         $data = [
                             'username' => $guru['username'],
-                            'role_id' => $guru['role_id']
+                            'role_id' => $guru['role_id'],
+                            'nama' => $guru['nama']
                         ];
                         $this->session->set_userdata($data);
-                        redirect('wali_kelas');
+                        redirect('Guru_Mapel');
                     } else {
                         $data = [
                             'username' => $guru['username'],
