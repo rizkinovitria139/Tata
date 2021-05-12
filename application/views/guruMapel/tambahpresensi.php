@@ -10,6 +10,9 @@
                     Filter Data Presensi Siswa
                 </div>
                 <div class="card-body">
+
+                    <?= $this->session->flashdata('message');?>
+
                     <form class="form-inline">
                         <div class="form-group mb-2">
                             <label for="staticEmail2">Bulan : </label>
@@ -104,7 +107,7 @@
                     <td><?php echo $dp ->hadir ?></td>
                     <td><?php echo $dp ->sakit ?></td>
                     <td><?php echo $dp ->alpha ?></td>
-                    <!-- <td><?php echo $dp ->nip ?></td> -->
+
                 </tr>
                 <?php endforeach; ?>
 

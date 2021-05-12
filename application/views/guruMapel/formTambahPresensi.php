@@ -10,6 +10,9 @@
                     Tambah Presensi Siswa
                 </div>
                 <div class="card-body">
+
+                    <!-- <?= $this->session->flashdata('message');?> -->
+
                     <form class="form-inline">
                         <div class="form-group mb-2">
                             <label for="staticEmail2">Bulan : </label>
@@ -101,8 +104,6 @@
                         <td><?php echo $dp ->nama ?></td>
                         <td><?php echo $dp ->nama_kelas ?></td>
 
-                        <!-- <td><?php echo $dp ->nip ?></td> -->
-
                         <td><input type="number" name="hadir[]" class="form-control" value="0"></td>
                         <td><input type="number" name="sakit[]" class="form-control" value="0"></td>
                         <td><input type="number" name="alpha[]" class="form-control" value="0"></td>
@@ -112,8 +113,6 @@
                 </table><br><br><br><br>
             </form>
         </div>
-
-
 
         </div>
         <!-- /.container-fluid -->
