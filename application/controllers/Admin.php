@@ -478,6 +478,27 @@ class Admin extends CI_Controller
             }
         }
     }
+
+    public function get_nilai()
+    {
+        $data['title'] = 'Daftar Nilai Siswa';
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+
+        $this->session->set_userdata($data);
+
+
+        $this->load->model('Nilai_model', 'nilai');
+        $data['nilai'] = $this->nilai->getAll();
+
+
+        $this->session->set_userdata($data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/nilai', $data);
+        $this->load->view('templates/footer');
+    }
 }
     
     /* End of file Guru.php */
