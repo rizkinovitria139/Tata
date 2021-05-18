@@ -420,9 +420,31 @@ class Admin extends CI_Controller
 
     public function tambah_mapel()
     {
+        $this->form_validation->set_rules('nama_mapel', 'Nama Mapel', 'required');
+        $this->form_validation->set_rules('nip_pengajar', 'NIP Pengajar', 'required');
+        $this->form_validation->set_rules('kelas', 'Tingkat', 'required');
+        $this->form_validation->set_rules('id_kelas', 'Kelas', 'required');
+
+        if ($this->form_validation->run() == true) {
+            // $data['id_kelas'] = $this->input->post('id_kelas');
+            $data['nama_mapel'] = $this->input->post('nama_mapel');
+            $data['nip_pengajar'] = $this->input->post('nip_pengajar');
+            $data['kelas'] = $this->input->post('kelas');
+            $data['id_kelas'] = $this->input->post('id_kelas');
+
+            $this->load->model('mapel_model', 'mapel');
+            $this->mapel->tambah_mapel($data);
+
+            $this->session->set_flashdata('mapel_message', 'Mata Pelajaran berhasil ditambahkan');
+            redirect('admin/tambah_mapel');
+        } else {
+            $this->session->set_flashdata('mapel_message', 'Mata pelajaran gagal ditambahkan!');
+            redirect('admin/get_mapel');
+        }
     }
     // end bagian mapel
 
+    // start bagian jadwal
     public function get_jadwal()
     {
         $data['title'] = 'Daftar Jadwal';
@@ -442,6 +464,13 @@ class Admin extends CI_Controller
         $this->load->view('admin/jadwal', $data);
         $this->load->view('templates/footer');
     }
+
+    // public function tambah_jadwal()
+    // {
+    // }
+
+    // end bagian jadwal
+
 
     public function changePassword()
     {
