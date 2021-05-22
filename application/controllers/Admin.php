@@ -340,6 +340,10 @@ class Admin extends CI_Controller
 
         $this->load->model('kelas_model', 'kelas');
         $data['kelas'] = $this->kelas->get_kelas();
+        $this->load->model('Admin_model', 'guru');
+        $data['guru'] = $this->guru->getAll();
+        $this->load->model('Tahun_model', 'tahun_akademik');
+        $data['tahun_akademik'] = $this->tahun_akademik->getAll();
 
         $this->session->set_userdata($data);
         $this->load->view('templates/header', $data);
@@ -365,7 +369,7 @@ class Admin extends CI_Controller
             $this->load->model('kelas_model', 'kelas');
             $this->kelas->tambah_kelas($data);
             $this->session->set_flashdata('kelas_message', 'Kelas berhasil ditambahkan');
-            redirect('admin/tambah_kelas');
+            redirect('admin/get_kelas');
         } else {
             $this->session->set_flashdata('kelas_message', 'Kelas gagal ditambahkan!');
             redirect('admin/get_kelas');
@@ -402,7 +406,6 @@ class Admin extends CI_Controller
 
         $this->session->set_userdata($data);
 
-
         $this->load->model('Mapel_model', 'mapel');
         $data['mapel'] = $this->mapel->get_mapel();
         $this->load->model('Kelas_model', 'kelas');
@@ -431,14 +434,15 @@ class Admin extends CI_Controller
             $data['nip_pengajar'] = $this->input->post('nip_pengajar');
             $data['kelas'] = $this->input->post('kelas');
             $data['id_kelas'] = $this->input->post('id_kelas');
+            $data['success'] = 'Data Mata Pelajaran Berhasil Ditambahkan!';
 
-            $this->load->model('mapel_model', 'mapel');
-            $this->mapel->tambah_mapel($data);
+            $this->load->model('Mapel_model', 'mapel');
+            $data['mapel'] = $this->mapel->tambah_mapel();
 
             $this->session->set_flashdata('mapel_message', 'Mata Pelajaran berhasil ditambahkan');
-            redirect('admin/tambah_mapel');
+            redirect('admin/get_mapel');
         } else {
-            $this->session->set_flashdata('mapel_message', 'Mata pelajaran gagal ditambahkan!');
+            // $this->session->set_flashdata('mapel_message', 'Mata pelajaran gagal ditambahkan!');
             redirect('admin/get_mapel');
         }
     }

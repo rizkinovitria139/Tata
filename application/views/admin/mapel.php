@@ -71,7 +71,7 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<form action="<?php echo base_url(); ?>admin/tambah_kelas" method="post">
+					<form action="<?php echo base_url(); ?>admin/tambah_mapel" method="post">
 						<div class="modal-body">
 							<!-- <span>ID Kelas</span>
 							<div class="form-group">
@@ -82,25 +82,27 @@
 								<input type="text" class="form-control" id="nama_mapel" name="nama_mapel" placeholder="Masukkan Nama Mapel">
 							</div>
 							<span>Pengajar</span>
-							<? foreach ($guru as $g) : ?>
 
-								<div class="form-group">
-									<select class="form-control" name="nip_pengajar" id="nip_pengajar">
-										<option selected>Pilih Wali Kelas </option>
-										<option value="<?= $g['nip']; ?>"><?php echo $g['nip'] . ' - ' . $g['nama']; ?></option>
-									</select>
-								</div>
-							<? endforeach; ?>
+							<div class="form-group">
+								<select class="form-control" name="nip_pengajar" id="nip_pengajar">
+									<option value="" selected></option>
+									<?php foreach ($guru as $r) { ?>
+										<option value="<?= $r['nip'] ?>">
+											<?php echo $r['nip'] . ' - ' . $r['nama']; ?></option>
+									<?php }; ?>
+								</select>
+							</div>
 
 							<span>Kelas</span>
 							<div class="form-group">
 								<select class="form-control" name="id_kelas" id="id_kelas">
-									<? foreach ($kelas as $k) : ?>
-										<option selected>Pilih Kelas</option>
-										<option value="<?= $k['id_kelas']; ?>"><?php echo $k['id_kelas'] . ' - ' . $k['nama_kelas']; ?></option>
+									<option value="" selected></option>
+									<?php foreach ($kelas as $r) { ?>
+										<option value="<?= $r['id_kelas'] ?>">
+											<?php echo $r['id_kelas'] . ' - ' . $r['nama_kelas']; ?></option>
+									<?php }; ?>
 								</select>
 							</div>
-						<? endforeach; ?>
 
 						</div>
 						<div class="modal-footer">
