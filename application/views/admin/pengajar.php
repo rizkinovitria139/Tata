@@ -17,8 +17,8 @@
 		                    <tr>
 		                        <th scope="col">#</th>
 		                        <th scope="col">Mata Pelajaran</th>
-		                        <th scope="col">Kelas</th>
-		                        <th scope="col">Action</th>
+		                        <th scope="col">Pengajar</th>
+
 		                    </tr>
 		                </thead>
 		                <tbody>
@@ -27,8 +27,7 @@
 		                    <tr>
 		                        <td><?= $i ?></td>
 		                        <td><?= $m['nama_mapel']; ?></td>
-		                        <td><?= $m['nama_kelas']; ?></td>
-
+		                        <td><?= $m['nama']; ?></td>
 		                        <td>
 		                            <button type="button" class="btn btn-primary btn-icon" href="" data-toggle="modal"
 		                                data-target="#editkelasModal<?= $m['id_mapel']; ?>">

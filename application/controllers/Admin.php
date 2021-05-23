@@ -407,8 +407,6 @@ class Admin extends CI_Controller
         $data['mapel'] = $this->mapel->get_mapel();
         $this->load->model('Kelas_model', 'kelas');
         $data['kelas'] = $this->kelas->get_kelas();
-        $this->load->model('Admin_model', 'guru');
-        $data['guru'] = $this->guru->getAll();
 
         $this->session->set_userdata($data);
         $this->load->view('templates/header', $data);
@@ -421,14 +419,12 @@ class Admin extends CI_Controller
     public function tambah_mapel()
     {
         $this->form_validation->set_rules('nama_mapel', 'Nama Mapel', 'required');
-        $this->form_validation->set_rules('nip_pengajar', 'NIP Pengajar', 'required');
         $this->form_validation->set_rules('kelas', 'Tingkat', 'required');
         $this->form_validation->set_rules('id_kelas', 'Kelas', 'required');
 
         if ($this->form_validation->run() == true) {
             // $data['id_kelas'] = $this->input->post('id_kelas');
             $data['nama_mapel'] = $this->input->post('nama_mapel');
-            $data['nip_pengajar'] = $this->input->post('nip_pengajar');
             $data['kelas'] = $this->input->post('kelas');
             $data['id_kelas'] = $this->input->post('id_kelas');
 

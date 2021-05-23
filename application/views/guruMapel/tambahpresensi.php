@@ -51,9 +51,9 @@
                         <button type="submit" class="btn btn-outline-info mb-2 ml-auto"><i
                                 class="fas fa-eye"></i>Tampilkan
                             Data</button>
-                        <a href="<?Php echo base_url('Tambah_presensi/inputPresensi') ?>"
+                        <!-- <a href="<?Php echo base_url('Tambah_presensi/inputPresensi') ?>"
                             class="btn btn-outline-success mb-2 ml-2"><i class="fas fa-plus"></i> Tambah Presensi
-                        </a>
+                        </a> -->
                     </form>
                 </div>
 
