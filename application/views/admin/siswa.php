@@ -186,7 +186,7 @@
 
 							<div class="form-group">
 								<span>Password</span>
-								<input type="text" class="form-control" readonly value="<?= $s['password']; ?>">
+								<input type="password" class="form-control" readonly value="<?= $s['password']; ?>">
 							</div>
 
 							<div class="form-group">
@@ -254,7 +254,7 @@
 
 								<div class="form-group">
 									<span>Agama </span>
-									<select name="agama" id="agama">
+									<select class="form-control" name="agama" id="agama">
 										<option value="<?= $s['agama'] ?>" selected> <?= $s['agama'] ?> </option>
 										<option value="islam">Islam</option>
 										<option value="kristen">Kristen</option>
@@ -293,7 +293,7 @@
 
 								<div class="form-group">
 									<span>Diterima di kelas </span>
-									<select name="diterima_di_kelas" id="diterima_di_kelas">
+									<select class="form-control" name="diterima_di_kelas" id="diterima_di_kelas">
 										<option value="<?= $s['diterima_di_kelas'] ?>" selected> <?= $s['diterima_di_kelas'] ?> </option>
 										<option value="7">7</option>
 										<option value="8">8</option>
@@ -358,7 +358,7 @@
 
 								<div class="form-group">
 									<span>Role</span>
-									<select name="role_id" id="role_id">
+									<select class="form-control" name="role_id" id="role_id">
 										<option value="<?= $s['role_id'] ?>" selected><?= $s['role_id'] . ' - ' . $s['nama_role'] ?></option>
 										<?php foreach ($role as $r) { ?>
 											<option value="<?= $r['id_role'] ?>"><?php echo $r['id_role'] . ' - ' . $r['nama_role']; ?></option>
@@ -379,12 +379,12 @@
 
 								<div class="form-group">
 									<span>Password</span>
-									<input type="text" class="form-control" value="<?= $s['password']; ?>" id="password" name="password">
+									<input type="password" class="form-control" value="<?= $s['password']; ?>" id="password" name="password" readonly>
 								</div>
 
 								<div class="form-group">
 									<span>Kelas</span>
-									<select name="id_kelas" id="id_kelas">
+									<select class="form-control" name="id_kelas" id="id_kelas">
 										<option value="<?= $s['id_kelas'] ?>" selected><?= $s['id_kelas'] . ' - ' . $s['nama_kelas'] ?></option>
 										<?php foreach ($kelas as $k) { ?>
 											<option value="<?= $k['id_kelas'] ?>"><?php echo $k['nama_kelas'] . ' - ' . $k['tahun']; ?></option>
