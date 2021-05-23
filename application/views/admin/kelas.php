@@ -10,6 +10,7 @@
 
 				<?= $this->session->flashdata('kelas_message') ?>
 
+
 				<div class="row">
 
 					<table class="table table-hover">
@@ -37,6 +38,7 @@
 										<a class="btn btn-danger" href="<?= base_url('admin/delete_kelas/') . $k['id_kelas']; ?>" onclick="return confirm('Are you sure to delete this data ?');">
 											<i class="far fa-trash-alt"></i>
 										</a>
+										<button class="btn btn-success btn-icon" type="button" id="tombol" onclick="Swal('Hello World','Latihan Sweetalert','success')"></button>
 									</td>
 								</tr>
 								<?php $i++; ?>
@@ -82,26 +84,26 @@
 								<input type="text" class="form-control" id="nama_kelas" name="nama_kelas" placeholder="Masukkan Nama Kelas">
 							</div>
 							<span>Wali Kelas</span>
-							<? foreach ($kelas as $k) : ?>
-
-								<div class="form-group">
-									<select class="form-control" id="status" name="nip_wali_kelas" id="nip_wali_kelas">
-										<option selected>Pilih Wali Kelas </option>
-										<option value="<?= $k['nip']; ?>"><?php echo $k['nip'] . ' - ' . $k['nama']; ?></option>
-									</select>
-								</div>
-							<? endforeach; ?>
+							<div class="form-group">
+								<select class="form-control" name="nip_wali_kelas" id="nip_wali_kelas">
+									<option value="" selected></option>
+									<?php foreach ($guru as $g) { ?>
+										<option value="<?= $g['nip'] ?>">
+											<?php echo $g['nip'] . ' - ' . $g['nama']; ?></option>
+									<?php }; ?>
+								</select>
+							</div>
 
 							<span>Tahun Akademik</span>
-							<? foreach ($kelas as $k) : ?>
-
-								<div class="form-group">
-									<select class="form-control" id="status" name="id_tahun_akademik" id="id_tahun_akademik">
-										<option selected>Pilih Tahun Akademik </option>
-										<option value="<?= $k['id_tahun_akademik']; ?>"><?php echo $k['id_tahun_akademik'] . ' - ' . $k['tahun']; ?></option>
-									</select>
-								</div>
-							<? endforeach; ?>
+							<div class="form-group">
+								<select class="form-control" name="id_tahun_akademik" id="id_tahun_akademik">
+									<option value="" selected></option>
+									<?php foreach ($tahun_akademik as $t) { ?>
+										<option value="<?= $t['id_tahun_akademik'] ?>">
+											<?php echo $t['id_tahun_akademik'] . ' - ' . $t['tahun']; ?></option>
+									<?php }; ?>
+								</select>
+							</div>
 
 						</div>
 						<div class="modal-footer">
@@ -137,18 +139,24 @@
 								</div>
 
 								<div class="form-group">
-									<select class="form-control" id="status" name="nip_wali_kelas" id="nip_wali_kelas">
-										<option selected>Pilih Wali Kelas </option>
-										<option value="<?= $k['nip']; ?>"><?php echo $k['nip'] . ' - ' . $k['nama']; ?></option>
+									<select class="form-control" name="nip_wali_kelas" id="nip_wali_kelas">
+										<option value="" selected></option>
+										<?php foreach ($guru as $g) { ?>
+											<option value="<?= $g['nip'] ?>">
+												<?php echo $g['nip'] . ' - ' . $g['nama']; ?></option>
+										<?php }; ?>
 									</select>
 								</div>
 
 
 								<div class="form-group">
 									<span>Tahun Akademik</span>
-									<select class="form-control" id="status" name="id_tahun_akademik" id="id_tahun_akademik">
-										<option selected><?= $k['id_tahun_akademik']; ?></option>
-										<option value="<?= $k['id_tahun_akademik']; ?>"><?php echo $k['id_tahun_akademik'] . ' - ' . $k['tahun']; ?></option>
+									<select class="form-control" name="id_tahun_akademik" id="id_tahun_akademik">
+										<option value="" selected></option>
+										<?php foreach ($tahun_akademik as $t) { ?>
+											<option value="<?= $t['id_tahun_akademik'] ?>">
+												<?php echo $t['id_tahun_akademik'] . ' - ' . $t['tahun']; ?></option>
+										<?php }; ?>
 									</select>
 								</div>
 
