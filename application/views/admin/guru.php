@@ -256,7 +256,7 @@
 
 							<div class="form-group">
 								<span>Password</span>
-								<input type="text" class="form-control" readonly value="<?= $g['password']; ?>">
+								<input type="password" class="form-control" readonly value="<?= $g['password']; ?>">
 							</div>
 
 						</div>
@@ -364,7 +364,7 @@
 
 								<div class="form-group">
 									<span>Password</span>
-									<input type="text" class="form-control" value="<?= $g['password']; ?>" id="password" name="password">
+									<input type="password" class="form-control" value="<?= $g['password']; ?>" id="password" name="password" readonly>
 								</div>
 
 							</div>

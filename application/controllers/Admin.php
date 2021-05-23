@@ -134,10 +134,8 @@ class Admin extends CI_Controller
         $this->db->update('guru', ['status'        => $this->input->post('status')], ['nip', $id]);
         $this->db->update('guru', ['password'      => $this->input->post('password')], ['nip', $id]);
         $this->db->update('guru', ['username'      => $this->input->post('username')], ['nip', $id]);
-        // $this->load->model('Admin_model', 'admin');
-        // $this->admin->update($dataArray);
-        $this->session->set_flashdata('guru_message', '<div class="alert alert-success" role="alert">Data Guru berhasil diubah!</div>');
 
+        $this->session->set_flashdata('guru_message', '<div class="alert alert-success" role="alert">Data Guru berhasil diubah!</div>');
         redirect('admin/get_guru');
     }
 
@@ -289,7 +287,7 @@ class Admin extends CI_Controller
         $this->db->update('siswa', ['nisn'                  => $this->input->post('nisn')], ['nis' => $id]);
         $this->db->update('siswa', ['nama'                  => $this->input->post('nama')], ['nis' => $id]);
         $this->db->update('siswa', ['tempat_lahir'          => $this->input->post('tempat_lahir')], ['nis' => $id]);
-        $this->db->update('siswa', ['tanggal_lahir'         => $this->input->post('tanggal-lahir')], ['nis' => $id]);
+        $this->db->update('siswa', ['tanggal_lahir'         => $this->input->post('tanggal_lahir')], ['nis' => $id]);
         $this->db->update('siswa', ['jenis_kelamin'         => $this->input->post('jenis_kelamin')], ['nis' => $id]);
         $this->db->update('siswa', ['agama'                 => $this->input->post('agama')], ['nis' => $id]);
         $this->db->update('siswa', ['status_dalam_keluarga' => $this->input->post('status_dalam_keluarga')], ['nis' => $id]);
