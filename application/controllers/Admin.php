@@ -517,10 +517,23 @@ class Admin extends CI_Controller
 
     public function edit_jadwal($id)
     {
+        $this->db->update('jadwal', ['id_kelas' => $this->input->post('id_kelas')], ['id' => $id]);
+        $this->db->update('jadwal', ['id_mapel' => $this->input->post('id_mapel')], ['id' => $id]);
+        $this->db->update('jadwal', ['hari' => $this->input->post('hari')], ['id' => $id]);
+        $this->db->update('jadwal', ['waktu' => $this->input->post('waktu')], ['id' => $id]);
+        $this->db->update('jadwal', ['jam_ke' => $this->input->post('jam_ke')], ['id' => $id]);
+
+        $this->session->set_flashdata('jadwal_message', '<div class="alert alert-warning" role="alert">Jadwal berhasil diubah!</div>');
+        redirect('admin/get_jadwal', 'refresh');
     }
 
     public function delete_jadwal($id)
     {
+        $this->load->model('Jadwal_model', 'jadwal');
+        $this->jadwal->delete_jadwal($id);
+        // untuk flashdata mempunyai 2 parameter (nama flashdata/alias, isi dari flashdatanya)
+        $this->session->set_flashdata('jadwal_message', '<div class="alert alert-danger" role="alert">Jadwal berhasil dihapus!</div>');
+        redirect('admin/get_jadwal', 'refresh');
     }
     // end bagian jadwal
 
