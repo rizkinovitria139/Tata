@@ -368,10 +368,10 @@ class Admin extends CI_Controller
 
             $this->load->model('kelas_model', 'kelas');
             $this->kelas->tambah_kelas($data);
-            $this->session->set_flashdata('kelas_message', 'Kelas berhasil ditambahkan');
+            $this->session->set_flashdata('kelas_message', '<div class="alert alert-success" role="alert">Data Kelas berhasil ditambahkan!</div>');
             redirect('admin/get_kelas');
         } else {
-            $this->session->set_flashdata('kelas_message', 'Kelas gagal ditambahkan!');
+            $this->session->set_flashdata('kelasw_message', '<div class="alert alert-danger" role="alert">Data Kelas gagal ditambahkan!</div>');
             redirect('admin/get_kelas');
         }
     }
@@ -430,17 +430,37 @@ class Admin extends CI_Controller
             $data['nama_mapel'] = $this->input->post('nama_mapel');
             $data['kelas'] = $this->input->post('kelas');
             $data['id_kelas'] = $this->input->post('id_kelas');
-            $data['success'] = 'Data Mata Pelajaran Berhasil Ditambahkan!';
 
             $this->load->model('Mapel_model', 'mapel');
-            $data['mapel'] = $this->mapel->tambah_mapel();
+            $this->mapel->tambah_mapel($data);
+            $this->load->model('Kelas_model', 'kelas');
+            $data['kelas'] = $this->kelas->get_kelas();
 
-            $this->session->set_flashdata('mapel_message', 'Mata Pelajaran berhasil ditambahkan');
-            redirect('admin/get_mapel');
+            $this->session->set_flashdata('mapel_message', '<div class="alert alert-success" role="alert">Mata Pelajaran Berhasil ditambahkan!</div>');
+            redirect('admin/get_mapel', 'refresh');
         } else {
-            // $this->session->set_flashdata('mapel_message', 'Mata pelajaran gagal ditambahkan!');
-            redirect('admin/get_mapel');
+            $this->session->set_flashdata('mapel_message', '<div class="alert alert-danger" role="alert">Mata Pelajaran gagal ditambahkan!</div>');
+            redirect('admin/get_mapel', 'refresh');
         }
+    }
+
+    public function edit_mapel($id)
+    {
+        $this->db->update('mata_pelajaran', ['nama_mapel' => $this->input->post('nama_mapel')], ['id_mapel' => $id]);
+        $this->db->update('mata_pelajaran', ['kelas' => $this->input->post('kelas')], ['id_mapel' => $id]);
+        $this->db->update('mata_pelajaran', ['id_kelas' => $this->input->post('id_kelas')], ['id_mapel' => $id]);
+
+        $this->session->set_flashdata('mapel_message', '<div class="alert alert-success" role="alert">Mata Pelajaran berhasil diubah!</div>');
+        redirect('admin/get_mapel', 'refresh');
+    }
+
+    public function delete_mapel($id)
+    {
+        $this->load->model('Mapel_model', 'mapel');
+        $this->mapel->delete_mapel($id);
+        // untuk flashdata mempunyai 2 parameter (nama flashdata/alias, isi dari flashdatanya)
+        $this->session->set_flashdata('mapel_message', '<div class="alert alert-danger" role="alert">Mata Pelajaran berhasil dihapus!</div>');
+        redirect('admin/get_mapel', 'refresh');
     }
     // end bagian mapel
 
