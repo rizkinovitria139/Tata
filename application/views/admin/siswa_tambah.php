@@ -41,7 +41,7 @@
 
 						<div class="form-group">
 							<span>Jenis Kelamin </span>
-							<select name="jenis_kelamin" id="jenis_kelamin">
+							<select class="form-control" name="jenis_kelamin" id="jenis_kelamin">
 								<option value="" selected> </option>
 								<option value="perempuan">Perempuan</option>
 								<option value="lakilaki">Laki-laki</option>
@@ -51,7 +51,7 @@
 
 						<div class="form-group">
 							<span>Agama </span>
-							<select name="agama" id="agama">
+							<select class="form-control" name="agama" id="agama">
 								<option value="" selected> </option>
 								<option value="islam">Islam</option>
 								<option value="kristen">Kristen</option>
@@ -95,7 +95,7 @@
 
 						<div class="form-group">
 							<span>Diterima di kelas </span>
-							<select name="diterima_di_kelas" id="diterima_di_kelas">
+							<select class="form-control" name="diterima_di_kelas" id="diterima_di_kelas">
 								<option value="7">7</option>
 								<option value="8">8</option>
 								<option value="9">9</option>
@@ -175,7 +175,7 @@
 
 						<div class="form-group">
 							<span>Role</span>
-							<select name="role_id" id="role_id">
+							<select class="form-control" name="role_id" id="role_id">
 								<option value="" selected></option>
 								<?php foreach ($role as $r) { ?>
 									<option value="<?= $r['id_role'] ?>"><?php echo $r['id_role'] . ' - ' . $r['nama_role']; ?></option>
@@ -204,7 +204,7 @@
 
 						<div class="form-group">
 							<span>Kelas</span>
-							<select name="id_kelas" id="id_kelas">
+							<select class="form-control" name="id_kelas" id="id_kelas">
 								<option value="" selected></option>
 								<?php foreach ($kelas as $k) { ?>
 									<option value="<?= $k['id_kelas'] ?>"><?php echo $k['nama_kelas'] . ' - ' . $k['tahun']; ?></option>

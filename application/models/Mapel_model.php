@@ -7,9 +7,8 @@ class Mapel_model extends CI_Model
 
     public function get_mapel()
     {
-        $query = "SELECT `mata_pelajaran`.*, `guru`.*, `kelas`.*
-        FROM `mata_pelajaran` JOIN `guru`
-         ON `mata_pelajaran`.`nip_pengajar` = `guru`.`nip` 
+        $query = "SELECT `mata_pelajaran`.*, `kelas`.*
+        FROM `mata_pelajaran`  
          JOIN `kelas`
          ON `mata_pelajaran`.`id_kelas` = `kelas`.`id_kelas`";
 
@@ -32,6 +31,11 @@ class Mapel_model extends CI_Model
     public function tambah_mapel($data)
     {
 
-        return $this->db->insert($this->_table, $data);
+        return $this->db->insert($this->table, $data);
+    }
+
+    public function delete_mapel($id)
+    {
+        return $this->db->delete('mata_pelajaran', array('id_mapel' => $id));
     }
 }

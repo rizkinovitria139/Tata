@@ -1,109 +1,173 @@
 		<!-- Begin Page Content -->
 		<div class="container-fluid">
 
-		    <!-- Page Heading -->
-		    <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+			<!-- Page Heading -->
+			<h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
-		    <a class="btn btn-warning mb-3" data-toggle="modal" data-target="#tambahmapelModal">Tambah Mapel</a>
-		    <div class="col-lg">
-		        <?= form_error('mapel', '<div class="alert alert-danger" kelas="alert">', '</div>'); ?>
+			<a class="btn btn-warning mb-3" data-toggle="modal" data-target="#tambahmapelModal">Tambah Mapel</a>
+			<div class="col-lg">
+				<?= form_error('mapel', '<div class="alert alert-danger" kelas="alert">', '</div>'); ?>
 
-		        <?= $this->session->flashdata('mapel_message'); ?>
+				<?= $this->session->flashdata('mapel_message'); ?>
 
-		        <div class="row">
+				<div class="row">
 
-		            <table class="table table-hover">
-		                <thead>
-		                    <tr>
-		                        <th scope="col">#</th>
-		                        <th scope="col">Mata Pelajaran</th>
-		                        <th scope="col">Kelas</th>
-		                        <th scope="col">Action</th>
-		                    </tr>
-		                </thead>
-		                <tbody>
-		                    <?php $i = 1; ?>
-		                    <?php foreach ($mapel as $m) : ?>
-		                    <tr>
-		                        <td><?= $i ?></td>
-		                        <td><?= $m['nama_mapel']; ?></td>
-		                        <td><?= $m['nama_kelas']; ?></td>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Mata Pelajaran</th>
+								<th scope="col">Tingkat</th>
+								<th scope="col">Kelas</th>
+								<th scope="col">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php $i = 1; ?>
+							<?php foreach ($mapel as $m) : ?>
+								<tr>
+									<td><?= $i ?></td>
+									<td><?= $m['nama_mapel']; ?></td>
+									<td><?= $m['kelas']; ?></td>
+									<td><?= $m['nama_kelas']; ?></td>
 
-		                        <td>
-		                            <button type="button" class="btn btn-primary btn-icon" href="" data-toggle="modal"
-		                                data-target="#editkelasModal<?= $m['id_mapel']; ?>">
-		                                <i class="far fa-edit"></i>
-		                            </button>
-		                            <button type="button" class="btn btn-danger"
-		                                href="<?= base_url('admin/deletekelas/') . $m['id_mapel']; ?>"
-		                                onclick="return confirm('Are you sure to delete this data ?');">
-		                                <i class="far fa-trash-alt"></i>
-		                            </button>
-		                        </td>
-		                    </tr>
-		                    <?php $i++; ?>
-		                    <?php endforeach; ?>
-		                </tbody>
-		            </table>
+									<td>
+										<a class="btn btn-primary btn-icon" href="" data-toggle="modal" data-target="#editmapelModal<?= $m['id_mapel']; ?>">
+											<i class="far fa-edit"></i>
+										</a>
+										<a class="btn btn-danger" href="<?= base_url('admin/delete_mapel/') . $m['id_mapel']; ?>" onclick="return confirm('Are you sure to delete this data ?');">
+											<i class="far fa-trash-alt"></i>
+										</a>
+									</td>
+								</tr>
+								<?php $i++; ?>
+							<?php endforeach; ?>
+						</tbody>
+					</table>
 
-		        </div>
+				</div>
 
-		    </div>
-		    <!-- /.container-fluid -->
+			</div>
+			<!-- /.container-fluid -->
 
 		</div>
 		<!-- End of Main Content -->
 
 		<!-- Modal Tambah Mapel -->
-		<div class="modal fade" id="tambahmapelModal" tabindex="-1" aria-labelledby="tambahmapelModalLabel"
-		    aria-hidden="true">
-		    <div class="modal-dialog">
-		        <div class="modal-content">
-		            <div class="modal-header">
-		                <?php
+		<div class="modal fade" id="tambahmapelModal" tabindex="-1" aria-labelledby="tambahmapelModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<?php
 						if (validation_errors() != false) {
 						?>
-		                <div class="alert alert-danger" role="alert">
-		                    <?php echo validation_errors(); ?>
-		                </div>
-		                <?php
+							<div class="alert alert-danger" role="alert">
+								<?php echo validation_errors(); ?>
+							</div>
+						<?php
 						}
 						?>
-		                <h5 class="modal-title" id="tambahmapelModalLabel">Tambah Mapel</h5>
-		                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		                    <span aria-hidden="true">&times;</span>
-		                </button>
-		            </div>
-		            <form action="<?php echo base_url(); ?>admin/tambah_kelas" method="post">
-		                <div class="modal-body">
-		                    <!-- <span>ID Kelas</span>
+						<h5 class="modal-title" id="tambahmapelModalLabel">Tambah Mapel</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<form action="<?php echo base_url(); ?>admin/tambah_mapel" method="post">
+						<div class="modal-body">
+							<!-- <span>ID Kelas</span>
 							<div class="form-group">
 								<input type="text" class="form-control" id="id_kelas" name="id_kelas" placeholder="Masukkan ID Kelas">
 							</div> -->
-		                    <span>Nama Mapel</span>
-		                    <div class="form-group">
-		                        <input type="text" class="form-control" id="nama_mapel" name="nama_mapel"
-		                            placeholder="Masukkan Nama Mapel">
-		                    </div>
+							<span>Nama Mapel</span>
+							<div class="form-group">
+								<input type="text" class="form-control" id="nama_mapel" name="nama_mapel" placeholder="Masukkan Nama Mapel">
+							</div>
 
-		                    <span>Kelas</span>
-		                    <div class="form-group">
-		                        <select class="form-control" name="id_kelas" id="id_kelas">
-		                            <? foreach ($kelas as $k) : ?>
-		                            <option selected>Pilih Kelas</option>
-		                            <option value="<?= $k['id_kelas']; ?>">
-		                                <?php echo $k['id_kelas'] . ' - ' . $k['nama_kelas']; ?></option>
-		                        </select>
-		                    </div>
-		                    <? endforeach; ?>
+							<div class="form-group">
+								<span>Tingkat </span>
+								<select class="form-control" name="kelas" id="kelas">
+									<option value="" selected> </option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="8">9</option>
+									<?= form_error('kelas', '<small class="text-danger pl-3">', '</small>'); ?>
+								</select>
+							</div>
 
-		                </div>
-		                <div class="modal-footer">
-		                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-		                    <button type="submit" class="btn btn-primary">Tambah</button>
-		                </div>
-		            </form>
-		        </div>
-		    </div>
+							<span>Kelas</span>
+							<div class="form-group">
+								<select class="form-control" name="id_kelas" id="id_kelas">
+									<option value="" selected></option>
+									<?php foreach ($kelas as $k) { ?>
+										<option value="<?= $k['id_kelas'] ?>">
+											<?php echo $k['id_kelas'] . ' - ' . $k['nama_kelas']; ?></option>
+									<?php }; ?>
+								</select>
+							</div>
+
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+							<button type="submit" class="btn btn-primary">Tambah</button>
+						</div>
+					</form>
+				</div>
+			</div>
 		</div>
 		<!-- End Modal Tambah Mapel -->
+
+		<!-- Start Modal Edit Mapel -->
+		<?php foreach ($mapel as $m) : ?>
+			<div class="modal fade" id="editmapelModal<?= $m['id_mapel'] ?>" tabindex="-1" kelas="dialog" aria-labelledby="editmapelModal<?= $m['id_mapel']; ?>Label" aria-hidden="true">
+				<div class="modal-dialog" kelas="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="editMenuModal<?= $m['id_mapel'] ?>">Edit Mapel</h5>
+							<buttond type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</buttond>
+						</div>
+						<form action="<?= base_url('admin/edit_mapel/' . $m['id_mapel']); ?>" method="post">
+							<div class="modal-body">
+								<div class="form-group">
+									<span>ID Mapel</span>
+									<input type="text" class="form-control" readonly value="<?= $m['id_mapel']; ?>" id="id_mapel" name="id_mapel" placeholder="Id mapel">
+								</div>
+								<div class="form-group">
+									<span>Nama Mapel</span>
+									<input type="text" class="form-control" value="<?= $m['nama_mapel']; ?>" id="nama_mapel" name="nama_mapel" placeholder="Nama Mapel">
+								</div>
+
+								<div class="form-group">
+									<span>Tingkat </span>
+									<select class="form-control" name="kelas" id="kelas">
+										<option value="<?= $m['kelas']; ?>" selected><?= $m['kelas']; ?></option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="8">9</option>
+										<?= form_error('kelas', '<small class="text-danger pl-3">', '</small>'); ?>
+									</select>
+								</div>
+
+								<span>Kelas</span>
+								<div class="form-group">
+									<select class="form-control" name="id_kelas" id="id_kelas">
+										<option value="<?= $m['id_kelas']; ?>" selected><?php echo $m['id_kelas'] . ' - ' . $k['nama_kelas']; ?></option>
+										<?php foreach ($kelas as $k) { ?>
+											<option value="<?= $k['id_kelas'] ?>">
+												<?php echo $k['id_kelas'] . ' - ' . $k['nama_kelas']; ?></option>
+										<?php }; ?>
+									</select>
+								</div>
+
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+								<button type="submit" class="btn btn-primary">Simpan</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		<?php endforeach; ?>
+		<!-- End Modal Edit Mapel -->
