@@ -95,6 +95,7 @@
                     <td class="text-center">Hadir</td>
                     <td class="text-center">Sakit</td>
                     <td class="text-center">Alpha</td>
+                    <td class="text-center">Action</td>
                     <!-- <td class="text-center">NIP Pengajar</td> -->
                 </tr>
 
@@ -109,14 +110,10 @@
                     <td><?php echo $dp ->alpha ?></td>
                     <td>
                         <button type="button" class="btn btn-primary btn-icon" href="" data-toggle="modal"
-                            data-target="#detailsSiswaModal<?= $s['nis']; ?>">
-                            <i class="fas fa-info"></i>
-                        </button>
-                        <button type="button" class="btn btn-success btn-icon" href="" data-toggle="modal"
-                            data-target="#editSiswaModal<?= $s['nis']; ?>">
+                            data-target="#editkelasModal">
                             <i class="far fa-edit"></i>
                         </button>
-                        <a class="btn btn-danger" href="<?= base_url(); ?>admin/delete_siswa/<?= $s['nis']; ?>"
+                        <a class="btn btn-danger" href=""
                             onclick="return confirm('Are you sure to delete this data ?');">
                             <i class="far fa-trash-alt"></i>
                         </a>
