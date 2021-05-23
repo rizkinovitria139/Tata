@@ -476,6 +476,10 @@ class Admin extends CI_Controller
 
         $this->load->model('jadwal_model', 'jadwal');
         $data['jadwal'] = $this->jadwal->get_jadwal();
+        $this->load->model('Kelas_model', 'kelas');
+        $data['kelas'] = $this->kelas->get_kelas();
+        $this->load->model('Mapel_model', 'mapel');
+        $data['mapel'] = $this->mapel->get_mapel();
 
         $this->session->set_userdata($data);
         $this->load->view('templates/header', $data);
@@ -485,10 +489,39 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    // public function tambah_jadwal()
-    // {
-    // }
+    public function tambah_jadwal()
+    {
+        $this->form_validation->set_rules('id_kelas', 'ID Kelas', 'required');
+        $this->form_validation->set_rules('id_mapel', 'ID Mapel', 'required');
+        $this->form_validation->set_rules('hari', 'Hari', 'required');
+        $this->form_validation->set_rules('waktu', 'ID Kelas', 'required');
+        $this->form_validation->set_rules('jam_ke', 'ID Kelas', 'required');
 
+        if ($this->form_validation->run() == true) {
+            $data['id_kelas'] = $this->input->post('id_kelas');
+            $data['id_mapel'] = $this->input->post('id_mapel');
+            $data['hari'] = $this->input->post('hari');
+            $data['waktu'] = $this->input->post('waktu');
+            $data['jam_ke'] = $this->input->post('jam_ke');
+
+            $this->load->model('Jadwal_model', 'jadwal');
+            $this->jadwal->tambah_jadwal($data);
+
+            $this->session->set_flashdata('jadwal_message', '<div class="alert alert-success" role="alert">Jadwal Berhasil ditambahkan!</div>');
+            redirect('admin/get_jadwal', 'refresh');
+        } else {
+            $this->session->set_flashdata('jadwal_message', '<div class="alert alert-danger" role="alert">Jadwal gagal ditambahkan!</div>');
+            redirect('admin/get_jadwal', 'refresh');
+        }
+    }
+
+    public function edit_jadwal($id)
+    {
+    }
+
+    public function delete_jadwal($id)
+    {
+    }
     // end bagian jadwal
 
 
@@ -528,6 +561,7 @@ class Admin extends CI_Controller
         }
     }
 
+    // Start bagian nilai
     public function get_nilai()
     {
         $data['title'] = 'Daftar Nilai Siswa';
@@ -548,6 +582,8 @@ class Admin extends CI_Controller
         $this->load->view('admin/nilai', $data);
         $this->load->view('templates/footer');
     }
+
+    // End bagian nilai
 }
     
     /* End of file Guru.php */

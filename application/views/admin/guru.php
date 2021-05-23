@@ -96,7 +96,7 @@
 
 							<div class="form-group">
 								<span>Jenis Kelamin </span>
-								<select name="jenis_kelamin" id="jenis_kelamin">
+								<select class="form-control" name="jenis_kelamin" id="jenis_kelamin">
 									<option value="" selected> </option>
 									<option value="perempuan">Perempuan</option>
 									<option value="lakilaki">Laki-laki</option>
@@ -106,7 +106,7 @@
 
 							<div class="form-group">
 								<span>Agama </span>
-								<select name="agama" id="agama">
+								<select class="form-control" name="agama" id="agama">
 									<option value="" selected> </option>
 									<option value="islam">Islam</option>
 									<option value="kristen">Kristen</option>
@@ -137,7 +137,7 @@
 
 							<div class="form-group">
 								<span>Role</span>
-								<select name="role_id" id="role_id">
+								<select class="form-control" name="role_id" id="role_id">
 									<option value="" selected></option>
 									<?php foreach ($role as $r) { ?>
 										<option value="<?= $r['id_role'] ?>">
@@ -154,7 +154,7 @@
 
 							<div class="form-group">
 								<span>Status </span>
-								<select name="status" id="status">
+								<select class="form-control" name="status" id="status">
 									<option value="" selected> </option>
 									<option value="Guru Mata Pelajaran">Guru Mata Pelajaran</option>
 									<option value="Guru BK">Guru BK</option>
@@ -304,7 +304,7 @@
 
 								<div class="form-group">
 									<span>Jenis Kelamin </span>
-									<select name="jenis_kelamin" id="jenis_kelamin">
+									<select class="form-control" name="jenis_kelamin" id="jenis_kelamin">
 										<option value="<?= $g['jenis_kelamin'] ?>" selected> <?= $g['jenis_kelamin'] ?> </option>
 										<option value="perempuan">Perempuan</option>
 										<option value="lakilaki">Laki-laki</option>
@@ -314,7 +314,7 @@
 
 								<div class="form-group">
 									<span>Agama </span>
-									<select name="agama" id="agama">
+									<select class="form-control" name="agama" id="agama">
 										<option value="<?= $g['agama'] ?>" selected> <?= $g['agama'] ?> </option>
 										<option value="islam">Islam</option>
 										<option value="kristen">Kristen</option>
@@ -343,7 +343,7 @@
 
 								<div class="form-group">
 									<span>Role</span>
-									<select name="role_id" id="role_id">
+									<select class="form-control" name="role_id" id="role_id">
 										<option value="<?= $g['role_id'] ?>" selected><?= $g['role_id'] . ' - ' . $g['nama_role'] ?></option>
 										<?php foreach ($role as $r) { ?>
 											<option value="<?= $r['id_role'] ?>"><?php echo $r['id_role'] . ' - ' . $r['nama_role']; ?></option>
