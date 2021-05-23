@@ -72,6 +72,13 @@ if ((isset($_GET['bulan']) && $_GET['bulan'] !='') && (isset($_GET['tahun']) && 
             <?php echo $tahun ?></span>
     </div>
 
+    <?php
+                $jml_data =count($datapresensi);
+                if ($jml_data > 0) {
+                    # code...
+
+             ?>
+
     <table class="table table-bordered table-striped">
         <tr>
             <td class="text-center">No</td>
@@ -98,6 +105,10 @@ if ((isset($_GET['bulan']) && $_GET['bulan'] !='') && (isset($_GET['tahun']) && 
         <?php endforeach; ?>
 
     </table>
+
+    <?php } else { ?>
+    <span class="badge badge-danger"><i class="fas fa-info-circle">Data masih kosong!</i></span>
+    <?php } ?>
 
 </div>
 
