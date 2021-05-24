@@ -58,15 +58,11 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('presensi'); ?>">
+                <a class="nav-link" href="<?= base_url('DataPresensi/view_presensi_siswa'); ?>">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Presensi</span></a>
             </li>
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('mapel'); ?>">
-                    <i class="fas fa-flask"></i>
-                    <span>Mata Pelajaran</span></a>
-            </li> -->
+
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('jadwal'); ?>">
                     <i class="fas fa-th-list"></i>

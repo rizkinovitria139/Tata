@@ -8,14 +8,14 @@ class DataPresensi extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Admin_model');
+        $this->load->model('Presensi_model');
         $this->load->library('form_validation');
     }
 
     public function index()
     {
         $data['title'] = 'Data Presensi Siswa';
-        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+        $data['guru'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
 
         if ((isset($_GET['bulan']) && $_GET['bulan'] !='') && (isset($_GET['tahun']) && $_GET['tahun'] != '')) {
                 $bulan =$_GET['bulan'];
@@ -27,17 +27,11 @@ class DataPresensi extends CI_Controller
                 $bulantahun = $bulan.$tahun;
             }
     
-            $data['datapresensi'] = $this->db->query("SELECT `siswa`.*, `presensi`.*, `kelas`.*
-            FROM `siswa` JOIN `presensi`
-             ON `siswa`.`nis` = `presensi`.`nis` 
-             JOIN `kelas`
-             ON `presensi`.`id_kelas` = `kelas`.`id_kelas`
-             WHERE `presensi`.`bulan` = $bulantahun
-            ORDER BY `siswa`.`nama` ASC")->result();
-            // var_dump($data1);
-            // die();
+            $this->load->model('Presensi_model', 'datapresensi');
+            $data['datapresensi'] = $this->datapresensi->get_presensi();
+            
 
-        // $this->session->set_userdata($data);
+        $this->session->set_userdata($data);
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -77,6 +71,33 @@ class DataPresensi extends CI_Controller
         
         $this->session->set_flashdata('kelas_message', '<div class="alert alert-success" role="alert">Kelas berhasil diubah!</div>');
         redirect('DataPresensi/get_presensi', 'refresh');
+    }
+
+    public function view_presensi_siswa()
+    {
+        $data['title'] = 'Data Presensi ';
+        $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')])->row_array();
+
+        if ((isset($_GET['bulan']) && $_GET['bulan'] !='') && (isset($_GET['tahun']) && $_GET['tahun'] != '')) {
+                $bulan =$_GET['bulan'];
+                $tahun =$_GET['tahun'];
+                $bulantahun = $bulan.$tahun;
+            }else {
+                $bulan = date('m');
+                $tahun = date('Y');
+                $bulantahun = $bulan.$tahun;
+            }
+    
+            $this->load->model('Presensi_model', 'datapresensi');
+            $data['datapresensi'] = $this->datapresensi->get_presensi();
+            
+
+        $this->session->set_userdata($data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/siswa_sidebar', $data);
+        $this->load->view('templates/siswa_topbar', $data);
+        $this->load->view('siswa/viewPresensi', $data);
+        $this->load->view('templates/footer');
     }
     
 }
