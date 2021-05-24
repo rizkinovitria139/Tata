@@ -35,7 +35,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('bk_nilai'); ?>">
+                <a class="nav-link" href="<?= base_url('Guru_Mapel/nilai'); ?>">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Penilaian</span></a>
             </li>

@@ -28,6 +28,10 @@ class Mapel_model extends CI_Model
         return $query->result();
     }
 
+    public function get_mapel_guru()
+    {
+    }
+
     public function tambah_mapel($data)
     {
 
