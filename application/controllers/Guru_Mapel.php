@@ -25,4 +25,22 @@ class Guru_Mapel extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function nilai()
+    {
+        $data['title'] = "Nilai Siswa";
+        $data['guru'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+        $this->load->model('Nilai_model', 'nilai');
+        $data['nilai'] = $this->nilai->getAll();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('guruMapel/mp_sidebar', $data);
+        $this->load->view('guruMapel/mp_topbar', $data);
+        $this->load->view('guruMapel/nilai', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function tambah_nilai()
+    {
+    }
 }
