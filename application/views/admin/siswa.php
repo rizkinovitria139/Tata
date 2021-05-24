@@ -2,7 +2,43 @@
 		<div class="container-fluid">
 
 			<!-- Page Heading -->
-			<h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+			<div class="d-sm-flex align-items-center justify-content-between mb-4">
+				<h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+			</div>
+			<div class="card-mb3">
+				<div class="card-header bg-secondary text-white">
+					Filter Data Siswa
+				</div>
+
+				<div class="card-body">
+					<form class="form-inline">
+						<div class="form-group mb-2">
+							<label for="staticEmail2">Kelas</label>
+							<select name="id_kelas" id="id_kelas" class="form-control ml-2">
+								<option value="">--Pilih Kelas--</option>
+								<?php foreach ($kelas as $k) { ?>
+									<option value="<?= $k['id_kelas'] ?>"><?php echo $k['nama_kelas'] . ' - ' . $k['tahun']; ?></option>
+								<?php }; ?>
+							</select>
+						</div>
+
+						<button type="submit" class="btn btn-outline-info mb-2 ml-auto">
+							<i class="fas fa-eye"> Tampilkan Data</i>
+						</button>
+					</form>
+				</div>
+			</div>
+
+			<?php
+			if (isset($_GET['id_kelas']) && $_GET['id_kelas'] == '') {
+				$kelas = $_GET['id_kelas'];
+			}
+			?>
+			<!-- <div class="alert alert-info">
+				Menampilkan Data Siswa <span class="font-weight-bold">
+					<?php echo $kelas; ?></span>
+			</div> -->
+
 
 			<a class="btn btn-warning mb-3" href="<?= base_url('admin/tambah_siswa'); ?>">Tambah Siswa</a>
 			<div class="col-lg">
@@ -11,42 +47,48 @@
 				<?= $this->session->flashdata('siswa_message'); ?>
 
 				<div class="row">
+					<?php
+					$jml_data = count($siswa);
+					if ($jml_data > 0) {
+						# code...
 
-					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th scope="col">NIS</th>
-								<th scope="col">Nama</th>
-								<th scope="col">Alamat</th>
-								<th scope="col">No Telepon</th>
-								<th scope="col">Action</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php foreach ($siswa as $s) : ?>
+					?>
+						<table class="table table-hover">
+							<thead>
 								<tr>
-									<td><?= $s['nis']; ?></td>
-									<td><?= $s['nama']; ?></td>
-									<td><?= $s['alamat_siswa']; ?></td>
-									<td><?= $s['no_telp_rumah']; ?></td>
-									<td>
-										<button type="button" class="btn btn-primary btn-icon" href="" data-toggle="modal" data-target="#detailsSiswaModal<?= $s['nis']; ?>">
-											<i class="fas fa-info"></i>
-										</button>
-										<button type="button" class="btn btn-success btn-icon" href="" data-toggle="modal" data-target="#editSiswaModal<?= $s['nis']; ?>">
-											<i class="far fa-edit"></i>
-										</button>
-										<a class="btn btn-danger" href="<?= base_url(); ?>admin/delete_siswa/<?= $s['nis']; ?>" onclick="return confirm('Are you sure to delete this data ?');">
-											<i class="far fa-trash-alt"></i>
-										</a>
-									</td>
+									<th scope="col">NIS</th>
+									<th scope="col">Nama</th>
+									<th scope="col">Alamat</th>
+									<th scope="col">No Telepon</th>
+									<th scope="col">Action</th>
 								</tr>
-							<?php endforeach; ?>
-						</tbody>
-					</table>
-
+							</thead>
+							<tbody>
+								<?php foreach ($siswa as $s) : ?>
+									<tr>
+										<td><?= $s['nis']; ?></td>
+										<td><?= $s['nama']; ?></td>
+										<td><?= $s['alamat_siswa']; ?></td>
+										<td><?= $s['no_telp_rumah']; ?></td>
+										<td>
+											<button type="button" class="btn btn-primary btn-icon" href="" data-toggle="modal" data-target="#detailsSiswaModal<?= $s['nis']; ?>">
+												<i class="fas fa-info"></i>
+											</button>
+											<button type="button" class="btn btn-success btn-icon" href="" data-toggle="modal" data-target="#editSiswaModal<?= $s['nis']; ?>">
+												<i class="far fa-edit"></i>
+											</button>
+											<a class="btn btn-danger" href="<?= base_url(); ?>admin/delete_siswa/<?= $s['nis']; ?>" onclick="return confirm('Are you sure to delete this data ?');">
+												<i class="far fa-trash-alt"></i>
+											</a>
+										</td>
+									</tr>
+								<?php endforeach; ?>
+							</tbody>
+						</table>
 				</div>
-
+			<?php } else { ?>
+				<span class="badge badge-danger"><i class="fas fa-info-circle">Data masih kosong!</i></span>
+			<?php } ?>
 			</div>
 			<!-- /.container-fluid -->
 

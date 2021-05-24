@@ -173,6 +173,34 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function filter_siswa()
+    {
+        $data['title'] = 'Data Siswa';
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+        if ((isset($_GET['id_kelas']) && $_GET['id_kelas'] != '')) {
+            $kelas = $_GET['id_kelas'];
+        }
+
+        $data['datasiswa'] = $this->db->query("SELECT `siswa`.*, `kelas`.*
+            FROM `siswa` 
+            JOIN `kelas` ON `siswa`.`id_kelas` = `kelas`.`id_kelas`
+            WHERE `siswa`.`id_kelas` = $kelas
+            ORDER BY `siswa`.`nama` ASC")->result();
+        // var_dump($data1);
+        // die();
+
+        $this->load->model('Kelas_model', 'kelas');
+        $data['kelas'] = $this->kelas->get_kelas();
+
+        // $this->session->set_userdata($data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/siswa', $data);
+        $this->load->view('templates/footer');
+    }
+
     public function tambah_siswa()
     {
         $data['title'] = 'Tambah Siswa';
