@@ -5,7 +5,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Admin extends CI_Controller
 {
 
-
     public function __construct()
     {
         parent::__construct();
@@ -16,7 +15,6 @@ class Admin extends CI_Controller
         $this->load->model('Admin_model');
         $this->load->library('form_validation');
     }
-
 
     public function index()
     {
@@ -562,8 +560,6 @@ class Admin extends CI_Controller
         redirect('admin/get_jadwal', 'refresh');
     }
     // end bagian jadwal
-
-
     public function changePassword()
     {
         $data['title'] = 'Change Password';
