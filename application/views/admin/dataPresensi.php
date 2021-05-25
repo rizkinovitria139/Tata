@@ -10,7 +10,7 @@
             Filter Data Presensi Siswa
         </div>
         <div class="card-body">
-            <form class="form-inline">
+            <form class="form-inline" action="<?= base_url('datapresensi/view_presensi_siswa')?>">
                 <div class="form-group mb-2">
                     <label for="staticEmail2">Bulan : </label>
                     <select class="form-control ml-2" name="bulan">
@@ -93,13 +93,13 @@ if ((isset($_GET['bulan']) && $_GET['bulan'] !='') && (isset($_GET['tahun']) && 
 
         <?php $no=1; foreach($datapresensi as $dp) : ?>
         <tr>
-            <td><?php echo $no++ ?></td>
-            <td><?php echo $dp ->nis ?></td>
-            <td><?php echo $dp ->nama_siswa ?></td>
-            <td><?php echo $dp ->nama_kelas ?></td>
-            <td><?php echo $dp ->hadir ?></td>
-            <td><?php echo $dp ->sakit ?></td>
-            <td><?php echo $dp ->alpha ?></td>
+            <td><?= $no ?></td>
+            <td><?= $dp['nis']; ?></td>
+            <td><?= $dp['nama_siswa']; ?></td>
+            <td><?= $dp['nama_kelas']; ?></td>
+            <td><?= $dp['hadir']; ?></td>
+            <td><?= $dp['sakit']; ?></td>
+            <td><?= $dp['alpha']; ?></td>
 
         </tr>
         <?php endforeach; ?>

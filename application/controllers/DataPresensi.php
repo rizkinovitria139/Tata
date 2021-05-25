@@ -15,7 +15,7 @@ class DataPresensi extends CI_Controller
     public function index()
     {
         $data['title'] = 'Data Presensi Siswa';
-        $data['guru'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
 
         if ((isset($_GET['bulan']) && $_GET['bulan'] !='') && (isset($_GET['tahun']) && $_GET['tahun'] != '')) {
                 $bulan =$_GET['bulan'];
@@ -42,7 +42,7 @@ class DataPresensi extends CI_Controller
     public function get_presensi()
     {
         $data['title'] = 'Daftar Kelas';
-        $data['Guru_Mapel'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+        $data['guru'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
 
         $this->session->set_userdata($data);
 
@@ -77,19 +77,30 @@ class DataPresensi extends CI_Controller
     {
         $data['title'] = 'Data Presensi ';
         $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')])->row_array();
-
+        
         if ((isset($_GET['bulan']) && $_GET['bulan'] !='') && (isset($_GET['tahun']) && $_GET['tahun'] != '')) {
                 $bulan =$_GET['bulan'];
                 $tahun =$_GET['tahun'];
                 $bulantahun = $bulan.$tahun;
+                // var_dump($data);
+                // die();
             }else {
                 $bulan = date('m');
                 $tahun = date('Y');
                 $bulantahun = $bulan.$tahun;
+                // var_dump($data);
             }
-    
-            $this->load->model('Presensi_model', 'datapresensi');
-            $data['datapresensi'] = $this->datapresensi->get_presensi();
+
+            $data['datapresensi'] = $this->db->query("SELECT `siswa`.*, `presensi`.*, `kelas`.*
+            FROM `siswa` JOIN `presensi`
+             ON `siswa`.`nis` = `presensi`.`nis` 
+             JOIN `kelas`
+             ON `presensi`.`id_kelas` = `kelas`.`id_kelas`
+             WHERE `presensi`.`bulan` = $bulantahun
+            ORDER BY `siswa`.`nama` ASC")->result();
+      
+            // $this->load->model('Presensi_model', 'datapresensi');
+            // $data['datapresensi'] = $this->datapresensi->get_presensi();
             
 
         $this->session->set_userdata($data);

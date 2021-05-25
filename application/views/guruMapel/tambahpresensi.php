@@ -134,7 +134,7 @@
 
 
         <!-- Start Modal Edit Presensi -->
-
+        <!-- 
         <?php foreach ($datapresensi as $d) : ?>
         <div class="modal fade" id="editPresensiModal<?= $d['id_presensi'] ?>" tabindex="-1" class="dialog"
             aria-labelledby="editPresensiModal<?= $d['id_presensi']; ?>Label" aria-hidden="true">
@@ -190,6 +190,6 @@
                 </div>
             </div>
         </div>
-        <?php endforeach; ?>
+        <?php endforeach; ?> -->
 
         <!-- End Modal Edit Presensi -->

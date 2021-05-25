@@ -93,13 +93,13 @@ if ((isset($_GET['bulan']) && $_GET['bulan'] !='') && (isset($_GET['tahun']) && 
 
         <?php $no=1; foreach($datapresensi as $dp) : ?>
         <tr>
-            <td><?php echo $no++ ?></td>
-            <td><?php echo $dp ->nis ?></td>
-            <td><?php echo $dp ->nama_siswa ?></td>
-            <td><?php echo $dp ->nama_kelas ?></td>
-            <td><?php echo $dp ->hadir ?></td>
-            <td><?php echo $dp ->sakit ?></td>
-            <td><?php echo $dp ->alpha ?></td>
+            <td><?= $no ?></td>
+            <td><?= $dp->nis; ?></td>
+            <td><?= $dp->nama_siswa; ?></td>
+            <td><?= $dp->nama_kelas; ?></td>
+            <td><?= $dp->hadir; ?></td>
+            <td><?= $dp->sakit; ?></td>
+            <td><?= $dp->alpha; ?></td>
 
         </tr>
         <?php endforeach; ?>
