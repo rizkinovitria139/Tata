@@ -28,8 +28,26 @@ class Mapel_model extends CI_Model
         return $query->result();
     }
 
-    public function get_mapel_guru()
+    public function get_mapel_guru($id)
     {
+        $this->db->select('*');
+        $this->db->from('pengajar');
+        $this->db->join('guru', 'guru.nip = pengajar.id_guru');
+        $this->db->join('mata_pelajaran', 'mata_pelajaran.id_mapel = pengajar.id_mapel');
+        $this->db->join('kelas', ' kelas.id_kelas = mata_pelajaran.id_kelas');
+        $this->db->where('pengajar.id_guru', $id);
+        // $query = "SELECT `pengajar`.*, `guru`.*, `mata_pelajaran`.*, `kelas`.*
+        // FROM `pengajar`
+        // JOIN `guru` ON `guru`.`nip` = `pengajar`.`id_guru`
+        // JOIN `mata_pelajaran` ON `mata_pelajaran`.`id_mapel` = `pengajar`.`id_mapel`
+        // JOIN `kelas` ON `kelas`.`id_kelas` = `mata_pelajaran`.`id_kelas`
+        // WHERE `pengajar`.`id_guru` = `$id`";
+
+        $query = $this->db->get();
+        // print_r($query);
+
+        return $query->result();
+        // return $this->db->query($query)->result_array();
     }
 
     public function tambah_mapel($data)

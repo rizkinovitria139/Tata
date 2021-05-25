@@ -11,7 +11,7 @@
 				</div>
 
 				<div class="card-body">
-					<form class="form-inline">
+					<form class="form-inline" action="<?= base_url('admin/filter_siswa'); ?>" method="POST">
 						<div class="form-group mb-2">
 							<label for="staticEmail2">Kelas</label>
 							<select name="id_kelas" id="id_kelas" class="form-control ml-2">

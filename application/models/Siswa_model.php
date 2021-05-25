@@ -58,6 +58,21 @@ class Siswa_model extends CI_Model
         $query = $this->db->get('siswa');
         return $query->result();
     }
+
+    public function filter_siswa()
+    {
+        $kelas = 'id_kelas';
+
+
+        $query = "SELECT `siswa`.*, `kelas`.*
+        FROM `siswa` 
+        JOIN `kelas`
+        ON `siswa`.`id_kelas` = `kelas`.`id_kelas`
+        WHERE `siswa`.`bulan` = $kelas
+        ORDER BY `siswa`.`nama` ASC";
+
+        return $this->db->query($query)->result_array();
+    }
 }
 
 /* End of file Siswa_model.php */
