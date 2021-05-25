@@ -62,8 +62,8 @@ class Tambah_presensi extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil disimpan</div>');
             ('Tambah_Presensi');
         }
-        $data['title'] = 'Tambah Kehadiran Siswa';
-        $data['guru'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+        // $data['title'] = 'Tambah Kehadiran Siswa';
+        // $data['guru'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
 
         if ((isset($_GET['bulan']) && $_GET['bulan'] !='') && (isset($_GET['tahun']) && $_GET['tahun'] != '')) {
             $bulan =$_GET['bulan'];
@@ -85,7 +85,7 @@ class Tambah_presensi extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('guruMapel/mp_sidebar', $data);
         $this->load->view('guruMapel/mp_topbar', $data);
-        $this->load->view('guruMapel/formTambahPresensi', $data);
+        $this->load->view('guruMapel/tambahpresensi', $data);
         $this->load->view('templates/footer');
         
     }

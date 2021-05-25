@@ -72,14 +72,9 @@
                         aria-haspopup="true" aria-expanded="false">
                         <span
                             class="mr-2 d-none d-lg-inline text-white-600 large"><?=    $this->session->userdata('nama'); ?></span>
-                        <img class="img-profile rounded-circle" src="assets/img/avataaars.svg">
-                    </a>
+                        <img class="img-profile rounded-circle" src=<?=base_url("assets/img/avataaars.svg")?>> </a>
                     <!-- Dropdown - User Information -->
-
                 </li>
-
-
-
             </ul>
 
         </nav>
