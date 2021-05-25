@@ -6,6 +6,7 @@ class Admin_model extends CI_Model
 {
 
     private $table = 'guru';
+    private $pengajar = 'pengajar';
 
     public function getAll()
     {
@@ -19,6 +20,11 @@ class Admin_model extends CI_Model
     public function tambah_guru($data)
     {
         return $this->db->insert($this->table, $data);
+    }
+
+    public function tambah_pengajar($data)
+    {
+        return $this->db->insert($this->pengajar, $data);
     }
 
     public function update($data)

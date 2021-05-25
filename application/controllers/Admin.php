@@ -177,19 +177,21 @@ class Admin extends CI_Controller
         $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
 
         if ((isset($_GET['id_kelas']) && $_GET['id_kelas'] != '')) {
-            $kelas = $_GET['id_kelas'];
+            $id_kelas = $_GET['id_kelas'];
         }
 
         $data['datasiswa'] = $this->db->query("SELECT `siswa`.*, `kelas`.*
             FROM `siswa` 
             JOIN `kelas` ON `siswa`.`id_kelas` = `kelas`.`id_kelas`
-            WHERE `siswa`.`id_kelas` = $kelas
+            WHERE `siswa`.`id_kelas` = $id_kelas
             ORDER BY `siswa`.`nama` ASC")->result();
         // var_dump($data1);
         // die();
 
         $this->load->model('Kelas_model', 'kelas');
         $data['kelas'] = $this->kelas->get_kelas();
+        $this->load->model('Siswa_model', 'siswa');
+        $data['siswa'] = $this->siswa->filter_siswa();
 
         // $this->session->set_userdata($data);
         $this->load->view('templates/header', $data);
@@ -485,6 +487,69 @@ class Admin extends CI_Controller
         // untuk flashdata mempunyai 2 parameter (nama flashdata/alias, isi dari flashdatanya)
         $this->session->set_flashdata('mapel_message', '<div class="alert alert-danger" role="alert">Mata Pelajaran berhasil dihapus!</div>');
         redirect('admin/get_mapel', 'refresh');
+    }
+
+    public function get_pengajar()
+    {
+        $data['title'] = 'Daftar Guru Pengajar';
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+
+        $this->session->set_userdata($data);
+
+        $this->load->model('Mapel_model', 'mapel');
+        $data['mapel'] = $this->mapel->get_mapel();
+        $this->load->model('Kelas_model', 'kelas');
+        $data['kelas'] = $this->kelas->get_kelas();
+        $this->load->model('Admin_model', 'guru');
+        $data['guru'] = $this->guru->getAll();
+        $this->load->model('Guru_model', 'pengajar');
+        $data['pengajar'] = $this->pengajar->get_pengajar();
+
+        $this->session->set_userdata($data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/pengajar', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function tambah_pengajar()
+    {
+        $this->form_validation->set_rules('id_guru', 'ID Guru', 'required');
+        $this->form_validation->set_rules('id_mapel', 'ID Mapel', 'required');
+
+        if ($this->form_validation->run() == true) {
+            $data['id_guru'] = $this->input->post('id_guru');
+            $data['id_mapel'] = $this->input->post('id_mapel');
+
+            $this->load->model('Admin_model', 'pengajar');
+            $this->pengajar->tambah_pengajar($data);
+
+            $this->session->set_flashdata('pengajar_message', '<div class="alert alert-success" role="alert">Pengajar Berhasil ditambahkan!</div>');
+            redirect('admin/get_pengajar', 'refresh');
+        } else {
+            $this->session->set_flashdata('pengajar_message', '<div class="alert alert-danger" role="alert">Pengajar gagal ditambahkan!</div>');
+            redirect('admin/get_pengajar', 'refresh');
+        }
+    }
+
+    public function edit_pengajar($id)
+    {
+        $this->db->update('pengajar', ['id_guru' => $this->input->post('id_guru')], ['id' => $id]);
+        $this->db->update('pengajar', ['id_mapel' => $this->input->post('id_mapel')], ['id' => $id]);
+
+        $this->session->set_flashdata('pengajar_message', '<div class="alert alert-warning" role="alert">Pengajar berhasil diubah!</div>');
+        redirect('admin/get_pengajar', 'refresh');
+    }
+
+    public function delete_pengajar($id)
+    {
+        $this->load->model('Guru_model', 'pengajar');
+        $this->pengajar->delete_pengajar($id);
+        // untuk flashdata mempunyai 2 parameter (nama flashdata/alias, isi dari flashdatanya)
+        $this->session->set_flashdata('pengajar_message', '<div class="alert alert-danger" role="alert">JPengajar berhasil dihapus!</div>');
+        redirect('admin/get_pengajar', 'refresh');
     }
     // end bagian mapel
 
