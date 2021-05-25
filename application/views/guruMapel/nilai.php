@@ -11,25 +11,19 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nama </th>
+                        <th scope="col">ID Mapel </th>
                         <th scope="col">Mata Pelajaran</th>
-                        <th scope="col">Nilai Tugas</th>
-                        <th scope="col">Nilai UTS</th>
-                        <th scope="col">Nilai UAS</th>
-                        <th scope="col">Semester</th>
+                        <th scope="col">Kelas</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $i = 1; ?>
-                    <?php foreach ($nilai as $n) : ?>
+                    <?php foreach ($mapel as $n) : ?>
                         <tr>
                             <td><?= $i; ?></td>
-                            <td><?= $n['nama']; ?></td>
-                            <td><?= $n['nama_mapel']; ?></td>
-                            <td><?= $n['nilai_tugas']; ?></td>
-                            <td><?= $n['nilai_uts']; ?></td>
-                            <td><?= $n['nilai_uas']; ?></td>
-                            <td><?= $n['semester']; ?></td>
+                            <td><?= $n->id_mapel; ?></td>
+                            <td><?= $n->nama_mapel; ?></td>
+                            <td><?= $n->nama_kelas; ?></td>
 
                         </tr>
                         <?php $i++; ?>

@@ -52,7 +52,8 @@ class Auth extends CI_Controller
                         $data = [
                             'username' => $guru['username'],
                             'role_id' => $guru['role_id'],
-                            'nama' => $guru['nama']
+                            'nama' => $guru['nama'],
+                            'nip' => $guru['nip']
                         ];
                         $this->session->set_userdata($data);
                         redirect('Guru_Mapel');
