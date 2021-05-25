@@ -57,9 +57,10 @@
 							<thead>
 								<tr>
 									<th scope="col">NIS</th>
+									<th scope="col">NISN</th>
 									<th scope="col">Nama</th>
 									<th scope="col">Alamat</th>
-									<th scope="col">No Telepon</th>
+									<th scope="col">Kelas</th>
 									<th scope="col">Action</th>
 								</tr>
 							</thead>
@@ -67,9 +68,10 @@
 								<?php foreach ($siswa as $s) : ?>
 									<tr>
 										<td><?= $s['nis']; ?></td>
-										<td><?= $s['nama']; ?></td>
-										<td><?= $s['alamat_siswa']; ?></td>
-										<td><?= $s['no_telp_rumah']; ?></td>
+										<td><?= $s['nisn']; ?></td>
+										<td width="200"><?= $s['nama']; ?></td>
+										<td width="300"><?= $s['alamat_siswa']; ?></td>
+										<td><?= $s['nama_kelas']; ?></td>
 										<td>
 											<button type="button" class="btn btn-primary btn-icon" href="" data-toggle="modal" data-target="#detailsSiswaModal<?= $s['nis']; ?>">
 												<i class="fas fa-info"></i>
