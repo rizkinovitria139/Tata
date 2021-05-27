@@ -16,9 +16,9 @@ class Jadwal extends CI_Controller
         // $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')])->row_array();
         // $this->session->set_userdata($data);
 
-        //$jadwal_id  =   $this->session->userdata('id_mapel');
+        $siswa_id  =   $this->session->userdata('nis');
         // print_r($user_id);
-         $data['data_jadwal'] = $this->Jadwal_model->get_jadwal();
+         $data['data_jadwal'] = $this->Jadwal_model->tampilJadwal($siswa_id);
         //  print_r($data['data_jadwal']);
         //    die();
          $data['username']  =   $this->session->userdata('nama');

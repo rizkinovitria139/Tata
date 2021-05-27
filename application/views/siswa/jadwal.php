@@ -22,9 +22,9 @@
                     <th>Hari</th>
                     <th>Kelas</th>
                     <th>Mata Pelajaran</th>
-                    <th>Jam ke</th>
-                    <th>Waktu</th>
-                    <th>NIP Pengajar</th>
+                    <th>Waktu Mulai</th>
+                    <th>Waktu Selesai</th>
+                    <!-- <th>NIP Pengajar</th> -->
                     <!-- <th>Action</th> -->
                 </tr>
             </thead>
@@ -35,14 +35,11 @@
                     ?>
                 <tr>
                     <td><?= $no++; ?></td>
-                    <!-- <td><?= $u->hari ?></td> -->
                     <td><?= $j['hari']; ?></td>
                     <td><?= $j['nama_kelas']; ?></td>
                     <td><?= $j['nama_mapel']; ?></td>
-                    <td><?= $j['hari']; ?></td>
-                    <td><?= $j['waktu']; ?></td>
-                    <td><?= $j['nip_pengajar']; ?></td>
-
+                    <td><?= $j['waktu_mulai']; ?></td>
+                    <td><?= $j['waktu_akhir']; ?></td>
                 </tr>
                 <?php
                 endforeach;

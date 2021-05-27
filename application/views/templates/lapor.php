@@ -1,6 +1,7 @@
 <div class="container">
     <div class="card">
-        <div class="card-header">LAPOR BK</div>
+        <div class="card-header">
+            <?= $title; ?></div>
         <div class="card-body">
             <?php 
 			if(validation_errors() != false)
