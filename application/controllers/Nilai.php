@@ -14,7 +14,6 @@ class Nilai extends CI_Controller
     {
         $data['title'] = 'Halaman Nilai Siswa';
     
-        // $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')])->row_array();
         $user_id  =   $this->session->userdata('nis');
        // print_r($user_id);
         $data['data_nilai'] = $this->Nilai_model->getNilai($user_id);
