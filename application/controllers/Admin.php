@@ -134,7 +134,7 @@ class Admin extends CI_Controller
         $this->db->update('guru', ['username'      => $this->input->post('username')], ['nip', $id]);
 
         $this->session->set_flashdata('guru_message', '<div class="alert alert-success" role="alert">Data Guru berhasil diubah!</div>');
-        redirect('admin/get_guru');
+        redirect('admin/get_guru', 'refresh');
     }
 
     public function delete_guru($id)
@@ -580,18 +580,22 @@ class Admin extends CI_Controller
 
     public function tambah_jadwal()
     {
-        $this->form_validation->set_rules('id_kelas', 'ID Kelas', 'required');
+        // $this->form_validation->set_rules('id_kelas', 'ID Kelas', 'required');
         $this->form_validation->set_rules('id_mapel', 'ID Mapel', 'required');
         $this->form_validation->set_rules('hari', 'Hari', 'required');
-        $this->form_validation->set_rules('waktu', 'ID Kelas', 'required');
-        $this->form_validation->set_rules('jam_ke', 'ID Kelas', 'required');
+        $this->form_validation->set_rules('waktu_mulai', 'Waktu Mulai', 'required');
+        $this->form_validation->set_rules('jam_mulai', 'Jam Mulai', 'required');
+        $this->form_validation->set_rules('waktu_akhir', 'Waktu Akhir', 'required');
+        $this->form_validation->set_rules('jam_akhir', 'Jam Akhir', 'required');
 
         if ($this->form_validation->run() == true) {
-            $data['id_kelas'] = $this->input->post('id_kelas');
+            // $data['id_kelas'] = $this->input->post('id_kelas');
             $data['id_mapel'] = $this->input->post('id_mapel');
             $data['hari'] = $this->input->post('hari');
-            $data['waktu'] = $this->input->post('waktu');
-            $data['jam_ke'] = $this->input->post('jam_ke');
+            $data['waktu_mulai'] = $this->input->post('waktu_mulai');
+            $data['jam_mulai'] = $this->input->post('jam_mulai');
+            $data['waktu_akhir'] = $this->input->post('waktu_akhir');
+            $data['jam_akhir'] = $this->input->post('jam_akhir');
 
             $this->load->model('Jadwal_model', 'jadwal');
             $this->jadwal->tambah_jadwal($data);
@@ -606,11 +610,13 @@ class Admin extends CI_Controller
 
     public function edit_jadwal($id)
     {
-        $this->db->update('jadwal', ['id_kelas' => $this->input->post('id_kelas')], ['id' => $id]);
+        // $this->db->update('jadwal', ['id_kelas' => $this->input->post('id_kelas')], ['id' => $id]);
         $this->db->update('jadwal', ['id_mapel' => $this->input->post('id_mapel')], ['id' => $id]);
         $this->db->update('jadwal', ['hari' => $this->input->post('hari')], ['id' => $id]);
-        $this->db->update('jadwal', ['waktu' => $this->input->post('waktu')], ['id' => $id]);
-        $this->db->update('jadwal', ['jam_ke' => $this->input->post('jam_ke')], ['id' => $id]);
+        $this->db->update('jadwal', ['waktu_mulai' => $this->input->post('waktu_mulai')], ['id' => $id]);
+        $this->db->update('jadwal', ['jam_mulai' => $this->input->post('jam_mulai')], ['id' => $id]);
+        $this->db->update('jadwal', ['waktu_akhir' => $this->input->post('waktu_akhir')], ['id' => $id]);
+        $this->db->update('jadwal', ['jam_akhir' => $this->input->post('jam_akhir')], ['id' => $id]);
 
         $this->session->set_flashdata('jadwal_message', '<div class="alert alert-warning" role="alert">Jadwal berhasil diubah!</div>');
         redirect('admin/get_jadwal', 'refresh');
