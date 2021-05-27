@@ -80,8 +80,7 @@
 </div>
 </div>
 <div class="copyright_section">
-    <p class="copyright_text">Copyright 2019 All Right Reserved By.<a href="https://html.design"> Free html
-            Templates</p>
+    <p class="copyright_text">Copyright 2019 All Right Reserved</p>
 </div>
 </div>
 </div>
@@ -100,37 +99,37 @@
 <script src="<?= base_url("assets/js/owl.carousel.js") ?>"></script>
 <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 <script>
-    $(document).ready(function() {
-        $(".fancybox").fancybox({
-            openEffect: "none",
-            closeEffect: "none"
-        });
+$(document).ready(function() {
+    $(".fancybox").fancybox({
+        openEffect: "none",
+        closeEffect: "none"
     });
+});
 </script>
 
 
 <script>
-    // This example adds a marker to indicate the position of Bondi Beach in Sydney,
-    // Australia.
-    function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 11,
-            center: {
-                lat: 40.645037,
-                lng: -73.880224
-            },
-        });
-    };
-
-    var image = 'images/location_point.png';
-    var beachMarker = new google.maps.Marker({
-        position: {
+// This example adds a marker to indicate the position of Bondi Beach in Sydney,
+// Australia.
+function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 11,
+        center: {
             lat: 40.645037,
             lng: -73.880224
         },
-        map: map,
-        icon: image
     });
+};
+
+var image = 'images/location_point.png';
+var beachMarker = new google.maps.Marker({
+    position: {
+        lat: 40.645037,
+        lng: -73.880224
+    },
+    map: map,
+    icon: image
+});
 </script>
 <!-- google map js -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8eaHt9Dh5H57Zh0xVTqxVdBFCvFMqFjQ&callback=initMap">

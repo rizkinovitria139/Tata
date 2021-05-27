@@ -79,7 +79,7 @@
                 <div class="col-sm-4">
                     <ul class="top_button_section">
                         <!-- href iki ngelink e file nde njerone controller -->
-                        <li><a class="login-bt active" href="<?= site_url('auth') ?>">Login</a></li>
+                        <li><a class="login-bt active" href="<?= site_url('auth') ?>">Login SiAkad</a></li>
                         <!-- <li><a class="login-bt" href="#">Register</a></li>
                         <li class="search"><a href="#"><img src="assets/images/search-icon.png" alt="#" /></a></li> -->
                     </ul>
