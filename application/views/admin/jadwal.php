@@ -98,7 +98,7 @@
 									<option value="" selected></option>
 									<?php foreach ($mapel as $m) { ?>
 										<option value="<?= $m['id_mapel'] ?>">
-											<?php echo $m['id_mapel'] . ' - ' . $m['nama_mapel']; ?></option>
+											<?php echo $m['id_mapel'] . ' - ' . $m['nama_mapel'] . '-' . $m['nama_kelas']; ?></option>
 									<?php }; ?>
 								</select>
 							</div>
@@ -237,11 +237,11 @@
 								<span>Mata Pelajaran</span>
 								<div class="form-group">
 									<select class="form-control" name="id_mapel" id="id_mapel">
-										<option value="<?= $j['id_mapel']; ?>" selected>
+										<option value="<?= $j['id_mapel'] . ' - ' . $j['nama_kelas']; ?>" selected>
 											<?php echo $j['id_mapel'] . ' - ' . $j['nama_mapel']; ?></option>
 										<?php foreach ($mapel as $m) { ?>
 											<option value="<?= $m['id_mapel'] ?>">
-												<?php echo $m['id_mapel'] . ' - ' . $m['nama_mapel']; ?></option>
+												<?php echo $m['id_mapel'] . ' - ' . $m['nama_mapel'] . '-' . $m['nama_kelas']; ?></option>
 										<?php }; ?>
 									</select>
 								</div>
