@@ -9,7 +9,7 @@ class Jadwal extends CI_Controller
         $this->load->model('Jadwal_model');
         $this->load->library('form_validation');
     }
-
+    
     public function index()
     {
         $data['title'] = 'Halaman Jadwal Mata Pelajaran';
