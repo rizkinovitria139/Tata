@@ -64,6 +64,62 @@ class Admin extends CI_Controller
         $this->load->view('admin/guru', $data);
         $this->load->view('templates/footer');
     }
+    public function get_admin()
+    {
+        $data['title'] = 'Daftar Guru';
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+
+        $this->load->model('Admin_model', 'admin');
+        $data['guru'] = $this->admin->get_admin();
+        $this->load->model('Role_model', 'role');
+        $data['role'] = $this->role->getRole();
+
+        $this->session->set_userdata($data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/guru', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function get_guru_mapel()
+    {
+        $data['title'] = 'Daftar Guru';
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+
+        $this->load->model('Admin_model', 'admin');
+        $data['guru'] = $this->admin->get_guru_mapel();
+        $this->load->model('Role_model', 'role');
+        $data['role'] = $this->role->getRole();
+
+        $this->session->set_userdata($data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/guru', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function get_guru_bk()
+    {
+        $data['title'] = 'Daftar Guru';
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+
+        $this->load->model('Admin_model', 'admin');
+        $data['guru'] = $this->admin->get_guru_bk();
+        $this->load->model('Role_model', 'role');
+        $data['role'] = $this->role->getRole();
+
+        $this->session->set_userdata($data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/guru', $data);
+        $this->load->view('templates/footer');
+    }
 
     public function tambah_guru()
     {
@@ -502,7 +558,7 @@ class Admin extends CI_Controller
         $this->load->model('Kelas_model', 'kelas');
         $data['kelas'] = $this->kelas->get_kelas();
         $this->load->model('Admin_model', 'guru');
-        $data['guru'] = $this->guru->getAll();
+        $data['guru'] = $this->guru->get_guru_mapel();
         $this->load->model('Guru_model', 'pengajar');
         $data['pengajar'] = $this->pengajar->get_pengajar();
 
@@ -548,7 +604,7 @@ class Admin extends CI_Controller
         $this->load->model('Guru_model', 'pengajar');
         $this->pengajar->delete_pengajar($id);
         // untuk flashdata mempunyai 2 parameter (nama flashdata/alias, isi dari flashdatanya)
-        $this->session->set_flashdata('pengajar_message', '<div class="alert alert-danger" role="alert">JPengajar berhasil dihapus!</div>');
+        $this->session->set_flashdata('pengajar_message', '<div class="alert alert-danger" role="alert">Pengajar berhasil dihapus!</div>');
         redirect('admin/get_pengajar', 'refresh');
     }
     // end bagian mapel

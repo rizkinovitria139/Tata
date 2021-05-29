@@ -26,7 +26,7 @@
 							<?php foreach ($pengajar as $p) : ?>
 								<tr>
 									<td><?= $i ?></td>
-									<td><?= $p['nama_mapel']; ?></td>
+									<td><?= $p['nama_mapel'] . '-' . $p['nama_kelas']; ?></td>
 									<td><?= $p['nama']; ?></td>
 									<td>
 										<button type="button" class="btn btn-primary btn-icon" href="" data-toggle="modal" data-target="#editpengajarModal<?= $p['id']; ?>">
@@ -77,7 +77,7 @@
 									<option value="" selected></option>
 									<?php foreach ($mapel as $m) { ?>
 										<option value="<?= $m['id_mapel'] ?>">
-											<?php echo $m['id_mapel'] . ' - ' . $m['nama_mapel']; ?></option>
+											<?php echo $m['id_mapel'] . ' - ' . $m['nama_mapel'] . '-' . $m['nama_kelas']; ?></option>
 									<?php }; ?>
 								</select>
 							</div>
@@ -121,10 +121,10 @@
 								<span>Mata Pelajaran</span>
 								<div class="form-group">
 									<select class="form-control" name="id_mapel" id="id_mapel">
-										<option value="<?= $p['id_mapel']; ?>" selected><?= $p['id_mapel']  . ' - ' . $p['nama_mapel']; ?></option>
+										<option value="<?= $p['id_mapel']; ?>" selected><?= $p['id_mapel']  . ' - ' . $p['nama_mapel'] . '-' . $m['nama_kelas']; ?></option>
 										<?php foreach ($mapel as $m) { ?>
 											<option value="<?= $m['id_mapel'] ?>">
-												<?php echo $m['id_mapel'] . ' - ' . $m['nama_mapel']; ?></option>
+												<?php echo $m['id_mapel'] . ' - ' . $m['nama_mapel'] . '-' . $m['nama_kelas']; ?></option>
 										<?php }; ?>
 									</select>
 								</div>
