@@ -108,15 +108,18 @@ class Admin extends CI_Controller
             $this->load->model('Admin_model', 'admin');
             $this->admin->tambah_guru($dataArray);
             $this->session->set_flashdata('guru_message', '<div class="alert alert-success" role="alert">Data Guru Telah Ditambahkan!</div>');
-            redirect('admin/tambah_guru');
+            redirect('admin/get_guru');
         } else {
             $this->session->set_flashdata('guru_message', '<div class="alert alert-danger" role="alert">Data Guru gagal ditambahkan!</div>');
-            redirect('admin/get_guru');
+            redirect('admin/tambah_guru');
         }
     }
 
     public function update_guru($id)
     {
+        $this->db->update('siswa', ['nis'          => $this->input->post('nis')], ['nis' => $id]);
+        $this->db->update('siswa', ['nisn'         => $this->input->post('nisn')], ['nis' => $id]);
+        
         $this->db->update('guru', ['nip'           => $this->input->post('nip')], ['nip', $id]);
         $this->db->update('guru', ['nama'          => $this->input->post('nama')], ['nip', $id]);
         $this->db->update('guru', ['tempat_lahir'  => $this->input->post('tempat_lahir')], ['nip', $id]);
