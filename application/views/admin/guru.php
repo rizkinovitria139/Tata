@@ -3,8 +3,11 @@
 
 			<!-- Page Heading -->
 			<h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
-
-			<a class="btn btn-warning mb-3" data-toggle="modal" data-target="#tambahGuruModal">Tambah Guru</a>
+			<a class="btn btn-warning mb-3" data-toggle="modal" data-target="#tambahGuruModal">Tambah Guru</a> <br>
+			<a href="<?= base_url('admin/get_guru_bk') ?>" class="btn btn-info mb-3">Guru BK</a>
+			<a href="<?= base_url('admin/get_guru_mapel') ?>" class="btn btn-info mb-3">Guru Mapel</a>
+			<a href="<?= base_url('admin/get_admin') ?>" class="btn btn-info mb-3">Admin</a>
+			<a href="<?= base_url('admin/get_guru') ?>" class="btn btn-info mb-3">All</a>
 			<div class="col-lg">
 				<?= form_error('kelas', '<div class="alert alert-danger" kelas="alert">', '</div>'); ?>
 
