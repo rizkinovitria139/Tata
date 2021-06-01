@@ -5,6 +5,39 @@
 			<h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
 			<a class="btn btn-warning mb-3" data-toggle="modal" data-target="#tambahkelasModal">Tambah Kelas</a>
+			<div class="card-mb3">
+				<div class="card-header bg-secondary text-white">
+					Filter Data Kelas
+				</div>
+
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+								<form action="" method="POST">
+									<select class="form-control" name="formal" onchange="location = this.value;">
+										<option value="" selected>--Pilih Tahun Akademik--</option>
+										<?php foreach ($tahun_akademik as $t) { ?>
+											<option value="<?= base_url('admin/get_kelas_by/' . $t['id_tahun_akademik']) ?>">
+												<?php echo $t['id_tahun_akademik'] . ' - ' . $t['tahun']; ?></option>
+										<?php }; ?>
+									</select>
+								</form>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<?php echo form_open('admin/search_kelas') ?>
+							<div class="input-group mb-3">
+								<input type="text" class="form-control" placeholder="Search..." name="keyword" autocomplete="off" autofocus>
+								<div class="input-group-append">
+									<input type="submit" class="btn btn-primary" name="submit">
+								</div>
+							</div>
+							<?php echo form_close() ?>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="col-lg">
 				<?= form_error('kelas_message'); ?>
 
@@ -139,7 +172,7 @@
 
 								<div class="form-group">
 									<select class="form-control" name="nip_wali_kelas" id="nip_wali_kelas">
-										<option value="" selected></option>
+										<option value="<?= $k['nip_wali_kelas']; ?>" selected><?php echo $k['nip_wali_kelas'] . ' - ' . $k['nama']; ?></option>
 										<?php foreach ($guru as $g) { ?>
 											<option value="<?= $g['nip'] ?>">
 												<?php echo $g['nip'] . ' - ' . $g['nama']; ?></option>
@@ -151,7 +184,7 @@
 								<div class="form-group">
 									<span>Tahun Akademik</span>
 									<select class="form-control" name="id_tahun_akademik" id="id_tahun_akademik">
-										<option value="" selected></option>
+										<option value="<?= $k['id_tahun_akademik']; ?>" selected><?php echo $k['id_tahun_akademik'] . ' - ' . $k['tahun']; ?></option>
 										<?php foreach ($tahun_akademik as $t) { ?>
 											<option value="<?= $t['id_tahun_akademik'] ?>">
 												<?php echo $t['id_tahun_akademik'] . ' - ' . $t['tahun']; ?></option>

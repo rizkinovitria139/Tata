@@ -457,6 +457,46 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function get_kelas_by($id_tahun_akademik)
+    {
+        $data['title'] = 'Daftar Kelas';
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+
+        $this->session->set_userdata($data);
+
+        $this->load->model('Kelas_model', 'kelas');
+        $data['kelas'] = $this->kelas->get_kelas_by($id_tahun_akademik);
+        $this->load->model('Tahun_model', 'tahun_akademik');
+        $data['tahun_akademik'] = $this->tahun_akademik->getAll();
+
+        $this->session->set_userdata($data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/kelas', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function search_kelas()
+    {
+        $data['title'] = 'Daftar Kelas';
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+        $keyword = $this->input->post('keyword');
+        $this->load->model('Kelas_model', 'kelas');
+        $this->load->model('Tahun_model', 'tahun_akademik');
+        $data['tahun_akademik'] = $this->tahun_akademik->getAll();
+
+        $data['kelas'] = $this->kelas->get_keyword($keyword);
+        $this->session->set_userdata($data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/kelas', $data);
+        $this->load->view('templates/footer');
+    }
+
     public function tambah_kelas()
     {
         // $this->form_validation->set_rules('id_kelas', 'ID Kelas', 'required');
