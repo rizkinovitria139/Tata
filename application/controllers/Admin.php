@@ -173,9 +173,6 @@ class Admin extends CI_Controller
 
     public function update_guru($id)
     {
-        $this->db->update('siswa', ['nis'          => $this->input->post('nis')], ['nis' => $id]);
-        $this->db->update('siswa', ['nisn'         => $this->input->post('nisn')], ['nis' => $id]);
-        
         $this->db->update('guru', ['nip'           => $this->input->post('nip')], ['nip', $id]);
         $this->db->update('guru', ['nama'          => $this->input->post('nama')], ['nip', $id]);
         $this->db->update('guru', ['tempat_lahir'  => $this->input->post('tempat_lahir')], ['nip', $id]);
@@ -192,7 +189,7 @@ class Admin extends CI_Controller
         $this->db->update('guru', ['password'      => $this->input->post('password')], ['nip', $id]);
         $this->db->update('guru', ['username'      => $this->input->post('username')], ['nip', $id]);
 
-        $this->session->set_flashdata('guru_message', '<div class="alert alert-success" role="alert">Data Guru berhasil diubah!</div>');
+        $this->session->set_flashdata('guru_message', '<div class="alert alert-success mb-4" role="alert">Data Guru berhasil diubah!</div>');
         redirect('admin/get_guru', 'refresh');
     }
 
@@ -203,6 +200,21 @@ class Admin extends CI_Controller
         // untuk flashdata mempunyai 2 parameter (nama flashdata/alias, isi dari flashdatanya)
         $this->session->set_flashdata('guru_message', '<div class="alert alert-success" role="alert">Data Guru berhasil dihapus!</div>');
         redirect('admin/get_guru');
+    }
+
+    public function search_guru()
+    {
+        $data['title'] = 'Daftar Guru';
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+        $keyword = $this->input->post('keyword');
+        $data['guru'] = $this->Admin_model->get_keyword($keyword);
+        $this->session->set_userdata($data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/guru', $data);
+        $this->load->view('templates/footer');
     }
     // end guru
 

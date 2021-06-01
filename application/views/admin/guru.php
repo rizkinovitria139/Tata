@@ -1,13 +1,38 @@
 		<!-- Begin Page Content -->
 		<div class="container-fluid">
 
+
 			<!-- Page Heading -->
 			<h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
-			<a class="btn btn-warning mb-3" data-toggle="modal" data-target="#tambahGuruModal">Tambah Guru</a> <br>
-			<a href="<?= base_url('admin/get_guru_bk') ?>" class="btn btn-info mb-3">Guru BK</a>
-			<a href="<?= base_url('admin/get_guru_mapel') ?>" class="btn btn-info mb-3">Guru Mapel</a>
-			<a href="<?= base_url('admin/get_admin') ?>" class="btn btn-info mb-3">Admin</a>
-			<a href="<?= base_url('admin/get_guru') ?>" class="btn btn-info mb-3">All</a>
+			<div class="row">
+				<div class="col-md-1">
+					<a class="btn btn-warning mb-3" data-toggle="modal" data-target="#tambahGuruModal">Tambah</a> <br>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<form action="" method="POST">
+							<select class="form-control" name="formal" onchange="location = this.value;">
+								<option value="" selected>Filter </option>
+								<option value="<?= base_url('admin/get_guru_bk') ?>">Guru BK</option>
+								<option value="<?= base_url('admin/get_guru_mapel') ?>">Guru Mapel</option>
+								<option value="<?= base_url('admin/get_admin') ?>">Admin</option>
+								<option value="<?= base_url('admin/get_guru') ?>">All</option>
+							</select>
+						</form>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<?php echo form_open('admin/search_guru') ?>
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" placeholder="Search..." name="keyword" autocomplete="off" autofocus>
+						<div class="input-group-append">
+							<input type="submit" class="btn btn-primary" name="submit">
+						</div>
+					</div>
+					<?php echo form_close() ?>
+				</div>
+			</div>
+
 			<div class="col-lg">
 				<?= form_error('kelas', '<div class="alert alert-danger" kelas="alert">', '</div>'); ?>
 
