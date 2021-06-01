@@ -248,6 +248,11 @@
 							</div>
 
 							<div class="form-group">
+								<span>Status</span>
+								<input type="text" class="form-control" readonly value="<?= $g['status']; ?>">
+							</div>
+
+							<div class="form-group">
 								<span>Is Active</span>
 								<input type="text" class="form-control" readonly value="<?= $g['is_active']; ?>">
 							</div>
@@ -353,6 +358,17 @@
 										<?php }; ?>
 									</select>
 
+								</div>
+
+								<div class="form-group">
+									<span>Status </span>
+									<select class="form-control" name="status" id="status">
+										<option value="<?= $g['status'] ?>" selected><?= $g['status'] ?> </option>
+										<option value="Guru Mata Pelajaran">Guru Mata Pelajaran</option>
+										<option value="Guru BK">Guru BK</option>
+										<option value="Staf TU">Staf TU</option>
+									</select>
+									<?= form_error('status', '<small class="text-danger pl-3">', '</small>'); ?>
 								</div>
 
 								<div class="form-group">
