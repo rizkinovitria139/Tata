@@ -19,9 +19,10 @@ class Jadwal_model extends CI_Model
     public function get_jadwal_by($id_kelas)
     {
         $this->db->select('*');
-        $this->db->from('kelas');
-        $this->db->join('jadwal', 'kelas.id_kelas = jadwal.id_kelas');
-        $this->db->where('jadwal.id_kelas', $id_kelas);
+        $this->db->from('jadwal');
+        $this->db->join('mata_pelajaran', 'mata_pelajaran.id_mapel = jadwal.id_mapel');
+        $this->db->join('kelas', 'kelas.id_kelas = mata_pelajaran.id_kelas');
+        $this->db->where('mata_pelajaran.id_kelas', $id_kelas);
         $query = $this->db->get();
         return $query->result_array();
     }
