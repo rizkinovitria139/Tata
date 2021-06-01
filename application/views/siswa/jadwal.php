@@ -13,6 +13,26 @@
 
 <body>
     <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg">
+                <div class="form-group">
+                    <form action="" method="POST">
+                        <select class="form-control" name="formal" onchange="location = this.value;">
+                            <option value="" selected>Filter berdasarkan hari</option>
+                            <option value="<?= base_url('Jadwal/get_hari_senin') ?>">Senin</option>
+                            <option value="<?= base_url('Jadwal/get_hari_selasa') ?>">Selasa</option>
+                            <option value="<?= base_url('Jadwal/get_hari_rabu') ?>">Rabu</option>
+                            <option value="<?= base_url('Jadwal/get_hari_kamis') ?>">Kamis</option>
+                            <option value="<?= base_url('Jadwal/get_hari_jumat') ?>">Jumat</option>
+                            <option value="<?= base_url('Jadwal/get_hari_sabtu') ?>">Sabtu</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <h2>Jadwal Mata Pelajaran</h2>
         <!-- <p>Anda dapat mengelola data user</p> -->
         <table class="table table-grey">
