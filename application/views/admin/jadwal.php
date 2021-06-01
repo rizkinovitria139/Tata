@@ -5,57 +5,74 @@
 			<h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
 			<a class="btn btn-warning mb-3" data-toggle="modal" data-target="#tambahjadwalModal">Tambah Jadwal</a>
-			<div class="col-lg">
-				<?= form_error('mapel', '<div class="alert alert-danger" kelas="alert">', '</div>'); ?>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<form action="" method="POST">
+							<select class="form-control" name="formal" onchange="location = this.value;">
+								<option value="" selected>Filter </option>
+								<?php foreach ($kelas as $k) { ?>
+									<option value="<?= base_url('admin/get_jadwal_by/' . $k['id_kelas']) ?>">
+										<?php echo $k['nama_kelas'] . ' - ' . $k['tahun']; ?></option>
+								<?php }; ?>
 
-				<?= $this->session->flashdata('jadwal_message'); ?>
-
-				<div class="row">
-
-					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th scope="col">#</th>
-								<th scope="col">Kelas</th>
-								<th scope="col">Mata pelajaran</th>
-								<th scope="col">Hari</th>
-								<th scope="col">Waktu Mulai</th>
-								<th scope="col">Jam Mulai</th>
-								<th scope="col">Waktu Berakhir</th>
-								<th scope="col">Jam Berakhir</th>
-								<th scope="col">Action</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php $i = 1; ?>
-							<?php foreach ($jadwal as $j) : ?>
-								<tr>
-									<td><?= $i ?></td>
-									<td><?= $j['nama_kelas']; ?></td>
-									<td><?= $j['nama_mapel']; ?></td>
-									<td><?= $j['hari']; ?></td>
-									<td><?= $j['waktu_mulai']; ?></td>
-									<td><?= $j['jam_mulai']; ?></td>
-									<td><?= $j['waktu_akhir']; ?></td>
-									<td><?= $j['jam_akhir']; ?></td>
-									<td>
-										<a class="btn btn-primary btn-icon" href="" data-toggle="modal" data-target="#editjadwalModal<?= $j['id']; ?>">
-											<i class="far fa-edit"></i>
-										</a>
-										<a class="btn btn-danger" href="<?= base_url('admin/delete_jadwal/') . $j['id']; ?>" onclick="return confirm('Are you sure to delete this data ?');">
-											<i class="far fa-trash-alt"></i>
-										</a>
-									</td>
-								</tr>
-								<?php $i++; ?>
-							<?php endforeach; ?>
-						</tbody>
-					</table>
-
+					</div>
+					</select>
+					</form>
 				</div>
+			</div>
+		</div>
+		<div class="col-lg">
+			<?= form_error('mapel', '<div class="alert alert-danger" kelas="alert">', '</div>'); ?>
+
+			<?= $this->session->flashdata('jadwal_message'); ?>
+
+			<div class="row">
+
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Kelas</th>
+							<th scope="col">Mata pelajaran</th>
+							<th scope="col">Hari</th>
+							<th scope="col">Waktu Mulai</th>
+							<th scope="col">Jam Mulai</th>
+							<th scope="col">Waktu Berakhir</th>
+							<th scope="col">Jam Berakhir</th>
+							<th scope="col">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php $i = 1; ?>
+						<?php foreach ($jadwal as $j) : ?>
+							<tr>
+								<td><?= $i ?></td>
+								<td><?= $j['nama_kelas']; ?></td>
+								<td><?= $j['nama_mapel']; ?></td>
+								<td><?= $j['hari']; ?></td>
+								<td><?= $j['waktu_mulai']; ?></td>
+								<td><?= $j['jam_mulai']; ?></td>
+								<td><?= $j['waktu_akhir']; ?></td>
+								<td><?= $j['jam_akhir']; ?></td>
+								<td>
+									<a class="btn btn-primary btn-icon" href="" data-toggle="modal" data-target="#editjadwalModal<?= $j['id']; ?>">
+										<i class="far fa-edit"></i>
+									</a>
+									<a class="btn btn-danger" href="<?= base_url('admin/delete_jadwal/') . $j['id']; ?>" onclick="return confirm('Are you sure to delete this data ?');">
+										<i class="far fa-trash-alt"></i>
+									</a>
+								</td>
+							</tr>
+							<?php $i++; ?>
+						<?php endforeach; ?>
+					</tbody>
+				</table>
 
 			</div>
-			<!-- /.container-fluid -->
+
+		</div>
+		<!-- /.container-fluid -->
 
 		</div>
 		<!-- End of Main Content -->

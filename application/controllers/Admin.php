@@ -670,6 +670,27 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function get_jadwal_by($id_kelas)
+    {
+        $data['title'] = 'Daftar Mata Pelajaran';
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+
+        $this->session->set_userdata($data);
+
+        $this->load->model('Jadwal_model', 'jadwal');
+        $data['jadwal'] = $this->jadwal->get_jadwal_by($id_kelas);
+        $this->load->model('Kelas_model', 'kelas');
+        $data['kelas'] = $this->kelas->get_kelas();
+
+        $this->session->set_userdata($data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/jadwal', $data);
+        $this->load->view('templates/footer');
+    }
+
     public function tambah_jadwal()
     {
         // $this->form_validation->set_rules('id_kelas', 'ID Kelas', 'required');
