@@ -24,6 +24,29 @@ class Kelas_model extends CI_Model
         return $this->db->query($query)->result_array();
     }
 
+    public function get_kelas_by($id_tahun_akademik)
+    {
+        $this->db->select('*');
+        $this->db->from('kelas');
+        $this->db->join('tahun_akademik', 'kelas.id_tahun_akademik = tahun_akademik.id_tahun_akademik');
+        $this->db->join('guru', 'guru.nip = kelas.nip_wali_kelas');
+        $this->db->where('kelas.id_tahun_akademik', $id_tahun_akademik);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function get_keyword($keyword)
+    {
+        $this->db->select('*');
+        $this->db->from('kelas');
+        $this->db->join('tahun_akademik', 'kelas.id_tahun_akademik = tahun_akademik.id_tahun_akademik');
+        $this->db->join('guru', 'guru.nip = kelas.nip_wali_kelas');
+        $this->db->like('nama_kelas', $keyword);
+        $this->db->or_like('nama', $keyword);
+
+        return $this->db->get()->result_array();
+    }
+
     public function tambah_kelas($data)
     {
 

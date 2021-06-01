@@ -16,6 +16,17 @@ class Jadwal_model extends CI_Model
         return $this->db->query($query)->result_array();
     }
 
+    public function get_jadwal_by($id_kelas)
+    {
+        $this->db->select('*');
+        $this->db->from('jadwal');
+        $this->db->join('mata_pelajaran', 'mata_pelajaran.id_mapel = jadwal.id_mapel');
+        $this->db->join('kelas', 'kelas.id_kelas = mata_pelajaran.id_kelas');
+        $this->db->where('mata_pelajaran.id_kelas', $id_kelas);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function tampilJadwal($id)
     {
         $query = "SELECT `jadwal`.*, `mata_pelajaran`.*, `kelas`.*, `siswa`.*
@@ -28,7 +39,7 @@ class Jadwal_model extends CI_Model
         where `siswa`.`nis`= $id";
 
         return $this->db->query($query)->result_array();
-        
+
         // $this->db->select('jadwal.*,mata_pelajaran.nama_mapel, siswa.id_kelas');
         // $this->db->from('jadwal');
         // $this->db->join('mata_pelajaran', 'jadwal.id_mapel = mata_pelajaran.id_mapel');

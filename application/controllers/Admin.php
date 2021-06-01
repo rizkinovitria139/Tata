@@ -242,31 +242,38 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function filter_siswa()
+    public function get_siswa_by($id_kelas)
     {
-        $data['title'] = 'Data Siswa';
+        $data['title'] = 'Daftar Siswa';
         $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
 
-        if ((isset($_GET['id_kelas']) && $_GET['id_kelas'] != '')) {
-            $id_kelas = $_GET['id_kelas'];
-        }
 
-        $data['datasiswa'] = $this->db->query("SELECT `siswa`.*, `kelas`.*
-            FROM `siswa` 
-            JOIN `kelas` ON `siswa`.`id_kelas` = `kelas`.`id_kelas`
-            WHERE `siswa`.`id_kelas` = $id_kelas
-            ORDER BY `siswa`.`nama` ASC")->result();
-        // var_dump($data1);
-        // die();
+        $this->session->set_userdata($data);
 
+        $this->load->model('Siswa_model', 'siswa');
+        $data['siswa'] = $this->siswa->get_siswa_by($id_kelas);
         $this->load->model('Kelas_model', 'kelas');
         $data['kelas'] = $this->kelas->get_kelas();
-        $this->load->model('Siswa_model', 'siswa');
-        $data['siswa'] = $this->siswa->filter_siswa();
 
-        // $this->session->set_userdata($data);
+        $this->session->set_userdata($data);
         $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/siswa', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function search_siswa()
+    {
+        $data['title'] = 'Daftar Siswa Kelas';
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+        $keyword = $this->input->post('keyword');
+        $this->load->model('Siswa_model', 'siswa');
+        $data['siswa'] = $this->siswa->get_keyword($keyword);
+        $this->session->set_userdata($data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
         $this->load->view('templates/topbar', $data);
         $this->load->view('admin/siswa', $data);
         $this->load->view('templates/footer');
@@ -450,6 +457,46 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function get_kelas_by($id_tahun_akademik)
+    {
+        $data['title'] = 'Daftar Kelas';
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+
+        $this->session->set_userdata($data);
+
+        $this->load->model('Kelas_model', 'kelas');
+        $data['kelas'] = $this->kelas->get_kelas_by($id_tahun_akademik);
+        $this->load->model('Tahun_model', 'tahun_akademik');
+        $data['tahun_akademik'] = $this->tahun_akademik->getAll();
+
+        $this->session->set_userdata($data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/kelas', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function search_kelas()
+    {
+        $data['title'] = 'Daftar Kelas';
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+        $keyword = $this->input->post('keyword');
+        $this->load->model('Kelas_model', 'kelas');
+        $this->load->model('Tahun_model', 'tahun_akademik');
+        $data['tahun_akademik'] = $this->tahun_akademik->getAll();
+
+        $data['kelas'] = $this->kelas->get_keyword($keyword);
+        $this->session->set_userdata($data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/kelas', $data);
+        $this->load->view('templates/footer');
+    }
+
     public function tambah_kelas()
     {
         // $this->form_validation->set_rules('id_kelas', 'ID Kelas', 'required');
@@ -505,6 +552,27 @@ class Admin extends CI_Controller
 
         $this->load->model('Mapel_model', 'mapel');
         $data['mapel'] = $this->mapel->get_mapel();
+        $this->load->model('Kelas_model', 'kelas');
+        $data['kelas'] = $this->kelas->get_kelas();
+
+        $this->session->set_userdata($data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/mapel', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function get_mapel_by($id_kelas)
+    {
+        $data['title'] = 'Daftar Mata Pelajaran';
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+
+        $this->session->set_userdata($data);
+
+        $this->load->model('Mapel_model', 'mapel');
+        $data['mapel'] = $this->mapel->get_mapel_by($id_kelas);
         $this->load->model('Kelas_model', 'kelas');
         $data['kelas'] = $this->kelas->get_kelas();
 
@@ -640,6 +708,27 @@ class Admin extends CI_Controller
         $data['kelas'] = $this->kelas->get_kelas();
         $this->load->model('Mapel_model', 'mapel');
         $data['mapel'] = $this->mapel->get_mapel();
+
+        $this->session->set_userdata($data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/jadwal', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function get_jadwal_by($id_kelas)
+    {
+        $data['title'] = 'Daftar Jadwal Kelas';
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+
+        $this->session->set_userdata($data);
+
+        $this->load->model('Jadwal_model', 'jadwal');
+        $data['jadwal'] = $this->jadwal->get_jadwal_by($id_kelas);
+        $this->load->model('Kelas_model', 'kelas');
+        $data['kelas'] = $this->kelas->get_kelas();
 
         $this->session->set_userdata($data);
         $this->load->view('templates/header', $data);
