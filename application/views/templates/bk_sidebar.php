@@ -39,6 +39,12 @@
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Penilaian</span></a>
             </li>
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('Bk/Konsultasi'); ?>">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Konsultasi</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">

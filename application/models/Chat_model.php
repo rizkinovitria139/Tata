@@ -26,12 +26,32 @@ class Chat_model extends CI_Model
         $this->db->from('guru');
         return $this->db->get()->result_array();
     }
+    public function getReciverSiswa($nis)
+    {
+        $this->db->select('nis, nama');
+        $this->db->where('nis', $nis);
+        $this->db->from('siswa');
+        return $this->db->get()->row();
+    }
 
     public function getSiswaMessage()
     {
         $nis = $this->session->userdata('nis');
         $this->db->select('chats_detail.*, siswa.nama as namasiswa, guru.nama as namaguru');
         $this->db->where('nis_siswa', $nis);
+        $this->db->join('siswa', 'siswa.nis = chats_detail.nis_siswa');
+        $this->db->join('guru', 'guru.nip = chats_detail.nip_guru');
+
+        $this->db->from('chats_detail');
+
+        return $this->db->get()->result_array();
+    }
+
+    public function getBKMessage($nis)
+    {
+        $nip = $this->session->userdata('nip');
+        $this->db->select('chats_detail.*, siswa.nama as namasiswa, guru.nama as namaguru');
+        $this->db->where(array('nis_siswa' => $nis, 'nip_guru' => $nip));
         $this->db->join('siswa', 'siswa.nis = chats_detail.nis_siswa');
         $this->db->join('guru', 'guru.nip = chats_detail.nip_guru');
 
@@ -51,6 +71,17 @@ class Chat_model extends CI_Model
     {
         $this->db->where($filter);
         return $this->db->delete('chats_detail');
+    }
+
+    public function getChatsBK()
+    {
+        $this->db->select('id_detail, nis_siswa,siswa.nama as namasiswa, nip_guru, guru.nama as namaguru');
+        $this->db->where('nip_guru', $this->session->userdata('nip'));
+        $this->db->join('siswa', 'siswa.nis = chats_detail.nis_siswa');
+        $this->db->join('guru', 'guru.nip = chats_detail.nip_guru');
+        $this->db->group_by('nis_siswa');
+        $this->db->from('chats_detail');
+        return $this->db->get()->result_array();
     }
 }
 

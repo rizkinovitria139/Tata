@@ -73,8 +73,18 @@ class Konsultasi extends CI_Controller
     {
         $data['message'] = $this->m_chat->getSiswaMessage();
         $data['bkdata'] = $this->m_chat->getReciverGuru(['nip' => $data['message'][0]['nip_guru']]);
+
         print_r(
             $this->load->view('chats/chat_conversation', $data, true)
+        );
+    }
+    public function getMessageBK()
+    {
+        $data['message'] = $this->m_chat->getSiswaMessage();
+        $data['siswaData'] = $this->m_chat->getReciverSiswa($data['message'][0]['nis_siswa']);
+
+        print_r(
+            $this->load->view('Bim_Kon/chat_conversation', $data, true)
         );
     }
     public function clearChats()
@@ -83,7 +93,6 @@ class Konsultasi extends CI_Controller
         $nip = $this->input->post('nip');
         $filter = ['nis_siswa' => $nis, 'nip_guru' => $nip];
         $this->m_chat->clearChat($filter);
-        redirect('Konsultasi/index');
         return true;
     }
 }
