@@ -83,8 +83,9 @@
                                                 </div>
                                             </div>
                                             <input type="text" class="form-control form-control-user" id="username" name="username" placeholder="Masukkan username Anda" value="<?= set_value('username'); ?>">
-                                            <?= form_error('username', '<small class="text-danger pl-3">', '</small>'); ?>
+
                                         </div>
+                                        <?= form_error('username', '<small class="text-danger pl-3">', '</small>'); ?>
 
                                         <div class="input-group">
                                             <div class="input-group-prepend">
@@ -93,8 +94,8 @@
                                                 </div>
                                             </div>
                                             <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password">
-                                            <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                                         </div>
+                                        <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
 
                                 </div>
                                 <div class="card-footer">

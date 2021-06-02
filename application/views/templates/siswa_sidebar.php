@@ -14,7 +14,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="<?= base_url('siswa')?>">
+                <a class="nav-link" href="<?= base_url('siswa') ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -29,8 +29,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-users"></i>
                     <span>Siswa</span>
                 </a>
@@ -48,6 +47,12 @@
                 <a class="nav-link" href="<?= base_url('lapor'); ?>">
                     <i class="fas fa-clinic-medical"></i>
                     <span>Lapor BK</span></a>
+            </li>
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('konsultasi'); ?>">
+                    <i class="fas fa-clinic-medical"></i>
+                    <span>Konsultasi BK</span></a>
             </li>
             <!-- Nav Item - Tables -->
             <li class="nav-item">
