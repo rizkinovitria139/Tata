@@ -25,14 +25,20 @@ class Lapor extends CI_Controller
 	}
 	public function create()
 	{
+		$data['title'] = 'Halaman Siswa';
+		$data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')])->row_array();
+		
 		$this->load->view('templates/header');
 		$this->load->view('templates/siswa_sidebar');
 		$this->load->view('templates/siswa_topbar');
-		$this->load->view('templates/lapor');
+		$this->load->view('templates/lapor', $data);
 		$this->load->view('templates/footer');
 	}
 	public function save()
 	{
+		$data['title'] = 'Halaman Siswa';
+		$data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')])->row_array();
+		
 		$this->load->view('templates/header');
 		$this->load->view('templates/siswa_sidebar');
 		$this->load->view('templates/siswa_topbar');
@@ -50,34 +56,7 @@ class Lapor extends CI_Controller
 			redirect('lapor');
 		} else {
 			$this->load->view('templates/header');
-			$this->load->view('templates/lapor');
+			$this->load->view('templates/lapor', $data);
 		}
 	}
-	// function edit($id_pelapor)
-	// {
-	// 	$data['siswa'] = $this->lapor_model->getById($id_pelapor);
-	// 	$this->load->view('templates/header');
-	// 	$this->load->view('siswa/edit', $data);
-	// 	$this->load->view('templates/footer');
-	// }
-	// public function update()
-	// {
-	// 	$this->form_validation->set_rules('isi', 'Isi', 'required');
-	// 	//$this->form_validation->set_rules('tanggal','Tanggal','required');
-	// 	$this->form_validation->set_rules('file', 'File', 'required');
-	// 	if ($this->form_validation->run() == true) {
-	// 		$id_pelapor = $this->input->post('d_pelapor');
-	// 		$data['isi'] = $this->input->post('isi');
-	// 		$data['tanggal'] = $this->input->post('tanggal');
-	// 		$data['file'] = $this->input->post('file');
-	// 		$this->lapor_model->update($data, $id_pelapor);
-	// 		redirect('lapor');
-	// 	} else {
-	// 		$id_pelapor = $this->input->post('id_pelapor');
-	// 		$data['lapor_bk'] = $this->lapor_model->getById($id_pelapor);
-	// 		$this->load->view('templates/header');
-	// 		$this->load->view('siswa/edit', $data);
-	// 		$this->load->view('templates/footer');
-	// 	}
-	// }
 }

@@ -15,10 +15,11 @@ class Guru_model extends CI_Model
 
     public function get_pengajar()
     {
-        $query = "SELECT `pengajar`.*, `guru`.*, `mata_pelajaran`.*
+        $query = "SELECT `pengajar`.*, `guru`.*, `mata_pelajaran`.*, `kelas`.*
         FROM `pengajar`
         JOIN `guru` ON `guru`.`nip` = `pengajar`.`id_guru`
-        JOIN `mata_pelajaran` ON `mata_pelajaran`.`id_mapel` = `pengajar`.`id_mapel`";
+        JOIN `mata_pelajaran` ON `mata_pelajaran`.`id_mapel` = `pengajar`.`id_mapel`
+        JOIN kelas ON `kelas`.`id_kelas` = `mata_pelajaran`.`id_kelas`";
 
         return $this->db->query($query)->result_array();
     }

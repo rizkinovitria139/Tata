@@ -13,6 +13,26 @@
 
 <body>
     <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg">
+                <div class="form-group">
+                    <form action="" method="POST">
+                        <select class="form-control" name="formal" onchange="location = this.value;">
+                            <option value="" selected>Filter berdasarkan hari</option>
+                            <option value="<?= base_url('Jadwal/get_hari_senin') ?>">Senin</option>
+                            <option value="<?= base_url('Jadwal/get_hari_selasa') ?>">Selasa</option>
+                            <option value="<?= base_url('Jadwal/get_hari_rabu') ?>">Rabu</option>
+                            <option value="<?= base_url('Jadwal/get_hari_kamis') ?>">Kamis</option>
+                            <option value="<?= base_url('Jadwal/get_hari_jumat') ?>">Jumat</option>
+                            <option value="<?= base_url('Jadwal/get_hari_sabtu') ?>">Sabtu</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <h2>Jadwal Mata Pelajaran</h2>
         <!-- <p>Anda dapat mengelola data user</p> -->
         <table class="table table-grey">
@@ -22,9 +42,9 @@
                     <th>Hari</th>
                     <th>Kelas</th>
                     <th>Mata Pelajaran</th>
-                    <th>Jam ke</th>
-                    <th>Waktu</th>
-                    <th>NIP Pengajar</th>
+                    <th>Waktu Mulai</th>
+                    <th>Waktu Selesai</th>
+                    <!-- <th>NIP Pengajar</th> -->
                     <!-- <th>Action</th> -->
                 </tr>
             </thead>
@@ -35,14 +55,11 @@
                     ?>
                 <tr>
                     <td><?= $no++; ?></td>
-                    <!-- <td><?= $u->hari ?></td> -->
                     <td><?= $j['hari']; ?></td>
                     <td><?= $j['nama_kelas']; ?></td>
                     <td><?= $j['nama_mapel']; ?></td>
-                    <td><?= $j['hari']; ?></td>
-                    <td><?= $j['waktu']; ?></td>
-                    <td><?= $j['nip_pengajar']; ?></td>
-
+                    <td><?= $j['waktu_mulai']; ?></td>
+                    <td><?= $j['waktu_akhir']; ?></td>
                 </tr>
                 <?php
                 endforeach;

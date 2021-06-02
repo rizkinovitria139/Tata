@@ -43,17 +43,29 @@ class Auth extends CI_Controller
                         $data = [
                             'username' => $guru['username'],
                             'role_id' => $guru['role_id'],
-                            'nip' => $guru['nip']
+                            'nip' => $guru['nip'],
+                            'tempat_lahir' => $guru['tempat_lahir'],
+                            'tanggal_lahir' => $guru['tanggal_lahir'],
+                            'jenis_kelamin' => $guru['jenis_kelamin'],
+                            'agama' => $guru['agama'],
+                            'alamat' => $guru['alamat'],
+                            'no_telp' => $guru['no_telp'],
+                            'tanggal_masuk' => $guru['tanggal_masuk'],
+                            'email' => $guru['email'],
+                            'status' => $guru['status'],
+                            'password' => $guru['password'],
+                            'username' => $guru['username']
                         ];
                         $this->session->set_userdata($data);
                         redirect('admin');
                     }
-                    if ($guru['role_id'] == 8) {
+                    if ($guru['role_id'] == 5) {
                         $data = [
                             'username' => $guru['username'],
                             'role_id' => $guru['role_id'],
                             'nama' => $guru['nama'],
                             'nip' => $guru['nip']
+                            
                         ];
                         $this->session->set_userdata($data);
                         redirect('Guru_Mapel');
@@ -88,7 +100,8 @@ class Auth extends CI_Controller
                             'nis' => $siswa['nis'],
                             'nama' => $siswa['nama'],
                             'email' => $siswa['email_siswa'],
-                            'alamat' => $siswa['alamat_siswa']
+                            'alamat' => $siswa['alamat_siswa'],
+                            'id_kelas' => $siswa['id_kelas']
                             //$items = (string)$var;
                         ];
                         $this->session->set_userdata($data);

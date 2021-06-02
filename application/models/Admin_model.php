@@ -17,6 +17,50 @@ class Admin_model extends CI_Model
         return $this->db->query($query)->result_array();
     }
 
+    public function get_guru_mapel()
+    {
+        $query = "SELECT `guru`.*, `user_role`.*
+        FROM `guru`
+        JOIN `user_role` ON `user_role`.`id_role` = `guru`.`role_id`
+        WHERE `guru`.`role_id` = 5
+        ";
+        return $this->db->query($query)->result_array();
+    }
+
+    public function get_guru_bk()
+    {
+        $query = "SELECT `guru`.*, `user_role`.*
+        FROM `guru`
+        JOIN `user_role` ON `user_role`.`id_role` = `guru`.`role_id`
+        WHERE `guru`.`role_id` = 7
+        ";
+        return $this->db->query($query)->result_array();
+    }
+
+    public function get_admin()
+    {
+        $query = "SELECT `guru`.*, `user_role`.*
+        FROM `guru`
+        JOIN `user_role` ON `user_role`.`id_role` = `guru`.`role_id`
+        WHERE `guru`.`role_id` = 4
+        ";
+        return $this->db->query($query)->result_array();
+    }
+
+    public function get_keyword($keyword)
+    {
+        $this->db->select('*');
+        $this->db->from('guru');
+        $this->db->like('nip', $keyword);
+        $this->db->or_like('nama', $keyword);
+        $this->db->or_like('no_telp', $keyword);
+        $this->db->or_like('alamat', $keyword);
+        $this->db->or_like('email', $keyword);
+        $this->db->or_like('username', $keyword);
+
+        return $this->db->get()->result_array();
+    }
+
     public function tambah_guru($data)
     {
         return $this->db->insert($this->table, $data);

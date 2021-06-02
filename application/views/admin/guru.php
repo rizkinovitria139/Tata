@@ -1,10 +1,38 @@
 		<!-- Begin Page Content -->
 		<div class="container-fluid">
 
+
 			<!-- Page Heading -->
 			<h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+			<div class="row">
+				<div class="col-md-1">
+					<a class="btn btn-warning mb-3" data-toggle="modal" data-target="#tambahGuruModal">Tambah</a> <br>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<form action="" method="POST">
+							<select class="form-control" name="formal" onchange="location = this.value;">
+								<option value="" selected>Filter </option>
+								<option value="<?= base_url('admin/get_guru_bk') ?>">Guru BK</option>
+								<option value="<?= base_url('admin/get_guru_mapel') ?>">Guru Mapel</option>
+								<option value="<?= base_url('admin/get_admin') ?>">Admin</option>
+								<option value="<?= base_url('admin/get_guru') ?>">All</option>
+							</select>
+						</form>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<?php echo form_open('admin/search_guru') ?>
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" placeholder="Search..." name="keyword" autocomplete="off" autofocus>
+						<div class="input-group-append">
+							<input type="submit" class="btn btn-primary" name="submit">
+						</div>
+					</div>
+					<?php echo form_close() ?>
+				</div>
+			</div>
 
-			<a class="btn btn-warning mb-3" data-toggle="modal" data-target="#tambahGuruModal">Tambah Guru</a>
 			<div class="col-lg">
 				<?= form_error('kelas', '<div class="alert alert-danger" kelas="alert">', '</div>'); ?>
 
@@ -245,6 +273,11 @@
 							</div>
 
 							<div class="form-group">
+								<span>Status</span>
+								<input type="text" class="form-control" readonly value="<?= $g['status']; ?>">
+							</div>
+
+							<div class="form-group">
 								<span>Is Active</span>
 								<input type="text" class="form-control" readonly value="<?= $g['is_active']; ?>">
 							</div>
@@ -350,6 +383,17 @@
 										<?php }; ?>
 									</select>
 
+								</div>
+
+								<div class="form-group">
+									<span>Status </span>
+									<select class="form-control" name="status" id="status">
+										<option value="<?= $g['status'] ?>" selected><?= $g['status'] ?> </option>
+										<option value="Guru Mata Pelajaran">Guru Mata Pelajaran</option>
+										<option value="Guru BK">Guru BK</option>
+										<option value="Staf TU">Staf TU</option>
+									</select>
+									<?= form_error('status', '<small class="text-danger pl-3">', '</small>'); ?>
 								</div>
 
 								<div class="form-group">

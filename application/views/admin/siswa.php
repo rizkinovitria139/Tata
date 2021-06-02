@@ -11,21 +11,31 @@
 				</div>
 
 				<div class="card-body">
-					<form class="form-inline" action="<?= base_url('admin/filter_siswa'); ?>" method="POST">
-						<div class="form-group mb-2">
-							<label for="staticEmail2">Kelas</label>
-							<select name="id_kelas" id="id_kelas" class="form-control ml-2">
-								<option value="">--Pilih Kelas--</option>
-								<?php foreach ($kelas as $k) { ?>
-									<option value="<?= $k['id_kelas'] ?>"><?php echo $k['nama_kelas'] . ' - ' . $k['tahun']; ?></option>
-								<?php }; ?>
-							</select>
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+								<form action="" method="POST">
+									<select class="form-control" name="formal" onchange="location = this.value;">
+										<option value="" selected>--Pilih Kelas--</option>
+										<?php foreach ($kelas as $k) { ?>
+											<option value="<?= base_url('admin/get_siswa_by/' . $k['id_kelas']) ?>">
+												<?php echo $k['nama_kelas'] . ' - ' . $k['tahun']; ?></option>
+										<?php }; ?>
+									</select>
+								</form>
+							</div>
 						</div>
-
-						<button type="submit" class="btn btn-outline-info mb-2 ml-auto">
-							<i class="fas fa-eye"> Tampilkan Data</i>
-						</button>
-					</form>
+						<div class="col-md-4">
+							<?php echo form_open('admin/search_siswa') ?>
+							<div class="input-group mb-3">
+								<input type="text" class="form-control" placeholder="Search..." name="keyword" autocomplete="off" autofocus>
+								<div class="input-group-append">
+									<input type="submit" class="btn btn-primary" name="submit">
+								</div>
+							</div>
+							<?php echo form_close() ?>
+						</div>
+					</div>
 				</div>
 			</div>
 

@@ -5,50 +5,67 @@
 			<h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
 			<a class="btn btn-warning mb-3" data-toggle="modal" data-target="#tambahmapelModal">Tambah Mapel</a>
-			<div class="col-lg">
-				<?= form_error('mapel', '<div class="alert alert-danger" kelas="alert">', '</div>'); ?>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<form action="" method="POST">
+							<select class="form-control" name="formal" onchange="location = this.value;">
+								<option value="" selected>Filter </option>
+								<?php foreach ($kelas as $k) { ?>
+									<option value="<?= base_url('admin/get_mapel_by/' . $k['id_kelas']) ?>">
+										<?php echo $k['nama_kelas'] . ' - ' . $k['tahun']; ?></option>
+								<?php }; ?>
 
-				<?= $this->session->flashdata('mapel_message'); ?>
-
-				<div class="row">
-
-					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th scope="col">#</th>
-								<th scope="col">Mata Pelajaran</th>
-								<th scope="col">Tingkat</th>
-								<th scope="col">Kelas</th>
-								<th scope="col">Action</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php $i = 1; ?>
-							<?php foreach ($mapel as $m) : ?>
-								<tr>
-									<td><?= $i ?></td>
-									<td><?= $m['nama_mapel']; ?></td>
-									<td><?= $m['kelas']; ?></td>
-									<td><?= $m['nama_kelas']; ?></td>
-
-									<td>
-										<a class="btn btn-primary btn-icon" href="" data-toggle="modal" data-target="#editmapelModal<?= $m['id_mapel']; ?>">
-											<i class="far fa-edit"></i>
-										</a>
-										<a class="btn btn-danger" href="<?= base_url('admin/delete_mapel/') . $m['id_mapel']; ?>" onclick="return confirm('Are you sure to delete this data ?');">
-											<i class="far fa-trash-alt"></i>
-										</a>
-									</td>
-								</tr>
-								<?php $i++; ?>
-							<?php endforeach; ?>
-						</tbody>
-					</table>
-
+					</div>
+					</select>
+					</form>
 				</div>
+			</div>
+		</div>
+		<div class="col-lg">
+			<?= form_error('mapel', '<div class="alert alert-danger" kelas="alert">', '</div>'); ?>
+
+			<?= $this->session->flashdata('mapel_message'); ?>
+
+			<div class="row">
+
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Mata Pelajaran</th>
+							<th scope="col">Tingkat</th>
+							<th scope="col">Kelas</th>
+							<th scope="col">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php $i = 1; ?>
+						<?php foreach ($mapel as $m) : ?>
+							<tr>
+								<td><?= $i ?></td>
+								<td><?= $m['nama_mapel']; ?></td>
+								<td><?= $m['kelas']; ?></td>
+								<td><?= $m['nama_kelas']; ?></td>
+
+								<td>
+									<a class="btn btn-primary btn-icon" href="" data-toggle="modal" data-target="#editmapelModal<?= $m['id_mapel']; ?>">
+										<i class="far fa-edit"></i>
+									</a>
+									<a class="btn btn-danger" href="<?= base_url('admin/delete_mapel/') . $m['id_mapel']; ?>" onclick="return confirm('Are you sure to delete this data ?');">
+										<i class="far fa-trash-alt"></i>
+									</a>
+								</td>
+							</tr>
+							<?php $i++; ?>
+						<?php endforeach; ?>
+					</tbody>
+				</table>
 
 			</div>
-			<!-- /.container-fluid -->
+
+		</div>
+		<!-- /.container-fluid -->
 
 		</div>
 		<!-- End of Main Content -->

@@ -18,6 +18,42 @@ class Siswa_model extends CI_Model
         return $this->db->query($query)->result_array();
     }
 
+    public function get_siswa_by($id_kelas)
+    {
+        $this->db->select('*');
+        $this->db->from('siswa');
+        $this->db->join('kelas', 'kelas.id_kelas = siswa.id_kelas');
+        $this->db->join('user_role', 'user_role.id_role= siswa.role_id');
+        $this->db->where('siswa.id_kelas', $id_kelas);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function get_keyword($keyword)
+    {
+        $this->db->select('*');
+        $this->db->from('siswa');
+        $this->db->join('kelas', 'kelas.id_kelas = siswa.id_kelas');
+        $this->db->join('user_role', 'user_role.id_role= siswa.role_id');
+        $this->db->like('nis', $keyword);
+        $this->db->or_like('nisn', $keyword);
+        $this->db->or_like('nama', $keyword);
+        $this->db->or_like('nama_ayah', $keyword);
+        $this->db->or_like('nama_ibu', $keyword);
+        $this->db->or_like('nama_wali', $keyword);
+        $this->db->or_like('no_telp_rumah', $keyword);
+        $this->db->or_like('nomor_telp_wali', $keyword);
+        $this->db->or_like('no_telp_siswa', $keyword);
+        $this->db->or_like('alamat_siswa', $keyword);
+        $this->db->or_like('alamat_orangtua', $keyword);
+        $this->db->or_like('alamat_wali', $keyword);
+        $this->db->or_like('email_siswa', $keyword);
+        $this->db->or_like('username', $keyword);
+        $this->db->or_like('nama_kelas', $keyword);
+
+        return $this->db->get()->result_array();
+    }
+
     public function getById($id)
     {
         return $this->db->get_where($this->table, ["username" => $id])->row();
