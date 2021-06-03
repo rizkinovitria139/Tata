@@ -2,172 +2,144 @@
 <html lang="en">
 
 <head>
-    <!-- basic -->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- mobile metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-    <!-- site metas -->
-    <title>SMP NEGERI 2 MOJO</title>
-    <link rel="shortcut icon" href="<?= base_url('assets/images/LOGO SMP.png') ?>" type="image/x-icon">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- bootstrap css -->
-    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/bootstrap.min.css') ?>">
-    <!-- style css -->
-    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/style.css') ?>">
-    <!-- Responsive-->
-    <link rel="stylesheet" href="<?= base_url('assets/css/responsive.css') ?>">
-    <!-- fevicon -->
-    <link rel="icon" href="<?= base_url('assets/css/images/LOGO SMP.png') ?>" type="image/gif" />
-    <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="<?= base_url('assets/css/jquery.mCustomScrollbar.min.css') ?>">
-    <!-- Tweaks for older IEs-->
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-    <!-- owl stylesheets -->
-    <link rel="stylesheet" href="<?= base_url('assets/css/owl.carousel.min.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('assets/css/owl.theme.default.min.css') ?>">
-    <link rel="stylesheet"
-        href="<?= base_url('https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css') ?>"
-        media="screen">
-    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
+    <title>Selecao Bootstrap Template - Index</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="<?= base_url() ?>assets/dashboard/img/favicon.png" rel="icon">
+    <link href="<?= base_url() ?>assets/dashboard/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="<?= base_url() ?>assets/dashboard/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/dashboard/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/dashboard/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/dashboard/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/dashboard/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/dashboard/vendor/line-awesome/css/line-awesome.min.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/dashboard/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/dashboard/vendor/owl.carousel/assets/dashboard/owl.carousel.min.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/dashboard/vendor/aos/aos.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="<?= base_url() ?>assets/dashboard/css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+  * Template Name: Selecao - v2.3.1
+  * Template URL: https://bootstrapmade.com/selecao-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
 
 <body>
-    <!--header section start -->
-    <div class="header_section">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="logo"><a href="#"><img src="assets/images/LOGO SMP.png" style="max-width: 50%;"></a>
-                    </div>
-                </div>
-                <div class="col-sm-5">
-                    <div class="menu-area">
-                        <nav class="navbar navbar-expand-lg ">
-                            <!-- <a class="navbar-brand" href="#">Menu</a> -->
-                            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                aria-expanded="false" aria-label="Toggle navigation">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul class="navbar-nav ml-auto">
-                                    <li class="nav-item active">
-                                        <!-- iki digawe link menu ke halaman lain -->
-                                        <a class="nav-link" href="<?= site_url('/') ?>">Home</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="<?= base_url("sejarah") ?>">Profil</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="<?= base_url('galeri') ?>">Galeri</a>
-                                    </li>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center  header-transparent ">
+        <div class="container d-flex align-items-center">
 
-                                    <!-- <li class="nav-item" href="#">
-                                        <a class="nav-link" href="contact.html">Contact Us</a>
-                                    </li> -->
+            <div class="logo mr-auto">
+                <h1 class="text-light"><a href="index.html">Selecao</a></h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            </div>
+
+            <nav class="nav-menu d-none d-lg-block">
+                <ul>
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li class="drop-down"><a href="">Drop Down</a>
+                        <ul>
+                            <li><a href="#">Drop Down 1</a></li>
+                            <li class="drop-down"><a href="#">Drop Down 2</a>
+                                <ul>
+                                    <li><a href="#">Deep Drop Down 1</a></li>
+                                    <li><a href="#">Deep Drop Down 2</a></li>
+                                    <li><a href="#">Deep Drop Down 3</a></li>
+                                    <li><a href="#">Deep Drop Down 4</a></li>
+                                    <li><a href="#">Deep Drop Down 5</a></li>
                                 </ul>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <ul class="top_button_section">
-                        <!-- href iki ngelink e file nde njerone controller -->
-                        <li><a class="login-bt active" href="<?= site_url('auth') ?>">Login SiAkad</a></li>
-                        <!-- <li><a class="login-bt" href="#">Register</a></li>
-                        <li class="search"><a href="#"><img src="assets/images/search-icon.png" alt="#" /></a></li> -->
-                    </ul>
-                </div>
-            </div>
+                            </li>
+                            <li><a href="#">Drop Down 3</a></li>
+                            <li><a href="#">Drop Down 4</a></li>
+                            <li><a href="#">Drop Down 5</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#contact">Contact</a></li>
 
-            <div class="row">
-                <div class="banner_section layout_padding">
-                    <section>
-                        <div id="main_slider" class="section carousel slide banner-main" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <div class="container">
-                                        <div class="row marginii">
-                                            <div class="col-md-5 col-sm-12">
-                                                <!-- <div class="carousel-sporrt_text "> -->
-                                                <!-- <h1 class="banner_taital">Go green</h1> -->
-                                                <!-- <p class="lorem_text">It is a long established fact that a reader
-                                                        will be distracted by the readable content of a page when
-                                                        looking at its layout. The point of using Lorem Ipsum is that it
-                                                        has a more-or-less normal distribution of letters,</p> -->
-                                                <!-- <div class="ads_bt"><a href="#">Ads Now</a></div>
-                                                    <div class="contact_bt"><a href="#">Contact Us</a></div> -->
-                                                <!-- </div> -->
-                                            </div>
-                                            <div class="col-md-7 mr-auto">
-                                                <div class="panel-body">
-                                                    <figure><img src="assets/images/wel.png" style="max-width: 100%;" />
-                                                    </figure>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="container">
-                                        <div class="row marginii">
-                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                                <div class="carousel-sporrt_text ">
-                                                    <!-- <h1 class="banner_taital">Classified Ads</h1>
-                                                    <p class="lorem_text">It is a long established fact that a reader
-                                                        will be distracted by the readable content of a page when
-                                                        looking at its layout. The point of using Lorem Ipsum is that it
-                                                        has a more-or-less normal distribution of letters,</p> -->
-                                                    <!-- <div class="ads_bt"><a href="#">Ads Now</a></div>
-                                                    <div class="contact_bt"><a href="#">Contact Us</a></div> -->
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                                <div class="img-box">
-                                                    <figure><img src="assets/images/banner-img1.png"
-                                                            style="max-width: 100%;" /></figure>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="container">
-                                        <div class="row marginii">
-                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                                <div class="carousel-sporrt_text ">
-                                                    <!-- <h1 class="banner_taital">Classified Ads</h1>
-                                                    <p class="lorem_text">It is a long established fact that a reader
-                                                        will be distracted by the readable content of a page when
-                                                        looking at its layout. The point of using Lorem Ipsum is that it
-                                                        has a more-or-less normal distribution of letters,</p> -->
-                                                    <!-- <div class="ads_bt"><a href="#">Ads Now</a></div>
-                                                    <div class="contact_bt"><a href="#">Contact Us</a></div> -->
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                                <div class="img-box">
-                                                    <figure><img src="assets/images/slid.png"
-                                                            style="max-width: 100%;" /></figure>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-            </div>
+                </ul>
+            </nav><!-- .nav-menu -->
 
         </div>
-        <!--header section end -->
+    </header><!-- End Header -->
 
-    </div>
-    </div>
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex flex-column justify-content-end align-items-center">
+        <div id="heroCarousel" class="container carousel carousel-fade" data-ride="carousel">
+
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+                <div class="carousel-container">
+                    <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Selecao</span></h2>
+                    <p class="animate__animated fanimate__adeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                    <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+                <div class="carousel-container">
+                    <h2 class="animate__animated animate__fadeInDown">Lorem Ipsum Dolor</h2>
+                    <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                    <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="carousel-item">
+                <div class="carousel-container">
+                    <h2 class="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>
+                    <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                    <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+                </div>
+            </div>
+
+            <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+
+            <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+
+        </div>
+
+        <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+            <defs>
+                <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+            </defs>
+            <g class="wave1">
+                <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
+            </g>
+            <g class="wave2">
+                <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
+            </g>
+            <g class="wave3">
+                <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
+            </g>
+        </svg>
+
+    </section><!-- End Hero -->
+
+</body>
