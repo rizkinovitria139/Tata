@@ -72,7 +72,7 @@ class Konsultasi extends CI_Controller
     public function getMessage($nip = null)
     {
         $checkMessage = count($this->m_chat->getSiswaMessage());
-        if ($checkMessage != 0 && $nip === null) {
+        if ($checkMessage != 0) {
             $data['message'] = $this->m_chat->getSiswaMessage();
             $data['bkdata'] = $this->m_chat->getReciverGuru(['nip' => $data['message'][0]['nip_guru']]);
         } else {

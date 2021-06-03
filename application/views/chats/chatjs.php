@@ -1,17 +1,11 @@
 <script>
 	// auto scroll to bottom chatbox
-	$(document).ready(function() {
-		var chatBox = document.getElementById("chatbox");
-		chatBox.scrollTop = chatBox.scrollHeight;
-
-	});
-
 
 	function sendMessage(sender) {
 		var message = document.getElementById('textMessage').value;
 		var url = '<?= base_url('Konsultasi/sendMessage') ?>';
-		var nip = '<?= $this->uri->segment(1) === 'konsultasi' ? $bkdata[0]['nip'] : $this->session->userdata('nip') ?>';
-		var nis = '<?= $this->uri->segment(1) === 'konsultasi' ? $this->session->userdata('nis') : $siswaData->nis ?>';
+		var nip = '<?= strtolower($this->uri->segment(1)) === 'konsultasi' ? $bkdata[0]['nip'] : $this->session->userdata('nip') ?>';
+		var nis = '<?= strtolower($this->uri->segment(1))  === 'konsultasi' ? $this->session->userdata('nis') : $siswaData->nis ?>';
 
 		$.ajax({
 			url,
@@ -31,11 +25,15 @@
 
 	function updateChatSiswa() {
 		$.ajax({
-			url: '<?= $this->uri->segment(1) === "konsultasi" ?  base_url('Konsultasi/getMessage/' . $bkdata[0]['nip']) : base_url('Konsultasi/getMessageBK') ?>',
+			url: '<?= strtolower($this->uri->segment(1))  === "konsultasi" ?  base_url('Konsultasi/getMessage/' . $bkdata[0]['nip']) : base_url('Konsultasi/getMessageBK') ?>',
 			success: (data) => {
 				var chatboxContent = document.getElementById('chatbox-content').innerHTML;
 				document.getElementById('chatbox-content').innerHTML = "";
 				document.getElementById('chatbox-content').innerHTML = data;
+				window.setInterval(() => {
+					let divChats = document.getElementById('chatbox-content');
+					divChats.scrollTop = divChats.scrollHeight;
+				})
 			}
 		});
 	}
@@ -45,8 +43,8 @@
 			url: '<?= base_url('Konsultasi/clearChats') ?>',
 			method: "POST",
 			data: {
-				"nip": '<?= $this->uri->segment(1) === 'konsultasi' ? $bkdata[0]['nip'] : $this->session->userdata('nip') ?>',
-				"nis": '<?= $this->uri->segment(1) === 'konsultasi' ? $this->session->userdata('nis') : $siswaData->nis ?>'
+				"nip": '<?= strtolower($this->uri->segment(1))  === 'konsultasi' ? $bkdata[0]['nip'] : $this->session->userdata('nip') ?>',
+				"nis": '<?= strtolower($this->uri->segment(1))  === 'konsultasi' ? $this->session->userdata('nis') : $siswaData->nis ?>'
 			},
 			success: (data) => {
 				window.location.reload('<?= $this->uri->segment(1) === "Konsultasi" ? base_url('Konsultasi/pesan') : base_url('Bk/konsultasi') ?>');
