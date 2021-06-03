@@ -21,8 +21,8 @@ class Welcome extends CI_Controller
 	 */
 	public function index()
 	{
-		$this->load->view('templates/dash_header');
+		$data['title'] = 'Dashboard';
+		$this->load->view('templates/dash_header', $data);
 		$this->load->view('templates/dash_footer');
-		$this->load->view('templates/topbar');
 	}
 }
