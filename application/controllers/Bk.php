@@ -52,8 +52,6 @@ class Bk extends CI_Controller
         }
         $data['chat_page'] = $this->load->view('Bim_Kon/chat_conversation', $data, TRUE);
 
-
-
         $this->load->view('templates/header', $data);
         $this->load->view('templates/bk_sidebar', $data);
         $this->load->view('templates/bk_topbar', $data);
