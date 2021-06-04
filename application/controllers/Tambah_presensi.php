@@ -35,10 +35,7 @@ class Tambah_presensi extends CI_Controller
         $this->load->view('guruMapel/mp_topbar', $data);
         $this->load->view('guruMapel/tambahpresensi', $data);
         $this->load->view('templates/footer');
-    }
-    public function inputPresensi()
-    {
-        //
+        $this->load->view('guruMapel/presensijs', $data);
     }
     public function jadwal($id)
     {
@@ -51,5 +48,39 @@ class Tambah_presensi extends CI_Controller
         $this->load->view('guruMapel/mp_topbar', $data);
         $this->load->view('guruMapel/presensi', $data);
         $this->load->view('templates/footer');
+        $this->load->view('guruMapel/presensijs', $data);
+    }
+
+    // untuk input presensi dengan javascript
+    public function inputPresensi()
+    {
+        $dataPresensi = $this->input->post('presensiData');
+
+        foreach ($dataPresensi as $key => $value) {
+            $this->m_presensi->doPresensi($value);
+        }
+        echo true;
+    }
+    public function getPresensiSiswa($id)
+    {
+        $data['siswaPresensi'] = $this->m_presensi->getPresensiSiswa($id);
+
+        print_r($this->load->view('guruMapel/modal/presensimodal', $data, TRUE));
+    }
+    public function doEditPresensi($idpresensi)
+    {
+        $update = array(
+            "hadir" => $this->input->post('hadir'),
+            "alpha" => $this->input->post('alpha'),
+            "izin" => $this->input->post('izin'),
+            "sakit" => $this->input->post('sakit'),
+        );
+        $this->m_presensi->doUpdatePresensi($idpresensi, $update);
+        $this->session->set_flashdata(
+            'alert',
+            'Berhasil melakukan update presensi siswa dengan nama ' . $this->input->post('namasiswa') . " kelas " . $this->input->post('kelassiswa') . " bulan " . $this->input->post('bulan')
+        );
+
+        redirect("Tambah_presensi");
     }
 }
