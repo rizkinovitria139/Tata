@@ -25,7 +25,7 @@
 
 	function updateChatSiswa() {
 		$.ajax({
-			url: '<?= strtolower($this->uri->segment(1))  === "konsultasi" ?  base_url('Konsultasi/getMessage/' . $bkdata[0]['nip']) : base_url('Konsultasi/getMessageBK') ?>',
+			url: '<?= strtolower($this->uri->segment(1))  === "konsultasi" ?  base_url('Konsultasi/getMessage/' . $bkdata[0]['nip']) : base_url('Konsultasi/getMessageBK/' . $siswaData->nis) ?>',
 			success: (data) => {
 				var chatboxContent = document.getElementById('chatbox-content').innerHTML;
 				document.getElementById('chatbox-content').innerHTML = "";

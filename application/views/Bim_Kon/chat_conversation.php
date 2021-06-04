@@ -25,7 +25,7 @@
     <div class="input-group mb-3">
         <textarea class="form-control" id="textMessage" placeholder="Isi pesan" aria-label="Pesan" name="pesan"></textarea>
         <div class="input-group-append">
-            <button class="btn btn-primary" id="sendMessagebtn" onclick="sendMessage('guru')" type="button">Kirim</button>
+            <button class="btn btn-primary" id="sendMessagebtn" onclick="sendMessage('bk')" type="button">Kirim</button>
         </div>
     </div>
 

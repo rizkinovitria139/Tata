@@ -83,9 +83,9 @@ class Konsultasi extends CI_Controller
             $this->load->view('chats/chat_conversation', $data, true)
         );
     }
-    public function getMessageBK()
+    public function getMessageBK($nis)
     {
-        $data['message'] = $this->m_chat->getSiswaMessage();
+        $data['message'] = $this->m_chat->getBKMessage($nis);;
         $data['siswaData'] = $this->m_chat->getReciverSiswa($data['message'][0]['nis_siswa']);
 
         print_r(
