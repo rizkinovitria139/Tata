@@ -38,6 +38,15 @@ class Presensi_model extends CI_Model
         $this->db->where('presensi.nis', $id);
         return $this->db->get()->row();
     }
+    public function viewPresensiSiswa($id)
+    {
+        $this->db->select('presensi.*, siswa.nama, kelas.nama_kelas');
+        $this->db->from('presensi');
+        $this->db->join('siswa', 'siswa.nis = presensi.nis');
+        $this->db->join('kelas', 'kelas.id_kelas = presensi.id_kelas');
+        $this->db->where('siswa.nis', $id);
+        return $this->db->get()->result();
+    }
     public function get_jadwal($nip)
     {
         $this->db->select('jadwal.id, kelas.nama_kelas, jadwal.hari, jadwal.waktu_mulai');

@@ -88,6 +88,7 @@ if ((isset($_GET['bulan']) && $_GET['bulan'] !='') && (isset($_GET['tahun']) && 
             <td class="text-center">Hadir</td>
             <td class="text-center">Sakit</td>
             <td class="text-center">Alpha</td>
+            <td class="text-center">Izin</td>
 
         </tr>
 
@@ -95,11 +96,12 @@ if ((isset($_GET['bulan']) && $_GET['bulan'] !='') && (isset($_GET['tahun']) && 
         <tr>
             <td><?= $no ?></td>
             <td><?= $dp->nis; ?></td>
-            <td><?= $dp->nama_siswa; ?></td>
+            <td><?= $dp->nama; ?></td>
             <td><?= $dp->nama_kelas; ?></td>
             <td><?= $dp->hadir; ?></td>
             <td><?= $dp->sakit; ?></td>
             <td><?= $dp->alpha; ?></td>
+            <td><?= $dp->izin; ?></td>
 
         </tr>
         <?php endforeach; ?>

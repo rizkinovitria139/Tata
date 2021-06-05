@@ -92,16 +92,18 @@ class DataPresensi extends CI_Controller
             // var_dump($data);
         }
 
-        $data['datapresensi'] = $this->db->query("SELECT `siswa`.*, `presensi`.*, `kelas`.*
-            FROM `siswa` JOIN `presensi`
-             ON `siswa`.`nis` = `presensi`.`nis` 
-             JOIN `kelas`
-             ON `presensi`.`id_kelas` = `kelas`.`id_kelas`
-             WHERE `presensi`.`bulan` = $bulantahun
-            ORDER BY `siswa`.`nama` ASC")->result();
+        // $data['datapresensi'] = $this->db->query("SELECT `siswa`.*, `presensi`.*, `kelas`.*
+        //     FROM `siswa` JOIN `presensi`
+        //      ON `siswa`.`nis` = `presensi`.`nis` 
+        //      JOIN `kelas`
+        //      ON `presensi`.`id_kelas` = `kelas`.`id_kelas`
+        //      WHERE `presensi`.`bulan` = $bulantahun
+        //      AND `siswa`.`nis` = '$id'
+        //     ORDER BY `siswa`.`nama` ASC")->result();
 
-        // $this->load->model('Presensi_model', 'datapresensi');
-        // $data['datapresensi'] = $this->datapresensi->get_presensi();
+        $this->load->model('Presensi_model', 'datapresensi');
+        $user_id  =   $this->session->userdata('nis');
+        $data['datapresensi'] = $this->datapresensi->viewPresensiSiswa($user_id);
 
 
         $this->session->set_userdata($data);
