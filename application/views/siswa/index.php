@@ -6,11 +6,11 @@
                 <h1 class="h3 mb-0 text-gray-800"><?= $title; ?></h1>
 
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-lg-6">
-                    <?= $this->session->flashdata('message');?>
+                    <?= $this->session->flashdata('message'); ?>
                 </div>
-            </div>
+            </div> -->
 
 
             <div class="card mb-3" style="max-width: 540px;">

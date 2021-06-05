@@ -1,7 +1,5 @@
 		<!-- Begin Page Content -->
 		<div class="container-fluid">
-
-
 			<!-- Page Heading -->
 			<h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 			<div class="row">
@@ -54,8 +52,8 @@
 							<?php foreach ($guru as $g) : ?>
 								<tr>
 									<td><?= $g['nip']; ?></td>
-									<td><?= $g['nama']; ?></td>
-									<td><?= $g['alamat']; ?></td>
+									<td width="200"><?= $g['nama']; ?></td>
+									<td width="300"><?= $g['alamat']; ?></td>
 									<td><?= $g['no_telp']; ?></td>
 									<td>
 										<button type="button" class="btn btn-primary btn-icon" href="" data-toggle="modal" data-target="#detailsGuruModal<?= $g['nip']; ?>">

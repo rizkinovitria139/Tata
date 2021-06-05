@@ -29,4 +29,17 @@ class Nilai_model extends CI_Model
 
                 return $value->result();
         }
+
+        public function get_nilai_by($id_semester, $id)
+        {
+                $this->db->select('siswa.nama, nilai_siswa.nilai_tugas, nilai_siswa.nilai_uts, nilai_siswa.nilai_uas, mata_pelajaran.nama_mapel, semester.id_semester, semester.semester');
+                $this->db->from('siswa');
+                $this->db->join('nilai_siswa',  'siswa.nis = nilai_siswa.nis');
+                $this->db->join('semester',  'nilai_siswa.id_semester = semester.id_semester');
+                $this->db->join('mata_pelajaran', 'nilai_siswa.id_mapel = mata_pelajaran.id_mapel');
+                $this->db->where('nilai_siswa.id_semester', $id_semester);
+                $this->db->and('siswa.nis', $id);
+                $query = $this->db->get();
+                return $query->result_array();
+        }
 }
