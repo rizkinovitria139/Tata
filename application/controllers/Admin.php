@@ -850,6 +850,66 @@ class Admin extends CI_Controller
     }
 
     // End bagian nilai
+
+    // Start bagian tahun akademik
+    public function get_tahun()
+    {
+        $data['title'] = 'Daftar Tahun Akademik';
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+
+        $this->session->set_userdata($data);
+
+
+        $this->load->model('Tahun_model', 'tahun');
+        $data['tahun'] = $this->tahun->getAll();
+
+
+        $this->session->set_userdata($data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/tahun', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function tambah_tahun()
+    {
+        $this->form_validation->set_rules('tahun', 'Tahun', 'required');
+
+
+        if ($this->form_validation->run() == true) {
+            // $data['id_kelas'] = $this->input->post('id_kelas');
+            $data['tahun'] = $this->input->post('tahun');
+
+            $this->load->model('Tahun_model', 'tahun');
+            $this->tahun->tambah_tahun($data);
+
+            $this->session->set_flashdata('tahun_message', '<div class="alert alert-success" role="alert">Tahun Berhasil ditambahkan!</div>');
+            redirect('admin/get_tahun', 'refresh');
+        } else {
+            $this->session->set_flashdata('tahun_message', '<div class="alert alert-danger" role="alert">Tahun gagal ditambahkan!</div>');
+            redirect('admin/get_tahun', 'refresh');
+        }
+    }
+
+    public function edit_tahun($id)
+    {
+        $this->db->update('tahun_akademik', ['tahun' => $this->input->post('tahun')], ['id_tahun_akademik' => $id]);
+
+        $this->session->set_flashdata('tahun_message', '<div class="alert alert-warning" role="alert">Tahun berhasil diubah!</div>');
+        redirect('admin/get_tahun', 'refresh');
+    }
+
+    public function delete_tahun($id)
+    {
+        $this->load->model('Tahun_model', 'tahun');
+        $this->tahun->delete_tahun($id);
+        // untuk flashdata mempunyai 2 parameter (nama flashdata/alias, isi dari flashdatanya)
+        $this->session->set_flashdata('tahun_message', '<div class="alert alert-danger" role="alert">Tahun berhasil dihapus!</div>');
+        redirect('admin/get_tahun', 'refresh');
+    }
+    // End bagian tahun akademik
 }
     
     /* End of file Guru.php */
