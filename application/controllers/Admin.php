@@ -587,12 +587,14 @@ class Admin extends CI_Controller
     public function tambah_mapel()
     {
         $this->form_validation->set_rules('nama_mapel', 'Nama Mapel', 'required');
+        $this->form_validation->set_rules('nilai_kkm', 'Nilai KKM', 'required');
         $this->form_validation->set_rules('kelas', 'Tingkat', 'required');
         $this->form_validation->set_rules('id_kelas', 'Kelas', 'required');
 
         if ($this->form_validation->run() == true) {
             // $data['id_kelas'] = $this->input->post('id_kelas');
             $data['nama_mapel'] = $this->input->post('nama_mapel');
+            $data['nilai_kkm'] = $this->input->post('nilai_kkm');
             $data['kelas'] = $this->input->post('kelas');
             $data['id_kelas'] = $this->input->post('id_kelas');
 
@@ -612,6 +614,7 @@ class Admin extends CI_Controller
     public function edit_mapel($id)
     {
         $this->db->update('mata_pelajaran', ['nama_mapel' => $this->input->post('nama_mapel')], ['id_mapel' => $id]);
+        $this->db->update('mata_pelajaran', ['nilai_kkm' => $this->input->post('nilai_kkm')], ['id_mapel' => $id]);
         $this->db->update('mata_pelajaran', ['kelas' => $this->input->post('kelas')], ['id_mapel' => $id]);
         $this->db->update('mata_pelajaran', ['id_kelas' => $this->input->post('id_kelas')], ['id_mapel' => $id]);
 

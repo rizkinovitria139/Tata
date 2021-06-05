@@ -34,6 +34,7 @@
 						<tr>
 							<th scope="col">#</th>
 							<th scope="col">Mata Pelajaran</th>
+							<th scope="col">Nilai KKM</th>
 							<th scope="col">Tingkat</th>
 							<th scope="col">Kelas</th>
 							<th scope="col">Action</th>
@@ -45,6 +46,7 @@
 							<tr>
 								<td><?= $i ?></td>
 								<td><?= $m['nama_mapel']; ?></td>
+								<td><?= $m['nilai_kkm']; ?></td>
 								<td><?= $m['kelas']; ?></td>
 								<td><?= $m['nama_kelas']; ?></td>
 
@@ -100,6 +102,11 @@
 								<input type="text" class="form-control" id="nama_mapel" name="nama_mapel" placeholder="Masukkan Nama Mapel">
 							</div>
 
+							<span>Nilai KKM</span>
+							<div class="form-group">
+								<input type="text" class="form-control" id="nilai_kkm" name="nilai_kkm" placeholder="Masukkan Nilai KKM">
+							</div>
+
 							<div class="form-group">
 								<span>Tingkat </span>
 								<select class="form-control" name="kelas" id="kelas">
@@ -153,6 +160,10 @@
 								<div class="form-group">
 									<span>Nama Mapel</span>
 									<input type="text" class="form-control" value="<?= $m['nama_mapel']; ?>" id="nama_mapel" name="nama_mapel" placeholder="Nama Mapel">
+								</div>
+								<div class="form-group">
+									<span>Nilai KKM</span>
+									<input type="text" class="form-control" value="<?= $m['nilai_kkm']; ?>" id="nilai_kkm" name="nilai_kkm" placeholder="Nilai KKM">
 								</div>
 
 								<div class="form-group">

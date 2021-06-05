@@ -31,11 +31,12 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Nama</th>
                     <th>Mata Pelajaran</th>
+                    <th>Nilai KKM</th>
                     <th>Nilai Tugas</th>
                     <th>Nilai UTS</th>
                     <th>Nilai UAS</th>
+                    <th>Deskripsi</th>
                     <!-- <th>Action</th> -->
                 </tr>
             </thead>
@@ -46,11 +47,12 @@
                 ?>
                     <tr>
                         <td><?= $no++; ?></td>
-                        <td><?= $u['nama'] ?></td>
-                        <td><?= $u['nama_mapel'] ?></td>
+                        <td width="100"><?= $u['nama_mapel'] ?></td>
+                        <td><?= $u['nilai_kkm'] ?></td>
                         <td><?= $u['nilai_tugas'] ?></td>
                         <td><?= $u['nilai_uts'] ?></td>
                         <td><?= $u['nilai_uas'] ?></td>
+                        <td><?= $u['deskripsi'] ?></td>
 
                     </tr>
                 <?php
