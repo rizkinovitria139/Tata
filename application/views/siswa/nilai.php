@@ -14,12 +14,12 @@
                             <form action="" method="POST">
                                 <select class="form-control" name="formal" onchange="location = this.value;">
                                     <option value="" selected>Filter </option>
-
-                                    <?php foreach ($semester as $s) { ?>
-                                        <option value="<?= base_url('nilai/get_nilai_by/' . $s['id_semester']) ?>">
-                                            <?php echo $s['id_semester'] . ' - ' . $s['semester']; ?></option>
-                                    <?php }; ?>
-
+                                    <option value="<?= base_url('Nilai/get_semester_1') ?>">7-1</option>
+                                    <option value="<?= base_url('Nilai/get_semester_2') ?>">7-2</option>
+                                    <option value="<?= base_url('Nilai/get_semester_3') ?>">8-1</option>
+                                    <option value="<?= base_url('Nilai/get_semester_4') ?>">8-2</option>
+                                    <option value="<?= base_url('Nilai/get_semester_5') ?>">9-1</option>
+                                    <option value="<?= base_url('Nilai/get_semester_6') ?>">9-2</option>
                                 </select>
                             </form>
                         </div>
@@ -46,11 +46,11 @@
                 ?>
                     <tr>
                         <td><?= $no++; ?></td>
-                        <td><?= $u->nama ?></td>
-                        <td><?= $u->nama_mapel ?></td>
-                        <td><?= $u->nilai_tugas ?></td>
-                        <td><?= $u->nilai_uts ?></td>
-                        <td><?= $u->nilai_uas ?></td>
+                        <td><?= $u['nama'] ?></td>
+                        <td><?= $u['nama_mapel'] ?></td>
+                        <td><?= $u['nilai_tugas'] ?></td>
+                        <td><?= $u['nilai_uts'] ?></td>
+                        <td><?= $u['nilai_uas'] ?></td>
 
                     </tr>
                 <?php

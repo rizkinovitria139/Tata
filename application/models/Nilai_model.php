@@ -20,26 +20,101 @@ class Nilai_model extends CI_Model
         }
         public function getNilai($id)
         {
-                $this->db->select('siswa.nama, nilai_siswa.nilai_tugas, nilai_siswa.nilai_uts, nilai_siswa.nilai_uas, mata_pelajaran.nama_mapel');
-                $this->db->from('siswa');
-                $this->db->join('nilai_siswa',  'siswa.nis = nilai_siswa.nis');
-                $this->db->join('mata_pelajaran', 'nilai_siswa.id_mapel = mata_pelajaran.id_mapel');
-                $this->db->where('siswa.nis', $id);
-                $value = $this->db->get();
+                $query = "SELECT `nilai_siswa`.*, `mata_pelajaran`.*, `semester`.*, `siswa`.*
+                FROM `nilai_siswa` JOIN `siswa`
+                ON `nilai_siswa`.`nis` = `siswa`.`nis`
+                JOIN `mata_pelajaran`
+                ON `nilai_siswa`.`id_mapel` = `mata_pelajaran`.`id_mapel`
+                JOIN `semester`
+                ON`semester`.`id_semester` = `nilai_siswa`.`id_semester`
+                WHERE `siswa`.`nis` = $id
+               ";
 
-                return $value->result();
+                return $this->db->query($query)->result_array();
         }
 
-        public function get_nilai_by($id_semester, $id)
+        public function get_semester_1($id)
         {
-                $this->db->select('siswa.nama, nilai_siswa.nilai_tugas, nilai_siswa.nilai_uts, nilai_siswa.nilai_uas, mata_pelajaran.nama_mapel, semester.id_semester, semester.semester');
-                $this->db->from('siswa');
-                $this->db->join('nilai_siswa',  'siswa.nis = nilai_siswa.nis');
-                $this->db->join('semester',  'nilai_siswa.id_semester = semester.id_semester');
-                $this->db->join('mata_pelajaran', 'nilai_siswa.id_mapel = mata_pelajaran.id_mapel');
-                $this->db->where('nilai_siswa.id_semester', $id_semester);
-                $this->db->and('siswa.nis', $id);
-                $query = $this->db->get();
-                return $query->result_array();
+                $query = "SELECT `nilai_siswa`.*, `mata_pelajaran`.*, `semester`.*, `siswa`.*
+                FROM `nilai_siswa` JOIN `siswa`
+                ON `nilai_siswa`.`nis` = `siswa`.`nis`
+                JOIN `mata_pelajaran`
+                ON `nilai_siswa`.`id_mapel` = `mata_pelajaran`.`id_mapel`
+                JOIN `semester`
+                ON`semester`.`id_semester` = `nilai_siswa`.`id_semester`
+                WHERE `semester`.`semester`= 1 AND `siswa`.`nis` = $id
+               ";
+
+                return $this->db->query($query)->result_array();
+        }
+        public function get_semester_2($id)
+        {
+                $query = "SELECT `nilai_siswa`.*, `mata_pelajaran`.*, `semester`.*, `siswa`.*
+                FROM `nilai_siswa` JOIN `siswa`
+                ON `nilai_siswa`.`nis` = `siswa`.`nis`
+                JOIN `mata_pelajaran`
+                ON `nilai_siswa`.`id_mapel` = `mata_pelajaran`.`id_mapel`
+                JOIN `semester`
+                ON`semester`.`id_semester` = `nilai_siswa`.`id_semester`
+                WHERE `semester`.`semester`= 2 AND `siswa`.`nis` = $id
+               ";
+
+                return $this->db->query($query)->result_array();
+        }
+        public function get_semester_3($id)
+        {
+                $query = "SELECT `nilai_siswa`.*, `mata_pelajaran`.*, `semester`.*, `siswa`.*
+                FROM `nilai_siswa` JOIN `siswa`
+                ON `nilai_siswa`.`nis` = `siswa`.`nis`
+                JOIN `mata_pelajaran`
+                ON `nilai_siswa`.`id_mapel` = `mata_pelajaran`.`id_mapel`
+                JOIN `semester`
+                ON`semester`.`id_semester` = `nilai_siswa`.`id_semester`
+                WHERE `semester`.`semester`= 3 AND `siswa`.`nis` = $id
+               ";
+
+                return $this->db->query($query)->result_array();
+        }
+        public function get_semester_4($id)
+        {
+                $query = "SELECT `nilai_siswa`.*, `mata_pelajaran`.*, `semester`.*, `siswa`.*
+                FROM `nilai_siswa` JOIN `siswa`
+                ON `nilai_siswa`.`nis` = `siswa`.`nis`
+                JOIN `mata_pelajaran`
+                ON `nilai_siswa`.`id_mapel` = `mata_pelajaran`.`id_mapel`
+                JOIN `semester`
+                ON`semester`.`id_semester` = `nilai_siswa`.`id_semester`
+                WHERE `semester`.`semester`= 4 AND `siswa`.`nis` = $id
+               ";
+
+                return $this->db->query($query)->result_array();
+        }
+        public function get_semester_5($id)
+        {
+                $query = "SELECT `nilai_siswa`.*, `mata_pelajaran`.*, `semester`.*, `siswa`.*
+                FROM `nilai_siswa` JOIN `siswa`
+                ON `nilai_siswa`.`nis` = `siswa`.`nis`
+                JOIN `mata_pelajaran`
+                ON `nilai_siswa`.`id_mapel` = `mata_pelajaran`.`id_mapel`
+                JOIN `semester`
+                ON`semester`.`id_semester` = `nilai_siswa`.`id_semester`
+                WHERE `semester`.`semester`= 5 AND `siswa`.`nis` = $id
+               ";
+
+                return $this->db->query($query)->result_array();
+        }
+        public function get_semester_6($id)
+        {
+                $query = "SELECT `nilai_siswa`.*, `mata_pelajaran`.*, `semester`.*, `siswa`.*
+                FROM `nilai_siswa` JOIN `siswa`
+                ON `nilai_siswa`.`nis` = `siswa`.`nis`
+                JOIN `mata_pelajaran`
+                ON `nilai_siswa`.`id_mapel` = `mata_pelajaran`.`id_mapel`
+                JOIN `semester`
+                ON`semester`.`id_semester` = `nilai_siswa`.`id_semester`
+                WHERE `semester`.`semester`= 6 AND `siswa`.`nis` = $id
+               ";
+
+                return $this->db->query($query)->result_array();
         }
 }
