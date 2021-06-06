@@ -8,7 +8,7 @@
                 Filter Data Nilai
             </div>
             <div class="card-body">
-                <form class="form-inline">
+                <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
                             <form action="" method="POST">
@@ -24,6 +24,10 @@
                             </form>
                         </div>
                     </div>
+                    <div class="col-md-4">
+                        <a href="nilai/cetak_nilai" class="btn btn-warning">Cetak Nilai</a>
+                    </div>
+                </div>
             </div>
         </div>
 

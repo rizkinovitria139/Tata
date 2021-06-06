@@ -121,4 +121,15 @@ class Nilai extends CI_Controller
         $this->load->view('siswa/nilai', $data);
         $this->load->view('templates/footer');
     }
+
+    public function cetak_nilai()
+    {
+        $data['title'] = 'Cetak Nilai Siswa';
+        $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')])->row_array();
+
+        $siswa_id  =   $this->session->userdata('nis');
+        $data['data_nilai'] = $this->Nilai_model->getNilai($siswa_id);
+
+        $this->load->view('siswa/cetak_nilai', $data);
+    }
 }

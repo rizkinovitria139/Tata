@@ -20,11 +20,15 @@ class Nilai_model extends CI_Model
         }
         public function getNilai($id)
         {
-                $query = "SELECT `nilai_siswa`.*, `mata_pelajaran`.*, `semester`.*, `siswa`.*
+                $query = "SELECT `nilai_siswa`.*, `mata_pelajaran`.*, `semester`.*, `siswa`.*, `kelas`.*, `tahun_akademik`.*
                 FROM `nilai_siswa` JOIN `siswa`
                 ON `nilai_siswa`.`nis` = `siswa`.`nis`
                 JOIN `mata_pelajaran`
                 ON `nilai_siswa`.`id_mapel` = `mata_pelajaran`.`id_mapel`
+                JOIN `kelas` 
+                ON `kelas`.`id_kelas` = `mata_pelajaran`.`id_kelas`
+                JOIN `tahun_akademik`
+                ON `kelas`.`id_tahun_akademik` = `tahun_akademik`.`id_tahun_akademik`
                 JOIN `semester`
                 ON`semester`.`id_semester` = `nilai_siswa`.`id_semester`
                 WHERE `siswa`.`nis` = $id
