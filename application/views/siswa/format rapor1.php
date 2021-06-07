@@ -1821,12 +1821,12 @@ mso-bidi-theme-font:minor-latin'>
             </span></p>
           <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
   text-align:center;line-height:normal'><span style='font-size:12.0pt;
-  mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>(������������..)<o:p></o:p></span></p>
+  mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>(..........................)<o:p></o:p></span></p>
         </td>
         <td width=329 valign=top style='width:4.5in;padding:0in 5.4pt 0in 5.4pt'>
           <p class=MsoNormal align=right style='margin-bottom:0in;margin-bottom:.0001pt;
   text-align:right;line-height:normal'><span class=GramE><span style='font-size:12.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:
-  minor-latin'>Mojo, ����������������..</span></span><span style='font-size:
+  minor-latin'>Mojo, ..................................</span></span><span style='font-size:
   12.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>
               <o:p></o:p>
             </span></p>
@@ -1852,10 +1852,10 @@ mso-bidi-theme-font:minor-latin'>
             </span></p>
           <p class=MsoNormal align=right style='margin-bottom:0in;margin-bottom:.0001pt;
   text-align:right;line-height:normal'><span style='font-size:12.0pt;
-  mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>���.�����.���............<o:p></o:p></span></p>
+  mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>....................................<o:p></o:p></span></p>
           <p class=MsoNormal align=right style='margin-bottom:0in;margin-bottom:.0001pt;
   text-align:right;line-height:normal'><span style='font-size:12.0pt;
-  mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>NIP �����...����������<o:p></o:p></span></p>
+  mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>NIP .................................<o:p></o:p></span></p>
         </td>
       </tr>
     </table>

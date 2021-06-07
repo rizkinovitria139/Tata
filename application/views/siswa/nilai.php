@@ -25,13 +25,29 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <a href="nilai/cetak_nilai" class="btn btn-warning">Cetak Nilai</a>
+                        <div class="form-group">
+                            <form action="" method="POST">
+                                <select class="form-control" name="formal" onchange="location = this.value;">
+                                    <option value="" selected>Cetak Nilai </option>
+                                    <option value="<?= base_url('Nilai/cetak_nilai_1') ?>">7-1</option>
+                                    <option value="<?= base_url('Nilai/cetak_nilai_2') ?>">7-2</option>
+                                    <option value="<?= base_url('Nilai/cetak_nilai_3') ?>">8-1</option>
+                                    <option value="<?= base_url('Nilai/cetak_nilai_4') ?>">8-2</option>
+                                    <option value="<?= base_url('Nilai/cetak_nilai_5') ?>">9-1</option>
+                                    <option value="<?= base_url('Nilai/cetak_nilai_6') ?>">9-2</option>
+                                </select>
+                            </form>
+                        </div>
                     </div>
+                    <!-- <div class="col-md-4">
+                        <a href="nilai/cetak_nilai" class="btn btn-warning">Cetak Nilai</a>
+                    </div> -->
                 </div>
             </div>
         </div>
 
         <table class="table table-grey">
+            <?= $this->session->flashdata('nilai_message'); ?>
             <thead>
                 <tr>
                     <th>No</th>

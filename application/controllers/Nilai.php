@@ -122,13 +122,66 @@ class Nilai extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function cetak_nilai()
+    public function cetak_nilai_1()
     {
         $data['title'] = 'Cetak Nilai Siswa';
         $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')])->row_array();
+        $data['semester'] = '1';
+        $siswa_id  =   $this->session->userdata('nis');
+        $data['data_nilai'] = $this->Nilai_model->get_semester_1($siswa_id);
+
+        $this->load->view('siswa/cetak_nilai', $data);
+    }
+    public function cetak_nilai_2()
+    {
+        $data['title'] = 'Cetak Nilai Siswa';
+        $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')])->row_array();
+        $data['semester'] = '2';
+        $siswa_id  =   $this->session->userdata('nis');
+        $data['data_nilai'] = $this->Nilai_model->get_semester_2($siswa_id);
+
+        $this->load->view('siswa/cetak_nilai', $data);
+    }
+    public function cetak_nilai_3()
+    {
+        $data['title'] = 'Cetak Nilai Siswa';
+        $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')])->row_array();
+        $data['semester'] = '3';
 
         $siswa_id  =   $this->session->userdata('nis');
-        $data['data_nilai'] = $this->Nilai_model->getNilai($siswa_id);
+        $data['data_nilai'] = $this->Nilai_model->get_semester_3($siswa_id);
+
+        $this->load->view('siswa/cetak_nilai', $data);
+    }
+
+    public function cetak_nilai_4()
+    {
+        $data['title'] = 'Cetak Nilai Siswa';
+        $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')])->row_array();
+        $data['semester'] = '4';
+        $siswa_id  =   $this->session->userdata('nis');
+        $data['data_nilai'] = $this->Nilai_model->get_semester_4($siswa_id);
+
+        $this->load->view('siswa/cetak_nilai', $data);
+    }
+    public function cetak_nilai_5()
+    {
+        $data['title'] = 'Cetak Nilai Siswa';
+        $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')])->row_array();
+        $data['semester'] = '5';
+        $siswa_id  =   $this->session->userdata('nis');
+        $data['data_nilai'] = $this->Nilai_model->get_semester_5($siswa_id);
+
+        $this->load->view('siswa/cetak_nilai', $data);
+    }
+
+    public function cetak_nilai_6()
+    {
+        $data['title'] = 'Cetak Nilai Siswa';
+        $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')])->row_array();
+        $data['semester'] = '6';
+        $siswa_id  =   $this->session->userdata('nis');
+        $data['data_nilai'] = $this->Nilai_model->get_semester_6($siswa_id);
 
         $this->load->view('siswa/cetak_nilai', $data);
     }
