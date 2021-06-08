@@ -145,4 +145,21 @@ class Nilai_model extends CI_Model
 
                 return $this->db->query($query)->result_array();
         }
+        public function getSiswaJadwal($id_mapel)
+        {
+                $this->db->select('*');
+                $this->db->from('mata_pelajaran');
+                $this->db->join('kelas', 'kelas.id_kelas = mata_pelajaran.id_kelas');
+                $this->db->join('siswa', 'siswa.id_kelas = mata_pelajaran.id_kelas');
+                $this->db->where('mata_pelajaran.id_mapel', $id_mapel);
+                $query = $this->db->get();
+                return $query->result_array();
+        }
+        public function checkSemesterAvailable($id_semester)
+        {
+                $this->db->from('nilai_siswa');
+                $this->db->where('id_semester', $id_semester);
+                $data = $this->db->get()->num_rows();
+                return $data;
+        }
 }

@@ -2,39 +2,36 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
-    <div class="col-lg">
-
-        <div class="row">
-
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">ID Mapel </th>
-                        <th scope="col">Mata Pelajaran</th>
-                        <th scope="col">Kelas</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $i = 1; ?>
-                    <?php foreach ($mapel as $n) : ?>
-                        <tr>
-                            <td><?= $i; ?></td>
-                            <td><?= $n->id_mapel; ?></td>
-                            <td><?= $n->nama_mapel; ?></td>
-                            <td><?= $n->nama_kelas; ?></td>
-
-                        </tr>
-                        <?php $i++; ?>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-
-        </div>
-
+    <div>
+        <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+        <p class="lead">Input nilai siswa berdasarkan kelas</p>
     </div>
-    <!-- /.container-fluid -->
 
+    <table class="table table-striped table-bordered" style="width: 100%;" id="dataTableInit">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th>ID Mapel </th>
+                <th>Mata Pelajaran</th>
+                <th>Kelas</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $i = 1; ?>
+            <?php foreach ($mapel as $n) : ?>
+                <tr>
+                    <td><?= $i; ?></td>
+                    <td><?= $n->id_mapel; ?></td>
+                    <td><?= $n->nama_mapel; ?></td>
+                    <td><?= $n->nama_kelas; ?></td>
+                    <td>
+                        <a role="button" href="<?= base_url('Guru_Mapel/tambah_nilai/' . $n->id_mapel) ?>" class="btn btn-primary btn-sm">Submit</a>
+                    </td>
+                </tr>
+                <?php $i++; ?>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 </div>
 <!-- End of Main Content -->
