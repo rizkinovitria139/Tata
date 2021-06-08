@@ -164,7 +164,7 @@
                                     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-size:12.0pt;mso-bidi-font-family:
     Calibri;mso-bidi-theme-font:minor-latin'>
-                                            <o:p><?= $s['semester'] ?></o:p>
+                                            <o:p><?= $semester ?></o:p>
                                         </span></p>
                                 </td>
                             </tr>

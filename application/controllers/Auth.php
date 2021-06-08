@@ -69,7 +69,7 @@ class Auth extends CI_Controller
                         ];
                         $this->session->set_userdata($data);
                         redirect('Guru_Mapel');
-                    } else {
+                    } elseif ($guru['role_id'] == 7) {
                         $data = [
                             'username' => $guru['username'],
                             'role_id' => $guru['role_id'],
@@ -78,6 +78,25 @@ class Auth extends CI_Controller
                         $this->session->set_userdata($data);
                         redirect('Bk');
                         // echo 'Selamat datang Guru';
+                    } elseif ($guru['role_id'] == 8) {
+                        $data = [
+                            'username' => $guru['username'],
+                            'role_id' => $guru['role_id'],
+                            'nip' => $guru['nip'],
+                            'tempat_lahir' => $guru['tempat_lahir'],
+                            'tanggal_lahir' => $guru['tanggal_lahir'],
+                            'jenis_kelamin' => $guru['jenis_kelamin'],
+                            'agama' => $guru['agama'],
+                            'alamat' => $guru['alamat'],
+                            'no_telp' => $guru['no_telp'],
+                            'tanggal_masuk' => $guru['tanggal_masuk'],
+                            'email' => $guru['email'],
+                            'status' => $guru['status'],
+                            'password' => $guru['password'],
+                            'username' => $guru['username']
+                        ];
+                        $this->session->set_userdata($data);
+                        redirect('wali_kelas');
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert 
