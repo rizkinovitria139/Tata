@@ -84,6 +84,13 @@
                     <span>Tahun Akademik</span></a>
             </li>
 
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('admin/get_pengembangan'); ?>">
+                    <i class="fas fa-th-list"></i>
+                    <span>Pengembangan Diri</span></a>
+            </li>
+
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">

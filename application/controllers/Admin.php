@@ -913,6 +913,70 @@ class Admin extends CI_Controller
         redirect('admin/get_tahun', 'refresh');
     }
     // End bagian tahun akademik
+
+    // Start bagian Pengembangan Diri
+    public function get_pengembangan()
+    {
+        $data['title'] = 'Daftar Pengembangan Diri';
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+
+        $this->session->set_userdata($data);
+
+
+        $this->load->model('Pengembangan_model', 'pengembangan');
+        $data['pengembangan'] = $this->pengembangan->get_pengembangan();
+        $this->load->model('Admin_model', 'guru');
+        $data['guru'] = $this->guru->get_guru_mapel();
+
+
+        $this->session->set_userdata($data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/pengembangan', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function tambah_pengembangan()
+    {
+        $this->form_validation->set_rules('nama_pengembangan', 'Nama Pengembangan', 'required');
+        $this->form_validation->set_rules('nip_pembimbing', 'NIP Pembimbing', 'required');
+
+
+        if ($this->form_validation->run() == true) {
+            $data['nama_pengembangan'] = $this->input->post('nama_pengembangan');
+            $data['nip_pembimbing'] = $this->input->post('nip_pembimbing');
+
+            $this->load->model('Pengembangan_model', 'pengembangan');
+            $this->pengembangan->tambah_pengembangan($data);
+
+            $this->session->set_flashdata('pengembangan_message', '<div class="alert alert-success" role="alert">Pengembangan Diri Berhasil ditambahkan!</div>');
+            redirect('admin/get_pengembangan', 'refresh');
+        } else {
+            $this->session->set_flashdata('pengembangan_message', '<div class="alert alert-danger" role="alert">Pengembangan Diri gagal ditambahkan!</div>');
+            redirect('admin/get_pengembangan', 'refresh');
+        }
+    }
+
+    public function edit_pengembangan($id)
+    {
+        $this->db->update('pengembangan_diri', ['nama_pengembangan' => $this->input->post('nama_pengembangan')], ['id_pengembangan' => $id]);
+        $this->db->update('pengembangan_diri', ['nip_pembimbing' => $this->input->post('nip_pembimbing')], ['id_pengembangan' => $id]);
+
+        $this->session->set_flashdata('pengembangan_message', '<div class="alert alert-warning" role="alert">Pengembangan Diri berhasil diubah!</div>');
+        redirect('admin/get_pengembangan', 'refresh');
+    }
+
+    public function delete_pengembangan($id)
+    {
+        $this->load->model('Pengembangan_model', 'pengembangan');
+        $this->pengembangan->delete_pengembangan($id);
+        // untuk flashdata mempunyai 2 parameter (nama flashdata/alias, isi dari flashdatanya)
+        $this->session->set_flashdata('pengembangan_message', '<div class="alert alert-danger" role="alert">Pengembangan berhasil dihapus!</div>');
+        redirect('admin/get_pengembangan', 'refresh');
+    }
+    // End bagian Pengembangan Diri
 }
     
     /* End of file Guru.php */
