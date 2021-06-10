@@ -88,7 +88,7 @@ class Wali_kelas extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function cetak_rapor_by($nis)
+    public function cetak_rapor_1($nis)
     {
         $data['title'] = 'Cetak Nilai Siswa';
         $data['wali_kelas'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
@@ -97,7 +97,6 @@ class Wali_kelas extends CI_Controller
         $guru_id = $this->session->userdata('nip');
 
         $this->load->model('Nilai_model');
-        $data['siswa'] = $this->Nilai_model->get_siswa($nis);
         $data['data_nilai'] = $this->Nilai_model->get_semester_1($nis);
         $data['data_pengembangan'] = $this->Nilai_model->nilai_pengembangan_1($nis);
         $data['data_kepribadian'] = $this->Nilai_model->nilai_kepribadian_1($nis);
@@ -106,6 +105,106 @@ class Wali_kelas extends CI_Controller
 
         $this->load->view('wali_kelas/cetak_nilai', $data);
     }
+    
+    public function cetak_rapor_2($nis)
+    {
+        $data['title'] = 'Cetak Nilai Siswa';
+        $data['wali_kelas'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+        $data['semester'] = '2';
+        // $siswa_id  =   $this->session->userdata('nis');
+        $guru_id = $this->session->userdata('nip');
+
+        $this->load->model('Nilai_model');
+        
+        $data['data_nilai'] = $this->Nilai_model->get_semester_2($nis);
+        $data['data_pengembangan'] = $this->Nilai_model->nilai_pengembangan_2($nis);
+        $data['data_kepribadian'] = $this->Nilai_model->nilai_kepribadian_2($nis);
+        $data['guru'] = $this->Nilai_model->get_wali($guru_id);
+        $data['presensi'] = $this->Nilai_model->get_presensi($nis);
+
+        $this->load->view('wali_kelas/cetak_nilai', $data);
+    }
+
+    
+    public function cetak_rapor_3($nis)
+    {
+        $data['title'] = 'Cetak Nilai Siswa';
+        $data['wali_kelas'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+        $data['semester'] = '1';
+        // $siswa_id  =   $this->session->userdata('nis');
+        $guru_id = $this->session->userdata('nip');
+
+        $this->load->model('Nilai_model');
+        
+        $data['data_nilai'] = $this->Nilai_model->get_semester_3($nis);
+        $data['data_pengembangan'] = $this->Nilai_model->nilai_pengembangan_3($nis);
+        $data['data_kepribadian'] = $this->Nilai_model->nilai_kepribadian_3($nis);
+        $data['guru'] = $this->Nilai_model->get_wali($guru_id);
+        $data['presensi'] = $this->Nilai_model->get_presensi($nis);
+
+        $this->load->view('wali_kelas/cetak_nilai', $data);
+    }
+
+    
+    public function cetak_rapor_4($nis)
+    {
+        $data['title'] = 'Cetak Nilai Siswa';
+        $data['wali_kelas'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+        $data['semester'] = '2';
+        // $siswa_id  =   $this->session->userdata('nis');
+        $guru_id = $this->session->userdata('nip');
+
+        $this->load->model('Nilai_model');
+        
+        $data['data_nilai'] = $this->Nilai_model->get_semester_4($nis);
+        $data['data_pengembangan'] = $this->Nilai_model->nilai_pengembangan_4($nis);
+        $data['data_kepribadian'] = $this->Nilai_model->nilai_kepribadian_4($nis);
+        $data['guru'] = $this->Nilai_model->get_wali($guru_id);
+        $data['presensi'] = $this->Nilai_model->get_presensi($nis);
+
+        $this->load->view('wali_kelas/cetak_nilai', $data);
+    }
+
+    
+    public function cetak_rapor_5($nis)
+    {
+        $data['title'] = 'Cetak Nilai Siswa';
+        $data['wali_kelas'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+        $data['semester'] = '1';
+        // $siswa_id  =   $this->session->userdata('nis');
+        $guru_id = $this->session->userdata('nip');
+
+        $this->load->model('Nilai_model');
+        
+        $data['data_nilai'] = $this->Nilai_model->get_semester_5($nis);
+        $data['data_pengembangan'] = $this->Nilai_model->nilai_pengembangan_5($nis);
+        $data['data_kepribadian'] = $this->Nilai_model->nilai_kepribadian_5($nis);
+        $data['guru'] = $this->Nilai_model->get_wali($guru_id);
+        $data['presensi'] = $this->Nilai_model->get_presensi($nis);
+
+        $this->load->view('wali_kelas/cetak_nilai', $data);
+    }
+
+    
+    public function cetak_rapor_6($nis)
+    {
+        $data['title'] = 'Cetak Nilai Siswa';
+        $data['wali_kelas'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+        $data['semester'] = '2';
+        // $siswa_id  =   $this->session->userdata('nis');
+        $guru_id = $this->session->userdata('nip');
+
+        $this->load->model('Nilai_model');
+        $data['data_nilai'] = $this->Nilai_model->get_semester_6($nis);
+        $data['data_pengembangan'] = $this->Nilai_model->nilai_pengembangan_6($nis);
+        $data['data_kepribadian'] = $this->Nilai_model->nilai_kepribadian_6($nis);
+        $data['guru'] = $this->Nilai_model->get_wali($guru_id);
+        $data['presensi'] = $this->Nilai_model->get_presensi($nis);
+
+        $this->load->view('wali_kelas/cetak_nilai', $data);
+    }
+
+    
 }
 
 /* End of file Wali_kelas.php */

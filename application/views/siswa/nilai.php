@@ -24,21 +24,7 @@
                             </form>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <form action="" method="POST">
-                                <select class="form-control" name="formal" onchange="location = this.value;">
-                                    <option value="" selected>Cetak Nilai </option>
-                                    <option value="<?= base_url('Nilai/cetak_nilai_1') ?>">7-1</option>
-                                    <option value="<?= base_url('Nilai/cetak_nilai_2') ?>">7-2</option>
-                                    <option value="<?= base_url('Nilai/cetak_nilai_3') ?>">8-1</option>
-                                    <option value="<?= base_url('Nilai/cetak_nilai_4') ?>">8-2</option>
-                                    <option value="<?= base_url('Nilai/cetak_nilai_5') ?>">9-1</option>
-                                    <option value="<?= base_url('Nilai/cetak_nilai_6') ?>">9-2</option>
-                                </select>
-                            </form>
-                        </div>
-                    </div>
+
                     <!-- <div class="col-md-4">
                         <a href="nilai/cetak_nilai" class="btn btn-warning">Cetak Nilai</a>
                     </div> -->
@@ -65,16 +51,16 @@
                 $no = 1;
                 foreach ($data_nilai as $u) :
                 ?>
-                    <tr>
-                        <td><?= $no++; ?></td>
-                        <td width="100"><?= $u['nama_mapel'] ?></td>
-                        <td><?= $u['nilai_kkm'] ?></td>
-                        <td><?= $u['nilai_tugas'] ?></td>
-                        <td><?= $u['nilai_uts'] ?></td>
-                        <td><?= $u['nilai_uas'] ?></td>
-                        <td><?= $u['deskripsi'] ?></td>
+                <tr>
+                    <td><?= $no++; ?></td>
+                    <td width="100"><?= $u['nama_mapel'] ?></td>
+                    <td><?= $u['nilai_kkm'] ?></td>
+                    <td><?= $u['nilai_tugas'] ?></td>
+                    <td><?= $u['nilai_uts'] ?></td>
+                    <td><?= $u['nilai_uas'] ?></td>
+                    <td><?= $u['deskripsi'] ?></td>
 
-                    </tr>
+                </tr>
                 <?php
                 endforeach;
                 ?>

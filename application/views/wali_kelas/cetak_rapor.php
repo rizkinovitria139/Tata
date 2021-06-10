@@ -25,10 +25,27 @@
                     <td><?= $value['nama_kelas'] ?></td>
                     <td hidden><?= $value['id_kelas'] ?></td>
                     <td>
-                        <a class="btn btn-primary btn-icon"
-                            href="<?=base_url('wali_kelas/cetak_rapor_by/'.$value['nis'])?>">
-                            <i class="fas fa-file-download"></i>
-                        </a>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <form action="" method="POST">
+                                    <select class="form-control" name="formal" onchange="location = this.value;">
+                                        <option value="" selected>Cetak Rapor </option>
+                                        <option value="<?= base_url('Wali_kelas/cetak_rapor_1/').$value['nis'] ?>">7-1
+                                        </option>
+                                        <option value="<?= base_url('Wali_kelas/cetak_rapor_2/').$value['nis'] ?>">7-2
+                                        </option>
+                                        <option value="<?= base_url('Wali_kelas/cetak_rapor_3/').$value['nis'] ?>">8-1
+                                        </option>
+                                        <option value="<?= base_url('Wali_kelas/cetak_rapor_4/').$value['nis'] ?>">8-2
+                                        </option>
+                                        <option value="<?= base_url('Wali_kelas/cetak_rapor_5/').$value['nis'] ?>">9-1
+                                        </option>
+                                        <option value="<?= base_url('Wali_kelas/cetak_rapor_6/').$value['nis'] ?>">9-2
+                                        </option>
+                                    </select>
+                                </form>
+                            </div>
+                        </div>
                     </td>
                 </tr>
                 <?php } ?>
