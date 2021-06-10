@@ -87,6 +87,24 @@ class Wali_kelas extends CI_Controller
         $this->load->view('wali_kelas/cetak_rapor', $data);
         $this->load->view('templates/footer');
     }
+
+    public function cetak_rapor_by($nis)
+    {
+        $data['title'] = 'Cetak Nilai Siswa';
+        $data['wali_kelas'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+        $data['semester'] = '1';
+        // $siswa_id  =   $this->session->userdata('nis');
+        $guru_id = $this->session->userdata('nip');
+
+        $this->load->model('Nilai_model');
+        $data['data_nilai'] = $this->Nilai_model->get_semester_1($nis);
+        $data['data_pengembangan'] = $this->Nilai_model->nilai_pengembangan_1($nis);
+        $data['data_kepribadian'] = $this->Nilai_model->nilai_kepribadian_1($nis);
+        $data['guru'] = $this->Nilai_model->get_wali($guru_id);
+        $data['presensi'] = $this->Nilai_model->get_presensi($nis);
+
+        $this->load->view('wali_kelas/cetak_nilai', $data);
+    }
 }
 
 /* End of file Wali_kelas.php */

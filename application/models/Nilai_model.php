@@ -162,4 +162,42 @@ class Nilai_model extends CI_Model
                 $data = $this->db->get()->num_rows();
                 return $data;
         }
+
+        public function nilai_pengembangan_1($nis){
+                $query = "SELECT `nilai_pengembangan`.*, `pengembangan_diri`.*
+                FROM `nilai_pengembangan`
+                JOIN `siswa` ON `siswa`.`nis` = `nilai_pengembangan`.`nis`
+                JOIN `pengembangan_diri` ON `nilai_pengembangan`.`id_pengembangan` = `pengembangan_diri`.`id_pengembangan`
+                JOIN semester ON `semester`.`id_semester` = `nilai_pengembangan`.`id_semester`
+                WHERE `semester`.`semester`= 1 AND `siswa`.`nis` = $nis
+                ";
+                return $this->db->query($query)->result_array();
+        }
+
+        public function nilai_kepribadian_1($nis){
+                $query = "SELECT `nilai_kepribadian`.*
+                FROM `nilai_kepribadian`
+                JOIN `siswa` ON `siswa`.`nis` = `nilai_kepribadian`.`nis`
+                JOIN semester ON `semester`.`id_semester` = `nilai_kepribadian`.`id_semester`
+                WHERE `semester`.`semester`= 1 AND `siswa`.`nis` = $nis
+                ";
+                return $this->db->query($query)->result_array();
+        }
+
+        public function get_wali($nip){
+            $query = "SELECT `nip`, `nama` 
+                FROM `guru`
+                WHERE `guru`.`nip` = $nip";
+                
+            return $this->db->query($query)->result_array();
+        }
+
+        public function get_presensi($nis){
+                $query = "SELECT *
+                FROM presensi
+                WHERE `presensi`.`nis` = $nis";
+                
+            return $this->db->query($query)->result_array();
+                
+        }
 }

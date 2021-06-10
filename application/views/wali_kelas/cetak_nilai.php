@@ -188,7 +188,7 @@
                                 <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-size:12.0pt;mso-bidi-font-family:
     Calibri;mso-bidi-theme-font:minor-latin'>
-                                        <o:p><?= $s['tahun'] ?></o:p>
+                                        <o:p><?= $s['tahun'] ?>;</o:p>
                                     </span></p>
                             </td>
                         </tr>
@@ -279,7 +279,7 @@ Calibri;mso-bidi-theme-font:minor-latin'>
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
                     <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
-  text-align:center;line-height:normal'><span style='font-size:12.0pt;
+  text-align:left;line-height:normal'><span style='font-size:12.0pt;
   mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>
                             <o:p><?= $u['nama_mapel'] ?></o:p>
                         </span></p>
@@ -468,6 +468,11 @@ mso-bidi-theme-font:minor-latin'>
                             </span></b></p>
                 </td>
             </tr>
+
+            <?php
+            $no = 1;
+            foreach ($data_pengembangan as $d) :
+            ?>
             <tr style='mso-yfti-irow:1'>
                 <td width=237 valign=top style='width:225.0pt;border:solid windowtext 1.0pt;
   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
@@ -475,7 +480,9 @@ mso-bidi-theme-font:minor-latin'>
                     <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
   text-align:center;line-height:normal'><span style='font-size:12.0pt;
   mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>
-                            <o:p>&nbsp;</o:p>
+                            <o:p>
+                                <?= $d['nama_pengembangan']?>
+                            </o:p>
                         </span></p>
                 </td>
                 <td width=67 valign=top style='width:58.5pt;border-top:none;border-left:none;
@@ -485,7 +492,9 @@ mso-bidi-theme-font:minor-latin'>
                     <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
   text-align:center;line-height:normal'><span style='font-size:12.0pt;
   mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>
-                            <o:p>&nbsp;</o:p>
+                            <o:p>
+                                <?= $d['nilai_pengembangan']?>
+                            </o:p>
                         </span></p>
                 </td>
                 <td width=302 valign=top style='width:310.5pt;border-top:none;border-left:
@@ -495,10 +504,11 @@ mso-bidi-theme-font:minor-latin'>
                     <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
   text-align:center;line-height:normal'><span style='font-size:12.0pt;
   mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>
-                            <o:p>&nbsp;</o:p>
+                            <o:p><?= $d['keterangan']?></o:p>
                         </span></p>
                 </td>
             </tr>
+            <?php endforeach;?>
             <tr style='mso-yfti-irow:2'>
                 <td width=237 valign=top style='width:225.0pt;border:solid windowtext 1.0pt;
   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
@@ -622,6 +632,10 @@ mso-bidi-theme-font:minor-latin'>
     .0001pt;text-align:center;line-height:normal'><span style='font-size:12.0pt;
     mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>1<o:p></o:p></span></p>
                             </td>
+                            <?php
+            $no = 1;
+            foreach ($data_kepribadian as $k) :
+            ?>
                             <td width=161 valign=top style='width:120.45pt;border:none;border-bottom:
     solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:
     solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:
@@ -640,7 +654,7 @@ mso-bidi-theme-font:minor-latin'>
     padding:0in 5.4pt 0in 5.4pt'>
                                 <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-size:12.0pt;mso-bidi-font-family:
-    Calibri;mso-bidi-theme-font:minor-latin'>:<o:p></o:p></span></p>
+    Calibri;mso-bidi-theme-font:minor-latin'>:<o:p><?=$k['kelakuan']?></o:p></span></p>
                             </td>
                             <td width=35 valign=top style='width:26.2pt;border-top:none;border-left:
     none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -690,7 +704,7 @@ mso-bidi-theme-font:minor-latin'>
     padding:0in 5.4pt 0in 5.4pt'>
                                 <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-size:12.0pt;mso-bidi-font-family:
-    Calibri;mso-bidi-theme-font:minor-latin'>:<o:p></o:p></span></p>
+    Calibri;mso-bidi-theme-font:minor-latin'>:<o:p><?=$k['kerajinan']?></o:p></span></p>
                             </td>
                             <td width=35 valign=top style='width:26.2pt;border-top:none;border-left:
     none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -740,7 +754,7 @@ mso-bidi-theme-font:minor-latin'>
     padding:0in 5.4pt 0in 5.4pt'>
                                 <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-size:12.0pt;mso-bidi-font-family:
-    Calibri;mso-bidi-theme-font:minor-latin'>:<o:p></o:p></span></p>
+    Calibri;mso-bidi-theme-font:minor-latin'>:<o:p><?=$k['kerapian']?></o:p></span></p>
                             </td>
                             <td width=35 valign=top style='width:26.2pt;border-top:none;border-left:
     none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -790,8 +804,9 @@ mso-bidi-theme-font:minor-latin'>
     padding:0in 5.4pt 0in 5.4pt'>
                                 <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-size:12.0pt;mso-bidi-font-family:
-    Calibri;mso-bidi-theme-font:minor-latin'>:<o:p></o:p></span></p>
+    Calibri;mso-bidi-theme-font:minor-latin'>:<o:p><?=$k['kebersihan']?></o:p></span></p>
                             </td>
+                            <?php endforeach;?>
                             <td width=35 valign=top style='width:26.2pt;border-top:none;border-left:
     none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
     mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
@@ -877,11 +892,14 @@ mso-bidi-theme-font:minor-latin'>
     solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:
     solid windowtext .5pt;mso-border-bottom-alt:solid windowtext .5pt;
     padding:0in 5.4pt 0in 5.4pt;height:18.85pt'>
+                                <?php foreach($presensi as $p) :?>
                                 <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
     mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>Sakit</span></span><span style='font-size:12.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:
     minor-latin'>
-                                        <o:p></o:p>
+                                        <o:p>
+
+                                        </o:p>
                                     </span></p>
                             </td>
                             <td width=18 valign=top style='width:13.25pt;border:none;border-bottom:
@@ -890,7 +908,7 @@ mso-bidi-theme-font:minor-latin'>
     padding:0in 5.4pt 0in 5.4pt;height:18.85pt'>
                                 <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-size:12.0pt;mso-bidi-font-family:
-    Calibri;mso-bidi-theme-font:minor-latin'>:<o:p></o:p></span></p>
+    Calibri;mso-bidi-theme-font:minor-latin'>:<?=$p['sakit']?><o:p></o:p></span></p>
                             </td>
                             <td width=71 valign=top style='width:53.55pt;border-top:none;border-left:
     none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -941,7 +959,7 @@ mso-bidi-theme-font:minor-latin'>
     padding:0in 5.4pt 0in 5.4pt;height:22.45pt'>
                                 <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-size:12.0pt;mso-bidi-font-family:
-    Calibri;mso-bidi-theme-font:minor-latin'>:<o:p></o:p></span></p>
+    Calibri;mso-bidi-theme-font:minor-latin'>:<?=$p['izin']?><o:p></o:p></span></p>
                             </td>
                             <td width=71 valign=top style='width:53.55pt;border-top:none;border-left:
     none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -986,14 +1004,16 @@ mso-bidi-theme-font:minor-latin'>
                                         <o:p></o:p>
                                     </span></p>
                             </td>
+
                             <td width=18 valign=top style='width:13.25pt;border:none;border-bottom:
     solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:
     solid windowtext .5pt;mso-border-bottom-alt:solid windowtext .5pt;
     padding:0in 5.4pt 0in 5.4pt;height:22.0pt'>
                                 <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-size:12.0pt;mso-bidi-font-family:
-    Calibri;mso-bidi-theme-font:minor-latin'>:<o:p></o:p></span></p>
+    Calibri;mso-bidi-theme-font:minor-latin'>:<?=$p['alpha']?><o:p></o:p></span></p>
                             </td>
+                            <?php endforeach;?>
                             <td width=71 valign=top style='width:53.55pt;border-top:none;border-left:
     none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
     mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
@@ -1105,14 +1125,18 @@ mso-bidi-theme-font:minor-latin'>
   mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>
                             <o:p>&nbsp;</o:p>
                         </span></p>
+                    <?php foreach ($guru as $g) :?>
                     <p class=MsoNormal align=right style='margin-bottom:0in;margin-bottom:.0001pt;
   text-align:right;line-height:normal'><span style='font-size:12.0pt;
-  mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>....................................<o:p></o:p></span>
+  mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>(
+                            <?=$g['nama']?> )<o:p></o:p>
+                        </span>
                     </p>
                     <p class=MsoNormal align=right style='margin-bottom:0in;margin-bottom:.0001pt;
   text-align:right;line-height:normal'><span style='font-size:12.0pt;
-  mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>NIP .................................<o:p></o:p></span>
+  mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>NIP <?=$g['nip']?><o:p></o:p></span>
                     </p>
+                    <?php endforeach;?>
                 </td>
             </tr>
         </table>

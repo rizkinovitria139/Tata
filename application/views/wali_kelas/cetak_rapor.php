@@ -1,6 +1,6 @@
 <div class="container">
     <div>
-        <h1>Nilai Pengembangan Diri</h1>
+        <h1>Cetak Rapor Siswa</h1>
         <hr>
     </div>
 
@@ -26,8 +26,8 @@
                     <td hidden><?= $value['id_kelas'] ?></td>
                     <td>
                         <a class="btn btn-primary btn-icon"
-                            href="<?=base_url('wali_kelas/cetak_rapor_by/'.$value['nis'])?>" <i
-                            class="fas fa-file-download"></i>
+                            href="<?=base_url('wali_kelas/cetak_rapor_by/'.$value['nis'])?>">
+                            <i class="fas fa-file-download"></i>
                         </a>
                     </td>
                 </tr>
