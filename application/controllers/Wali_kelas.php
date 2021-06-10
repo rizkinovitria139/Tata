@@ -70,6 +70,23 @@ class Wali_kelas extends CI_Controller
             echo false;
         }
     }
+
+    public function cetak_rapor(){
+        $data['title'] = "Nilai Siswa";
+        $data['wali_kelas'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+        $user_id  =   $this->session->userdata('nip');
+
+        $this->load->model('Pengembangan_model', 'p_nilai');
+        $data['siswaKelas'] = $this->p_nilai->getSiswaKelas($user_id);
+
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/walikelas_sidebar', $data);
+        $this->load->view('templates/walikelas_topbar', $data);
+        $this->load->view('wali_kelas/cetak_rapor', $data);
+        $this->load->view('templates/footer');
+    }
 }
 
 /* End of file Wali_kelas.php */
