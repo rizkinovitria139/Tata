@@ -97,6 +97,7 @@ class Wali_kelas extends CI_Controller
         $guru_id = $this->session->userdata('nip');
 
         $this->load->model('Nilai_model');
+        $data['siswa'] = $this->Nilai_model->get_siswa($nis);
         $data['data_nilai'] = $this->Nilai_model->get_semester_1($nis);
         $data['data_pengembangan'] = $this->Nilai_model->nilai_pengembangan_1($nis);
         $data['data_kepribadian'] = $this->Nilai_model->nilai_kepribadian_1($nis);

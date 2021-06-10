@@ -175,9 +175,11 @@ class Nilai_model extends CI_Model
         }
 
         public function nilai_kepribadian_1($nis){
-                $query = "SELECT `nilai_kepribadian`.*
+                $query = "SELECT `nilai_kepribadian`.*, `siswa`.*, `kelas`.*, `tahun_akademik`.*
                 FROM `nilai_kepribadian`
                 JOIN `siswa` ON `siswa`.`nis` = `nilai_kepribadian`.`nis`
+                JOIN `kelas` ON `siswa`.`id_kelas` = `kelas`.`id_kelas`
+                JOIN `tahun_akademik` ON `tahun_akademik`.`id_tahun_akademik` = `kelas`.`id_tahun_akademik`
                 JOIN semester ON `semester`.`id_semester` = `nilai_kepribadian`.`id_semester`
                 WHERE `semester`.`semester`= 1 AND `siswa`.`nis` = $nis
                 ";
@@ -191,6 +193,17 @@ class Nilai_model extends CI_Model
                 
             return $this->db->query($query)->result_array();
         }
+        
+        // public function get_siswa($nis){
+        //     $query = "SELECT `siswa`.*, `kelas`.*
+        //         FROM `siswa`
+        //         JOIN `kelas` ON `siswa`.`id_kelas` = `siswa`.`id_kelas`
+        //         JOIN `tahun_akademik`
+        //         ON `kelas`.`id_tahun_akademik` = `tahun_akademik`.`id_tahun_akademik`
+        //         WHERE`siswa`.`nis` = $nis";
+                
+        //     return $this->db->query($query)->result_array();
+        // }
 
         public function get_presensi($nis){
                 $query = "SELECT *

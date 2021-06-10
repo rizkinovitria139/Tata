@@ -30,7 +30,7 @@
         <table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0 width=0 style='width:483.8pt;margin-left:58.5pt;border-collapse:collapse;border:none;
  mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:
  none;mso-border-insidev:none'>
-            <?php foreach ($data_nilai as $s) : ?>
+            <?php foreach ($data_kepribadian as $s) : ?>
             <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
                 <td width=381 valign=top style='width:285.9pt;padding:0in 5.4pt 0in 5.4pt'>
                     <div align=center>
@@ -188,7 +188,7 @@
                                 <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-size:12.0pt;mso-bidi-font-family:
     Calibri;mso-bidi-theme-font:minor-latin'>
-                                        <o:p><?= $s['tahun'] ?>;</o:p>
+                                        <o:p><?= $s['tahun'] ?></o:p>
                                     </span></p>
                             </td>
                         </tr>
@@ -271,7 +271,7 @@ Calibri;mso-bidi-theme-font:minor-latin'>
                     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:12.0pt;mso-bidi-font-family:Calibri;
   mso-bidi-theme-font:minor-latin'>
-                            <o:p><?= $no ?></o:p>
+                            <o:p><?= $no++ ?></o:p>
                         </span></p>
                 </td>
                 <td width=192 valign=top style='width:196.6pt;border-top:none;border-left:
