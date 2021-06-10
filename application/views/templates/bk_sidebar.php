@@ -27,18 +27,18 @@
                 Interface
             </div>
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('pelanggaran'); ?>">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Data Pelanggaran</span></a>
-            </li>
+            </li> -->
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('bk_nilai'); ?>">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Penilaian</span></a>
-            </li>
+            </li> -->
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('Bk/Konsultasi'); ?>">

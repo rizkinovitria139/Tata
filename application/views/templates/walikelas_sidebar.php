@@ -35,7 +35,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('bk_nilai'); ?>">
+                <a class="nav-link" href="<?= base_url('wali_kelas/input_nilai_pengembangan'); ?>">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Nilai Pengembangan Diri</span></a>
             </li>
