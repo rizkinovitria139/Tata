@@ -162,6 +162,20 @@ class Nilai_model extends CI_Model
                 $data = $this->db->get()->num_rows();
                 return $data;
         }
+        public function checkSemesterAvailable_p($id_semester)
+        {
+                $this->db->from('nilai_pengembangan');
+                $this->db->where('id_semester', $id_semester);
+                $data = $this->db->get()->num_rows();
+                return $data;
+        }
+        public function checkSemesterAvailable_k($id_semester)
+        {
+                $this->db->from('nilai_kepribadian');
+                $this->db->where('id_semester', $id_semester);
+                $data = $this->db->get()->num_rows();
+                return $data;
+        }
 
         public function nilai_pengembangan_1($nis){
                 $query = "SELECT `nilai_pengembangan`.*, `pengembangan_diri`.*
