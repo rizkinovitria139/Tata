@@ -28,14 +28,14 @@
             </div>
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('pelanggaran'); ?>">
+                <a class="nav-link" href="<?= base_url('wali_kelas/tambah_nilai_k'); ?>">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Nilai Kepribadian</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('wali_kelas/input_nilai_pengembangan'); ?>">
+                <a class="nav-link" href="<?= base_url('wali_kelas/tambah_nilai'); ?>">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Nilai Pengembangan Diri</span></a>
             </li>

@@ -9,6 +9,8 @@ class Wali_kelas extends CI_Controller
     {
         parent::__construct();
         //Do your magic here
+        
+        $this->load->model('Nilai_model', 'm_nilai');
     }
 
 
@@ -25,52 +27,7 @@ class Wali_kelas extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function input_nilai_pengembangan()
-    {
-        $data['title'] = "Nilai Siswa";
-        $data['wali_kelas'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
-
-        $user_id  =   $this->session->userdata('nip');
-
-        $this->load->model('Pengembangan_model', 'p_nilai');
-        $data['siswaKelas'] = $this->p_nilai->getSiswaKelas($user_id);
-        $data['pengembangan'] = $this->p_nilai->get_pengembangan();
-        $data['semesterData'] = $this->db->get('semester')->result_array();
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/walikelas_sidebar', $data);
-        $this->load->view('templates/walikelas_topbar', $data);
-        $this->load->view('wali_kelas/input_nilai_pengembangan', $data);
-        $this->load->view('templates/footer');
-        $this->load->view('wali_kelas/nilaijs', $data);
-    }
-
-    public function submit_nilai()
-    {
-        $nilaiData = $this->input->post('datanilai');
-        $semesterNilai = $this->input->post('semesternilai');
-        foreach ($nilaiData as $key => $value) {
-            $dataInput = [
-                'nis' => $value['nis'],
-                'id_pengembangan' => $value['id_pengembangan'],
-                'nilai_pengembangan' => $value['nilai_pengembangan'],
-                'id_semester' => $semesterNilai
-            ];
-            $this->db->insert('nilai_pengembangan', $dataInput);
-        }
-        return true;
-    }
-    public function checkSemesterNilai()
-    {
-        $semesterNilai = $this->input->post('semesternilai');
-        $status = $this->m_nilai->checkSemesterAvailable($semesterNilai);
-        if ($status) {
-            echo true;
-        } else {
-            echo false;
-        }
-    }
-
+    
     public function cetak_rapor(){
         $data['title'] = "Nilai Siswa";
         $data['wali_kelas'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
@@ -203,6 +160,100 @@ class Wali_kelas extends CI_Controller
 
         $this->load->view('wali_kelas/cetak_nilai', $data);
     }
+
+    public function tambah_nilai()
+    {
+        $data['title'] = "Nilai Siswa";
+        $data['wali_kelas'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+        $user_id  =   $this->session->userdata('nip');
+
+        $this->load->model('Pengembangan_model', 'p_nilai');
+        $data['siswaKelas'] = $this->p_nilai->getSiswaKelas($user_id);
+        $data['pengembangan'] = $this->p_nilai->get_pengembangan();
+        $data['semesterData'] = $this->db->get('semester')->result_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/walikelas_sidebar', $data);
+        $this->load->view('templates/walikelas_topbar', $data);
+        $this->load->view('wali_kelas/pengembangan_inputNilai', $data);
+        $this->load->view('templates/footer');
+        $this->load->view('wali_kelas/pengembangan_nilaijs', $data);
+    }
+    public function submit_nilai()
+    {
+        $nilaiData = $this->input->post('datanilai');
+        $semesterNilai = $this->input->post('semesternilai');
+        foreach ($nilaiData as $key => $value) {
+            $dataInput = [
+                'nis' => $value['nis'],
+                'id_pengembangan' => $value['id_pengembangan'],
+                'nilai_pengembangan' => $value['nilai_pengembangan'],
+                'keterangan' => $value['keterangan'],
+                'id_semester' => $semesterNilai
+            ];
+            $this->db->insert('nilai_pengembangan', $dataInput);
+        }
+        return true;
+    }
+    public function checkSemesterNilai()
+    {
+        $semesterNilai = $this->input->post('semesternilai');
+        $status = $this->m_nilai->checkSemesterAvailable_p($semesterNilai);
+        if ($status) {
+            echo true;
+        } else {
+            echo false;
+        }
+    }
+    
+    public function tambah_nilai_k()
+    {
+        $data['title'] = "Nilai Siswa";
+        $data['wali_kelas'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+        $user_id  =   $this->session->userdata('nip');
+
+        $this->load->model('Pengembangan_model', 'p_nilai');
+        $data['siswaKelas'] = $this->p_nilai->getSiswaKelas($user_id);
+        $data['semesterData'] = $this->db->get('semester')->result_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/walikelas_sidebar', $data);
+        $this->load->view('templates/walikelas_topbar', $data);
+        $this->load->view('wali_kelas/kepribadian_inputNilai', $data);
+        $this->load->view('templates/footer');
+        $this->load->view('wali_kelas/kepribadian_nilaijs', $data);
+    }
+    public function submit_nilai_k()
+    {
+        $nilaiData = $this->input->post('datanilai');
+        $semesterNilai = $this->input->post('semesternilai');
+        foreach ($nilaiData as $key => $value) {
+            $dataInput = [
+                'nis' => $value['nis'],
+                'kelakuan' => $value['kelakuan'],
+                'kerajinan' => $value['kerajinan'],
+                'kerapian' => $value['kerapi'],
+                'kebersihan' => $value['kebersihan'],
+                'id_semester' => $semesterNilai
+            ];
+            $this->db->insert('nilai_kepribadian', $dataInput);
+        }
+        return true;
+    }
+
+    public function checkSemesterNilai_k()
+    {
+        $semesterNilai = $this->input->post('semesternilai');
+        $status = $this->m_nilai->checkSemesterAvailable_k($semesterNilai);
+        if ($status) {
+            echo true;
+        } else {
+            echo false;
+        }
+    }
+
 
     
 }
