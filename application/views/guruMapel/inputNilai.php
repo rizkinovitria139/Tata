@@ -22,29 +22,32 @@
             </thead>
             <tbody>
                 <?php foreach ($siswaKelas as $key => $value) { ?>
-                    <tr>
-                        <th scope="row"><?= $key + 1 ?></th>
-                        <th><?= $value['nis'] ?></th>
-                        <td><?= $value['nama'] ?></td>
-                        <td><?= $value['nama_kelas'] ?></td>
-                        <td hidden><?= $value['id_kelas'] ?></td>
-                        <td hidden><?= $value['id_mapel'] ?></td>
-                        <td>
-                            <div class="form-group">
-                                <input type="number" minlength="1" min="0" max="100" maxlength="3" class="form-control" value="0" name="nilai">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="number" minlength="1" min="0" max="100" maxlength="3" class="form-control" value="0" name="nilai">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="number" minlength="1" min="0" max="100" maxlength="3" class="form-control" value="0" name="nilai">
-                            </div>
-                        </td>
-                    </tr>
+                <tr>
+                    <th scope="row"><?= $key + 1 ?></th>
+                    <th><?= $value['nis'] ?></th>
+                    <td><?= $value['nama'] ?></td>
+                    <td><?= $value['nama_kelas'] ?></td>
+                    <td hidden><?= $value['id_kelas'] ?></td>
+                    <td hidden><?= $value['id_mapel'] ?></td>
+                    <td>
+                        <div class="form-group">
+                            <input type="number" minlength="1" min="0" max="100" maxlength="3" class="form-control"
+                                value="0" name="nilai">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="number" minlength="1" min="0" max="100" maxlength="3" class="form-control"
+                                value="0" name="nilai">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="number" minlength="1" min="0" max="100" maxlength="3" class="form-control"
+                                value="0" name="nilai">
+                        </div>
+                    </td>
+                </tr>
                 <?php } ?>
             </tbody>
         </table>
@@ -52,7 +55,7 @@
             <label for="">Pilih Semester</label>
             <select class="form-control" id="semesterSelect">
                 <?php foreach ($semesterData as $key => $value) { ?>
-                    <option value="<?= $value['id_semester'] ?>">Semester <?= $value['semester'] ?></option>
+                <option value="<?= $value['id_semester'] ?>">Semester <?= $value['semester'] ?></option>
                 <?php } ?>
             </select>
             <small id="helpId" class="text-muted">Masukan semester nilai yang akan di masukan</small>

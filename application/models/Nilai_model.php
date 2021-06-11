@@ -331,4 +331,40 @@ class Nilai_model extends CI_Model
             return $this->db->query($query)->result_array();
                 
         }
+
+        public function get_keyword($keyword)
+    {
+        $this->db->select('*');
+        $this->db->from('siswa');
+        $this->db->join('nilai_siswa', 'nilai_siswa.nis = siswa.nis');
+        $this->db->join('kelas', 'kelas.id_kelas = siswa.id_kelas');
+        $this->db->join('mata_pelajaran', 'kelas.id_kelas = mata_pelajaran.id_kelas');
+        $this->db->join('semester', 'semester.id_semester = nilai_siswa.id_semester');
+        $this->db->join('user_role', 'user_role.id_role= siswa.role_id');
+        $this->db->like('nilai_siswa.nis', $keyword);
+        $this->db->or_like('nisn', $keyword);
+        $this->db->or_like('nama', $keyword);
+        $this->db->or_like('nama_kelas', $keyword);
+
+        return $this->db->get()->result_array();
+    }
+
+    public function get_nilai_siswa_by($id_kelas)
+        {
+                $query = "SELECT `nilai_siswa`.*, `mata_pelajaran`.*, `semester`.*, `siswa`.*, `kelas`.*, `tahun_akademik`.*
+                FROM `nilai_siswa` JOIN `siswa`
+                ON `nilai_siswa`.`nis` = `siswa`.`nis`
+                JOIN `mata_pelajaran`
+                ON `nilai_siswa`.`id_mapel` = `mata_pelajaran`.`id_mapel`
+                JOIN `kelas` 
+                ON `kelas`.`id_kelas` = `mata_pelajaran`.`id_kelas`
+                JOIN `tahun_akademik`
+                ON `kelas`.`id_tahun_akademik` = `tahun_akademik`.`id_tahun_akademik`
+                JOIN `semester`
+                ON`semester`.`id_semester` = `nilai_siswa`.`id_semester`
+                WHERE `siswa`.`id_kelas` = $id_kelas
+               ";
+
+                return $this->db->query($query)->result_array();
+        }
 }

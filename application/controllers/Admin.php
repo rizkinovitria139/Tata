@@ -842,7 +842,46 @@ class Admin extends CI_Controller
 
         $this->load->model('Nilai_model', 'nilai');
         $data['nilai'] = $this->nilai->getAll();
+        $this->load->model('Kelas_model', 'kelas');
+        $data['kelas'] = $this->kelas->get_kelas();
 
+        $this->session->set_userdata($data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/nilai', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function search_nilai_siswa()
+    {
+        $data['title'] = 'Daftar Nilai Siswa Kelas';
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+        $keyword = $this->input->post('keyword');
+        $this->load->model('Nilai_model', 'nilai');
+        $data['nilai'] = $this->nilai->get_keyword($keyword);
+        
+        $this->session->set_userdata($data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/nilai', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function get_nilai_siswa_by($id_kelas)
+    {
+        $data['title'] = 'Daftar Nilai Siswa';
+        $data['admin'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+
+        $this->session->set_userdata($data);
+
+        $this->load->model('Nilai_model', 'nilai');
+        $data['nilai'] = $this->nilai->get_nilai_siswa_by($id_kelas);
+        $this->load->model('Kelas_model', 'kelas');
+        $data['kelas'] = $this->kelas->get_kelas();
 
         $this->session->set_userdata($data);
         $this->load->view('templates/header', $data);
