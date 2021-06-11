@@ -19,13 +19,14 @@ class Tambah_presensi extends CI_Controller
         if ((isset($_GET['bulan']) && $_GET['bulan'] != '') && (isset($_GET['tahun']) && $_GET['tahun'] != '')) {
             $bulan = $_GET['bulan'];
             $tahun = $_GET['tahun'];
-            $bulantahun = $bulan . $tahun;
+            $bulan = $tahun . "-" . $bulan;
+            $bulantahun = date('Y-m-d', strtotime($bulan));
         } else {
             $bulan = date('m');
             $tahun = date('Y');
-            $bulantahun = $bulan . $tahun;
+            $bulan = $bulan . $tahun;
+            $bulantahun = date('Y-m-d', strtotime($bulan));
         }
-
         $data['datapresensi'] = $this->m_presensi->get_presensi($bulantahun);
         $data['datajadwal'] = $this->m_presensi->get_jadwal($this->session->userdata('nip'));
         // var_dump($data1);
@@ -55,25 +56,29 @@ class Tambah_presensi extends CI_Controller
     public function inputPresensi()
     {
         $dataPresensi = $this->input->post('presensiData');
+        $tanggalPresensi = $this->input->post('tanggalpresensi');
 
         foreach ($dataPresensi as $key => $value) {
-            $this->m_presensi->doPresensi($value);
+            $this->m_presensi->doPresensi($value, $tanggalPresensi);
         }
         echo true;
     }
     public function getPresensiSiswa($id)
     {
         $data['siswaPresensi'] = $this->m_presensi->getPresensiSiswa($id);
-
+        $data['dataabsensi'] = $this->m_presensi->getPresensiHarianSiswa($id);
         print_r($this->load->view('guruMapel/modal/presensimodal', $data, TRUE));
+    }
+    public function getHarianSiswa($id)
+    {
+        $data['siswaPresensi'] = $this->m_presensi->getPresensiByID($id);
+        print_r($this->load->view('guruMapel/modal/presensiharianmodal', $data, TRUE));
     }
     public function doEditPresensi($idpresensi)
     {
         $update = array(
             "hadir" => $this->input->post('hadir'),
-            "alpha" => $this->input->post('alpha'),
-            "izin" => $this->input->post('izin'),
-            "sakit" => $this->input->post('sakit'),
+            "keterangan" => $this->input->post('keterangan'),
         );
         $this->m_presensi->doUpdatePresensi($idpresensi, $update);
         $this->session->set_flashdata(

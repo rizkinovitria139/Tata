@@ -20,11 +20,13 @@ class DataPresensi extends CI_Controller
         if ((isset($_GET['bulan']) && $_GET['bulan'] != '') && (isset($_GET['tahun']) && $_GET['tahun'] != '')) {
             $bulan = $_GET['bulan'];
             $tahun = $_GET['tahun'];
-            $bulantahun = $bulan . $tahun;
+            $bulan = $tahun . "-" . $bulan;
+            $bulantahun = date('Y-m-d', strtotime($bulan));
         } else {
             $bulan = date('m');
             $tahun = date('Y');
-            $bulantahun = $bulan . $tahun;
+            $bulan = $bulan . $tahun;
+            $bulantahun = date('Y-m-d', strtotime($bulan));
         }
 
         $this->load->model('Presensi_model', 'datapresensi');
@@ -74,6 +76,7 @@ class DataPresensi extends CI_Controller
         redirect('DataPresensi/get_presensi', 'refresh');
     }
 
+
     public function view_presensi_siswa()
     {
         $data['title'] = 'Data Presensi ';
@@ -82,24 +85,14 @@ class DataPresensi extends CI_Controller
         if ((isset($_GET['bulan']) && $_GET['bulan'] != '') && (isset($_GET['tahun']) && $_GET['tahun'] != '')) {
             $bulan = $_GET['bulan'];
             $tahun = $_GET['tahun'];
-            $bulantahun = $bulan . $tahun;
-            // var_dump($data);
-            // die();
+            $bulan = $tahun . "-" . $bulan;
+            $bulantahun = date('Y-m-d', strtotime($bulan));
         } else {
             $bulan = date('m');
             $tahun = date('Y');
-            $bulantahun = $bulan . $tahun;
-            // var_dump($data);
+            $bulan = $bulan . $tahun;
+            $bulantahun = date('Y-m-d', strtotime($bulan));
         }
-
-        // $data['datapresensi'] = $this->db->query("SELECT `siswa`.*, `presensi`.*, `kelas`.*
-        //     FROM `siswa` JOIN `presensi`
-        //      ON `siswa`.`nis` = `presensi`.`nis` 
-        //      JOIN `kelas`
-        //      ON `presensi`.`id_kelas` = `kelas`.`id_kelas`
-        //      WHERE `presensi`.`bulan` = $bulantahun
-        //      AND `siswa`.`nis` = '$id'
-        //     ORDER BY `siswa`.`nama` ASC")->result();
 
         $this->load->model('Presensi_model', 'datapresensi');
         $user_id  =   $this->session->userdata('nis');
@@ -116,16 +109,20 @@ class DataPresensi extends CI_Controller
     public function getPresensiSiswa($id)
     {
         $data['siswaPresensi'] = $this->Presensi_model->getPresensiSiswa($id);
+        $data['dataabsensi'] = $this->Presensi_model->getPresensiHarianSiswa($id);
 
         print_r($this->load->view('admin/modal/presensimodal', $data, TRUE));
+    }
+    public function getHarianSiswa($id)
+    {
+        $data['siswaPresensi'] = $this->Presensi_model->getPresensiByID($id);
+        print_r($this->load->view('admin/modal/presensiharianmodal', $data, TRUE));
     }
     public function doEditPresensi($idpresensi)
     {
         $update = array(
             "hadir" => $this->input->post('hadir'),
-            "alpha" => $this->input->post('alpha'),
-            "izin" => $this->input->post('izin'),
-            "sakit" => $this->input->post('sakit'),
+            "keterangan" => $this->input->post('keterangan'),
         );
         $this->Presensi_model->doUpdatePresensi($idpresensi, $update);
         $this->session->set_flashdata(

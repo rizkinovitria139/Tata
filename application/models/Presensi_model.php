@@ -22,16 +22,44 @@ class Presensi_model extends CI_Model
         // ORDER BY `siswa`.`nama` ASC";
 
         $this->db->select('siswa.*, presensi.*, kelas.*');
+        $this->db->select_sum("presensi.hadir='hadir'", 'hadir');
+        $this->db->select_sum("presensi.hadir='sakit'", 'sakit');
+        $this->db->select_sum("presensi.hadir='alpha'", 'alpha');
+        $this->db->select_sum("presensi.hadir='izin'", 'izin');
         $this->db->from('siswa');
         $this->db->join('presensi', 'presensi.nis = siswa.nis');
         $this->db->join('kelas', 'kelas.id_kelas = presensi.id_kelas');
         $this->db->order_by('siswa.id_kelas', 'asc');
-        $this->db->where('presensi.bulan', $bulantahun);
+        $this->db->group_by('presensi.nis');
+        // $this->db->where('presensi.bulan', $bulantahun);
+        $this->db->where('MONTH(presensi.bulan)', date('m', strtotime($bulantahun)));
+        $this->db->where('YEAR(presensi.bulan)', date('Y', strtotime($bulantahun)));
         return $this->db->get()->result_array();
+    }
+    public function getPresensiHarianSiswa($nis)
+    {
+        $this->db->select('siswa.*, presensi.*, kelas.*');
+        $this->db->from('siswa');
+        $this->db->join('presensi', 'presensi.nis = siswa.nis');
+        $this->db->join('kelas', 'kelas.id_kelas = presensi.id_kelas');
+        $this->db->where('presensi.nis', $nis);
+        $this->db->order_by('presensi.bulan', 'asc');
+
+        return $this->db->get()->result_array();
+    }
+    public function getPresensiByID($id)
+    {
+        $this->db->select('presensi.*, siswa.nama, kelas.nama_kelas');
+        $this->db->from('presensi');
+        $this->db->join('siswa', 'siswa.nis = presensi.nis');
+        $this->db->join('kelas', 'kelas.id_kelas = presensi.id_kelas');
+        $this->db->where('presensi.id_presensi', $id);
+        return $this->db->get()->row();
     }
     public function getPresensiSiswa($id)
     {
         $this->db->select('presensi.*, siswa.nama, kelas.nama_kelas');
+
         $this->db->from('presensi');
         $this->db->join('siswa', 'siswa.nis = presensi.nis');
         $this->db->join('kelas', 'kelas.id_kelas = presensi.id_kelas');
@@ -41,6 +69,10 @@ class Presensi_model extends CI_Model
     public function viewPresensiSiswa($id)
     {
         $this->db->select('presensi.*, siswa.nama, kelas.nama_kelas');
+        $this->db->select_sum("presensi.hadir='hadir'", 'hadir');
+        $this->db->select_sum("presensi.hadir='sakit'", 'sakit');
+        $this->db->select_sum("presensi.hadir='alpha'", 'alpha');
+        $this->db->select_sum("presensi.hadir='izin'", 'izin');
         $this->db->from('presensi');
         $this->db->join('siswa', 'siswa.nis = presensi.nis');
         $this->db->join('kelas', 'kelas.id_kelas = presensi.id_kelas');
@@ -67,84 +99,18 @@ class Presensi_model extends CI_Model
         $this->db->where('jadwal.id', $idjadwal);
         return $this->db->get()->result_array();
     }
-    public function doPresensi($data)
+    public function doPresensi($data, $tanggal)
     {
-        $absensi = $this->checkNisAbsen($data['nis']);
-        if ($absensi['status']) {
-            $this->updateAbsensi($absensi['data'], $data['kehadiran']);
-        } else {
-            $this->addAbsensi($data);
-        }
+        $siswaData = [
+            'nis' => $data["nis"],
+            'id_kelas' => $data['id_kelas'],
+            'hadir' => $data['kehadiran'],
+            'keterangan' => $data['keterangan'],
+            'bulan' => $tanggal
+        ];
+        $this->db->insert('presensi', $siswaData);
     }
-    private function addAbsensi($data)
-    {
-        if (strtolower($data['kehadiran']) === 'hadir') {
-            $data = [
-                "nis" => $data['nis'],
-                "id_kelas" => $data['id_kelas'],
-                "bulan" => date('m') . date('Y'),
-                "hadir" => 1,
-            ];
-        } else if (strtolower($data['kehadiran']) === 'sakit') {
-            $data = [
-                "nis" => $data['nis'],
-                "id_kelas" => $data['id_kelas'],
-                "bulan" => date('m') . date('Y'),
-                "sakit" => 1,
 
-            ];
-        } else if (strtolower($data['kehadiran']) === 'izin') {
-            $data = [
-                "nis" => $data['nis'],
-                "id_kelas" => $data['id_kelas'],
-                "bulan" => date('m') . date('Y'),
-                "izin" => 1,
-            ];
-        } else if (strtolower($data['kehadiran']) === 'alpha') {
-            $data = [
-                "nis" => $data['nis'],
-                "id_kelas" => $data['id_kelas'],
-                "bulan" => date('m') . date('Y'),
-                "alpha" => 1,
-            ];
-        }
-
-        $this->db->insert('presensi', $data);
-    }
-    private function updateAbsensi($data, $kehadiran)
-    {
-
-        if (strtolower($kehadiran) === 'hadir') {
-            $update = [
-                "hadir" => $data->hadir + 1,
-            ];
-        } else if (strtolower($kehadiran) === 'sakit') {
-            $update = [
-                "sakit" => $data->sakit + 1,
-            ];
-        } else if (strtolower($kehadiran) === 'izin') {
-            $update = [
-                "izin" => $data->izin + 1,
-            ];
-        } else if (strtolower($kehadiran) === 'alpha') {
-            $update = [
-                "alpha" => $data->alpha + 1,
-            ];
-        }
-        $filter = ['nis' => $data->nis, "bulan" => date('m') . date('Y')];
-        $this->db->update('presensi', $update, $filter);
-    }
-    private function checkNisAbsen($nis)
-    {
-        $this->db->from('presensi');
-        $this->db->where(['nis' => $nis, 'bulan' => date('m') . date('Y')]);
-        $datas = $this->db->get()->row();
-        if ($datas) {
-            return array('status' => true, 'data' => $datas);
-        } else {
-            return array('status' => false, 'data' => null);;
-        }
-    }
     public function doUpdatePresensi($idpresensi, $update)
     {
         $this->db->update('presensi', $update, ['id_presensi' => $idpresensi]);

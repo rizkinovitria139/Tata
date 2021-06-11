@@ -15,7 +15,7 @@
             Filter Data Presensi Siswa
         </div>
         <div class="card-body">
-            <form class="form-inline" action="<?= base_url('datapresensi/view_presensi_siswa') ?>">
+            <form class="form-inline" action="<?= base_url('datapresensi') ?>">
                 <div class="form-group mb-2">
                     <label for="staticEmail2">Bulan : </label>
                     <select class="form-control ml-2" name="bulan">
@@ -115,7 +115,7 @@
                         <td><?= $dp['alpha'] ?></td>
                         <td><?= $dp['izin'] ?></td>
                         <td>
-                            <button class="btn btn-primary btn-icon" onclick="showEditPresensi(<?= $dp['nis'] ?>)">
+                            <button class="btn btn-primary btn-icon" onclick="showEditPresensiAdmin(<?= $dp['nis'] ?>)">
                                 <i class="far fa-edit"></i>
                             </button>
                             <!-- <a class="btn btn-primary btn-icon" href="" data-toggle="modal" data-target="#editPresensiModal">

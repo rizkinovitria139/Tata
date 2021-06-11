@@ -18,3 +18,9 @@
 .bg-wali {
 	background-color: #1e1e52;
 }
+
+.presensi-list-scrollable{
+	height: 20rem;
+	width: 100%;
+	overflow: auto;
+}

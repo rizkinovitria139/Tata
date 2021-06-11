@@ -130,7 +130,7 @@
                                 <td><?= $dp['alpha'] ?></td>
                                 <td><?= $dp['izin'] ?></td>
                                 <td>
-                                    <button class="btn btn-primary btn-icon" onclick="showEditPresensiAdmin(<?= $dp['nis'] ?>)">
+                                    <button class="btn btn-primary btn-icon" onclick="showEditPresensi(<?= $dp['nis'] ?>)">
                                         <i class="far fa-edit"></i>
                                     </button>
                                     <!-- <a class="btn btn-primary btn-icon" href="" data-toggle="modal" data-target="#editPresensiModal">
@@ -155,8 +155,8 @@
 
 
         <!-- Start Modal Edit Presensi -->
-        <div class="modal fade" id="editPresensiModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade bd-example-modal-lg" id="editPresensiModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
                 <div id="presensimodalcontent" class="modal-content">
 
                 </div>
