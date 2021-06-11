@@ -4,9 +4,9 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon">
-                    <img class="img-profile" height="50" width="50" src="<?= base_url('assets/img/siswa.png') ?>">
+                    <img class="img-profile" height="50" width="50" src="<?= base_url('assets/images/LOGO SMP.png') ?>">
                 </div>
-                <div class="sidebar-brand-text mx-3">UPTD SMPN 2 MOJO</div>
+                <div class="sidebar-brand-text mx-3">Pengajar</div>
             </a>
 
             <!-- Divider -->

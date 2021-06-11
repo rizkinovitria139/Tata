@@ -38,7 +38,7 @@
    1184;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:none;mso-border-insidev:
    none'>
                             <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
-                                <td width=153 valign=top style='width:115.1pt;padding:0in 5.4pt 0in 5.4pt'>
+                                <td width=400 valign=top style='width:115.1pt;padding:0in 5.4pt 0in 5.4pt'>
                                     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-size:12.0pt;mso-bidi-font-family:
     Calibri;mso-bidi-theme-font:minor-latin'>Nama <span class=SpellE>Sekolah</span>
@@ -50,14 +50,14 @@
     line-height:normal'><span style='font-size:12.0pt;mso-bidi-font-family:
     Calibri;mso-bidi-theme-font:minor-latin'>:<o:p></o:p></span></p>
                                 </td>
-                                <td width=171 valign=top style='width:128.4pt;padding:0in 5.4pt 0in 5.4pt'>
+                                <td width=400 valign=top style='width:128.4pt;padding:0in 5.4pt 0in 5.4pt'>
                                     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-size:12.0pt;mso-bidi-font-family:
     Calibri;mso-bidi-theme-font:minor-latin'>UPTD SMPN 2 MOJO<o:p></o:p></span></p>
                                 </td>
                             </tr>
                             <tr style='mso-yfti-irow:1'>
-                                <td width=153 valign=top style='width:115.1pt;padding:0in 5.4pt 0in 5.4pt'>
+                                <td width=400 valign=top style='width:115.1pt;padding:0in 5.4pt 0in 5.4pt'>
                                     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
     mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>Alamat</span></span><span style='font-size:12.0pt;mso-bidi-font-family:Calibri;mso-bidi-theme-font:
@@ -70,14 +70,14 @@
     line-height:normal'><span style='font-size:12.0pt;mso-bidi-font-family:
     Calibri;mso-bidi-theme-font:minor-latin'>:<o:p></o:p></span></p>
                                 </td>
-                                <td width=171 valign=top style='width:128.4pt;padding:0in 5.4pt 0in 5.4pt'>
+                                <td width=400 valign=top style='width:128.4pt;padding:0in 5.4pt 0in 5.4pt'>
                                     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-size:12.0pt;mso-bidi-font-family:
     Calibri;mso-bidi-theme-font:minor-latin'>DS. KRANDING<o:p></o:p></span></p>
                                 </td>
                             </tr>
                             <tr style='mso-yfti-irow:2'>
-                                <td width=153 valign=top style='width:115.1pt;padding:0in 5.4pt 0in 5.4pt'>
+                                <td width=400 valign=top style='width:115.1pt;padding:0in 5.4pt 0in 5.4pt'>
                                     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-size:12.0pt;mso-bidi-font-family:
     Calibri;mso-bidi-theme-font:minor-latin'>Nama <span class=SpellE>Peserta</span>
@@ -90,7 +90,7 @@
     line-height:normal'><span style='font-size:12.0pt;mso-bidi-font-family:
     Calibri;mso-bidi-theme-font:minor-latin'>:<o:p></o:p></span></p>
                                 </td>
-                                <td width=171 valign=top style='width:128.4pt;padding:0in 5.4pt 0in 5.4pt'>
+                                <td width=400 valign=top style='width:128.4pt;padding:0in 5.4pt 0in 5.4pt'>
                                     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-size:12.0pt;mso-bidi-font-family:
     Calibri;mso-bidi-theme-font:minor-latin'>
@@ -99,7 +99,7 @@
                                 </td>
                             </tr>
                             <tr style='mso-yfti-irow:3;mso-yfti-lastrow:yes'>
-                                <td width=153 valign=top style='width:115.1pt;padding:0in 5.4pt 0in 5.4pt'>
+                                <td width=400 valign=top style='width:115.1pt;padding:0in 5.4pt 0in 5.4pt'>
                                     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-size:12.0pt;mso-bidi-font-family:
     Calibri;mso-bidi-theme-font:minor-latin'>NIS/NISN<o:p></o:p></span></p>
@@ -109,7 +109,7 @@
     line-height:normal'><span style='font-size:12.0pt;mso-bidi-font-family:
     Calibri;mso-bidi-theme-font:minor-latin'>:<o:p></o:p></span></p>
                                 </td>
-                                <td width=171 valign=top style='width:128.4pt;padding:0in 5.4pt 0in 5.4pt'>
+                                <td width=400 valign=top style='width:128.4pt;padding:0in 5.4pt 0in 5.4pt'>
                                     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-size:12.0pt;mso-bidi-font-family:
     Calibri;mso-bidi-theme-font:minor-latin'>
