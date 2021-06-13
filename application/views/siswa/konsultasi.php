@@ -4,13 +4,15 @@
         <p class="lead">Konsultasi dengan guru BK. Pilih guru BK yang kalian percayai untuk konsultasi</p>
     </div>
 
-    <div class="card bg-primary text-white my-2">
-        <div class="card-body">
-            <h5 class="card-title"><strong>Data forum</strong></h5>
-            <p class="card-text m-0">Judul forum : <?= $forum->judul_forum ?></p>
-            <p class="card-text m-0">Keterangan : <?= $forum->keterangan ?></p>
+    <?php if ($showDataForum) { ?>
+        <div class="card bg-primary text-white my-2">
+            <div class="card-body">
+                <h5 class="card-title"><strong>Data forum</strong></h5>
+                <p class="card-text m-0">Judul forum : <?= $forum->judul_forum ?></p>
+                <p class="card-text m-0">Keterangan : <?= $forum->keterangan ?></p>
+            </div>
         </div>
-    </div>
+    <?php } ?>
 
     <div id="chatbox-content">
         <?= $chat_page ? $chat_page : '' ?>

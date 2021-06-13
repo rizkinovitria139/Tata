@@ -22,6 +22,7 @@ class Konsultasi extends CI_Controller
         $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')])->row_array();
         $data['guru_bk'] = $this->m_chat->getReciverGuru();
         $data['forum'] = $this->m_chat->getForumData($this->session->userdata('nis'));
+        $data['showDataForum'] = false;
         $data['chat_page'] = $this->load->view('chats/chat_page.php', $data, true);
         // if ($this->m_chat->isChated($nis)) {
         //     redirect('Konsultasi/pesan');
@@ -59,6 +60,7 @@ class Konsultasi extends CI_Controller
         $data['title'] = 'Konsultasi Siswa';
         $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')])->row_array();
         $data['message'] = $this->m_chat->getSiswaMessage();
+        $data['showDataForum'] = true;
         $data['bkdata'] = $this->m_chat->getReciverGuru(['nip' => $data['forum']->nip_bk]);
         $data['chat_page'] = $this->load->view('chats/chat_conversation', $data, TRUE);;
 
