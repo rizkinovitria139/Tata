@@ -21,36 +21,57 @@ class Konsultasi extends CI_Controller
         $data['title'] = 'Konsultasi Siswa';
         $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')])->row_array();
         $data['guru_bk'] = $this->m_chat->getReciverGuru();
-        if ($this->m_chat->isChated($nis)) {
-            redirect('Konsultasi/pesan');
-        } else {
-            $data['chat_page'] = $this->load->view('chats/chat_page.php', $data, true);
-        }
+        $data['forum'] = $this->m_chat->getForumData($this->session->userdata('nis'));
+        $data['chat_page'] = $this->load->view('chats/chat_page.php', $data, true);
+        // if ($this->m_chat->isChated($nis)) {
+        //     redirect('Konsultasi/pesan');
+        // } else {
+        // }
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/siswa_sidebar', $data);
         $this->load->view('templates/siswa_topbar', $data);
         $this->load->view('siswa/konsultasi', $data);
         $this->load->view('templates/footer');
+        $this->load->view('siswa/siswajs', $data);
     }
-    public function pesan($nip = null)
+    public function showForumForm()
+    {
+        $data['bkdata'] = $this->m_chat->getReciverGuru();
+        print_r($this->load->view('siswa/modal/startforum', $data, TRUE));
+    }
+    public function submitForum()
+    {
+        $data = [
+            'nis_siswa' => $this->session->userdata('nis'),
+            'nip_bk' => $this->input->post('nip'),
+            'judul_forum' => $this->input->post('namaforum'),
+            'keterangan' => $this->input->post('keteranganforum')
+        ];
+        $this->db->insert('forum_chat', $data);
+        redirect('konsultasi');
+    }
+    public function pesan($id_forum)
     {
         $nis = $this->session->userdata('nis');
-
+        $data['forum'] = $this->m_chat->getForumData($nis, $id_forum);
 
         $data['title'] = 'Konsultasi Siswa';
         $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')])->row_array();
         $data['message'] = $this->m_chat->getSiswaMessage();
+        $data['bkdata'] = $this->m_chat->getReciverGuru(['nip' => $data['forum']->nip_bk]);
+        $data['chat_page'] = $this->load->view('chats/chat_conversation', $data, TRUE);;
 
-        if ($this->m_chat->isChated($nis) && $nip == null) {
-            $data['bkdata'] = $this->m_chat->getReciverGuru(['nip' => $data['message'][0]['nip_guru']]);
-            $data['chat_page'] = null;
-        } else if ($this->m_chat->isChated($nis) == false && $nip == null) {
-            return $this->index();
-        } else {
-            $data['bkdata'] = $this->m_chat->getReciverGuru(['nip' => $nip]);
-            $data['chat_page'] = $this->load->view('chats/chat_conversation', $data, TRUE);;
-        }
+
+        // if ($this->m_chat->isChated($nis) && $nip == null) {
+        //     $data['bkdata'] = $this->m_chat->getReciverGuru(['nip' => $data['message'][0]['nip_guru']]);
+        //     $data['chat_page'] = null;
+        // } else if ($this->m_chat->isChated($nis) == false && $nip == null) {
+        //     return $this->index();
+        // } else {
+        //     $data['bkdata'] = $this->m_chat->getReciverGuru(['nip' => $nip]);
+        //     $data['chat_page'] = $this->load->view('chats/chat_conversation', $data, TRUE);;
+        // }
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/siswa_sidebar', $data);
@@ -65,8 +86,9 @@ class Konsultasi extends CI_Controller
         $nis = $this->input->post('nis');
         $isSender = $this->input->post('sender');
         $message = $this->input->post('message');
+        $id_forum = $this->input->post('idforum');
 
-        $data = ['nip_guru' => $nip, 'nis_siswa' => $nis, "isSender" => $isSender, "message" => $message];
+        $data = ['nip_guru' => $nip, 'nis_siswa' => $nis, "isSender" => $isSender, "id_forum" => $id_forum, "message" => $message];
         print_r($this->m_chat->sendMessage($data));
     }
     public function getMessage($nip = null)

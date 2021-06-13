@@ -4,8 +4,9 @@
 	function sendMessage(sender) {
 		var message = document.getElementById('textMessage').value;
 		var url = '<?= base_url('Konsultasi/sendMessage') ?>';
-		var nip = '<?= strtolower($this->uri->segment(1)) === 'konsultasi' ? $bkdata[0]['nip'] : $this->session->userdata('nip') ?>';
-		var nis = '<?= strtolower($this->uri->segment(1))  === 'konsultasi' ? $this->session->userdata('nis') : $siswaData->nis ?>';
+		var nip = '<?= $forum->nip_bk ?>';
+		var nis = '<?= $forum->nis_siswa ?>';
+		var idforum = '<?= $forum->id_forum ?>';
 
 		$.ajax({
 			url,
@@ -14,6 +15,7 @@
 				nis,
 				message,
 				sender,
+				idforum
 			},
 			type: "POST",
 			success: function(data) {
@@ -43,8 +45,8 @@
 			url: '<?= base_url('Konsultasi/clearChats') ?>',
 			method: "POST",
 			data: {
-				"nip": '<?= strtolower($this->uri->segment(1))  === 'konsultasi' ? $bkdata[0]['nip'] : $this->session->userdata('nip') ?>',
-				"nis": '<?= strtolower($this->uri->segment(1))  === 'konsultasi' ? $this->session->userdata('nis') : $siswaData->nis ?>'
+				"nip": '<?= $forum->nip_bk ?>',
+				"nis": '<?= $forum->nis_siswa ?>'
 			},
 			success: (data) => {
 				window.location.reload('<?= $this->uri->segment(1) === "Konsultasi" ? base_url('Konsultasi/pesan') : base_url('Bk/konsultasi') ?>');

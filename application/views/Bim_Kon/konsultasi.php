@@ -6,20 +6,18 @@
     </div>
     <h3>Daftar siswa konsultasi</h3>
     <div class="d-flex flex-wrap">
-        <?php if ($chats_siswa) { ?>
-            <?php foreach ($chats_siswa as $key => $value) { ?>
+        <?php if ($forum) { ?>
+            <?php foreach ($forum as $key => $value) { ?>
                 <div class="card m-3 w-25">
                     <div class="card-body">
-                        <h5 class="card-title"><?= $value['namasiswa'] ?></h5>
+                        <h5 class="card-title"><?= $value['nama'] ?></h5>
                         <p class="card-text">NIS : <?= $value['nis_siswa'] ?></p>
-                        <a href="<?= base_url('bk/pesan/' . $value['nis_siswa']) ?>" class="btn btn-primary">Konsultasi sekarang</a>
+                        <a href="<?= base_url('bk/pesan/' . $value['id_forum']) ?>" class="btn btn-primary">Konsultasi sekarang</a>
                     </div>
                 </div>
             <?php } ?>
         <?php } else { ?>
             <p>Tidak ada siswa yang konseling</p>
         <?php } ?>
-
-
     </div>
 </div>

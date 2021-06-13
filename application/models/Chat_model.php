@@ -33,6 +33,19 @@ class Chat_model extends CI_Model
         $this->db->from('siswa');
         return $this->db->get()->row();
     }
+    public function getForumData($nis, $id_forum = null)
+    {
+        $this->db->select('forum_chat.*');
+        $this->db->join('siswa', 'siswa.nis = forum_chat.nis_siswa');
+        $this->db->join('guru', 'guru.nip = forum_chat.nip_bk');
+        $this->db->from('forum_chat');
+        $this->db->where('nis', $nis);
+        if ($id_forum != null) {
+            $this->db->where('id_forum', $id_forum);
+            return $this->db->get()->row();
+        }
+        return $this->db->get()->result_array();
+    }
 
     public function getSiswaMessage()
     {
@@ -82,6 +95,23 @@ class Chat_model extends CI_Model
         $this->db->group_by('nis_siswa');
         $this->db->from('chats_detail');
         return $this->db->get()->result_array();
+    }
+    public function getAllForum()
+    {
+        $this->db->select('forum_chat.*, siswa.nama');
+        $this->db->join('siswa', 'siswa.nis = forum_chat.nis_siswa');
+        $this->db->join('guru', 'guru.nip = forum_chat.nip_bk');
+        $this->db->from('forum_chat');
+        return $this->db->get()->result_array();
+    }
+    public function getForumById($id)
+    {
+        $this->db->select('forum_chat.*, siswa.nama');
+        $this->db->join('siswa', 'siswa.nis = forum_chat.nis_siswa');
+        $this->db->join('guru', 'guru.nip = forum_chat.nip_bk');
+        $this->db->where('id_forum', $id);
+        $this->db->from('forum_chat');
+        return $this->db->get()->row();
     }
 }
 

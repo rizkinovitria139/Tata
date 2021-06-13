@@ -31,7 +31,7 @@ class Bk extends CI_Controller
         $data['title'] = 'Bimbingan Konseling';
 
         $data['wali_kelas'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
-        $data['chats_siswa'] = $this->m_chat->getChatsBK();
+        $data['forum'] = $this->m_chat->getAllForum();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/bk_sidebar', $data);
@@ -39,14 +39,15 @@ class Bk extends CI_Controller
         $this->load->view('Bim_Kon/konsultasi', $data);
         $this->load->view('templates/footer');
     }
-    public function pesan($nis)
+    public function pesan($id_forum)
     {
         $data['title'] = 'Bimbingan Konseling';
+        $data['forum'] = $this->m_chat->getForumById($id_forum);
 
         $data['wali_kelas'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
-        $data['message'] = $this->m_chat->getBKMessage($nis);
+        $data['message'] = $this->m_chat->getBKMessage($data['forum']->nis_siswa);
 
-        $data['siswaData'] = $this->m_chat->getReciverSiswa($nis);
+        $data['siswaData'] = $this->m_chat->getReciverSiswa($data['forum']->nis_siswa);
         if (count($data['message']) === 0) {
             redirect('Bk/konsultasi');
         }
