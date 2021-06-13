@@ -57,13 +57,13 @@ class Konsultasi extends CI_Controller
         $nis = $this->session->userdata('nis');
         $data['forum'] = $this->m_chat->getForumData($nis, $id_forum);
 
+
         $data['title'] = 'Konsultasi Siswa';
         $data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')])->row_array();
-        $data['message'] = $this->m_chat->getSiswaMessage();
+        $data['message'] = $this->m_chat->getSiswaMessage($data['forum']->id_forum);
         $data['showDataForum'] = true;
         $data['bkdata'] = $this->m_chat->getReciverGuru(['nip' => $data['forum']->nip_bk]);
         $data['chat_page'] = $this->load->view('chats/chat_conversation', $data, TRUE);;
-
 
         // if ($this->m_chat->isChated($nis) && $nip == null) {
         //     $data['bkdata'] = $this->m_chat->getReciverGuru(['nip' => $data['message'][0]['nip_guru']]);
@@ -93,24 +93,24 @@ class Konsultasi extends CI_Controller
         $data = ['nip_guru' => $nip, 'nis_siswa' => $nis, "isSender" => $isSender, "id_forum" => $id_forum, "message" => $message];
         print_r($this->m_chat->sendMessage($data));
     }
-    public function getMessage($nip = null)
+    public function getMessage($idforum = null)
     {
-        $checkMessage = count($this->m_chat->getSiswaMessage());
-        if ($checkMessage != 0) {
-            $data['message'] = $this->m_chat->getSiswaMessage();
-            $data['bkdata'] = $this->m_chat->getReciverGuru(['nip' => $data['message'][0]['nip_guru']]);
-        } else {
-            $data['message'] = $this->m_chat->getSiswaMessage();
-            $data['bkdata'] = $this->m_chat->getReciverGuru(['nip' => $nip]);
-        }
+        $forum = $this->m_chat->getForumById($idforum);
+
+        $data['message'] = $this->m_chat->getSiswaMessage($idforum);
+        $data['bkdata'] = $this->m_chat->getReciverGuru(['nip' => $forum->nip_bk]);
+        $data['forum'] = $this->m_chat->getForumData($forum->nis_siswa, $forum->id_forum);
+
         print_r(
             $this->load->view('chats/chat_conversation', $data, true)
         );
     }
-    public function getMessageBK($nis)
+    public function getMessageBK($id_forum)
     {
-        $data['message'] = $this->m_chat->getBKMessage($nis);;
-        $data['siswaData'] = $this->m_chat->getReciverSiswa($data['message'][0]['nis_siswa']);
+        $forum = $this->m_chat->getForumById($id_forum);
+        $data['message'] = $this->m_chat->getBKMessage($id_forum);
+        $data['siswaData'] = $this->m_chat->getReciverSiswa($forum->nis_siswa);
+        $data['forum'] = $this->m_chat->getForumData($forum->nis_siswa, $forum->id_forum);
 
         print_r(
             $this->load->view('Bim_Kon/chat_conversation', $data, true)

@@ -6,7 +6,7 @@
                 <p class="m-0"><?= $siswaData->nis ?></p>
             </div>
             <div class="ml-auto d-flex align-items-center">
-                <button onclick="clearChats()" class="btn btn-sm btn-danger">Clear Chat</button>
+                <button onclick="updateChatSiswa()" class="btn btn-sm btn-success m-1">Update Chat</button>
             </div>
         </div>
     </div>
@@ -22,11 +22,18 @@
         <?php } ?>
     </div>
 
-    <div class="input-group mb-3">
-        <textarea class="form-control" id="textMessage" placeholder="Isi pesan" aria-label="Pesan" name="pesan"></textarea>
-        <div class="input-group-append">
-            <button class="btn btn-primary" id="sendMessagebtn" onclick="sendMessage('bk')" type="button">Kirim</button>
+
+    <?php if ($forum->status) { ?>
+        <div class="input-group mb-3">
+            <textarea class="form-control" id="textMessage" placeholder="Isi pesan" aria-label="Pesan" name="pesan"></textarea>
+            <div class="input-group-append">
+                <button class="btn btn-primary" id="sendMessagebtn" onclick="sendMessage('bk')" type="button">Kirim</button>
+            </div>
         </div>
-    </div>
+    <?php } else { ?>
+        <div class="text-center">
+            <h4>Konsultasi sudah ditutup oleh BK</h4>
+        </div>
+    <?php } ?>
 
 </div>

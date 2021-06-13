@@ -5,11 +5,10 @@
                 <h5><?= $bkdata[0]['nama'] ?></h5>
                 <p class="m-0"><?= $bkdata[0]['nip'] ?></p>
             </div>
-            <?php if ($this->session->userdata('nip') != null) { ?>
-                <div class="ml-auto d-flex align-items-center">
-                    <button onclick="clearChats()" class="btn btn-sm btn-danger">Clear Chat</button>
-                </div>
-            <?php } ?>
+            <div class="ml-auto d-flex align-items-center">
+                <button onclick="updateChatSiswa()" class="btn btn-sm btn-success">Refresh Chat</button>
+            </div>
+
 
         </div>
     </div>
@@ -25,11 +24,17 @@
         <?php } ?>
     </div>
 
-    <div class="input-group mb-3">
-        <textarea class="form-control" id="textMessage" placeholder="Isi pesan" aria-label="Pesan" name="pesan"></textarea>
-        <div class="input-group-append">
-            <button class="btn btn-primary" id="sendMessagebtn" onclick="sendMessage('siswa')" type="button">Kirim</button>
+    <?php if ($forum->status) { ?>
+        <div class="input-group mb-3">
+            <textarea class="form-control" id="textMessage" placeholder="Isi pesan" aria-label="Pesan" name="pesan"></textarea>
+            <div class="input-group-append">
+                <button class="btn btn-primary" id="sendMessagebtn" onclick="sendMessage('siswa')" type="button">Kirim</button>
+            </div>
         </div>
-    </div>
+    <?php } else { ?>
+        <div class="text-center">
+            <h4>Konsultasi sudah ditutup oleh BK</h4>
+        </div>
+    <?php } ?>
 
 </div>

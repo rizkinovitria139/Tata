@@ -27,7 +27,7 @@
 
 	function updateChatSiswa() {
 		$.ajax({
-			url: '<?= strtolower($this->uri->segment(1))  === "konsultasi" ?  base_url('Konsultasi/getMessage/' . $bkdata[0]['nip']) : base_url('Konsultasi/getMessageBK/' . $siswaData->nis) ?>',
+			url: '<?= strtolower($this->uri->segment(1))  === "konsultasi" ?  base_url('Konsultasi/getMessage/' . $forum->id_forum) : base_url('Konsultasi/getMessageBK/' . $forum->id_forum) ?>',
 			success: (data) => {
 				var chatboxContent = document.getElementById('chatbox-content').innerHTML;
 				document.getElementById('chatbox-content').innerHTML = "";
@@ -53,8 +53,6 @@
 			}
 		});
 	}
-
-	updateChatSiswa();
 
 
 	//	Kalau pengen auto refresh pakai ini, tetapi jika masih ada bug saat scroll pesan terkadang kembali kebawah sendiri
