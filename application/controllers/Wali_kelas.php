@@ -264,7 +264,7 @@ class Wali_kelas extends CI_Controller
 
         $user_id  =   $this->session->userdata('nip');
 
-        $this->load->model('Pengembangan_model', 'pengembangan');
+        $this->load->model('NilaiKepribadian_model', 'pengembangan');
         $data['nilai_p'] = $this->pengembangan->get_nilai_pengembangan($user_id);
         $data['pengembangan'] = $this->pengembangan->get_pengembangan($user_id);
         $data['siswa'] = $this->pengembangan->getSiswaKelas($user_id);
@@ -332,6 +332,86 @@ class Wali_kelas extends CI_Controller
         // untuk flashdata mempunyai 2 parameter (nama flashdata/alias, isi dari flashdatanya)
         $this->session->set_flashdata('nilaipengembangan_message', '<div class="alert alert-danger" role="alert">Nilai Pengembangan Diri berhasil dihapus!</div>');
         redirect('wali_kelas/get_nilaiP', 'refresh');
+    }
+
+
+    public function get_nilaiK()
+    {
+        $data['title'] = 'Nilai Kepribadian Siswa';
+        $data['wali_kelas'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+        $user_id  =   $this->session->userdata('nip');
+
+        $this->load->model('NilaiKepribadian_model', 'kepribadian');
+        $data['nilai_k'] = $this->kepribadian->get_nilai_kepribadian($user_id);
+        $data['siswa'] = $this->kepribadian->getSiswaKelas($user_id);
+        $this->load->model('Kelas_model', 'kelas');
+        $data['kelas'] = $this->kelas->get_kelas();
+        $data['semesterData'] = $this->db->get('semester')->result_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/walikelas_sidebar', $data);
+        $this->load->view('templates/walikelas_topbar', $data);
+        $this->load->view('wali_kelas/nilai_kepribadian', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function tambah_nilai_kepribadian()
+    {
+        $this->form_validation->set_rules('nis', 'Nis', 'required');
+        $this->form_validation->set_rules('kelakuan', 'Kelakuan', 'required');
+        $this->form_validation->set_rules('kerajinan', 'kerajinan', 'required');
+        $this->form_validation->set_rules('kerapian', 'kerapian', 'required');
+        $this->form_validation->set_rules('kebersihan', 'kebersihan', 'required');
+        $this->form_validation->set_rules('id_semester', 'ID Semester', 'required');
+
+        if ($this->form_validation->run() == true) {
+            // $data['id_kelas'] = $this->input->post('id_kelas');
+            $data['nis'] = $this->input->post('nis');
+            $data['kelakuan'] = $this->input->post('kelakuan');
+            $data['kerajinan'] = $this->input->post('kerajinan');
+            $data['kerapian'] = $this->input->post('kerapian');
+            $data['kebersihan'] = $this->input->post('kebersihan');
+            $data['id_semester'] = $this->input->post('id_semester');
+
+            $user_id  =   $this->session->userdata('nip');
+
+            $this->load->model('NilaiKepribadian_model', 'kepribadian');
+            $this->kepribadian->tambah_nilai_kepribadian($data);
+            $data['siswa'] = $this->kepribadian->getSiswaKelas($user_id);
+            $this->load->model('Kelas_model', 'kelas');
+            $data['kelas'] = $this->kelas->get_kelas();
+            $data['semesterData'] = $this->db->get('semester')->result_array();
+
+
+            $this->session->set_flashdata('nilaikepribadian_message', '<div class="alert alert-success" role="alert">Nilai Kepribadian Berhasil ditambahkan!</div>');
+            redirect('wali_kelas/get_nilaiK', 'refresh');
+        } else {
+            $this->session->set_flashdata('nilaikepribadian_message', '<div class="alert alert-danger" role="alert">Nilai Kepribadian gagal ditambahkan!</div>');
+            redirect('wali_kelas/get_nilaiK', 'refresh');
+        }
+    }
+
+    public function edit_nilaiK($id)
+    {
+        $this->db->update('nilai_kepribadian', ['nis' => $this->input->post('nis')], ['id_nilai_kepribadian' => $id]);
+        $this->db->update('nilai_kepribadian', ['kelakuan' => $this->input->post('kelakuan')], ['id_nilai_kepribadian' => $id]);
+        $this->db->update('nilai_kepribadian', ['kerajinan' => $this->input->post('kerajinan')], ['id_nilai_kepribadian' => $id]);
+        $this->db->update('nilai_kepribadian', ['kerapian' => $this->input->post('kerapian')], ['id_nilai_kepribadian' => $id]);
+        $this->db->update('nilai_kepribadian', ['kebersihan' => $this->input->post('kebersihan')], ['id_nilai_kepribadian' => $id]);
+        $this->db->update('nilai_kepribadian', ['id_semester' => $this->input->post('id_semester')], ['id_nilai_kepribadian' => $id]);
+
+        $this->session->set_flashdata('nilaikepribadian_message', '<div class="alert alert-success" role="alert">Nilai Kepribadian Siswa berhasil diubah!</div>');
+        redirect('wali_kelas/get_nilaiK', 'refresh');
+    }
+
+    public function delete_nilaiK($id)
+    {
+        $this->load->model('NilaiKepribadian_model', 'kepribadian');
+        $this->kepribadian->delete_nilaiK($id);
+        // untuk flashdata mempunyai 2 parameter (nama flashdata/alias, isi dari flashdatanya)
+        $this->session->set_flashdata('nilaikepribadian_message', '<div class="alert alert-danger" role="alert">Nilai Kepribadian berhasil dihapus!</div>');
+        redirect('wali_kelas/get_nilaiK', 'refresh');
     }
 }
 

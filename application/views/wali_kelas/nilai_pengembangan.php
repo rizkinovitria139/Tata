@@ -35,7 +35,7 @@
                             <td><?= $p['nilai_pengembangan']; ?></td>
                             <td><?= $p['semester']; ?></td>
                             <td>
-                                <button type="button" class="btn btn-primary btn-icon" href="" data-toggle="modal" data-target="#editnilaiPModal<?= $p['id_pengembangan']; ?>">
+                                <button type="button" class="btn btn-primary btn-icon" href="" data-toggle="modal" data-target="#editnilaiPModal<?= $p['id_nilai_pengembangan']; ?>">
                                     <i class="far fa-edit"></i>
                                 </button>
                                 <a class="btn btn-danger" href="<?= base_url('wali_kelas/delete_nilaiP/') . $p['id_nilai_pengembangan']; ?>" onclick="return confirm('Are you sure to delete this data ?');">
