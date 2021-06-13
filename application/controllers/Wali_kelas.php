@@ -9,8 +9,10 @@ class Wali_kelas extends CI_Controller
     {
         parent::__construct();
         //Do your magic here
-        
+
         $this->load->model('Nilai_model', 'm_nilai');
+        $this->load->model('User_model', 'm_user');
+        $this->m_user->checkAccount();
     }
 
 
@@ -27,8 +29,9 @@ class Wali_kelas extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    
-    public function cetak_rapor(){
+
+    public function cetak_rapor()
+    {
         $data['title'] = "Nilai Siswa";
         $data['wali_kelas'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
 
@@ -62,7 +65,7 @@ class Wali_kelas extends CI_Controller
 
         $this->load->view('wali_kelas/cetak_nilai', $data);
     }
-    
+
     public function cetak_rapor_2($nis)
     {
         $data['title'] = 'Cetak Nilai Siswa';
@@ -72,7 +75,7 @@ class Wali_kelas extends CI_Controller
         $guru_id = $this->session->userdata('nip');
 
         $this->load->model('Nilai_model');
-        
+
         $data['data_nilai'] = $this->Nilai_model->get_semester_2($nis);
         $data['data_pengembangan'] = $this->Nilai_model->nilai_pengembangan_2($nis);
         $data['data_kepribadian'] = $this->Nilai_model->nilai_kepribadian_2($nis);
@@ -82,7 +85,7 @@ class Wali_kelas extends CI_Controller
         $this->load->view('wali_kelas/cetak_nilai', $data);
     }
 
-    
+
     public function cetak_rapor_3($nis)
     {
         $data['title'] = 'Cetak Nilai Siswa';
@@ -92,7 +95,7 @@ class Wali_kelas extends CI_Controller
         $guru_id = $this->session->userdata('nip');
 
         $this->load->model('Nilai_model');
-        
+
         $data['data_nilai'] = $this->Nilai_model->get_semester_3($nis);
         $data['data_pengembangan'] = $this->Nilai_model->nilai_pengembangan_3($nis);
         $data['data_kepribadian'] = $this->Nilai_model->nilai_kepribadian_3($nis);
@@ -102,7 +105,7 @@ class Wali_kelas extends CI_Controller
         $this->load->view('wali_kelas/cetak_nilai', $data);
     }
 
-    
+
     public function cetak_rapor_4($nis)
     {
         $data['title'] = 'Cetak Nilai Siswa';
@@ -112,7 +115,7 @@ class Wali_kelas extends CI_Controller
         $guru_id = $this->session->userdata('nip');
 
         $this->load->model('Nilai_model');
-        
+
         $data['data_nilai'] = $this->Nilai_model->get_semester_4($nis);
         $data['data_pengembangan'] = $this->Nilai_model->nilai_pengembangan_4($nis);
         $data['data_kepribadian'] = $this->Nilai_model->nilai_kepribadian_4($nis);
@@ -122,7 +125,7 @@ class Wali_kelas extends CI_Controller
         $this->load->view('wali_kelas/cetak_nilai', $data);
     }
 
-    
+
     public function cetak_rapor_5($nis)
     {
         $data['title'] = 'Cetak Nilai Siswa';
@@ -132,7 +135,7 @@ class Wali_kelas extends CI_Controller
         $guru_id = $this->session->userdata('nip');
 
         $this->load->model('Nilai_model');
-        
+
         $data['data_nilai'] = $this->Nilai_model->get_semester_5($nis);
         $data['data_pengembangan'] = $this->Nilai_model->nilai_pengembangan_5($nis);
         $data['data_kepribadian'] = $this->Nilai_model->nilai_kepribadian_5($nis);
@@ -142,7 +145,7 @@ class Wali_kelas extends CI_Controller
         $this->load->view('wali_kelas/cetak_nilai', $data);
     }
 
-    
+
     public function cetak_rapor_6($nis)
     {
         $data['title'] = 'Cetak Nilai Siswa';
@@ -206,7 +209,7 @@ class Wali_kelas extends CI_Controller
             echo false;
         }
     }
-    
+
     public function tambah_nilai_k()
     {
         $data['title'] = "Nilai Siswa";
@@ -253,9 +256,6 @@ class Wali_kelas extends CI_Controller
             echo false;
         }
     }
-
-
-    
 }
 
 /* End of file Wali_kelas.php */

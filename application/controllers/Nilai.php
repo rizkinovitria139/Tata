@@ -9,6 +9,8 @@ class Nilai extends CI_Controller
         $this->load->model('Nilai_model');
         $this->load->model('Semester_model');
         $this->load->library('form_validation');
+        $this->load->model('User_model', 'm_user');
+        $this->m_user->checkAccount();
     }
 
     public function index()
@@ -121,5 +123,4 @@ class Nilai extends CI_Controller
         $this->load->view('siswa/nilai', $data);
         $this->load->view('templates/footer');
     }
-
 }

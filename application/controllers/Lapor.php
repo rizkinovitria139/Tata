@@ -9,6 +9,8 @@ class Lapor extends CI_Controller
 		parent::__construct();
 		$this->load->model("lapor_model");
 		$this->load->library('form_validation');
+		$this->load->model('User_model', 'm_user');
+		$this->m_user->checkAccount();
 	}
 
 	public function index()
@@ -27,7 +29,7 @@ class Lapor extends CI_Controller
 	{
 		$data['title'] = 'Halaman Siswa';
 		$data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')])->row_array();
-		
+
 		$this->load->view('templates/header');
 		$this->load->view('templates/siswa_sidebar');
 		$this->load->view('templates/siswa_topbar');
@@ -38,7 +40,7 @@ class Lapor extends CI_Controller
 	{
 		$data['title'] = 'Halaman Siswa';
 		$data['siswa'] = $this->db->get_where('siswa', ['username' => $this->session->userdata('username')])->row_array();
-		
+
 		$this->load->view('templates/header');
 		$this->load->view('templates/siswa_sidebar');
 		$this->load->view('templates/siswa_topbar');

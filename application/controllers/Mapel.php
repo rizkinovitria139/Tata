@@ -8,6 +8,8 @@ class Mapel extends CI_Controller
         parent::__construct();
         $this->load->model('Mapel_model');
         $this->load->library('form_validation');
+        $this->load->model('User_model', 'm_user');
+        $this->m_user->checkAccount();
     }
 
     public function index()
@@ -29,13 +31,13 @@ class Mapel extends CI_Controller
         // $this->load->model('Mapel_model', 'mapel');
         // $data['mata_pelajaran'] = $this->mapel->get_mapel();
 
-         $mapel_id  =   $this->session->userdata('nis');
+        $mapel_id  =   $this->session->userdata('nis');
         // print_r($mapel_id);
-         $data['data_mapel'] = $this->Mapel_model->getMapel($mapel_id);
-         print_r($data['data_mapel']);
-         die();
-         
-         $data['username']  =   $this->session->userdata('nama');
+        $data['data_mapel'] = $this->Mapel_model->getMapel($mapel_id);
+        print_r($data['data_mapel']);
+        die();
+
+        $data['username']  =   $this->session->userdata('nama');
 
 
         $this->load->view('templates/header', $data);

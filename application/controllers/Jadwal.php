@@ -8,8 +8,10 @@ class Jadwal extends CI_Controller
         parent::__construct();
         $this->load->model('Jadwal_model');
         $this->load->library('form_validation');
+        $this->load->model('User_model', 'm_user');
+        $this->m_user->checkAccount();
     }
-    
+
     public function index()
     {
         $data['title'] = 'Halaman Jadwal Mata Pelajaran';
@@ -18,11 +20,11 @@ class Jadwal extends CI_Controller
 
         $siswa_id  =   $this->session->userdata('nis');
         // print_r($user_id);
-         $data['data_jadwal'] = $this->Jadwal_model->tampilJadwal($siswa_id);
+        $data['data_jadwal'] = $this->Jadwal_model->tampilJadwal($siswa_id);
         //  print_r($data['data_jadwal']);
         //    die();
-         $data['username']  =   $this->session->userdata('nama');
- 
+        $data['username']  =   $this->session->userdata('nama');
+
         // $this->db->select('a.hari, a.waktu, a.jam_ke, b.kelas,b.nama_mapel');
         // $this->db->from('jadwal AS a');
         // $this->db->join('mata_pelajaran AS b', 'a.id_mapel = b.id_mapel');

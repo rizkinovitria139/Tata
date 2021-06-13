@@ -11,6 +11,8 @@ class Guru_Mapel extends CI_Controller
         parent::__construct();
         $this->load->model('Mapel_model', 'mapel');
         $this->load->model('Nilai_model', 'm_nilai');
+        $this->load->model('User_model', 'm_user');
+        $this->m_user->checkAccount();
     }
 
 

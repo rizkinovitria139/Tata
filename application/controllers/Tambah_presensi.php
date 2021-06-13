@@ -9,6 +9,8 @@ class Tambah_presensi extends CI_Controller
         parent::__construct();
         $this->load->model('Guru_model');
         $this->load->model('Presensi_model', 'm_presensi');
+        $this->load->model('User_model', 'm_user');
+        $this->m_user->checkAccount();
     }
 
     public function index()

@@ -10,6 +10,8 @@ class Bk extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Chat_model', 'm_chat');
+        $this->load->model('User_model', 'm_user');
+        $this->m_user->checkAccount();
     }
 
 

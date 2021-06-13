@@ -7,6 +7,8 @@ class Auth extends CI_Controller
     {
         parent::__construct();
         $this->load->library('form_validation');
+        $this->load->model('User_model', 'm_user');
+        // $this->m_user->checkAuth();
     }
     public function index()
     {
@@ -54,7 +56,8 @@ class Auth extends CI_Controller
                             'email' => $guru['email'],
                             'status' => $guru['status'],
                             'password' => $guru['password'],
-                            'username' => $guru['username']
+                            'username' => $guru['username'],
+                            'loginAs' => 'admin'
                         ];
                         $this->session->set_userdata($data);
                         redirect('admin');
@@ -64,8 +67,8 @@ class Auth extends CI_Controller
                             'username' => $guru['username'],
                             'role_id' => $guru['role_id'],
                             'nama' => $guru['nama'],
-                            'nip' => $guru['nip']
-
+                            'nip' => $guru['nip'],
+                            'loginAs' => 'guru'
                         ];
                         $this->session->set_userdata($data);
                         redirect('Guru_Mapel');
@@ -73,7 +76,8 @@ class Auth extends CI_Controller
                         $data = [
                             'username' => $guru['username'],
                             'role_id' => $guru['role_id'],
-                            'nip' => $guru['nip']
+                            'nip' => $guru['nip'],
+                            'loginAs' => 'gurubk'
                         ];
                         $this->session->set_userdata($data);
                         redirect('Bk');
@@ -93,7 +97,8 @@ class Auth extends CI_Controller
                             'email' => $guru['email'],
                             'status' => $guru['status'],
                             'password' => $guru['password'],
-                            'username' => $guru['username']
+                            'username' => $guru['username'],
+                            'loginAs' => 'walikelas'
                         ];
                         $this->session->set_userdata($data);
                         redirect('wali_kelas');
@@ -121,7 +126,8 @@ class Auth extends CI_Controller
                             'nama' => $siswa['nama'],
                             'email' => $siswa['email_siswa'],
                             'alamat' => $siswa['alamat_siswa'],
-                            'id_kelas' => $siswa['id_kelas']
+                            'id_kelas' => $siswa['id_kelas'],
+                            'loginAs' => 'siswa'
                             //$items = (string)$var;
                         ];
                         $this->session->set_userdata($data);
@@ -145,8 +151,7 @@ class Auth extends CI_Controller
 
     public function logout()
     {
-        $this->session->unset_userdata('username');
-        $this->session->unset_userdata('role_id');
+        $this->session->sess_destroy();
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You have been logged out!</div>');
         redirect('auth');
     }

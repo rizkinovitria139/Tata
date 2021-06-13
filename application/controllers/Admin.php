@@ -14,6 +14,8 @@ class Admin extends CI_Controller
         $this->load->model('Mapel_model', 'mapel');
         $this->load->model('Admin_model');
         $this->load->library('form_validation');
+        $this->load->model('User_model', 'm_user');
+        $this->m_user->checkAccount();
     }
 
     public function index()
@@ -861,7 +863,7 @@ class Admin extends CI_Controller
         $keyword = $this->input->post('keyword');
         $this->load->model('Nilai_model', 'nilai');
         $data['nilai'] = $this->nilai->get_keyword($keyword);
-        
+
         $this->session->set_userdata($data);
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
