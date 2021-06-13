@@ -256,6 +256,83 @@ class Wali_kelas extends CI_Controller
             echo false;
         }
     }
+
+    public function get_nilaiP()
+    {
+        $data['title'] = 'Nilai Pengembangan Siswa';
+        $data['wali_kelas'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+
+        $user_id  =   $this->session->userdata('nip');
+
+        $this->load->model('Pengembangan_model', 'pengembangan');
+        $data['nilai_p'] = $this->pengembangan->get_nilai_pengembangan($user_id);
+        $data['pengembangan'] = $this->pengembangan->get_pengembangan($user_id);
+        $data['siswa'] = $this->pengembangan->getSiswaKelas($user_id);
+        $this->load->model('Kelas_model', 'kelas');
+        $data['kelas'] = $this->kelas->get_kelas();
+        $data['semesterData'] = $this->db->get('semester')->result_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/walikelas_sidebar', $data);
+        $this->load->view('templates/walikelas_topbar', $data);
+        $this->load->view('wali_kelas/nilai_pengembangan', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function tambah_nilai_pengembangan()
+    {
+        $this->form_validation->set_rules('nis', 'Nis', 'required');
+        $this->form_validation->set_rules('id_pengembangan', 'ID Pengembangan', 'required');
+        $this->form_validation->set_rules('nilai_pengembangan', 'Nilai Pengembangan', 'required');
+        $this->form_validation->set_rules('keterangan', 'Keterangan', 'required');
+        $this->form_validation->set_rules('id_semester', 'ID Semester', 'required');
+
+        if ($this->form_validation->run() == true) {
+            // $data['id_kelas'] = $this->input->post('id_kelas');
+            $data['nis'] = $this->input->post('nis');
+            $data['id_pengembangan'] = $this->input->post('id_pengembangan');
+            $data['nilai_pengembangan'] = $this->input->post('nilai_pengembangan');
+            $data['keterangan'] = $this->input->post('keterangan');
+            $data['id_semester'] = $this->input->post('id_semester');
+
+            $user_id  =   $this->session->userdata('nip');
+
+            $this->load->model('Pengembangan_model', 'pengembangan');
+            $this->pengembangan->tambah_nilai_pengembangan($data);
+            $data['siswa'] = $this->pengembangan->getSiswaKelas($user_id);
+            $this->load->model('Kelas_model', 'kelas');
+            $data['kelas'] = $this->kelas->get_kelas();
+            $data['semesterData'] = $this->db->get('semester')->result_array();
+
+
+            $this->session->set_flashdata('nilaipengembangan_message', '<div class="alert alert-success" role="alert">Nilai Pengembangan Berhasil ditambahkan!</div>');
+            redirect('wali_kelas/get_nilaiP', 'refresh');
+        } else {
+            $this->session->set_flashdata('nilaipengembangan_message', '<div class="alert alert-danger" role="alert">Nilai Pengembangan gagal ditambahkan!</div>');
+            redirect('wali_kelas/get_nilaiP', 'refresh');
+        }
+    }
+
+    public function edit_nilaiP($id)
+    {
+        $this->db->update('nilai_pengembangan', ['nis' => $this->input->post('nis')], ['id_nilai_pengembangan' => $id]);
+        $this->db->update('nilai_pengembangan', ['id_pengembangan' => $this->input->post('id_pengembangan')], ['id_nilai_pengembangan' => $id]);
+        $this->db->update('nilai_pengembangan', ['nilai_pengembangan' => $this->input->post('nilai_pengembangan')], ['id_nilai_pengembangan' => $id]);
+        $this->db->update('nilai_pengembangan', ['keterangan' => $this->input->post('keterangan')], ['id_nilai_pengembangan' => $id]);
+        $this->db->update('nilai_pengembangan', ['id_semester' => $this->input->post('id_semester')], ['id_nilai_pengembangan' => $id]);
+
+        $this->session->set_flashdata('nilaipengembangan_message', '<div class="alert alert-success" role="alert">Nilai Pengembangan Diri berhasil diubah!</div>');
+        redirect('wali_kelas/get_nilaiP', 'refresh');
+    }
+
+    public function delete_nilaiP($id)
+    {
+        $this->load->model('Pengembangan_model', 'pengembangan');
+        $this->pengembangan->delete_nilaiP($id);
+        // untuk flashdata mempunyai 2 parameter (nama flashdata/alias, isi dari flashdatanya)
+        $this->session->set_flashdata('nilaipengembangan_message', '<div class="alert alert-danger" role="alert">Nilai Pengembangan Diri berhasil dihapus!</div>');
+        redirect('wali_kelas/get_nilaiP', 'refresh');
+    }
 }
 
 /* End of file Wali_kelas.php */
