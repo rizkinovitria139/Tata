@@ -264,7 +264,7 @@ class Wali_kelas extends CI_Controller
 
         $user_id  =   $this->session->userdata('nip');
 
-        $this->load->model('NilaiKepribadian_model', 'pengembangan');
+        $this->load->model('Pengembangan_model', 'pengembangan');
         $data['nilai_p'] = $this->pengembangan->get_nilai_pengembangan($user_id);
         $data['pengembangan'] = $this->pengembangan->get_pengembangan($user_id);
         $data['siswa'] = $this->pengembangan->getSiswaKelas($user_id);

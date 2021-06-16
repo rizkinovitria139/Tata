@@ -17,6 +17,15 @@ class Admin_model extends CI_Model
         return $this->db->query($query)->result_array();
     }
 
+    public function getAllnip()
+    {
+        $query = "SELECT `nip`
+        FROM `guru`
+        ";
+        return $this->db->query($query)->result_array();
+    }
+
+
     public function get_guru_mapel()
     {
         $query = "SELECT `guru`.*, `user_role`.*

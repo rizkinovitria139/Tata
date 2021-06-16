@@ -265,9 +265,9 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<h5 class="modal-title" id="editMenuModal<?= $s['nis'] ?>">Edit Siswa</h5>
-							<buttond type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
-							</buttond>
+							</button>
 						</div>
 						<form action="<?= base_url('admin/update_siswa/' . $s['nis']); ?>" method="post">
 							<div class="modal-body">
@@ -301,7 +301,7 @@
 									<select name="jenis_kelamin" id="jenis_kelamin">
 										<option value="<?= $s['jenis_kelamin'] ?>" selected> <?= $s['jenis_kelamin'] ?> </option>
 										<option value="perempuan">Perempuan</option>
-										<option value="lakilaki">Laki-laki</option>
+										<option value="laki-laki">Laki-laki</option>
 										<?= form_error('jenis_kelamin', '<small class="text-danger pl-3">', '</small>'); ?>
 									</select>
 								</div>

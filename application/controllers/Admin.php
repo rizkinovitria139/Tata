@@ -175,24 +175,72 @@ class Admin extends CI_Controller
 
     public function update_guru($id)
     {
-        $this->db->update('guru', ['nip'           => $this->input->post('nip')], ['nip', $id]);
-        $this->db->update('guru', ['nama'          => $this->input->post('nama')], ['nip', $id]);
-        $this->db->update('guru', ['tempat_lahir'  => $this->input->post('tempat_lahir')], ['nip', $id]);
-        $this->db->update('guru', ['tanggal_lahir' => $this->input->post('tanggal_lahir')], ['nip', $id]);
-        $this->db->update('guru', ['jenis_kelamin' => $this->input->post('jenis_kelamin')], ['nip', $id]);
-        $this->db->update('guru', ['agama'         => $this->input->post('agama')], ['nip', $id]);
-        $this->db->update('guru', ['alamat'        => $this->input->post('alamat')], ['nip', $id]);
-        $this->db->update('guru', ['no_telp'       => $this->input->post('no_telp')], ['nip', $id]);
-        $this->db->update('guru', ['tanggal_masuk' => $this->input->post('tanggal_masuk')], ['nip', $id]);
-        $this->db->update('guru', ['email'         => $this->input->post('email')], ['nip', $id]);
-        $this->db->update('guru', ['role_id'       => $this->input->post('role_id')], ['nip', $id]);
-        $this->db->update('guru', ['is_active'     => $this->input->post('is_active')], ['nip', $id]);
-        $this->db->update('guru', ['status'        => $this->input->post('status')], ['nip', $id]);
-        $this->db->update('guru', ['password'      => $this->input->post('password')], ['nip', $id]);
-        $this->db->update('guru', ['username'      => $this->input->post('username')], ['nip', $id]);
+        // print_r($id);
+        // die();
+        $this->load->model('Admin_model', 'all');
+        $i = 0;
+        $j = 0;
+        $data['allNip'] = $this->all->getAllnip();
+        // print_r($this->input->post('nip'));
+        // die();
+        foreach ($data['allNip'] as $a) {
+            // print_r($a);
+            // die();
+            if ($this->input->post('nip') == $a) {
+                // nip yang diinputkan sama dengan data sebelumnya
+                $j++;
+            } else {
+                // nipnya beda
+                $i++;
+            }
+            // print_r($a);
+        }
+        if ($this->input->post('nip') == $id) {
+            $this->db->update('guru', ['nip'           => $this->input->post('nip')], ['nip' => $id]);
+            $this->db->update('guru', ['nama'          => $this->input->post('nama')], ['nip' => $id]);
+            $this->db->update('guru', ['tempat_lahir'  => $this->input->post('tempat_lahir')], ['nip' => $id]);
+            $this->db->update('guru', ['tanggal_lahir' => $this->input->post('tanggal_lahir')], ['nip' => $id]);
+            $this->db->update('guru', ['jenis_kelamin' => $this->input->post('jenis_kelamin')], ['nip' => $id]);
+            $this->db->update('guru', ['agama'         => $this->input->post('agama')], ['nip' => $id]);
+            $this->db->update('guru', ['alamat'        => $this->input->post('alamat')], ['nip' => $id]);
+            $this->db->update('guru', ['no_telp'       => $this->input->post('no_telp')], ['nip' => $id]);
+            $this->db->update('guru', ['tanggal_masuk' => $this->input->post('tanggal_masuk')], ['nip' => $id]);
+            $this->db->update('guru', ['email'         => $this->input->post('email')], ['nip' => $id]);
+            $this->db->update('guru', ['role_id'       => $this->input->post('role_id')], ['nip' => $id]);
+            $this->db->update('guru', ['is_active'     => $this->input->post('is_active')], ['nip' => $id]);
+            $this->db->update('guru', ['status'        => $this->input->post('status')], ['nip' => $id]);
+            $this->db->update('guru', ['password'      => $this->input->post('password')], ['nip' => $id]);
+            $this->db->update('guru', ['username'      => $this->input->post('username')], ['nip' => $id]);
 
-        $this->session->set_flashdata('guru_message', '<div class="alert alert-success mb-4" role="alert">Data Guru berhasil diubah!</div>');
-        redirect('admin/get_guru', 'refresh');
+            $this->session->set_flashdata('guru_message', '<div class="alert alert-success mb-4" role="alert">Data Guru berhasil diubah!</div>');
+            redirect('admin/get_guru', 'refresh');
+        } else {
+            print_r($j);
+            if ($j != 0) {
+                $this->session->set_flashdata('guru_message', '<div class="alert alert-danger mb-4" role="alert">Data Guru gagal diubah karena NIP sama!</div>');
+                redirect('admin/get_guru', 'refresh');
+            } else {
+
+                $this->db->update('guru', ['nip'           => $this->input->post('nip')], ['nip' => $id]);
+                $this->db->update('guru', ['nama'          => $this->input->post('nama')], ['nip' => $id]);
+                $this->db->update('guru', ['tempat_lahir'  => $this->input->post('tempat_lahir')], ['nip' => $id]);
+                $this->db->update('guru', ['tanggal_lahir' => $this->input->post('tanggal_lahir')], ['nip' => $id]);
+                $this->db->update('guru', ['jenis_kelamin' => $this->input->post('jenis_kelamin')], ['nip' => $id]);
+                $this->db->update('guru', ['agama'         => $this->input->post('agama')], ['nip' => $id]);
+                $this->db->update('guru', ['alamat'        => $this->input->post('alamat')], ['nip' => $id]);
+                $this->db->update('guru', ['no_telp'       => $this->input->post('no_telp')], ['nip' => $id]);
+                $this->db->update('guru', ['tanggal_masuk' => $this->input->post('tanggal_masuk')], ['nip' => $id]);
+                $this->db->update('guru', ['email'         => $this->input->post('email')], ['nip' => $id]);
+                $this->db->update('guru', ['role_id'       => $this->input->post('role_id')], ['nip' => $id]);
+                $this->db->update('guru', ['is_active'     => $this->input->post('is_active')], ['nip' => $id]);
+                $this->db->update('guru', ['status'        => $this->input->post('status')], ['nip' => $id]);
+                $this->db->update('guru', ['password'      => $this->input->post('password')], ['nip' => $id]);
+                $this->db->update('guru', ['username'      => $this->input->post('username')], ['nip' => $id]);
+
+                $this->session->set_flashdata('guru_message', '<div class="alert alert-success mb-4" role="alert">Data Guru berhasil diubah!</div>');
+                redirect('admin/get_guru', 'refresh');
+            }
+        }
     }
 
     public function delete_guru($id)
@@ -403,7 +451,7 @@ class Admin extends CI_Controller
         $this->db->update('siswa', ['alamat_siswa'          => $this->input->post('alamat_siswa')], ['nis' => $id]);
         $this->db->update('siswa', ['no_telp_rumah'         => $this->input->post('no_telp_rumah')], ['nis' => $id]);
         $this->db->update('siswa', ['sekolah_asal'          => $this->input->post('sekolah_asal')], ['nis' => $id]);
-        $this->db->update('siswa', ['diterima_di_kelas'     => $this->input->post('diterima_di_kela')], ['nis' => $id]);
+        $this->db->update('siswa', ['diterima_di_kelas'     => $this->input->post('diterima_di_kelas')], ['nis' => $id]);
         $this->db->update('siswa', ['tanggal_diterima'      => $this->input->post('tanggal_diterima')], ['nis' => $id]);
         $this->db->update('siswa', ['nama_ayah'             => $this->input->post('nama_ayah')], ['nis' => $id]);
         $this->db->update('siswa', ['nama_ibu'              => $this->input->post('nama_ibu')], ['nis' => $id]);

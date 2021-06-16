@@ -307,9 +307,9 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<h5 class="modal-title" id="editMenuModal<?= $g['nip'] ?>">Edit Guru</h5>
-							<buttond type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
-							</buttond>
+							</button>
 						</div>
 						<form action="<?= base_url('admin/update_guru/' . $g['nip']); ?>" method="post">
 							<div class="modal-body">
@@ -370,6 +370,11 @@
 								<div class="form-group">
 									<span>Tanggal Masuk</span>
 									<input type="date" class="form-control" value="<?= $g['tanggal_masuk']; ?>" id="tanggal_masuk" name="tanggal_masuk">
+								</div>
+
+								<div class="form-group">
+									<span>Email</span>
+									<input type="text" class="form-control" value="<?= $g['email']; ?>" id="email" name="email">
 								</div>
 
 								<div class="form-group">
