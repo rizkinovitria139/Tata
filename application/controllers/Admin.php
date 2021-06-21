@@ -390,6 +390,7 @@ class Admin extends CI_Controller
             if ($counter == 0) { //nisnya tidak ada yang sama
                 $dataSiswa = array(
                     'nis' => $nis,
+                    'nisn' => $this->input->post('nisn', true),
                     'nama' => $this->input->post('nama', true),
                     'tempat_lahir' => $this->input->post('tempat_lahir', true),
                     'tanggal_lahir' => $this->input->post('tanggal_lahir', true),

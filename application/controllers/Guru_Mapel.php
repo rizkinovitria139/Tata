@@ -62,8 +62,10 @@ class Guru_Mapel extends CI_Controller
     }
     public function submit_nilai()
     {
-        $nilaiData = $this->input->post('datanilai');
-        $semesterNilai = $this->input->post('semesternilai');
+        // $nilaiData = $this->input->post('datanilai');
+        // $semesterNilai = $this->input->post('semesternilai');
+        $nilaiData = $_POST['datanilai'];
+        $semesterNilai = $_POST['semesternilai'];
         foreach ($nilaiData as $key => $value) {
             $dataInput = [
                 'nis' => $value['nis'],
@@ -71,6 +73,7 @@ class Guru_Mapel extends CI_Controller
                 'nilai_tugas' => $value['nilai_tugas'],
                 'nilai_uts' => $value['nilai_uts'],
                 'nilai_uas' => $value['nilai_uas'],
+                'deskripsi' => $value['keterangan'],
                 'id_semester' => $semesterNilai
             ];
             $this->db->insert('nilai_siswa', $dataInput);
@@ -80,7 +83,9 @@ class Guru_Mapel extends CI_Controller
     public function checkSemesterNilai()
     {
         $semesterNilai = $this->input->post('semesternilai');
-        $status = $this->m_nilai->checkSemesterAvailable($semesterNilai);
+        $dataNilai = $this->input->post('datanilai');
+        $idMapel = $dataNilai[0]["id_mapel"];
+        $status = $this->m_nilai->checkSemesterAndClassAvailable($semesterNilai, $idMapel);
         if ($status) {
             echo true;
         } else {

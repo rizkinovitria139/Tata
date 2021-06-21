@@ -118,7 +118,7 @@
 		                            <option value="" selected> </option>
 		                            <option value="7">7</option>
 		                            <option value="8">8</option>
-		                            <option value="8">9</option>
+		                            <option value="9">9</option>
 		                            <?= form_error('kelas', '<small class="text-danger pl-3">', '</small>'); ?>
 		                        </select>
 		                    </div>
@@ -181,7 +181,7 @@
 		                            <option value="<?= $m['kelas']; ?>" selected><?= $m['kelas']; ?></option>
 		                            <option value="7">7</option>
 		                            <option value="8">8</option>
-		                            <option value="8">9</option>
+		                            <option value="9">9</option>
 		                            <?= form_error('kelas', '<small class="text-danger pl-3">', '</small>'); ?>
 		                        </select>
 		                    </div>

@@ -46,6 +46,7 @@ class Auth extends CI_Controller
                             'username' => $guru['username'],
                             'role_id' => $guru['role_id'],
                             'nip' => $guru['nip'],
+                            'nama' => $guru['nama'],
                             'tempat_lahir' => $guru['tempat_lahir'],
                             'tanggal_lahir' => $guru['tanggal_lahir'],
                             'jenis_kelamin' => $guru['jenis_kelamin'],
@@ -77,6 +78,7 @@ class Auth extends CI_Controller
                             'username' => $guru['username'],
                             'role_id' => $guru['role_id'],
                             'nip' => $guru['nip'],
+                            'nama' => $guru['nama'],
                             'loginAs' => 'gurubk'
                         ];
                         $this->session->set_userdata($data);
@@ -87,6 +89,7 @@ class Auth extends CI_Controller
                             'username' => $guru['username'],
                             'role_id' => $guru['role_id'],
                             'nip' => $guru['nip'],
+                            'nama' => $guru['nama'],
                             'tempat_lahir' => $guru['tempat_lahir'],
                             'tanggal_lahir' => $guru['tanggal_lahir'],
                             'jenis_kelamin' => $guru['jenis_kelamin'],

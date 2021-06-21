@@ -3,32 +3,81 @@
         console.log("asdas");
     });
 
-
-    function doPresensi() {
-        let presensiTable = document.getElementById("siswaPresensi");
-        let tanggalpresensi = document.getElementById("tanggalinput").value;
-        let presensiData = parseTable(presensiTable);
+    const doPresensi = async () => {
+        const presensiTable = document.getElementById("siswaPresensi");
+        const tanggalpresensi = document.getElementById("tanggalinput").value;
+        const presensiData = await parseTable(presensiTable);
 
         if (tanggalpresensi === '') {
             alert("Mohon untuk mengisi tanggal terlebih dahulu. ");
         } else {
-            console.log("asd");
-            $.ajax({
-                url: "<?= base_url("Tambah_presensi/inputPresensi") ?>",
+            let postData = {
+                presensiData: presensiData,
+                tanggalpresensi: tanggalpresensi        
+            };
+            console.log(presensiData[0]);
+            await $.ajax({
+                url : "<?= base_url("Tambah_presensi/inputPresensi")?>",
                 method: "POST",
-                data: {
-                    presensiData,
-                    tanggalpresensi
-                },
+                data: postData,
                 success: (data, status) => {
                     if (data) {
                         window.location.replace("<?= base_url("Tambah_presensi") ?>");
                     }
                 }
             });
+            // $.ajax({
+            //     url: '<?= base_url("Tambah_presensi/inputPresensi") ?>',
+            //     method: "POST",
+            //     data: {
+            //         "presensiData": presensiData,
+            //         "tanggalpresensi": tanggalpresensi
+            //     },
+            //     success: (data, status) => {
+            //         // if (data) {
+            //         //     window.location.replace("<?= base_url("Tambah_presensi") ?>");
+            //         // }
+                    // console.log(data);
+            //     }
+            // });
         }
-
     }
+
+    // function doPresensi() {
+    //     const presensiTable = document.getElementById("siswaPresensi");
+    //     const tanggalpresensi = document.getElementById("tanggalinput").value;
+    //     const presensiData = parseTable(presensiTable);
+
+    //     if (tanggalpresensi === '') {
+    //         alert("Mohon untuk mengisi tanggal terlebih dahulu. ");
+    //     } else {
+    //         let postData = {
+    //             presensiData: presensiData,
+    //             tanggalpresensi: tanggalpresensi        
+    //         };
+    //         console.log(presensiData[0]);
+    //         $.ajax({
+    //             url : "<?= base_url("Tambah_presensi/inputPresensi")?>",
+    //             method: "POST",
+    //             data: {'data' : tanggalpresensi,},
+    //         });
+    //         // $.ajax({
+    //         //     url: '<?= base_url("Tambah_presensi/inputPresensi") ?>',
+    //         //     method: "POST",
+    //         //     data: {
+    //         //         "presensiData": presensiData,
+    //         //         "tanggalpresensi": tanggalpresensi
+    //         //     },
+    //         //     success: (data, status) => {
+    //         //         // if (data) {
+    //         //         //     window.location.replace("<?= base_url("Tambah_presensi") ?>");
+    //         //         // }
+    //         //         console.log(data);
+    //         //     }
+    //         // });
+    //     }
+
+    // }
 
     function showEditPresensi(nis) {
         $.ajax({

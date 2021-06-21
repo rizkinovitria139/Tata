@@ -57,11 +57,13 @@ class Tambah_presensi extends CI_Controller
     // untuk input presensi dengan javascript
     public function inputPresensi()
     {
-        $dataPresensi = $this->input->post('presensiData');
-        $tanggalPresensi = $this->input->post('tanggalpresensi');
-
+        // $dataPresensi = $this->input->post('presensiData');
+        // $tanggalPresensi = $this->input->post('tanggalpresensi');
+        $dataPresensi = $_POST['presensiData'];
+        $tanggalPresensi = $_POST['tanggalpresensi'];
         foreach ($dataPresensi as $key => $value) {
             $this->m_presensi->doPresensi($value, $tanggalPresensi);
+            
         }
         echo true;
     }

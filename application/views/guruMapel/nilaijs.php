@@ -8,15 +8,16 @@
             url: "<?= base_url('Guru_Mapel/checkSemesterNilai') ?>",
             method: "POST",
             data: {
+                'datanilai': nilaiDatas,
                 'semesternilai': semesterSelect
             },
             success: (data) => {
+
                 // console.log(Boolean(data));
                 if (Boolean(data)) {
                     alert(`Mohon maaf, anda sudah masukan nilai pada kelas ini pada ${$('#semesterSelect>option:selected').text()}, Periksa kembali apakah semester nilai yang anda kirimkan `);
                 } else {
                     sendNilai(nilaiDatas, semesterSelect);
-
                 }
             }
         });

@@ -44,7 +44,7 @@
 							<select class="form-control" name="jenis_kelamin" id="jenis_kelamin">
 								<option value="" selected> </option>
 								<option value="perempuan">Perempuan</option>
-								<option value="lakilaki">Laki-laki</option>
+								<option value="laki-laki">Laki-laki</option>
 								<?= form_error('jenis_kelamin', '<small class="text-danger pl-3">', '</small>'); ?>
 							</select>
 						</div>

@@ -15,7 +15,7 @@
             Filter Data Presensi Siswa
         </div>
         <div class="card-body">
-            <form class="form-inline" action="<?= base_url('datapresensi') ?>">
+            <form class="form-inline" action="<?= base_url('dataPresensi') ?>">
                 <div class="form-group mb-2">
                     <label for="staticEmail2">Bulan : </label>
                     <select class="form-control ml-2" name="bulan">

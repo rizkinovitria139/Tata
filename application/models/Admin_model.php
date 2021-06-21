@@ -13,26 +13,24 @@ class Admin_model extends CI_Model
         $query = "SELECT `guru`.*, `user_role`.*
         FROM `guru`
         JOIN `user_role` ON `user_role`.`id_role` = `guru`.`role_id`
-        ";
+        ORDER BY `guru`.`nama`";
         return $this->db->query($query)->result_array();
     }
 
-    public function getAllnip()
+public function getAllnip()
     {
         $query = "SELECT `nip`
         FROM `guru`
         ";
         return $this->db->query($query)->result_array();
     }
-
-
     public function get_guru_mapel()
     {
         $query = "SELECT `guru`.*, `user_role`.*
         FROM `guru`
         JOIN `user_role` ON `user_role`.`id_role` = `guru`.`role_id`
         WHERE `guru`.`role_id` = 5
-        ";
+        ORDER BY `guru`.`nama`";
         return $this->db->query($query)->result_array();
     }
 
@@ -42,7 +40,7 @@ class Admin_model extends CI_Model
         FROM `guru`
         JOIN `user_role` ON `user_role`.`id_role` = `guru`.`role_id`
         WHERE `guru`.`role_id` = 7
-        ";
+        ORDER BY `guru`.`nama`";
         return $this->db->query($query)->result_array();
     }
 
@@ -52,7 +50,7 @@ class Admin_model extends CI_Model
         FROM `guru`
         JOIN `user_role` ON `user_role`.`id_role` = `guru`.`role_id`
         WHERE `guru`.`role_id` = 4
-        ";
+        ORDER BY `guru`.`nama`";
         return $this->db->query($query)->result_array();
     }
 
@@ -60,6 +58,7 @@ class Admin_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('guru');
+        $this->db->join('user_role', 'user_role.id_role = guru.role_id');
         $this->db->like('nip', $keyword);
         $this->db->or_like('nama', $keyword);
         $this->db->or_like('no_telp', $keyword);

@@ -265,9 +265,9 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<h5 class="modal-title" id="editMenuModal<?= $s['nis'] ?>">Edit Siswa</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<buttond type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
-							</button>
+							</buttond>
 						</div>
 						<form action="<?= base_url('admin/update_siswa/' . $s['nis']); ?>" method="post">
 							<div class="modal-body">
