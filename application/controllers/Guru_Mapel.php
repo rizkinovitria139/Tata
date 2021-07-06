@@ -46,6 +46,38 @@ class Guru_Mapel extends CI_Controller
         $this->load->view('guruMapel/nilaijs', $data);
     }
 
+    public function nilai_rev()
+    {
+        $data['title'] = "Nilai Siswa";
+        $data['guru'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+        $id = $this->session->userdata('nip');
+
+        $data['mapel'] = $this->mapel->get_mapel_guru($id);
+        // print_r($id);
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('guruMapel/mp_sidebar', $data);
+        $this->load->view('guruMapel/mp_topbar', $data);
+        $this->load->view('guruMapel/nilai_rev', $data);
+        $this->load->view('templates/footer');
+        $this->load->view('guruMapel/nilaijs', $data);
+    }
+
+    public function tambah_nilai_rev($id_mapel)
+    {
+        $data['title'] = "Nilai Siswa";
+        $data['guru'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+        $data['siswaKelas'] = $this->m_nilai->getSiswaJadwal($id_mapel);
+        $data['semesterData'] = $this->db->get('semester')->result_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('guruMapel/mp_sidebar', $data);
+        $this->load->view('guruMapel/mp_topbar', $data);
+        $this->load->view('guruMapel/inputNilai_rev', $data);
+        $this->load->view('templates/footer');
+        $this->load->view('guruMapel/nilaijs_rev', $data);
+    }
+
     public function tambah_nilai($id_mapel)
     {
         $data['title'] = "Nilai Siswa";
@@ -80,7 +112,21 @@ class Guru_Mapel extends CI_Controller
         }
         return true;
     }
+
     public function checkSemesterNilai()
+    {
+        $semesterNilai = $this->input->post('semesternilai');
+        $dataNilai = $this->input->post('datanilai');
+        $idMapel = $dataNilai[0]["id_mapel"];
+        $status = $this->m_nilai->checkSemesterAndClassAvailable($semesterNilai, $idMapel);
+        if ($status) {
+            echo true;
+        } else {
+            echo false;
+        }
+    }
+
+    public function checkSemesterNilai_rev()
     {
         $semesterNilai = $this->input->post('semesternilai');
         $dataNilai = $this->input->post('datanilai');

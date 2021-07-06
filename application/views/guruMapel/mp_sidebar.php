@@ -40,6 +40,13 @@
                     <span>Penilaian</span></a>
             </li>
 
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('Guru_Mapel/nilai_rev'); ?>">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Penilaian Revisi</span></a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
