@@ -32,7 +32,7 @@
                     <?php foreach ($nilai_k as $k) : ?>
                         <tr>
                             <td><?= $i; ?></td>
-                            <td><?= $k['nama']; ?></td>
+                            <td width='100'><?= $k['nama']; ?></td>
                             <td><?= $k['kelakuan']; ?></td>
                             <td><?= $k['kerajinan']; ?></td>
                             <td><?= $k['kerapian']; ?></td>
@@ -160,23 +160,23 @@
 <!-- End Tambah Nilai Kepribadian Modal -->
 
 <!-- Start Edit Nilai Kepribadian Modal -->
-<?php foreach ($nilai_k as $p) : ?>
-    <div class="modal fade" id="editnilaiKModal<?= $p['id_nilai_kepribadian'] ?>" tabindex="-1" kelas="dialog" aria-labelledby="editnilaiKModal<?= $p['id_nilai_kepribadian']; ?>Label" aria-hidden="true">
+<?php foreach ($nilai_x as $indexvc => $xvc) { ?>
+    <div class="modal fade" id="editnilaiKModal<?= $xvc['id_nilai_kepribadian'] ?>" tabindex="-1" kelas="dialog" aria-labelledby="editnilaiKModal<?= $xvc['id_nilai_kepribadian']; ?>Label" aria-hidden="true">
         <div class="modal-dialog" kelas="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editMenuModal<?= $p['id_nilai_kepribadian'] ?>">Edit Nilai Kepribadian</h5>
+                    <h5 class="modal-title" id="editMenuModal<?= $xvc['id_nilai_kepribadian'] ?>">Edit Nilai Kepribadian</h5>
                     <buttond type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </buttond>
                 </div>
-                <form action="<?= base_url('wali_kelas/edit_nilaiK/' . $p['id_nilai_kepribadian']); ?>" method="post">
+                <form action="<?= base_url('wali_kelas/edit_nilaiK/' . $xvc['id_nilai_kepribadian']); ?>" method="post">
                     <div class="modal-body">
                         <div class="modal-body">
                             <span>Siswa</span>
                             <div class="form-group">
                                 <select class="form-control" name="nis" id="nis">
-                                    <option value="<?= $p['nis'] ?>" selected><?= $p['nis'] . '-' . $p['nama'] ?> </option>
+                                    <option value="<?= $xvc['nis'] ?>" selected><?= $xvc['nis'] . '-' . $xvc['nama'] ?> </option>
                                     <?php foreach ($siswa as $s) { ?>
                                         <option value="<?= $s['nis'] ?>">
                                             <?= $s['nis'] . ' - ' . $s['nama'] ?></option>
@@ -186,7 +186,7 @@
                             <span>Nilai Kelakuan</span>
                             <div class="form-group">
                                 <select class="form-control" name="kelakuan" id="kelakuan">
-                                    <option value="<?= $p['kelakuan'] ?>"> <?= $p['kelakuan'] ?></option>
+                                    <option value="<?= $xvc['kelakuan'] ?>"> <?= $xvc['kelakuan'] ?></option>
                                     <option value="A">A</option>
                                     <option value="B">B</option>
                                     <option value="C">C</option>
@@ -198,7 +198,7 @@
                             <span>Nilai Kerajinan</span>
                             <div class="form-group">
                                 <select class="form-control" name="kerajinan" id="kerajinan">
-                                    <option value="<?= $p['kerajinan'] ?>"> <?= $p['kerajinan'] ?></option>
+                                    <option value="<?= $xvc['kerajinan'] ?>"> <?= $xvc['kerajinan'] ?></option>
                                     <option value="A">A</option>
                                     <option value="B">B</option>
                                     <option value="C">C</option>
@@ -210,7 +210,7 @@
                             <span>Nilai Kerapian</span>
                             <div class="form-group">
                                 <select class="form-control" name="kerapian" id="kerapian">
-                                    <option value="<?= $p['kerapian'] ?>"> <?= $p['kelakuan'] ?></option>
+                                    <option value="<?= $xvc['kerapian'] ?>"> <?= $xvc['kelakuan'] ?></option>
                                     <option value="A">A</option>
                                     <option value="B">B</option>
                                     <option value="C">C</option>
@@ -222,7 +222,7 @@
                             <span>Nilai Kebersihan</span>
                             <div class="form-group">
                                 <select class="form-control" name="kebersihan" id="kebersihan">
-                                    <option value="<?= $p['kebersihan'] ?>"> <?= $p['kelakuan'] ?></option>
+                                    <option value="<?= $xvc['kebersihan'] ?>"> <?= $xvc['kelakuan'] ?></option>
                                     <option value="A">A</option>
                                     <option value="B">B</option>
                                     <option value="C">C</option>
@@ -235,7 +235,7 @@
                             <span>Semester</span>
                             <div class="form-group">
                                 <select class="form-control" name="id_semester" id="id_semester">
-                                    <option value="<?= $p['id_semester'] ?>" selected> <?= $p['id_semester'] . ' - ' . $p['semester'] ?></option>
+                                    <option value="<?= $xvc['id_semester'] ?>" selected> <?= $xvc['id_semester'] . ' - ' . $xvc['semester'] ?></option>
                                     <?php foreach ($semesterData as $d) { ?>
                                         <option value="<?= $d['id_semester'] ?>">
                                             <?= $d['id_semester'] . ' - ' . $d['semester'] ?></option>
@@ -248,9 +248,10 @@
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                             <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
-<?php endforeach; ?>
+<?php } ?>
 <!-- End Edit Nilai Kepribadian Modal -->
