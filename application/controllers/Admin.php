@@ -641,6 +641,7 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('nilai_kkm', 'Nilai KKM', 'required');
         $this->form_validation->set_rules('kelas', 'Tingkat', 'required');
         $this->form_validation->set_rules('id_kelas', 'Kelas', 'required');
+        $this->form_validation->set_rules('semester', 'Semester', 'required');
 
         if ($this->form_validation->run() == true) {
             // $data['id_kelas'] = $this->input->post('id_kelas');
@@ -648,6 +649,7 @@ class Admin extends CI_Controller
             $data['nilai_kkm'] = $this->input->post('nilai_kkm');
             $data['kelas'] = $this->input->post('kelas');
             $data['id_kelas'] = $this->input->post('id_kelas');
+            $data['semester'] = $this->input->post('semester');
 
             $this->load->model('Mapel_model', 'mapel');
             $this->mapel->tambah_mapel($data);
@@ -668,6 +670,7 @@ class Admin extends CI_Controller
         $this->db->update('mata_pelajaran', ['nilai_kkm' => $this->input->post('nilai_kkm')], ['id_mapel' => $id]);
         $this->db->update('mata_pelajaran', ['kelas' => $this->input->post('kelas')], ['id_mapel' => $id]);
         $this->db->update('mata_pelajaran', ['id_kelas' => $this->input->post('id_kelas')], ['id_mapel' => $id]);
+        $this->db->update('mata_pelajaran', ['semester' => $this->input->post('semester')], ['id_mapel' => $id]);
 
         $this->session->set_flashdata('mapel_message', '<div class="alert alert-success" role="alert">Mata Pelajaran berhasil diubah!</div>');
         redirect('admin/get_mapel', 'refresh');

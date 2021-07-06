@@ -344,6 +344,7 @@ class Wali_kelas extends CI_Controller
 
         $this->load->model('NilaiKepribadian_model', 'kepribadian');
         $data['nilai_k'] = $this->kepribadian->get_nilai_kepribadian($user_id);
+        $data['nilai_x'] = $this->kepribadian->get_nilai_kepribadian($user_id);
         $data['siswa'] = $this->kepribadian->getSiswaKelas($user_id);
         $this->load->model('Kelas_model', 'kelas');
         $data['kelas'] = $this->kelas->get_kelas();
