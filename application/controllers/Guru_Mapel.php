@@ -92,6 +92,21 @@ class Guru_Mapel extends CI_Controller
         $this->load->view('templates/footer');
         $this->load->view('guruMapel/nilaijs', $data);
     }
+    public function edit_nilai($id_mapel)
+    {
+        $data['title'] = "Nilai Siswa";
+        $data['guru'] = $this->db->get_where('guru', ['username' => $this->session->userdata('username')])->row_array();
+        $data['siswaKelas'] = $this->m_nilai->getSiswaJadwal($id_mapel);
+        $data['semesterData'] = $this->db->get('semester')->result_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('guruMapel/mp_sidebar', $data);
+        $this->load->view('guruMapel/mp_topbar', $data);
+        $this->load->view('guruMapel/editNilai', $data);
+        $this->load->view('templates/footer');
+        $this->load->view('guruMapel/nilaijs_rev', $data);
+    }
+
     public function submit_nilai()
     {
         // $nilaiData = $this->input->post('datanilai');
@@ -136,6 +151,25 @@ class Guru_Mapel extends CI_Controller
         return true;
     }
 
+    public function submit_edit_nilai()
+    {
+        $nilaiData = $_POST['datanilai'];
+        foreach ($nilaiData as $key => $value) {
+            $dataInput = [
+                'nis' => $value['nis'],
+                'id_mapel' => $value['id_mapel'],
+                'tugas1' => $value['tugas_1'],
+                'tugas2' => $value['tugas_2'],
+                'tugas3' => $value['tugas_3'],
+                'tugas4' => $value['tugas_4'],
+                'uts' => $value['uts'],
+                'uas' => $value['uas'],
+                'deskripsi' => $value['keterangan']
+            ];
+            $this->db->update('nilai_siswa_r', $dataInput, ['id_nilai' => $value['id_nilai']]);
+        }
+        return true;
+    }
     public function checkSemesterNilai()
     {
         $semesterNilai = $this->input->post('semesternilai');
@@ -159,6 +193,16 @@ class Guru_Mapel extends CI_Controller
             echo true;
         } else {
             echo false;
+        }
+    }
+    public function checkNilaiKelas()
+    {
+        $mapelid = $this->input->post('mapelid');
+        $check = $this->m_nilai->checkMapelNilai($mapelid);
+        if ($check == 0) {
+            echo 1; // jika kosong berarti true
+        } else {
+            echo 0; // jika ada berarti false
         }
     }
 }

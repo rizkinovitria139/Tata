@@ -155,6 +155,12 @@ class Nilai_model extends CI_Model
                 $query = $this->db->get();
                 return $query->result_array();
         }
+        public function checkMapelNilai($id_mapel)
+        {
+                $this->db->where('id_mapel', $id_mapel);
+                $this->db->from('nilai_siswa_r');
+                return $this->db->get()->num_rows();
+        }
         public function checkSemesterAndClassAvailable($id_semester, $id_mapel)
         {
                 $this->db->from('nilai_siswa');
@@ -406,5 +412,10 @@ class Nilai_model extends CI_Model
                ";
 
                 return $this->db->query($query)->result_array();
+        }
+        public function get_nilai_by_id($filter)
+        {
+                $this->db->where($filter);
+                return $this->db->get('nilai_siswa_r')->row();
         }
 }

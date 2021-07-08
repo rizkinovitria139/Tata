@@ -26,7 +26,8 @@
                     <td><?= $n->nama_mapel; ?></td>
                     <td><?= $n->nama_kelas; ?></td>
                     <td>
-                        <a role="button" href="<?= base_url('Guru_Mapel/tambah_nilai_rev/' . $n->id_mapel) ?>" class="btn btn-primary btn-sm">Submit</a>
+                        <a role="button" href="<?= base_url('Guru_Mapel/tambah_nilai_rev/' . $n->id_mapel) ?>" class="btn btn-primary btn-sm <?= $this->m_nilai->checkMapelNilai($n->id_mapel) != 0 ? "disabled" : "enable" ?>">Submit</a>
+                        <a role="button" href="<?= base_url('Guru_Mapel/edit_nilai/' . $n->id_mapel) ?>" class="btn btn-success btn-sm">Edit</a>
                     </td>
                 </tr>
                 <?php $i++; ?>
