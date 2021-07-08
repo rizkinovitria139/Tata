@@ -70,15 +70,6 @@
                 <?php } ?>
             </tbody>
         </table>
-        <!-- <div class="form-group w-50">
-            <label for="">Pilih Semester</label>
-            <select class="form-control" id="semesterSelect">
-                <?php foreach ($semesterData as $key => $value) { ?>
-                    <option value="<?= $value['id_semester'] ?>">Semester <?= $value['semester'] ?></option>
-                <?php } ?>
-            </select>
-            <small id="helpId" class="text-muted">Masukan semester nilai yang akan di masukan</small>
-        </div> -->
     </div>
     <div class="text-center">
         <button type="button" onclick="submitNilai()" class="btn btn-lg btn-block btn-primary">Submit</button>
