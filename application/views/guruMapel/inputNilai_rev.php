@@ -12,6 +12,7 @@
                     <th scope="col">No</th>
                     <th scope="col">Nama Siswa</th>
                     <th scope="col">Kelas</th>
+                    <th hidden scope="col">nis</th>
                     <th hidden scope="col">id kelas</th>
                     <th hidden scope="col">id mapel</th>
                     <th scope="col">Tugas 1</th>
@@ -29,6 +30,7 @@
                         <th scope="row"><?= $key + 1 ?></th>
                         <td><?= $value['nama'] ?></td>
                         <td><?= $value['nama_kelas'] ?></td>
+                        <td hidden><?= $value['nis'] ?></td>
                         <td hidden><?= $value['id_kelas'] ?></td>
                         <td hidden><?= $value['id_mapel'] ?></td>
                         <td>

@@ -2,12 +2,12 @@
     function submitNilai() {
         let nilaiTableView = document.getElementById('nilaiSiswa');
         let nilaiDatas = parseTable(nilaiTableView);
-
-        $.ajax({
-            success: (data) => {
-                sendNilai(nilaiDatas);
-            }
-        });
+        this.sendNilai(nilaiDatas);
+        // $.ajax({
+        //     success: (data) => {
+        //         sendNilai(nilaiDatas);
+        //     }
+        // });
 
     }
 

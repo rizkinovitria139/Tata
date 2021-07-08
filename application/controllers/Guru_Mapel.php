@@ -123,19 +123,17 @@ class Guru_Mapel extends CI_Controller
             $dataInput = [
                 'nis' => $value['nis'],
                 'id_mapel' => $value['id_mapel'],
-                'tugas1' => $value['tugas1'],
-                'tugas2' => $value['tugas2'],
-                'tugas3' => $value['tugas3'],
-                'tugas4' => $value['tugas4'],
-                'nilai_uts' => $value['nilai_uts'],
-                'nilai_uas' => $value['nilai_uas'],
+                'tugas1' => $value['tugas_1'],
+                'tugas2' => $value['tugas_2'],
+                'tugas3' => $value['tugas_3'],
+                'tugas4' => $value['tugas_4'],
+                'uts' => $value['uts'],
+                'uas' => $value['uas'],
                 'deskripsi' => $value['keterangan']
             ];
             $this->db->insert('nilai_siswa_r', $dataInput);
         }
         return true;
-        print_r($nilaiData);
-        die();
     }
 
     public function checkSemesterNilai()
